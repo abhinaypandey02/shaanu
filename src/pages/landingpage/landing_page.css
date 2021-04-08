@@ -1,31 +1,71 @@
+.navbar{
+    background-color: transparent !important;
+}
+.btn-light {
+    border-radius: 0px;
+    padding-top: 0.7rem;
+    padding-bottom:0.7rem;
+    padding-left: 1rem;
+    width: 100%;
+    text-align: start !important;
+    font-size: 1vw;
+}
+
+.btn-outline-light{
+    border-radius: 0px;
+    background-color: transparent;
+    width: 100%;
+    padding-top: 0.7rem;
+    padding-bottom:0.7rem;
+    color: white;
+    border: 1px solid white;
+}
+
 .section1{
-    background-image: url("bg3.jfif");
+    min-height: 100vh;
+    min-width: 100vw;
+    background-image: url("BG.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     font-family: 'Lexend', sans-serif;
 }
+.display-4{
+    font-size: 4vh;
+    font-weight: 800;
+}
+.section2{
+    min-height: 90vh;
+    min-width: 1auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
 #base{
-    background-color: rgba(255, 255, 255, 0.418);
-    border-radius: 4rem;
+    background-color: rgba(0, 0, 0, 0.3);
     padding: 4rem;
     backdrop-filter: blur(5px);
-}
-#loginb, #signupb{
-    border-radius: 4rem;
-    min-width: 100%;
-    font-size: 2em;
-}
-#loginb:hover{
-    background-color:rgba(56, 56, 56, 0.267);
-}
-@media (max-width:600px){
-    #base{
-        margin-left: 1rem;
-        margin-right: 1rem;;
-    }
-}
-h3{
-    color: rgb(140, 0, 255);
-    font-weight: 700 !important;
+    color: white;
+    max-width: 25vw;
+    display: flex;
+    align-content: space-around;
+    flex-direction: column;
 }
 
+@media (max-width:600px){
+    #base{
+        min-width: 100vw;
+        padding: 2rem;
+        margin:2rem !important;
+    }
+    .btn-light {
+        font-size:5vw;
+    }
+}
+@media (min-width:600px) and (max-width:1400px){
+    #base{
+        min-width: 40vw;
+        padding: 2rem;
+        margin:2rem !important;
+    }
+
+}
