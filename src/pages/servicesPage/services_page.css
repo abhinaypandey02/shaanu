@@ -1,0 +1,32 @@
+#leftcol, #rightcol{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+}
+#leftcol{
+    max-height: 99vh !important;
+
+}
+
+#cart{
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 1rem !important;
+    backdrop-filter: blur(5px);
+    color: white;
+    min-width: 25vw !important;
+}
+.card{
+    margin-bottom: 2rem;
+    border-radius: 0px;
+    min-width: 40vw !important;
+    background-color: transparent !important;
+    border: 1px solid white;
+    color: white;
+}
+#imgcontainer{
+    background-image: url("unnamed.png");
+}
+h5{
+    font-weight: 800;
+}
