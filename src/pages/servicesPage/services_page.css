@@ -8,7 +8,11 @@
     max-height: 99vh !important;
 
 }
-
+#cartline{
+    width: 100%;
+    background: white;
+    height: 1px;
+}
 #cart{
     background-color: rgba(0, 0, 0, 0.3);
     padding: 1rem !important;
@@ -17,7 +21,7 @@
     min-width: 25vw !important;
 }
 .card{
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     border-radius: 0px;
     min-width: 40vw !important;
     background-color: transparent !important;
@@ -29,4 +33,17 @@
 }
 h5{
     font-weight: 800;
+}
+
+@media (max-width: 990px) {
+    #leftcol{
+        position: static !important;
+    }
+    #cart{
+        width: 100% !important;
+    }
+    .card{
+        width: 100% !important;
+    }
+    
 }
