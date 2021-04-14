@@ -6,7 +6,6 @@
 }
 #leftcol{
     max-height: 99vh !important;
-
 }
 #cartline{
     width: 100%;
@@ -23,14 +22,12 @@
 .card{
     margin-bottom: 1rem;
     border-radius: 0px;
-    min-width: 40vw !important;
+    min-width: 35vw !important;
     background-color: transparent !important;
     border: 1px solid white;
     color: white;
 }
-#imgcontainer{
-    background-image: url("unnamed.png");
-}
+
 h5{
     font-weight: 800;
 }
