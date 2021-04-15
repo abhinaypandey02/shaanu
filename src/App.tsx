@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import LandingPage from "./pages/landingPage/landing_page";
-import ServicesPage from "./pages/servicesPage/services_page";
+import LandingPage from "./pages/landingpage/landing_page";
+import ServicesPage from "./pages/servicespage/services_page";
 import NavigationBar from "./components/navigationBar/navigation_bar";
 
 function App() {
