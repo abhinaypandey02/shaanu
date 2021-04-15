@@ -1,4 +1,5 @@
 import './services_page.css'
+import cartimage from './unnamed.png';
 
 export default function ServicesPage(){
     return <div className='container-fluid justify-content-center align-content-center  flex-grow-1' >
@@ -8,7 +9,7 @@ export default function ServicesPage(){
                         <div className='d-flex align-items-center justify-content-center flex-column' id='cart'>
 
                             <h2 className='display-4'>CART</h2>
-                            <img className="img-fluid" src='unnamed.png'></img>
+                            <img className="img-fluid" src={cartimage}/>
                             <hr id='cartline'></hr>
 
                             <div className="card">
