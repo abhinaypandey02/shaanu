@@ -9,7 +9,7 @@ function App() {
   return (
       <div className={'min-vh-100 min-vw-100 app d-flex flex-column'}>
         <NavigationBar/>
-        <EachServicePage/>
+        <LandingPage/>
       </div>
   );
 }
