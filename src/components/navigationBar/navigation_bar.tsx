@@ -11,16 +11,6 @@ export default function NavigationBar() {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#">
-                                <button type="button" className="btn btn-outline-light mr-3">HOME</button>
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">
-                                <button type="button" className="btn btn-outline-light mr-3">SERVICES</button>
-                            </a>
-                        </li>
-                        <li className="nav-item">
                             <a className="nav-link" href="#">
                                 <button type="button" className="btn btn-outline-light">CONTACT US</button>
                             </a>

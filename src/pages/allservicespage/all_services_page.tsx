@@ -17,33 +17,7 @@ export default function AllServicesPage(){
                             </div>
                             <hr id='cartline'></hr>
 
-                            <div className="card">
-                                <h5 className="card-header">FRONT BUMPER</h5>
-                                <div className="card-body p-2 d-flex flex-row flex-wrap">
-
-                                    <div className='col-lg-10 d-flex justify-content-between align-items-center'>
-                                        <p className="card-text my-auto">2 year warranty on paint.</p>
-                                        <a href="#" className="btn w-auto btn-outline-light">Remove</a>
-                                    </div>
-                                    <div className='col-lg-2 d-flex align-items-center '>
-                                        <h4 className="my-auto mx-auto">Rs.4999</h4>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div className="card">
-                                <h5 className="card-header">REAR BUMPER</h5>
-                                <div className="card-body p-2 d-flex flex-row flex-wrap">
-                                    <div className='col-md-10 d-flex justify-content-between align-items-center'>
-                                        <p className="card-text my-auto">2 year warranty on paint.</p>
-                                        <a href="#" className="btn w-auto btn-outline-light">Remove</a>
-                                    </div>
-                                    <div className='col-md-2 d-flex align-items-center '>
-                                        <h4 className="my-auto mx-auto">Rs.4999</h4>
-                                    </div>
-
-                                </div>
-                            </div>
+                            
 
                         </div>
                     </div>
