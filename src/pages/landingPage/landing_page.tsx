@@ -3,9 +3,12 @@ import './landing_page.css';
 export default function LandingPage() {
     return <div className='d-flex justify-content-center align-items-center flex-grow-1'>
         <div className='container text-wrap d-flex align-content-around flex-column'>
+            <div className="row-fluid text-light text-center">
+                <h1 className='display-4'>CAR PLUS</h1>
+            </div>
             <div className='row-fluid'>
                 <div className="dropdown">
-                    <button className="btn btn-light dropdown-toggle my-3 text-center" type="button" id="dropdownMenuButton1"
+                    <button className="btn btn-dark py-3 btn-lg w-100 dropdown-toggle my-3 text-center" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">
                         SELECT YOUR BRAND
                     </button>

@@ -2,10 +2,16 @@
     border-radius: 5rem;
     text-align: center !important;
 }
+.btn-dark{
+    border-radius: 0px !important;
+    background-color: rgba(39, 39, 39, 0.568) !important;
+    border: none !important;
+}
+
 
 @media (max-width:600px){
     #landingPage{
-        min-width: 100vw;
+        min-width:100vw;
         padding: 2rem;
         margin:2rem !important;
     }
