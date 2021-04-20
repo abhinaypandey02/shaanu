@@ -25,6 +25,7 @@ export default function AllServicesPage() {
             </div>
 
             <div className='col-lg-7 text-center'>
+                <h1 className='text-light'>Select Services</h1>
                 <a href="#" className='btn btn-outline-light text-left mt-5'>
 
                     <h4 className="card-header">A REPAIR</h4>
