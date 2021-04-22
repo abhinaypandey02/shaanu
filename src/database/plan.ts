@@ -33,7 +33,7 @@ export function getPlans(): Plan[] {
                     title: "Platinum",
                     description: "Premium A service",
                     price: 100,
-                    color:"#E5E4E2"
+                    color:"#0dcaf0"
                 },
             ],
         },
@@ -68,7 +68,7 @@ export function getPlans(): Plan[] {
                     title: "Platinum",
                     description: "Premium B service",
                     price: 100,
-                    color:"#E5E4E2"
+                    color:"#0dcaf0"
                 },
             ],
         },
@@ -103,7 +103,7 @@ export function getPlans(): Plan[] {
                     title: "Platinum",
                     description: "Premium C service",
                     price: 100,
-                    color:"#E5E4E2"
+                    color:"#0dcaf0"
                 },
             ],
         },
