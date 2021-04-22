@@ -9,25 +9,25 @@ export function getPlans(): Plan[] {
             subPlans: [
                 {
                     id: "a-repair-1",
-                    title: "Premium",
+                    title: "Normal A service",
                     description: "Normal A service",
                     price: 100,
                 },
                 {
                     id: "a-repair-1",
-                    title: "Premium",
+                    title: "Nice A service",
                     description: "Nice A service",
                     price: 100,
                 },
                 {
                     id: "a-repair-1",
-                    title: "Premium",
+                    title: "Very Nice A service",
                     description: "Very Nice A service",
                     price: 100,
                 },
                 {
                     id: "a-repair-1",
-                    title: "Premium",
+                    title: "Premium A service",
                     description: "Premium A service",
                     price: 100,
                 },
@@ -40,25 +40,25 @@ export function getPlans(): Plan[] {
             subPlans: [
                 {
                     id: "b-repair-1",
-                    title: "Premium",
+                    title: "Normal B service",
                     description: "Normal B service",
                     price: 100,
                 },
                 {
                     id: "b-repair-1",
-                    title: "Premium",
+                    title: "Nice B service",
                     description: "Nice B service",
                     price: 100,
                 },
                 {
                     id: "b-repair-1",
-                    title: "Premium",
+                    title: "V nice B service",
                     description: "V nice B service",
                     price: 100,
                 },
                 {
                     id: "b-repair-1",
-                    title: "Premium",
+                    title: "Premium B service",
                     description: "Premium B service",
                     price: 100,
                 },
@@ -71,25 +71,25 @@ export function getPlans(): Plan[] {
             subPlans: [
                 {
                     id: "c-repair-1",
-                    title: "Premium",
+                    title: "Normal C service",
                     description: "Normal C service",
                     price: 100,
                 },
                 {
                     id: "c-repair-1",
-                    title: "Premium",
+                    title: "Mast C service",
                     description: "Mast C service",
                     price: 100,
                 },
                 {
                     id: "c-repair-1",
-                    title: "Premium",
+                    title: "Faadhu C service",
                     description: "Faadhu C service",
                     price: 100,
                 },
                 {
                     id: "c-repair-1",
-                    title: "Premium",
+                    title: "Premium C service",
                     description: "Premium C service",
                     price: 100,
                 },
