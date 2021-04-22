@@ -109,7 +109,7 @@ export default function AllServicesPage() {
                                         <div className="1">
                                         {plan.title} <h6>{subPlan.title}</h6>
                                         </div>
-                                        <div className="btn btn-outline-danger" onClick={() => {
+                                        <div className="btn btn-outline-danger my-auto" onClick={() => {
                                         dispatch({
                                             type: "REMOVE_FROM_CART",
                                             payload: subPlan.id,
