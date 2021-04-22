@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/static/css/main.202fb63d.chunk.css",
-    "main.js": "/static/js/main.1c48e1c4.chunk.js",
-    "main.js.map": "/static/js/main.1c48e1c4.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.fae77642.js",
-    "runtime-main.js.map": "/static/js/runtime-main.fae77642.js.map",
-    "static/css/2.4c97ca4f.chunk.css": "/static/css/2.4c97ca4f.chunk.css",
-    "static/js/2.a662f7a5.chunk.js": "/static/js/2.a662f7a5.chunk.js",
-    "static/js/2.a662f7a5.chunk.js.map": "/static/js/2.a662f7a5.chunk.js.map",
-    "static/js/3.75758ce5.chunk.js": "/static/js/3.75758ce5.chunk.js",
-    "static/js/3.75758ce5.chunk.js.map": "/static/js/3.75758ce5.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/2.4c97ca4f.chunk.css.map": "/static/css/2.4c97ca4f.chunk.css.map",
-    "static/css/main.202fb63d.chunk.css.map": "/static/css/main.202fb63d.chunk.css.map",
-    "static/js/2.a662f7a5.chunk.js.LICENSE.txt": "/static/js/2.a662f7a5.chunk.js.LICENSE.txt",
-    "static/media/App.css": "/static/media/speedometer.9a674fd6.jpg",
-    "static/media/unnamed.0a49e97c.png": "/static/media/unnamed.0a49e97c.png"
+    "main.css": "./static/css/main.c1d9af65.chunk.css",
+    "main.js": "./static/js/main.1c48e1c4.chunk.js",
+    "main.js.map": "./static/js/main.1c48e1c4.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.b9806052.js",
+    "runtime-main.js.map": "./static/js/runtime-main.b9806052.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "./static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.a662f7a5.chunk.js": "./static/js/2.a662f7a5.chunk.js",
+    "static/js/2.a662f7a5.chunk.js.map": "./static/js/2.a662f7a5.chunk.js.map",
+    "static/js/3.75758ce5.chunk.js": "./static/js/3.75758ce5.chunk.js",
+    "static/js/3.75758ce5.chunk.js.map": "./static/js/3.75758ce5.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "./static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.c1d9af65.chunk.css.map": "./static/css/main.c1d9af65.chunk.css.map",
+    "static/js/2.a662f7a5.chunk.js.LICENSE.txt": "./static/js/2.a662f7a5.chunk.js.LICENSE.txt",
+    "static/media/App.css": "./static/media/speedometer.9a674fd6.jpg",
+    "static/media/unnamed.0a49e97c.png": "./static/media/unnamed.0a49e97c.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.fae77642.js",
+    "static/js/runtime-main.b9806052.js",
     "static/css/2.4c97ca4f.chunk.css",
     "static/js/2.a662f7a5.chunk.js",
-    "static/css/main.202fb63d.chunk.css",
+    "static/css/main.c1d9af65.chunk.css",
     "static/js/main.1c48e1c4.chunk.js"
   ]
 }
