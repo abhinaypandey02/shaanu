@@ -37,7 +37,6 @@ export default function CarsMenu() {
         );
     }
     const selectedModel=selectedBrand.models.find(model=>model.id===globalState.selectedModel)
-    console.log(selectedModel)
     if (!globalState.selectedModel||!selectedModel ) {
         return (
             <div className="d-flex justify-content-around">
