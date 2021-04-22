@@ -21,7 +21,7 @@ export default function AllServicesPage() {
     const selectedModel = selectedBrand?.models.find(
         (model) => model.id === globalState.selectedModel
     );
-    const selectedType = selectedModel?.type;
+    const selectedType = globalState.selectedType;
 
     function onPlanSelect(subPlan: SubPlan) {
         dispatch({
