@@ -37,7 +37,7 @@ export default function AllServicesPage() {
                 contentClassName="col-11 col-md-8 col-lg-6"
                 dialogClassName="d-flex align-items-center justify-content-center min-vw-100"
                 centered
-                show={selectedPlan}
+                show={selectedPlan!==null}
                 onHide={() => setSelectedPlan(null)}
             >
                 <Modal.Header closeButton>{selectedPlan?.title}</Modal.Header>
