@@ -46,7 +46,7 @@ export default function AllServicesPage() {
                         {selectedPlan?.subPlans.map((plan) => (
                             <Button
                                 variant="outline-dark"
-                                className="text-left w-50 bg-black"
+                                className="text-left m-3 bg-black"
                                 onClick={() => onPlanSelect(plan)}
                             >
                                 <h4 className="card-header">{plan.title}</h4>
