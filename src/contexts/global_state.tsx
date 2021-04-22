@@ -34,7 +34,7 @@ function reducer(
             return {...state,cart:[...state.cart,action.payload]} 
         }
         case "REMOVE_FROM_CART":
-            return {...state,cart:state.cart.filter(cartItem=>cartItem.subPlan.id!=action.payload)} 
+            return {...state,cart:state.cart.filter(cartItem=>cartItem.subPlan.id!==action.payload)} 
         default:
             return state;
     }
