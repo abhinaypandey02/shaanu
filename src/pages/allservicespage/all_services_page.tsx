@@ -106,7 +106,9 @@ export default function AllServicesPage() {
                                     className="text-left border border-light my-2 w-100"
                                 >
                                     <h4 className="card-header w-100 flex-wrap d-flex justify-content-between">
-                                        {plan.title} 
+                                        <div className="1">
+                                        {plan.title} <h6>{subPlan.title}</h6>
+                                        </div>
                                         <div className="btn btn-outline-danger" onClick={() => {
                                         dispatch({
                                             type: "REMOVE_FROM_CART",
