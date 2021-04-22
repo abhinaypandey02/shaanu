@@ -48,6 +48,7 @@ export default function AllServicesPage() {
                                 variant="outline-dark"
                                 className="text-left m-3 bg-black"
                                 onClick={() => onPlanSelect(plan)}
+                                key={plan.id}
                             >
                                 <h4 className="card-header">{plan.title}</h4>
                                 <div className="card-body">
@@ -104,6 +105,7 @@ export default function AllServicesPage() {
                             {globalState.cart.map(({ plan, subPlan }) => (
                                 <Container
                                     className="text-left border border-light my-2 w-100"
+                                    key={plan.id+subPlan.id}
                                 >
                                     <h4 className="card-header w-100 flex-wrap d-flex justify-content-between">
                                         <div className="1">
@@ -134,6 +136,7 @@ export default function AllServicesPage() {
                             variant="outline-light"
                             className="text-left mt-5 w-75"
                             onClick={() => setSelectedPlan(plan)}
+                            key={plan.id}
                         >
                             <h4 className="card-header">{plan.title}</h4>
                             <div className="card-body">

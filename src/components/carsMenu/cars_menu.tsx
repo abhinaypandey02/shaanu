@@ -29,7 +29,7 @@ export default function CarsMenu() {
         return (
             <div className="d-flex justify-content-around">
                 {brands.map((brand) => (
-                    <Button onClick={() => setBrand(brand.id)}>
+                    <Button key={brand.id} onClick={() => setBrand(brand.id)}>
                         {brand.name}
                     </Button>
                 ))}
@@ -42,7 +42,7 @@ export default function CarsMenu() {
         return (
             <div className="d-flex justify-content-around">
                 {selectedBrand.models.map((model) => (
-                    <Button onClick={() => setModel(model.id)}>
+                    <Button key={model.id} onClick={() => setModel(model.id)}>
                         {model.name}
                     </Button>
                 ))}
@@ -53,7 +53,7 @@ export default function CarsMenu() {
         return (
             <div className="d-flex justify-content-around">
                 {selectedModel.type.map((type) => (
-                    <Button onClick={() => setType(type)}>
+                    <Button key={type} onClick={() => setType(type)}>
                         {type}
                     </Button>
                 ))}
