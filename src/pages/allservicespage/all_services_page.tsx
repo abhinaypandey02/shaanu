@@ -107,7 +107,7 @@ export default function AllServicesPage() {
                                 >
                                     <h4 className="card-header w-100 flex-wrap d-flex justify-content-between">
                                         <div className="1">
-                                        {plan.title} <span className="badge bg-info rounded-pill text-dark">{subPlan.title}</span>
+                                        {plan.title} <span style={{backgroundColor:subPlan.color}} className="badge rounded-pill text-dark">{subPlan.title}</span>
                                         </div>
                                         <div className="btn btn-outline-danger my-auto" onClick={() => {
                                         dispatch({

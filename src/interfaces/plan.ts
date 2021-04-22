@@ -9,4 +9,5 @@ export interface SubPlan{
     title:string;
     description:string;
     price:number;
+    color:string;
 }
