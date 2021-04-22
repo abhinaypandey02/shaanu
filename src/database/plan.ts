@@ -12,14 +12,14 @@ export function getPlans(): Plan[] {
                     title: "Bronze",
                     description: "Normal A service",
                     price: 100,
-                    color:"gold"
+                    color:"#CD7F32"
                 },
                 {
                     id: "a-s-repair-1",
                     title: "Silver",
                     description: "Nice A service",
                     price: 100,
-                    color:"gold"
+                    color:"silver"
                 },
                 {
                     id: "a-g-repair-1",
@@ -33,7 +33,7 @@ export function getPlans(): Plan[] {
                     title: "Platinum",
                     description: "Premium A service",
                     price: 100,
-                    color:"gold"
+                    color:"#E5E4E2"
                 },
             ],
         },
@@ -47,14 +47,14 @@ export function getPlans(): Plan[] {
                     title: "Bronze",
                     description: "Normal B service",
                     price: 100,
-                    color:"gold"
+                    color:"#CD7F32"
                 },
                 {
                     id: "b-s-repair-1",
                     title: "Silver",
                     description: "Nice B service",
                     price: 100,
-                    color:"gold"
+                    color:"silver"
                 },
                 {
                     id: "b-g-repair-1",
@@ -68,7 +68,7 @@ export function getPlans(): Plan[] {
                     title: "Platinum",
                     description: "Premium B service",
                     price: 100,
-                    color:"gold"
+                    color:"#E5E4E2"
                 },
             ],
         },
@@ -82,14 +82,14 @@ export function getPlans(): Plan[] {
                     title: "Bronze",
                     description: "Normal C service",
                     price: 100,
-                    color:"gold"
+                    color:"#CD7F32"
                 },
                 {
                     id: "c-s-repair-1",
                     title: "Silver",
                     description: "Mast C service",
                     price: 100,
-                    color:"gold"
+                    color:"silver"
                 },
                 {
                     id: "c-g-repair-1",
@@ -103,7 +103,7 @@ export function getPlans(): Plan[] {
                     title: "Platinum",
                     description: "Premium C service",
                     price: 100,
-                    color:"gold"
+                    color:"#E5E4E2"
                 },
             ],
         },
