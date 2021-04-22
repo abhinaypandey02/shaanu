@@ -29,8 +29,12 @@ function reducer(
             return { ...state, selectedType: action.payload };
         case "CLEAR_SELECTION":
             return {...state,selectedBrand:null,selectedModel:null,selectedType:null}
-        case "ADD_TO_CART":
-            return {...state,cart:[...state.cart,action.payload]}    
+        case "ADD_TO_CART":{
+            if(state.cart.some(item=>item.subPlan.id===action.payload.subPlan.id))return state;
+            return {...state,cart:[...state.cart,action.payload]} 
+        }
+        case "REMOVE_FROM_CART":
+            return {...state,cart:state.cart.filter(cartItem=>cartItem.subPlan.id!=action.payload)} 
         default:
             return state;
     }
