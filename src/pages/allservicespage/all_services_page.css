@@ -7,6 +7,10 @@
     margin-bottom: 1rem;
     background-color: transparent !important;
 }
+.plan-modal{
+    width:auto !important;
+
+}
 @media (max-width: 990px) {
     #cart{
         width: 100% !important;

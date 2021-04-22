@@ -1,16 +1,19 @@
 import React, { createContext, Dispatch, useContext, useReducer } from "react";
 import { CarBrand, CarModel } from "../interfaces/car";
+import { Plan, SubPlan } from "../interfaces/plan";
 
-export type GlobalStateInterface= {
+export interface GlobalStateInterface {
     selectedBrand: CarBrand["id"] | null;
     selectedModel: CarModel["id"] | null;
     selectedType: string | null;
+    cart:{plan:Plan;subPlan:SubPlan}[]
 }
 
 const initialState: GlobalStateInterface = {
     selectedBrand: null,
     selectedModel: null,
     selectedType: null,
+    cart:[]
 };
 
 function reducer(
@@ -26,6 +29,8 @@ function reducer(
             return { ...state, selectedType: action.payload };
         case "CLEAR_SELECTION":
             return {...state,selectedBrand:null,selectedModel:null,selectedType:null}
+        case "ADD_TO_CART":
+            return {...state,cart:[...state.cart,action.payload]}    
         default:
             return state;
     }
