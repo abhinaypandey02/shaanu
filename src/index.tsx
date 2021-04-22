@@ -5,11 +5,15 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import GlobalState from './contexts/global_state';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <GlobalState>
+      <App />
+    </GlobalState>
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
