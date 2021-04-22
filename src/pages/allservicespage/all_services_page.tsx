@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, Container} from "react-bootstrap";
 import { useGlobalState } from "../../contexts/global_state";
 import { getBrands } from "../../database/car";
 import { getPlans } from "../../database/plan";
@@ -102,25 +102,24 @@ export default function AllServicesPage() {
                         <hr className="w-100 bg-light" />
                         <div className="d-flex  w-100 flex-column">
                             {globalState.cart.map(({ plan, subPlan }) => (
-                                <Button
-                                    variant="outline-light"
-                                    className="text-left my-2 w-100"
-                                    onClick={() => {
+                                <Container
+                                    className="text-left border border-light my-2 w-100"
+                                >
+                                    <h4 className="card-header w-100 flex-wrap d-flex justify-content-between">
+                                        {plan.title} 
+                                        <div className="btn btn-outline-danger" onClick={() => {
                                         dispatch({
                                             type: "REMOVE_FROM_CART",
                                             payload: subPlan.id,
                                         });
-                                    }}
-                                >
-                                    <h4 className="card-header">
-                                        {plan.title}
+                                    }}>Remove</div>
                                     </h4>
                                     <div className="card-body">
                                         <p className="card-text">
                                             {plan.description}
                                         </p>
                                     </div>
-                                </Button>
+                                </Container>
                             ))}
                         </div>
                     </div>
