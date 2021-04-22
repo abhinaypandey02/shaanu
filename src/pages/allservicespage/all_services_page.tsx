@@ -34,7 +34,7 @@ export default function AllServicesPage() {
     return (
         <div className="container-fluid p-5">
             <Modal
-                contentClassName="w-50"
+                contentClassName="col-11 col-md-8 col-lg-6"
                 dialogClassName="d-flex align-items-center justify-content-center min-vw-100"
                 centered
                 show={selectedPlan}
