@@ -67,7 +67,11 @@ export default function AllServicesPage() {
                         id="cart"
                     >
                         <h2 className="display-4">CART</h2>
-                        <img alt="cart" className="img-fluid w-50" src={cartimage} />
+                        <img
+                            alt="cart"
+                            className="img-fluid w-50"
+                            src={cartimage}
+                        />
 
                         <hr className="w-100 bg-light" />
                         <div className="col-12 d-flex flex-wrap align-items-center justify-content-between">
@@ -96,17 +100,27 @@ export default function AllServicesPage() {
                         <hr className="w-100 bg-light" />
                         <div>Total : ₹{cartSum}</div>
                         <hr className="w-100 bg-light" />
-                        <div className="d-flex w-100 flex-column">
-                            {globalState.cart.map(({plan,subPlan})=>(
+                        <div className="d-flex  w-100 flex-column">
+                            {globalState.cart.map(({ plan, subPlan }) => (
                                 <Button
-                            variant="outline-light"
-                            className="text-left my-2 w-100"
-                        >
-                            <h4 className="card-header">{plan.title}</h4>
-                            <div className="card-body">
-                                <p className="card-text">{plan.description}</p>
-                            </div>
-                        </Button>
+                                    variant="outline-light"
+                                    className="text-left my-2 w-100"
+                                    onClick={() => {
+                                        dispatch({
+                                            type: "REMOVE_FROM_CART",
+                                            payload: subPlan.id,
+                                        });
+                                    }}
+                                >
+                                    <h4 className="card-header">
+                                        {plan.title}
+                                    </h4>
+                                    <div className="card-body">
+                                        <p className="card-text">
+                                            {plan.description}
+                                        </p>
+                                    </div>
+                                </Button>
                             ))}
                         </div>
                     </div>
