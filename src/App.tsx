@@ -6,7 +6,7 @@ import NavigationBar from "./components/navigationBar/navigation_bar";
 import Footer from "./components/footer/footer";
 // import EstimatePage from "./pages/estimatepage/estimate_page";
 import { useGlobalState } from "./contexts/global_state";
-
+import {HashRouter} from 'react-router-dom';
 function App() {
     const [globalState] = useGlobalState();
     const carSelected =
@@ -15,10 +15,13 @@ function App() {
         globalState.selectedType;
     return (
         <div className={"min-vh-100 app d-flex flex-column"}>
+            <HashRouter>
             <NavigationBar />
             {!carSelected && <LandingPage />}
             {carSelected && <AllServicesPage />}
             <Footer />
+            </HashRouter>
+            
         </div>
     );
 }
