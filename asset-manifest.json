@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "./static/css/main.af81f2a4.chunk.css",
+    "main.css": "./static/css/main.cbd719d1.chunk.css",
     "main.js": "./static/js/main.e29ef6a3.chunk.js",
     "main.js.map": "./static/js/main.e29ef6a3.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.cd26a110.js",
@@ -12,7 +12,7 @@
     "static/js/3.a458f862.chunk.js.map": "./static/js/3.a458f862.chunk.js.map",
     "index.html": "./index.html",
     "static/css/2.4c97ca4f.chunk.css.map": "./static/css/2.4c97ca4f.chunk.css.map",
-    "static/css/main.af81f2a4.chunk.css.map": "./static/css/main.af81f2a4.chunk.css.map",
+    "static/css/main.cbd719d1.chunk.css.map": "./static/css/main.cbd719d1.chunk.css.map",
     "static/js/2.d2fce2e8.chunk.js.LICENSE.txt": "./static/js/2.d2fce2e8.chunk.js.LICENSE.txt",
     "static/media/App.css": "./static/media/speedometer.9a674fd6.jpg",
     "static/media/unnamed.0a49e97c.png": "./static/media/unnamed.0a49e97c.png"
@@ -21,7 +21,7 @@
     "static/js/runtime-main.cd26a110.js",
     "static/css/2.4c97ca4f.chunk.css",
     "static/js/2.d2fce2e8.chunk.js",
-    "static/css/main.af81f2a4.chunk.css",
+    "static/css/main.cbd719d1.chunk.css",
     "static/js/main.e29ef6a3.chunk.js"
   ]
 }
