@@ -4,7 +4,7 @@ import LandingPage from "./pages/landingPage/landing_page";
 import AllServicesPage from "./pages/allservicespage/all_services_page";
 import NavigationBar from "./components/navigationBar/navigation_bar";
 import Footer from "./components/footer/footer";
-// import EstimatePage from "./pages/estimatepage/estimate_page";
+import EstimatePage from "./pages/estimatepage/estimate_page";
 import { useGlobalState } from "./contexts/global_state";
 import WorkshopPage from "./pages/workshoppage/workshop";
 import { HashRouter, Route } from "react-router-dom";
@@ -26,6 +26,9 @@ function App() {
                     </Route>
                     <Route path="/workshop">
                         <WorkshopPage />
+                    </Route>
+                    <Route path="/estimate">
+                        <EstimatePage />
                     </Route>
                 </Switch>
                 <Footer />
