@@ -9,41 +9,36 @@ export default function EstimatePage() {
                 </div>
 
                 <div className='col-lg-6'>
-                    <div className="d-flex flex-column text-center p-3">
-                        <button type="button" className="btn btn-lg mx-auto mt-3 mb-3 btn-outline-light">Create your car's profile</button>
-                        <h1 className='text-light'>OR</h1>
-                        <br/>
-                        <table className="table table-dark table-striped">
-                            <tbody>
-                                <tr>
-                                    <th scope="row"><h4 className='mt-2'>FULL NAME</h4></th>
-                                    <td>
-                                        <div className="input-group mb-3">
-                                            <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><h4 className='mt-2'>PHONE NUMBER</h4></td>
-                                    <td>
-                                        <div className="input-group mb-3">
-                                            <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row text-wrap"><h4 className='mt-2'>LOCATION</h4></th>
-                                    <td>
-                                        <div className="input-group">
-                                            <textarea className="form-control" aria-label="With textarea"></textarea>
-                                        </div>
-                                    </td>
-                                </tr>
 
-                            </tbody>
-                        </table>
-                            <button type="submit" className="btn btn-lg mx-auto btn-outline-light mb-3">Request A Callback</button>
+                    <button type="button" className="btn btn-lg mx-auto mt-3 mb-3 btn-outline-light">Create your car's profile</button>
+                    <h1 className='text-light'>OR</h1>
+                    <br />
+                    <div className="row mb-3 d-flex  align-items-center justify-content-center text-light">
+                        <div className="col-3 d-flex justify-content-end ">
+                         FULL NAME
+                        </div>
+                        <div className="col-6">
+                            <input type="text" className="form-control"  />
+                        </div>
                     </div>
+                    <div className="row mb-3 d-flex  align-items-center justify-content-center text-light">
+                        <div className="col-3 d-flex justify-content-end ">
+                          PHONE NUMBER
+                        </div>
+                        <div className="col-6">
+                            <input type="text" className="form-control" />
+                        </div>
+                    </div>
+                    <div className="row d-flex mb-3 align-items-center justify-content-center text-light">
+                        <div className="col-3 d-flex justify-content-end ">
+                            LOCATION
+                        </div>
+                        <div className="col-6 ">
+                            <textarea className="form-control" aria-label="With textarea"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" className="btn btn-lg mx-auto btn-outline-light mb-3">Request A Callback</button>
+
 
                 </div>
             </div>
