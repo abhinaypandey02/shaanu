@@ -6,6 +6,7 @@ import { getPlans } from "../../database/plan";
 import "./all_services_page.css";
 import cartimage from "./unnamed.png";
 import { Plan, SubPlan } from "../../interfaces/plan";
+import { useHistory } from "react-router";
 export default function AllServicesPage() {
     const [globalState, dispatch] = useGlobalState();
     const [selectedPlan, setSelectedPlan] = useState<null | Plan>(null);
@@ -30,6 +31,7 @@ export default function AllServicesPage() {
         });
         setSelectedPlan(null);
     }
+    const history=useHistory();
 
     return (
         <div className="container-fluid p-5">
@@ -126,7 +128,7 @@ export default function AllServicesPage() {
                                 </Container>
                             ))}
                         </div>
-                        <Button variant='success'>
+                        <Button onClick={()=>history.push('/estimate')} variant='success'>
                             CHECKOUT
                         </Button>
                     </div>
