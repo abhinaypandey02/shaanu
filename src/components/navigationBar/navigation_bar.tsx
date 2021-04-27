@@ -1,5 +1,8 @@
+import { useHistory } from 'react-router';
 import './navigation_bar.css';
+
 export default function NavigationBar() {
+    const history=useHistory();
     return (
         <nav className="navbar text-light navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
@@ -10,10 +13,10 @@ export default function NavigationBar() {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav mx-auto">
                         <li className="nav-item">
-                            <button type="button" className="btn btn-outline-light m-3 btn-lg">PROFILE</button>
+                            <button type="button" onClick={()=>history.push('/')} className="btn btn-outline-light m-3 btn-lg">PROFILE</button>
                         </li>
                         <li className="nav-item">
-                            <button type="button" className="btn btn-outline-light btn-lg m-3">VIEW WORKSHOP</button>
+                            <button type="button" onClick={()=>history.push('/workshop')} className="btn btn-outline-light btn-lg m-3">VIEW WORKSHOP</button>
                         </li>
                         <li className="nav-item">
                             <button type="button" className="btn btn-outline-light btn-lg m-3">FAQ</button>

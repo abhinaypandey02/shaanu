@@ -6,8 +6,9 @@ import NavigationBar from "./components/navigationBar/navigation_bar";
 import Footer from "./components/footer/footer";
 // import EstimatePage from "./pages/estimatepage/estimate_page";
 import { useGlobalState } from "./contexts/global_state";
-import WorkshopPage from './pages/workshoppage/workshop';
-import {HashRouter} from 'react-router-dom';
+import WorkshopPage from "./pages/workshoppage/workshop";
+import { HashRouter, Route } from "react-router-dom";
+import Switch from "react-bootstrap/esm/Switch";
 function App() {
     const [globalState] = useGlobalState();
     const carSelected =
@@ -17,11 +18,18 @@ function App() {
     return (
         <div className={"min-vh-100 app d-flex flex-column"}>
             <HashRouter>
-            <NavigationBar />
-            <WorkshopPage/>
-            <Footer />
+                <NavigationBar />
+                <Switch>
+                    <Route exact path="/">
+                        {!carSelected && <LandingPage />}
+                        {carSelected && <AllServicesPage />}
+                    </Route>
+                    <Route path="/workshop">
+                        <WorkshopPage />
+                    </Route>
+                </Switch>
+                <Footer />
             </HashRouter>
-            
         </div>
     );
 }
