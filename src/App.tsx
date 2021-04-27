@@ -7,7 +7,7 @@ import Footer from "./components/footer/footer";
 import EstimatePage from "./pages/estimatepage/estimate_page";
 import { useGlobalState } from "./contexts/global_state";
 import WorkshopPage from "./pages/workshoppage/workshop";
-import { HashRouter, Route } from "react-router-dom";
+import { HashRouter, Redirect, Route } from "react-router-dom";
 import Switch from "react-bootstrap/esm/Switch";
 function App() {
     const [globalState] = useGlobalState();
@@ -20,7 +20,8 @@ function App() {
             <HashRouter>
                 <NavigationBar />
                 <Switch>
-                    <Route exact path="/">
+                    <Route exact path="/"><Redirect to="/services"/></Route>
+                    <Route exact path="/services">
                         {!carSelected && <LandingPage />}
                         {carSelected && <AllServicesPage />}
                     </Route>

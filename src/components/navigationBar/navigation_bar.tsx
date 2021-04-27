@@ -1,32 +1,51 @@
-import { useHistory } from 'react-router';
-import './navigation_bar.css';
+import { Button, Nav, Navbar } from "react-bootstrap";
+import { useHistory } from "react-router";
+import "./navigation_bar.css";
 
 export default function NavigationBar() {
-    const history=useHistory();
+    const history = useHistory();
     return (
-        <nav className="navbar text-light navbar-expand-lg navbar-dark bg-dark">
-            <div className="container-fluid">
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon" />
-                </button>
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav mx-auto">
-                        <li className="nav-item">
-                            <button type="button" onClick={()=>history.push('/')} className="btn btn-outline-light m-3 btn-lg">PROFILE</button>
-                        </li>
-                        <li className="nav-item">
-                            <button type="button" onClick={()=>history.push('/workshop')} className="btn btn-outline-light btn-lg m-3">VIEW WORKSHOP</button>
-                        </li>
-                        <li className="nav-item">
-                            <button type="button" className="btn btn-outline-light btn-lg m-3">FAQ</button>
-                        </li>
-                        <li className="nav-item">
-                            <button type="button" className="btn btn-outline-light btn-lg m-3">SERVICES</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <Navbar variant={"dark"} bg="dark" expand="lg">
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="mx-auto justify-content-center">
+                    <Nav.Item>
+                        <Button
+                            variant={"outline-light"}
+                            className="m-3 btn-lg"
+                        >
+                            PROFILE
+                        </Button>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Button
+                            variant={"outline-light"}
+                            onClick={() => history.push("/workshop")}
+                            className="m-3 btn-lg"
+                        >
+                            VIEW WORKSHOP
+                        </Button>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Button
+                            variant={"outline-light"}
+                            onClick={() => history.push("/")}
+                            className="m-3 btn-lg"
+                        >
+                            PROFILE
+                        </Button>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Button
+                            variant={"outline-light"}
+                            onClick={() => history.push("/services")}
+                            className="m-3 btn-lg"
+                        >
+                            SERVICES
+                        </Button>
+                    </Nav.Item>
+                </Nav>
+            </Navbar.Collapse>
+        </Navbar>
     );
 }
