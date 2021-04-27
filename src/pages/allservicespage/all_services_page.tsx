@@ -126,6 +126,9 @@ export default function AllServicesPage() {
                                 </Container>
                             ))}
                         </div>
+                        <Button variant='success'>
+                            CHECKOUT
+                        </Button>
                     </div>
                 </div>
 
