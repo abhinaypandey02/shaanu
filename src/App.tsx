@@ -9,6 +9,7 @@ import { useGlobalState } from "./contexts/global_state";
 import WorkshopPage from "./pages/workshoppage/workshop";
 import { HashRouter, Redirect, Route } from "react-router-dom";
 import Switch from "react-bootstrap/esm/Switch";
+import ProfilePage from "./pages/profilePage/profile_page";
 function App() {
     const [globalState] = useGlobalState();
     const carSelected =
@@ -27,6 +28,9 @@ function App() {
                     </Route>
                     <Route path="/workshop">
                         <WorkshopPage />
+                    </Route>
+                    <Route path="/profile">
+                        <ProfilePage />
                     </Route>
                     <Route path="/estimate">
                         <EstimatePage />

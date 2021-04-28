@@ -13,6 +13,7 @@ export default function NavigationBar() {
                         <Button
                             variant={"outline-light"}
                             className="m-3 btn-lg"
+                            onClick={() => history.push("/profile")}
                         >
                             PROFILE
                         </Button>
