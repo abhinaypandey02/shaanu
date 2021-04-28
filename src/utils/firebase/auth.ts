@@ -6,3 +6,6 @@ export async function signInWithEmailAndPassword(email:string,password:string){
 export async function signUpWithEmailAndPassword(email:string,password:string){
     return await fire.auth().createUserWithEmailAndPassword(email,password);
 }
+export async function signOut(){
+    return await fire.auth().signOut();
+}

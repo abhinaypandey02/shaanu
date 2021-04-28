@@ -56,7 +56,7 @@ export default function RegisterForm() {
             email:email.value,firstName:firstName.value,lastName:lastName.value
         }
         signUpWithEmailAndPassword(email.value,password.value).then(()=>{
-            createUserDocument(user).then(()=>console.log("done"))
+            createUserDocument(user)
         })
         
     }
@@ -66,7 +66,7 @@ export default function RegisterForm() {
             <Form.Group>
                 <Form.Label className="text-white">First Name</Form.Label>
                 <Form.Control
-                    id="email"
+                    id="firstName"
                     value={firstName.value}
                     onChange={(e) =>
                         setFirstName((old) => ({
@@ -83,7 +83,7 @@ export default function RegisterForm() {
             <Form.Group>
                 <Form.Label className="text-white">Last Name</Form.Label>
                 <Form.Control
-                    id="email"
+                    id="lastName"
                     value={lastName.value}
                     onChange={(e) =>
                         setLastName((old) => ({
@@ -132,5 +132,6 @@ export default function RegisterForm() {
                 Sign Up
             </Button>
         </Form>
+        
     );
 }
