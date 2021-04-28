@@ -1,21 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.min.js';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import GlobalState from './contexts/global_state';
-
+import React from "react";
+import ReactDOM from "react-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import GlobalState from "./contexts/global_state";
+import UserContext from "./contexts/user_context";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <GlobalState>
-      <App />
-    </GlobalState>
-    
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <GlobalState>
+            <UserContext>
+                <App />
+            </UserContext>
+        </GlobalState>
+    </React.StrictMode>,
+    document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

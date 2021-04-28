@@ -33,7 +33,7 @@ export default function NavigationBar() {
                             onClick={() => history.push("/")}
                             className="m-3 btn-lg"
                         >
-                            PROFILE
+                            FAQ
                         </Button>
                     </Nav.Item>
                     <Nav.Item>

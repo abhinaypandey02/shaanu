@@ -1,7 +1,9 @@
+import { useHistory } from 'react-router';
 import './estimate_page.css'
 
 
 export default function EstimatePage() {
+    const history=useHistory();
     return (
         <div className='container-fluid d-flex flex-grow-1  justify-content-center align-items-center'>
             <div className='row text-center w-100 '>
@@ -10,7 +12,7 @@ export default function EstimatePage() {
 
                 <div className='col-lg-6'>
 
-                    <button type="button" className="btn btn-lg mx-auto mt-3 mb-3 btn-outline-light">Create your car's profile</button>
+                    <button onClick={()=>history.push('/profile')} type="button" className="btn btn-lg mx-auto mt-3 mb-3 btn-outline-light">Create your car's profile</button>
                     <h1 className='text-light'>OR</h1>
                     <br />
                     <div className="row mb-3 d-flex  align-items-center justify-content-center text-light">
