@@ -9,26 +9,30 @@ export default function CarsWorkdetails(){
             <div className="row-fluid">
             <table className="table text-light text-center table-bordered">
                     <tbody>
-                            <td colSpan={2}>
+                            <td colSpan={3}>
                                 CAR WORK DETAILS
                             </td>
                             <tr>
-                                <th scope="col">CAR'S NAME</th>
-                                <td>MARUZIT USUKI MARU</td>
+                                <th scope="col">DATE</th>
+                                <th>PARTS</th>
+                                <th>SERVICES</th>
                             </tr>
                             <tr>
                                 <th scope="row">REGISTRATION NUMBER.</th>
                                 <td>2135315135135</td>
+                                <td>MARUZIT USUKI MARU</td>
 
                             </tr>
                             <tr>
                                 <th scope="row">NEXT SERVICE DUE DATE</th>
                                 <td> 13/032/202123</td>
+                                <td>MARUZIT USUKI MARU</td>
 
                             </tr>
                             <tr>
                                 <th scope="row">INSURANCE DUE DATE</th>
                                 <td>13/03/2212</td>
+                                <td>MARUZIT USUKI MARU</td>
 
                             </tr>
                         </tbody>
