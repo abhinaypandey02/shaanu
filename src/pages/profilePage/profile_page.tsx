@@ -1,8 +1,15 @@
+<<<<<<< Updated upstream
 import { useState } from "react";
 import { Form } from "react-bootstrap";
 import LoginForm from "../../components/profilePage/loginForm/login_form";
 import RegisterForm from "../../components/profilePage/registerForm/register_form";
 import { useUser } from "../../contexts/user_context";
+=======
+
+import CarsWorkdetails from "../../components/carsWorkdetails/cars_workdetails";
+import NotificationBar from "../../components/notificationbar/notification_bar";
+
+>>>>>>> Stashed changes
 
 export default function ProfilePage() {
     const [user] = useUser();
@@ -28,7 +35,7 @@ export default function ProfilePage() {
                     CREATE NEW CAR PROFILE
                 </button>
             </div>
-
+s
             <div className="row">
                 <div className="col-md-6">
                     <table className="table text-light text-center table-bordered">
@@ -59,6 +66,8 @@ export default function ProfilePage() {
                     />
                 </div>
             </div>
+            <NotificationBar/>
+            <CarsWorkdetails/>
         </div>
     );
 }
