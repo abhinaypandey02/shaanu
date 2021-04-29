@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Modal } from "react-bootstrap";
 import LoginForm from "../../components/profilePage/loginForm/login_form";
 import RegisterForm from "../../components/profilePage/registerForm/register_form";
 import { useUser } from "../../contexts/user_context";
@@ -7,11 +7,13 @@ import { useUser } from "../../contexts/user_context";
 import CarsWorkdetails from "../../components/carsWorkdetails/cars_workdetails";
 import NotificationBar from "../../components/notificationbar/notification_bar";
 import { signOut } from "../../utils/firebase/auth";
+import CreateCarProfile from "../../components/createCarProfile/create_car_profile";
 
 
 export default function ProfilePage() {
     const [user] = useUser();
     const [signIn, setSignIn] = useState(false);
+    const [showCreateCarProfile,setShowCreateCarProfile]=useState(false);
     if (!user) {
         if (signIn) {
             return (
@@ -31,6 +33,13 @@ export default function ProfilePage() {
     }
     return (
         <div className="container-fluid">
+            <Modal show={showCreateCarProfile} centered onHide={()=>setShowCreateCarProfile(false)} >
+                <Modal.Header closeButton>Create Car Profile</Modal.Header>
+                <Modal.Body>
+                <CreateCarProfile/>
+                </Modal.Body>
+                
+                </Modal>
             <div className="row-fluid mb-4 text-center">
                 <h1 className='text-light'>PROFILE</h1>
             </div>
@@ -60,7 +69,7 @@ export default function ProfilePage() {
                             </table>
                         </div>
                         <div className="row-fluid  text-center mb-auto">
-                            <button className="btn mx-auto btn-light">
+                            <button onClick={()=>setShowCreateCarProfile(true)} className="btn mx-auto btn-light">
                                 CREATE NEW CAR PROFILE
                             </button>
                             <button onClick={signOut} className="btn ml-3 btn-danger">
