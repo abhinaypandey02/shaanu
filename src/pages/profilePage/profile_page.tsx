@@ -13,33 +13,39 @@ import CreateCarProfile from "../../components/createCarProfile/create_car_profi
 export default function ProfilePage() {
     const [user] = useUser();
     const [signIn, setSignIn] = useState(false);
-    const [showCreateCarProfile,setShowCreateCarProfile]=useState(false);
+    const [showCreateCarProfile, setShowCreateCarProfile] = useState(false);
     if (!user) {
         if (signIn) {
             return (
                 <div className='text-light mt-3 container'>
                     <LoginForm />
-                    <div>New User? <Button variant="link" onClick={()=>setSignIn(false)}>Sign Up</Button></div>
+                    <div className='mt-2 w-100 text-center  p-2'>
+                        <div className="hi">
+                            New User? <Button variant="link" onClick={() => setSignIn(false)}>Sign Up</Button>
+                        </div>
+                    </div>
                 </div>
             );
         }
         return (
-            <div className='text-light p-3 container'>
+            <div className='text-light mt-3 container'>
                 <RegisterForm />
-                <div className='mt-3'>Existing User? <Button variant="link" onClick={()=>setSignIn(true)}>Sign In</Button></div>
+                <div className='mt-2 w-100 text-center  p-2'>
+                    <div className="hi">Existing User? <Button variant="link" onClick={() => setSignIn(true)}>Sign In</Button></div>
+                </div>
 
             </div>
         );
     }
     return (
         <div className="container-fluid">
-            <Modal show={showCreateCarProfile} centered onHide={()=>setShowCreateCarProfile(false)} >
+            <Modal show={showCreateCarProfile} centered onHide={() => setShowCreateCarProfile(false)} >
                 <Modal.Header closeButton>Create Car Profile</Modal.Header>
                 <Modal.Body>
-                <CreateCarProfile/>
+                    <CreateCarProfile />
                 </Modal.Body>
-                
-                </Modal>
+
+            </Modal>
             <div className="row-fluid mb-4 text-center">
                 <h1 className='text-light'>PROFILE</h1>
             </div>
@@ -69,15 +75,15 @@ export default function ProfilePage() {
                             </table>
                         </div>
                         <div className="row-fluid  text-center mb-auto">
-                            <button onClick={()=>setShowCreateCarProfile(true)} className="btn mx-auto btn-light">
+                            <button onClick={() => setShowCreateCarProfile(true)} className="btn mx-auto btn-light">
                                 CREATE NEW CAR PROFILE
                             </button>
                             <button onClick={signOut} className="btn ml-3 btn-danger">
-                               SIGN OUT
+                                SIGN OUT
                             </button>
                         </div>
-                        </div>
-                   
+                    </div>
+
                 </div>
                 <div className="col-md-6 d-flex justify-content-center">
                     <img
