@@ -63,6 +63,10 @@ export default function RegisterForm() {
 
     return (
         <div className="container">
+            <div className="col-12 text-center">
+            <h2 className="display-4">Sign Up</h2>
+            </div>
+            
         <Form onSubmit={onSubmit} noValidate>
             <Form.Group>
                 <Form.Label className="text-white">First Name</Form.Label>

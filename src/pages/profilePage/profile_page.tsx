@@ -50,7 +50,7 @@ export default function ProfilePage() {
                 <h1 className='text-light'>PROFILE</h1>
             </div>
             <div className="row">
-                <div className="col-md-6 d-flex align-items-center">
+                <div className="col-lg-6 d-flex align-items-center">
                     <div className="col">
                         <div className="row-fluid mt-auto">
                             <table className="table text-light text-center table-bordered">
@@ -74,21 +74,21 @@ export default function ProfilePage() {
                                 </tbody>
                             </table>
                         </div>
-                        <div className="row-fluid  text-center mb-auto">
-                            <button onClick={() => setShowCreateCarProfile(true)} className="btn mx-auto btn-light">
+                        <div className="row-fluid text-center ">
+                            <button onClick={() => setShowCreateCarProfile(true)} className="btn m-2 btn-light">
                                 CREATE NEW CAR PROFILE
                             </button>
-                            <button onClick={signOut} className="btn ml-3 btn-danger">
+                            <button onClick={signOut} className="btn m-2 btn-danger">
                                 SIGN OUT
                             </button>
                         </div>
                     </div>
 
                 </div>
-                <div className="col-md-6 d-flex justify-content-center">
+                <div className="col-lg-6 d-flex justify-content-center">
                     <img
                         src="https://images.unsplash.com/photo-1519440862171-af26cf8c2a85?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1952&q=80"
-                        className="img-fluid w-75 border rounded-lg"
+                        className="img-fluid w-75 m-2 border rounded-lg"
                     />
                 </div>
             </div>
