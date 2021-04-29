@@ -17,9 +17,11 @@ function App() {
         globalState.selectedModel &&
         globalState.selectedType;
     return (
-        <div className={"min-vh-100 app d-flex flex-column"}>
+        <div className={"app"}>
             <HashRouter>
+                <div className="d-flex min-vh-100 justify-content-between flex-column">
                 <NavigationBar />
+                <div >
                 <Switch>
                     <Route exact path="/"><Redirect to="/services"/></Route>
                     <Route exact path="/services">
@@ -36,7 +38,11 @@ function App() {
                         <EstimatePage />
                     </Route>
                 </Switch>
+                </div>
+                
                 <Footer />
+                </div>
+                
             </HashRouter>
         </div>
     );
