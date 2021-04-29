@@ -34,7 +34,7 @@ export default function AllServicesPage() {
     const history=useHistory();
 
     return (
-        <div className="container-fluid p-5">
+        <div className="container-fluid">
             <Modal
                 contentClassName="col-11 col-md-8 col-lg-6"
                 dialogClassName="d-flex align-items-center justify-content-center min-vw-100"
@@ -63,8 +63,8 @@ export default function AllServicesPage() {
                     </div>
                 </Modal.Body>
             </Modal>
-            <div className="row p-3">
-                <div className="col-lg-5 ">
+            <div className="row">
+                <div className="col-lg-5 col-12 ">
                     <div
                         className="d-flex align-items-center justify-content-center flex-column p-3 text-light"
                         id="cart"
