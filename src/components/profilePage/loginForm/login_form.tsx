@@ -43,6 +43,9 @@ export default function LoginForm() {
 
     return (
         <div className="container">
+            <div className="col-12 text-center">
+            <h2 className="display-4">Log In</h2>
+            </div>
         <Form onSubmit={onSubmit} noValidate>
             <Form.Group>
                 <Form.Label className="text-white">Email</Form.Label>
