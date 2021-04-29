@@ -11,7 +11,7 @@ export default function LandingPage() {
     else if(!globalState.selectedModel) currentlySelecting="MODEL";
     else currentlySelecting="FUEL"
 
-    return <div className='d-flex justify-content-center align-items-center flex-grow-1'>
+    return <div className='d-flex justify-content-center min-vh-90 align-items-center flex-grow-1'>
         <div className='container text-wrap d-flex align-content-around flex-column'>
             <div className="row-fluid text-light text-center">
                 <h1 className='display-4'>CAR PLUS</h1>
