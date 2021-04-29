@@ -42,6 +42,7 @@ export default function LoginForm() {
     }
 
     return (
+        <div className="container">
         <Form onSubmit={onSubmit} noValidate>
             <Form.Group>
                 <Form.Label className="text-white">Email</Form.Label>
@@ -78,5 +79,6 @@ export default function LoginForm() {
                 Log In
             </Button>
         </Form>
+        </div>
     );
 }

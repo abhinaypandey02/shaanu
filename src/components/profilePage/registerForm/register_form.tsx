@@ -62,6 +62,7 @@ export default function RegisterForm() {
     }
 
     return (
+        <div className="container">
         <Form onSubmit={onSubmit} noValidate>
             <Form.Group>
                 <Form.Label className="text-white">First Name</Form.Label>
@@ -132,6 +133,7 @@ export default function RegisterForm() {
                 Sign Up
             </Button>
         </Form>
+        </div>
         
     );
 }

@@ -17,16 +17,16 @@ export default function ProfilePage() {
     if (!user) {
         if (signIn) {
             return (
-                <div>
+                <div className='text-light mt-3 container'>
                     <LoginForm />
                     <div>New User? <Button variant="link" onClick={()=>setSignIn(false)}>Sign Up</Button></div>
                 </div>
             );
         }
         return (
-            <div>
+            <div className='text-light p-3 container'>
                 <RegisterForm />
-                <div>Existing User? <Button variant="link" onClick={()=>setSignIn(true)}>Sign In</Button></div>
+                <div className='mt-3'>Existing User? <Button variant="link" onClick={()=>setSignIn(true)}>Sign In</Button></div>
 
             </div>
         );
