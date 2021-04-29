@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import LoginForm from "../../components/profilePage/loginForm/login_form";
 import RegisterForm from "../../components/profilePage/registerForm/register_form";
 import { useUser } from "../../contexts/user_context";
@@ -16,12 +16,15 @@ export default function ProfilePage() {
             return (
                 <div>
                     <LoginForm />
+                    <div>New User? <Button variant="link" onClick={()=>setSignIn(false)}>Sign Up</Button></div>
                 </div>
             );
         }
         return (
             <div>
                 <RegisterForm />
+                <div>Existing User? <Button variant="link" onClick={()=>setSignIn(true)}>Sign In</Button></div>
+
             </div>
         );
     }
