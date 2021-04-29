@@ -1,12 +1,14 @@
 export interface CarModel{
     name:string;
     id:string;
+    imageURL:string;
     type:("petrol"|"cng"|"diesel")[]
 }
 export interface CarBrand{
     name:string;
     id:string;
-    models:CarModel[]
+    models:CarModel[];
+    imageURL:string;
 }
 export interface CarProfile{
     name:string;

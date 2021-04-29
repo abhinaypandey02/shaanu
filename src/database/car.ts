@@ -2,20 +2,20 @@ import { CarBrand } from "../interfaces/car";
 
 export function getBrands():CarBrand[]{
     return [
-        {name:"Honda",id:"hyun",models:[
-            {name:"Civic",id:"Civic",type:["petrol","cng"]},
-            {name:"Jazz",id:"Jazz",type:["petrol","diesel"]},
-            {name:"City",id:"City",type:["petrol","cng"]},
+        {name:"Honda",id:"hyun",imageURL:"https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg",models:[
+            {name:"Civic",id:"Civic",type:["petrol","cng"],imageURL:"https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg"},
+            {name:"Jazz",id:"Jazz",type:["petrol","diesel"],imageURL:"https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg"},
+            {name:"City",id:"City",type:["petrol","cng"],imageURL:"https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg"},
         ]},
-        {name:"Maruti",id:"hyun2",models:[
-            {name:"Swift",id:"Swift",type:["petrol","diesel"]},
-            {name:"Swift Dzire",id:"Swift Dzire",type:["petrol","cng","diesel"]},
-            {name:"800",id:"800",type:["petrol"]},
+        {name:"Maruti",id:"hyun2",imageURL:"https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg",models:[
+            {name:"Swift",id:"Swift",type:["petrol","diesel"],imageURL:"https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg"},
+            {name:"Swift Dzire",id:"Swift Dzire",type:["petrol","cng","diesel"],imageURL:"https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg"},
+            {name:"800",id:"800",type:["petrol"],imageURL:"https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg"},
         ]},
-        {name:"Hyundai",id:"hyun3",models:[
-            {name:"i10",id:"i10",type:["petrol","cng","diesel"]},
-            {name:"i20",id:"i20",type:["petrol"]},
-            {name:"i30",id:"i30",type:["petrol","cng","diesel"]},
+        {name:"Hyundai",id:"hyun3",imageURL:"https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg",models:[
+            {name:"i10",id:"i10",type:["petrol","cng","diesel"],imageURL:"https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg"},
+            {name:"i20",id:"i20",type:["petrol"],imageURL:"https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg"},
+            {name:"i30",id:"i30",type:["petrol","cng","diesel"],imageURL:"https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg"},
         ]},
     ]
 }

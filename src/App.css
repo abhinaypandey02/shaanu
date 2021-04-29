@@ -27,3 +27,6 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(190, 190, 190);
 }
+.pointer-on-hover{
+  cursor: pointer;
+}

@@ -1,41 +1,116 @@
-import React from "react";
-import { Form } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Form } from "react-bootstrap";
+import { CarProfile } from "../../interfaces/car";
 
 export default function CreateCarProfile() {
+    const [name, setName] = useState({
+        value: "",
+        errors: "",
+        name: "car's name",
+    });
+    const [regNo, setRegNo] = useState({
+        value: "",
+        errors: "",
+        name: "car's name",
+    });
+    const [chasisNo, setChasisNo] = useState({
+        value: "",
+        errors: "",
+        name: "car's name",
+    });
+    const [engineNo, setEngineNo] = useState({
+        value: "",
+        errors: "",
+        name: "car's name",
+    });
+    const [carColor, setCarColor] = useState({
+        value: "",
+        errors: "",
+        name: "car's name",
+    });
+    const [insuranceDate, setInsuranceDate] = useState({
+        value: "",
+        errors: "",
+        name: "car's name",
+    });
+    const [insuranceComp, setInsuranceComp] = useState({
+        value: "",
+        errors: "",
+        name: "car's name",
+    });
+    const [address, setAddress] = useState({
+        value: "",
+        errors: "",
+        name: "car's name",
+    });
+
+    const reset = (old: any) => ({ ...old, value: "" });
+    const values = [
+        name,
+        regNo,
+        chasisNo,
+        engineNo,
+        carColor,
+        insuranceComp,
+        insuranceDate,
+        address,
+    ];
+    const setFunctions = [
+        setName,
+        setRegNo,
+        setChasisNo,
+        setEngineNo,
+        setCarColor,
+        setInsuranceComp,
+        setInsuranceDate,
+        setAddress,
+    ];
+
+    function onSubmit(e: any) {
+        e.preventDefault();
+        setFunctions.forEach((f) => f(reset));
+        for (let i = 0; i < values.length; i++) {
+            if (values[i].value === "") {
+                console.log("object");
+                setFunctions[i]((old) => ({
+                    ...old,
+                    errors: "Required Field",
+                }));
+                return;
+            }
+        }
+        const carProfile = {
+            name:name.value,
+        regNo,
+        chasisNo,
+        engineNo,
+        carColor,
+        insuranceComp,
+        insuranceDate,
+        address,
+        }
+    }
+
     return (
-        <Form>
-            <Form.Group>
-                <Form.Label>car's name</Form.Label>
-                <Form.Control />
-            </Form.Group>
-            <Form.Group>
-                <Form.Label>regn. no.</Form.Label>
-                <Form.Control />
-            </Form.Group>
-            <Form.Group>
-                <Form.Label>chassis no.</Form.Label>
-                <Form.Control />
-            </Form.Group>
-            <Form.Group>
-                <Form.Label>engine no</Form.Label>
-                <Form.Control />
-            </Form.Group>
-            <Form.Group>
-                <Form.Label>car color</Form.Label>
-                <Form.Control />
-            </Form.Group>
-            <Form.Group>
-                <Form.Label>insurance date</Form.Label>
-                <Form.Control />
-            </Form.Group>
-            <Form.Group>
-                <Form.Label>insurance comp.</Form.Label>
-                <Form.Control />
-            </Form.Group>
-            <Form.Group>
-                <Form.Label>address</Form.Label>
-                <Form.Control />
-            </Form.Group>
+        <Form onSubmit={onSubmit}>
+            {values.map((value, index) => (
+                <Form.Group>
+                    <Form.Label>{value.name}</Form.Label>
+                    <Form.Control
+                        value={value.value}
+                        onChange={(e) =>
+                            setFunctions[index]((old) => ({
+                                ...old,
+                                value: e.target.value,
+                            }))
+                        }
+                    />
+                    <Form.Text className="text-danger small">
+                        {value.errors}
+                    </Form.Text>
+                </Form.Group>
+            ))}
+            <Button type="submit">Create Profile</Button>
         </Form>
     );
 }
