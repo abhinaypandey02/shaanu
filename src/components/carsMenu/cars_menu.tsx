@@ -27,7 +27,7 @@ export default function CarsMenu() {
     const selectedBrand=brands.find(brand=>brand.id===globalState.selectedBrand)
     if (!globalState.selectedBrand||!selectedBrand) {
         return (
-            <div className="d-flex justify-content-around">
+            <div className="d-flex flex-wrap justify-content-around">
                 {brands.map((brand) => (
                     <img className="pointer-on-hover" src={brand.imageURL} key={brand.id} onClick={() => setBrand(brand.id)}/>
                    
@@ -38,7 +38,7 @@ export default function CarsMenu() {
     const selectedModel=selectedBrand.models.find(model=>model.id===globalState.selectedModel)
     if (!globalState.selectedModel||!selectedModel ) {
         return (
-            <div className="d-flex justify-content-around">
+            <div className="d-flex flex-wrap justify-content-around">
                 {selectedBrand.models.map((model) => (
                     <img className="pointer-on-hover" src={model.imageURL} key={model.id} onClick={() => setModel(model.id)}/>
                         
@@ -49,7 +49,7 @@ export default function CarsMenu() {
     }
     if (!globalState.selectedType ) {
         return (
-            <div className="d-flex justify-content-around">
+            <div className="d-flex flex-wrap justify-content-around">
                 {selectedModel.type.map((type) => (
                     <Button key={type} onClick={() => setType(type)}>
                         {type}
