@@ -6,6 +6,7 @@ import { useUser } from "../../contexts/user_context";
 
 import CarsWorkdetails from "../../components/carsWorkdetails/cars_workdetails";
 import NotificationBar from "../../components/notificationbar/notification_bar";
+import { signOut } from "../../utils/firebase/auth";
 
 
 export default function ProfilePage() {
@@ -62,7 +63,7 @@ export default function ProfilePage() {
                             <button className="btn mx-auto btn-light">
                                 CREATE NEW CAR PROFILE
                             </button>
-                            <button className="btn ml-3 btn-danger">
+                            <button onClick={signOut} className="btn ml-3 btn-danger">
                                SIGN OUT
                             </button>
                         </div>
