@@ -73,7 +73,7 @@ export default function AllServicesPage() {
                         <img
                             alt="cart"
                             className="img-fluid w-50"
-                            src={cartimage}
+                            src={selectedModel?.imageURL}
                         />
 
                         <hr className="w-100 bg-light" />

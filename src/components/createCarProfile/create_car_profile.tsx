@@ -79,16 +79,16 @@ export default function CreateCarProfile() {
                 return;
             }
         }
-        const carProfile = {
-            name:name.value,
-        regNo,
-        chasisNo,
-        engineNo,
-        carColor,
-        insuranceComp,
-        insuranceDate,
-        address,
-        }
+        const carProfile: CarProfile = {
+            name: name.value,
+            regNo: regNo.value,
+            chasisNo: chasisNo.value,
+            engineNo: engineNo.value,
+            carColor: carColor.value,
+            insuranceComp: insuranceComp.value,
+            insuranceDate: insuranceDate.value,
+            address: address.value,
+        };
     }
 
     return (
