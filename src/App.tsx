@@ -10,6 +10,7 @@ import WorkshopPage from "./pages/workshoppage/workshop";
 import { HashRouter, Redirect, Route } from "react-router-dom";
 import Switch from "react-bootstrap/esm/Switch";
 import ProfilePage from "./pages/profilePage/profile_page";
+import AdminPage from "./pages/adminPage/admin_page";
 function App() {
     const [globalState] = useGlobalState();
     const carSelected =
@@ -36,6 +37,9 @@ function App() {
                     </Route>
                     <Route path="/estimate">
                         <EstimatePage />
+                    </Route>
+                    <Route path="/admin">
+                        <AdminPage />
                     </Route>
                 </Switch>
                 </div>
