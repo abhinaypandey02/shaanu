@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { useUser } from "../../contexts/user_context";
 import { CarProfile } from "../../interfaces/car";
-
+import UserInterface from "../../interfaces/user";
+import { addCarProfile } from "../../utils/firebase/firestore";
+import plus from '../../images/plus.png';
+import { uploadButtonImage } from "../../utils/firebase/storage";
 export default function CreateCarProfile() {
+    const [user, setUser] = useUser();
+    const [image, setImage] = useState<any>();
     const [name, setName] = useState({
         value: "",
         errors: "",
@@ -44,7 +50,7 @@ export default function CreateCarProfile() {
         name: "car's name",
     });
 
-    const reset = (old: any) => ({ ...old, value: "" });
+    const reset = (old: any) => ({ ...old, errors: "" });
     const values = [
         name,
         regNo,
@@ -66,7 +72,7 @@ export default function CreateCarProfile() {
         setAddress,
     ];
 
-    function onSubmit(e: any) {
+    async function onSubmit(e: any) {
         e.preventDefault();
         setFunctions.forEach((f) => f(reset));
         for (let i = 0; i < values.length; i++) {
@@ -79,6 +85,10 @@ export default function CreateCarProfile() {
                 return;
             }
         }
+        let imageURL = '';
+        if (image) {
+            imageURL = await uploadButtonImage(user, image);
+        }
         const carProfile: CarProfile = {
             name: name.value,
             regNo: regNo.value,
@@ -88,7 +98,22 @@ export default function CreateCarProfile() {
             insuranceComp: insuranceComp.value,
             insuranceDate: insuranceDate.value,
             address: address.value,
+            imageURL,
         };
+        if (!user) return;
+        addCarProfile(user, carProfile).then(()=>{
+            setUser((old: UserInterface) => ({
+                ...old,
+                carProfiles: [...old.carProfiles, carProfile],
+            }));
+            
+        });
+
+        
+    }
+    function onImageChange(e: any) {
+        console.log((e.target.files[0]))
+        setImage(e.target.files[0]);
     }
 
     return (
@@ -110,6 +135,38 @@ export default function CreateCarProfile() {
                     </Form.Text>
                 </Form.Group>
             ))}
+            <Form.Group>
+                <Form.Label>Add Image (Optional)</Form.Label>
+                <div
+                    className="d-flex align-items-center justify-content-center pointer-on-hover"
+                    style={{
+                        backgroundColor: "#F4F5F8",
+                        height:(image  ? 109 : 109),
+                        maxWidth:(image  ? 109 : 92)
+                    }}
+                    onClick={() =>
+                        document.getElementById("choose_pp")?.click()
+                    }
+                >
+                    <img
+                        alt="plus"
+                        style={{maxHeight:(image  ? 109 : 27),maxWidth:(image  ? 109 : 27)}}
+                        src={
+                            image
+                                ? URL.createObjectURL(image)
+                                : plus
+                        }
+                    />
+                    <input
+                        id="choose_pp"
+                        style={{
+                            display: "none",
+                        }}
+                        type="file"
+                        onChange={onImageChange}
+                    />
+                </div>
+            </Form.Group>
             <Button type="submit">Create Profile</Button>
         </Form>
     );

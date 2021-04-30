@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import LoginForm from "../../components/profilePage/loginForm/login_form";
 import RegisterForm from "../../components/profilePage/registerForm/register_form";
@@ -14,6 +14,12 @@ export default function ProfilePage() {
     const [user] = useUser();
     const [signIn, setSignIn] = useState(false);
     const [showCreateCarProfile, setShowCreateCarProfile] = useState(false);
+    const [currentCarProfile,setCurrentCarProfile]=useState(((user&&user.carProfiles.length>0)?user.carProfiles[0]:null))
+    console.log(user&&user.carProfiles,currentCarProfile)
+    useEffect(()=>{
+        if((user&&user.carProfiles.length>0))
+        setCurrentCarProfile(user.carProfiles[0])
+    },[user])
     if (!user) {
         if (signIn) {
             return (
@@ -53,26 +59,26 @@ export default function ProfilePage() {
                 <div className="col-lg-6 d-flex align-items-center">
                     <div className="col">
                         <div className="row-fluid mt-auto">
-                            <table className="table text-light text-center table-bordered">
+                            {currentCarProfile&&<table className="table text-light text-center table-bordered">
                                 <tbody>
                                     <tr>
                                         <th scope="col">CAR'S NAME</th>
-                                        <td>MARUZIT USUKI MARU</td>
+                                        <td>{currentCarProfile.name}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">REGISTRATION NUMBER.</th>
-                                        <td>2135315135135</td>
+                                        <td>{currentCarProfile.regNo}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">NEXT SERVICE DUE DATE</th>
-                                        <td> 13/032/202123</td>
+                                        <td>12/24/2002</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">INSURANCE DUE DATE</th>
-                                        <td>13/03/2212</td>
+                                        <td>{currentCarProfile.insuranceDate}</td>
                                     </tr>
                                 </tbody>
-                            </table>
+                            </table>}
                         </div>
                         <div className="row-fluid text-center ">
                             <button onClick={() => setShowCreateCarProfile(true)} className="btn m-2 btn-light">
@@ -86,10 +92,10 @@ export default function ProfilePage() {
 
                 </div>
                 <div className="col-lg-6 d-flex justify-content-center">
-                    <img
-                        src="https://images.unsplash.com/photo-1519440862171-af26cf8c2a85?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1952&q=80"
+                    {currentCarProfile&&currentCarProfile.imageURL&&<img
+                        src={currentCarProfile.imageURL}
                         className="img-fluid w-75 m-2 border rounded-lg"
-                    />
+                    />}
                 </div>
             </div>
             <NotificationBar />

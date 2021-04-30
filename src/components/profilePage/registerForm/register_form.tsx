@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import UserInterface from "../../../interfaces/user";
+import UserInterface, { defaultUser } from "../../../interfaces/user";
 import { signUpWithEmailAndPassword } from "../../../utils/firebase/auth";
 import { createUserDocument } from "../../../utils/firebase/firestore";
 
@@ -53,7 +53,7 @@ export default function RegisterForm() {
             return;
         }
         const user:UserInterface={
-            email:email.value,firstName:firstName.value,lastName:lastName.value
+            ...defaultUser,email:email.value,firstName:firstName.value,lastName:lastName.value
         }
         signUpWithEmailAndPassword(email.value,password.value).then(()=>{
             createUserDocument(user)
