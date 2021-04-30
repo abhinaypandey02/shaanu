@@ -19,4 +19,5 @@ export interface CarProfile{
     insuranceDate:string;
     insuranceComp:string;
     address:string;
+    imageURL:string;
 }
