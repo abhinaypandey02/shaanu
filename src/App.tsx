@@ -21,9 +21,9 @@ function App() {
     return (
         <div className={"app"}>
             <HashRouter>
-                <div className="d-flex min-vh-100 justify-content-between flex-column">
+                <div className="d-flex min-vh-100 flex-column">
                 <NavigationBar />
-                <div >
+                <div className="flex-grow-1">
                 <Switch className='p-0'>
                     <Route exact path="/"><Redirect to="/services"/></Route>
                     <Route exact path="/services">

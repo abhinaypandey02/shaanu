@@ -27,9 +27,9 @@ export default function CarsMenu() {
     const selectedBrand=brands.find(brand=>brand.id===globalState.selectedBrand)
     if (!globalState.selectedBrand||!selectedBrand) {
         return (
-            <div className="d-flex flex-wrap justify-content-around">
+            <div className="d-flex flex-wrap justify-content-around overflow-auto">
                 {brands.map((brand) => (
-                    <div>
+                    <div className="text-center" style={{width:"33%"}}>
                     <img alt={brand.name} height={80} className="pointer-on-hover" src={brand.imageURL} key={brand.id} onClick={() => setBrand(brand.id)}/>
                     <div>{brand.name}</div>
                    </div>
@@ -42,7 +42,7 @@ export default function CarsMenu() {
         return (
             <div className="d-flex flex-wrap justify-content-around">
                 {selectedBrand.models.map((model) => (
-                    <div>
+                    <div className="text-center" style={{width:"33%"}}>
                     <img alt={model.name} className="pointer-on-hover" src={model.imageURL} key={model.id} onClick={() => setModel(model.id)}/>
 <div>{model.name} </div>
                         </div>
