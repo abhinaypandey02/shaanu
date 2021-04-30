@@ -1,21 +1,19 @@
 import { useState,useEffect } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
+import { Button,  Modal } from "react-bootstrap";
 import LoginForm from "../../components/profilePage/loginForm/login_form";
 import RegisterForm from "../../components/profilePage/registerForm/register_form";
 import { useUser } from "../../contexts/user_context";
-
 import CarsWorkdetails from "../../components/carsWorkdetails/cars_workdetails";
 import NotificationBar from "../../components/notificationbar/notification_bar";
 import { signOut } from "../../utils/firebase/auth";
 import CreateCarProfile from "../../components/createCarProfile/create_car_profile";
-
 
 export default function ProfilePage() {
     const [user] = useUser();
     const [signIn, setSignIn] = useState(false);
     const [showCreateCarProfile, setShowCreateCarProfile] = useState(false);
     const [currentCarProfile,setCurrentCarProfile]=useState(((user&&user.carProfiles.length>0)?user.carProfiles[0]:null))
-    console.log(user&&user.carProfiles,currentCarProfile)
+    
     useEffect(()=>{
         if((user&&user.carProfiles.length>0))
         setCurrentCarProfile(user.carProfiles[0])
@@ -55,6 +53,13 @@ export default function ProfilePage() {
             <div className="row-fluid mb-4 text-center">
                 <h1 className='text-light'>PROFILE</h1>
             </div>
+            {user.carProfiles.length>0&&<div className="d-flex align-items-center col-12 col-md-6">
+                <div className="text-white w-25">Current Profile</div>
+            <select className="form-control" onChange={e=>setCurrentCarProfile(user.carProfiles[parseInt(e.target.value)])}>
+                {user.carProfiles.map((profile,index)=><option value={index}>{profile.name}</option>)}
+            </select>
+            </div>}
+            
             <div className="row">
                 <div className="col-lg-6 d-flex align-items-center">
                     <div className="col">
@@ -94,6 +99,7 @@ export default function ProfilePage() {
                 <div className="col-lg-6 d-flex justify-content-center">
                     {currentCarProfile&&currentCarProfile.imageURL&&<img
                         src={currentCarProfile.imageURL}
+                        alt={currentCarProfile.name}
                         className="img-fluid w-75 m-2 border rounded-lg"
                     />}
                 </div>

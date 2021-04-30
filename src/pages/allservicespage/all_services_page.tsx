@@ -4,7 +4,6 @@ import { useGlobalState } from "../../contexts/global_state";
 import { getBrands } from "../../database/car";
 import { getPlans } from "../../database/plan";
 import "./all_services_page.css";
-import cartimage from "./unnamed.png";
 import { Plan, SubPlan } from "../../interfaces/plan";
 import { useHistory } from "react-router";
 export default function AllServicesPage() {

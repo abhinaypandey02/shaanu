@@ -30,7 +30,7 @@ export default function CarsMenu() {
             <div className="d-flex flex-wrap justify-content-around">
                 {brands.map((brand) => (
                     <div>
-                    <img className="pointer-on-hover" src={brand.imageURL} key={brand.id} onClick={() => setBrand(brand.id)}/>
+                    <img alt={brand.name} className="pointer-on-hover" src={brand.imageURL} key={brand.id} onClick={() => setBrand(brand.id)}/>
                     <div>{brand.name}</div>
                    </div>
                 ))}
@@ -43,7 +43,7 @@ export default function CarsMenu() {
             <div className="d-flex flex-wrap justify-content-around">
                 {selectedBrand.models.map((model) => (
                     <div>
-                    <img className="pointer-on-hover" src={model.imageURL} key={model.id} onClick={() => setModel(model.id)}/>
+                    <img alt={model.name} className="pointer-on-hover" src={model.imageURL} key={model.id} onClick={() => setModel(model.id)}/>
 <div>{model.name} </div>
                         </div>
 
