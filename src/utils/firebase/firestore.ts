@@ -1,6 +1,6 @@
 import UserInterface, { defaultUser } from "../../interfaces/user";
 import fire from "./fire";
-import 'firebase/firestore';
+import "firebase/firestore";
 import { CarProfile } from "../../interfaces/car";
 export async function createUserDocument(user_data: UserInterface) {
     await fire
@@ -24,10 +24,13 @@ export async function getUserDocument(
     }
     return user_doc;
 }
-export async function addCarProfile(user:UserInterface,carProfile:CarProfile) {
+export async function addCarProfile(
+    user: UserInterface,
+    carProfile: CarProfile
+) {
     await fire
         .firestore()
         .collection("users")
         .doc(user.email)
-        .update({carProfiles:[...user.carProfiles,carProfile]});
+        .update({ carProfiles: [...user.carProfiles, carProfile] });
 }

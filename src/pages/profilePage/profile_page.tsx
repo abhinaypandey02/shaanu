@@ -18,6 +18,9 @@ export default function ProfilePage() {
         if((user&&user.carProfiles.length>0))
         setCurrentCarProfile(user.carProfiles[0])
     },[user])
+    useEffect(()=>{
+        setShowCreateCarProfile(false)
+    },[user])
     if (!user) {
         if (signIn) {
             return (

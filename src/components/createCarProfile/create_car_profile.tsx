@@ -8,6 +8,7 @@ import plus from '../../images/plus.png';
 import { uploadButtonImage } from "../../utils/firebase/storage";
 export default function CreateCarProfile() {
     const [user, setUser] = useUser();
+    const [loading,setLoading]=useState(false);
     const [image, setImage] = useState<any>();
     const [name, setName] = useState({
         value: "",
@@ -73,6 +74,7 @@ export default function CreateCarProfile() {
     ];
 
     async function onSubmit(e: any) {
+        setLoading(true);
         e.preventDefault();
         setFunctions.forEach((f) => f(reset));
         for (let i = 0; i < values.length; i++) {
@@ -101,13 +103,12 @@ export default function CreateCarProfile() {
             imageURL,
         };
         if (!user) return;
-        addCarProfile(user, carProfile).then(()=>{
-            setUser((old: UserInterface) => ({
-                ...old,
-                carProfiles: [...old.carProfiles, carProfile],
-            }));
-            
-        });
+        await addCarProfile(user, carProfile);
+        setUser((old: UserInterface) => ({
+            ...old,
+            carProfiles: [...old.carProfiles, carProfile],
+        }));
+        setLoading(false);
 
         
     }
@@ -167,7 +168,7 @@ export default function CreateCarProfile() {
                     />
                 </div>
             </Form.Group>
-            <Button type="submit">Create Profile</Button>
+            <Button disabled={loading} type="submit">Create Profile</Button>
         </Form>
     );
 }
