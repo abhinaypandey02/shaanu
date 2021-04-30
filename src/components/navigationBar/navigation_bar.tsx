@@ -30,7 +30,7 @@ export default function NavigationBar() {
                     <Nav.Item>
                         <Button
                             variant={"outline-light"}
-                            onClick={() => history.push("/")}
+                            onClick={() => history.push("/faq")}
                             className="m-3 btn-lg"
                         >
                             FAQ
