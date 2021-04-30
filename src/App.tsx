@@ -11,6 +11,7 @@ import { HashRouter, Redirect, Route } from "react-router-dom";
 import Switch from "react-bootstrap/esm/Switch";
 import ProfilePage from "./pages/profilePage/profile_page";
 import AdminPage from "./pages/adminPage/admin_page";
+import FaqPage from "./pages/faqPage/faq_page";
 function App() {
     const [globalState] = useGlobalState();
     const carSelected =
@@ -23,7 +24,7 @@ function App() {
                 <div className="d-flex min-vh-100 justify-content-between flex-column">
                 <NavigationBar />
                 <div >
-                <Switch>
+                <Switch className='p-0'>
                     <Route exact path="/"><Redirect to="/services"/></Route>
                     <Route exact path="/services">
                         {!carSelected && <LandingPage />}
@@ -41,6 +42,10 @@ function App() {
                     <Route path="/admin">
                         <AdminPage />
                     </Route>
+                    <Route path="/faq">
+                        <FaqPage />
+                    </Route>
+                    
                 </Switch>
                 </div>
                 
