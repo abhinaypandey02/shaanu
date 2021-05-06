@@ -15,7 +15,24 @@ export default function NavigationBar() {
                             className="m-3 btn-lg"
                             onClick={() => history.push("/profile")}
                         >
-                            PROFILE
+                            CAR PROFILE
+                        </Button>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Button
+                            variant={"outline-light"}
+                            onClick={() => history.push("/services")}
+                            className="m-3 btn-lg"
+                        >
+                            BOOK SERVICES
+                        </Button>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Button
+                            variant={"outline-light"}
+                            className="m-3 btn-lg"
+                        >
+                            100% FREE
                         </Button>
                     </Nav.Item>
                     <Nav.Item>
@@ -27,24 +44,7 @@ export default function NavigationBar() {
                             VIEW WORKSHOP
                         </Button>
                     </Nav.Item>
-                    <Nav.Item>
-                        <Button
-                            variant={"outline-light"}
-                            onClick={() => history.push("/faq")}
-                            className="m-3 btn-lg"
-                        >
-                            FAQ
-                        </Button>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Button
-                            variant={"outline-light"}
-                            onClick={() => history.push("/services")}
-                            className="m-3 btn-lg"
-                        >
-                            SERVICES
-                        </Button>
-                    </Nav.Item>
+                    
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

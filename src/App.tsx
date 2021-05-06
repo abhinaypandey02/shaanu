@@ -12,6 +12,7 @@ import Switch from "react-bootstrap/esm/Switch";
 import ProfilePage from "./pages/profilePage/profile_page";
 import AdminPage from "./pages/adminPage/admin_page";
 import FaqPage from "./pages/faqPage/faq_page";
+import BooknowPage from "./pages/booknowPage/booknow_page";
 function App() {
     const [globalState] = useGlobalState();
     const carSelected =
@@ -44,6 +45,9 @@ function App() {
                     </Route>
                     <Route path="/faq">
                         <FaqPage />
+                    </Route>
+                    <Route path="/booknow">
+                        <BooknowPage />
                     </Route>
                     
                 </Switch>

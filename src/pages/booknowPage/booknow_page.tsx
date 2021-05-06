@@ -1,20 +1,13 @@
-import { useHistory } from 'react-router';
-import './estimate_page.css'
-
-
-export default function EstimatePage() {
-    const history=useHistory();
-    return (
+import cal from './calendar-flat.png';
+export default function BooknowPage(){
+    return(
         <div className='container-fluid d-flex flex-grow-1  justify-content-center align-items-center'>
             <div className='row text-center w-100 '>
                 <div className='col-lg-6 '>
                 </div>
 
                 <div className='col-lg-6'>
-
-                    <button onClick={()=>history.push('/profile')} type="button" className="btn btn-lg m-3 btn-outline-light">Create your car's profile</button>
-                    <button onClick={()=>history.push('/booknow')} type="button" className="btn btn-lg m-3 btn-outline-light">Book Now</button>
-                    <h1 className='text-light'>OR</h1>
+                    <h1 className='text-light m-3'>BOOK NOW</h1>
                     <br />
                     <div className="row mb-3 d-flex  align-items-center justify-content-center text-light">
                         <div className="col-3 d-flex justify-content-end ">
@@ -32,6 +25,7 @@ export default function EstimatePage() {
                             <input type="text" className="form-control" />
                         </div>
                     </div>
+                    
                     <div className="row d-flex mb-3 align-items-center justify-content-center text-light">
                         <div className="col-3 d-flex justify-content-end ">
                             LOCATION
@@ -40,11 +34,21 @@ export default function EstimatePage() {
                             <textarea className="form-control" aria-label="With textarea"></textarea>
                         </div>
                     </div>
-                    <button type="submit" className="btn btn-lg mx-auto btn-outline-light m-3">Request A Callback</button>
+                    <div className="row mb-3 d-flex  align-items-center justify-content-center text-light">
+                        <div className="col-3 d-flex justify-content-end ">
+                          PICK UP CALL AND DATE
+                        </div>
+                        <div className="col-6 text-left">
+                        <button type="button" className="btn btn-sm">
+                            <img src={cal} height={70}/>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="submit" className="btn btn-lg btn-outline-light m-3">Book</button>
 
 
                 </div>
             </div>
         </div>
-    );
+    )
 }
