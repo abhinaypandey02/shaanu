@@ -3,7 +3,8 @@ const ROUTES_META={
     logIn:'/login',
     dashBoard:'/dashboard',
     adMin: '/admin',
-    faQ: '/faq'
+    faQ: '/faq' ,
+    bookNow: '/booknow'
 
 }
 export default ROUTES_META;

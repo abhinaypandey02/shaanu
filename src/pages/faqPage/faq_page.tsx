@@ -6,7 +6,7 @@ export default function FaqPage(){
         <div className="container-fluid">
             <div className="row-fluid text-light p-3 text-center">
                 <h1>
-                    FAQ
+                CUSTOMER REVIEWS
                 </h1>
             </div>
         <Carousel fade>
