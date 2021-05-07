@@ -2,6 +2,7 @@ import UserInterface, { defaultUser } from "../../interfaces/user";
 import fire from "./fire";
 import "firebase/firestore";
 import { CarProfile } from "../../interfaces/car";
+import { BookedSession } from "../../interfaces/bookedSession";
 export async function createUserDocument(user_data: UserInterface) {
     await fire
         .firestore()
@@ -33,4 +34,21 @@ export async function addCarProfile(
         .collection("users")
         .doc(user.email)
         .update({ carProfiles: [...user.carProfiles, carProfile] });
+}
+
+export async function addBookedSession(session:BookedSession){
+    return await fire.firestore().collection('bookedSessions').add(session);
+}
+export async function getBookedSessionsByMonth(month:number){
+
+    const data=await fire.firestore().collection("bookedSessions").where('month','==',month).get();
+
+    if(!data.empty&&data.docs.length>0){
+        const temp:any=[];
+        data.docs.forEach(doc=>{
+            temp.push(doc.data())
+        })
+        return temp;
+    } 
+    return [];
 }

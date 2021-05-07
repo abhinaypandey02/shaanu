@@ -23,39 +23,39 @@ function App() {
         <div className={"app"}>
             <HashRouter>
                 <div className="d-flex min-vh-100 flex-column">
-                <NavigationBar />
-                <div className="flex-grow-1">
-                <Switch className='p-0'>
-                    <Route exact path="/"><Redirect to="/services"/></Route>
-                    <Route exact path="/services">
-                        {!carSelected && <LandingPage />}
-                        {carSelected && <AllServicesPage />}
-                    </Route>
-                    <Route path="/workshop">
-                        <WorkshopPage />
-                    </Route>
-                    <Route path="/profile">
-                        <ProfilePage />
-                    </Route>
-                    <Route path="/estimate">
-                        <EstimatePage />
-                    </Route>
-                    <Route path="/admin">
-                        <AdminPage />
-                    </Route>
-                    <Route path="/faq">
-                        <FaqPage />
-                    </Route>
-                    <Route path="/booknow">
-                        <BooknowPage />
-                    </Route>
-                    
-                </Switch>
+                    <NavigationBar />
+                    <div className="flex-grow-1">
+                        <Switch className="p-0">
+                            <Route exact path="/">
+                                <Redirect to="/services" />
+                            </Route>
+                            <Route exact path="/services">
+                                {!carSelected && <LandingPage />}
+                                {carSelected && <AllServicesPage />}
+                            </Route>
+                            <Route path="/workshop">
+                                <WorkshopPage />
+                            </Route>
+                            <Route path="/profile">
+                                <ProfilePage />
+                            </Route>
+                            <Route path="/estimate">
+                                <EstimatePage />
+                            </Route>
+                            <Route path="/admin">
+                                <AdminPage />
+                            </Route>
+                            <Route path="/faq">
+                                <FaqPage />
+                            </Route>
+                            <Route path="/booknow">
+                                <BooknowPage />
+                            </Route>
+                        </Switch>
+                    </div>
+
+                    <Footer />
                 </div>
-                
-                <Footer />
-                </div>
-                
             </HashRouter>
         </div>
     );

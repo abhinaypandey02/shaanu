@@ -30,3 +30,29 @@
 .pointer-on-hover{
   cursor: pointer;
 }
+
+.unavailable{
+  color:red !important;
+  
+}
+.unavailable:hover{
+  cursor:not-allowed;
+  background-color: white!important;
+}
+.available{
+  color:green !important;
+  
+}
+
+.disabled{
+  color:grey !important;
+  background-color: white!important;
+}
+.disabled:hover{
+  background-color: white!important;
+  cursor:not-allowed;
+}
+
+.react-datepicker__day--selected{
+  background-color: rgb(218, 218, 218) !important;
+}
