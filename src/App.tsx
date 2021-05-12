@@ -13,6 +13,7 @@ import ProfilePage from "./pages/profilePage/profile_page";
 import AdminPage from "./pages/adminPage/admin_page";
 import FaqPage from "./pages/faqPage/faq_page";
 import BooknowPage from "./pages/booknowPage/booknow_page";
+import FreeServices from "./pages/100freePage/100_page";
 function App() {
     const [globalState] = useGlobalState();
     const carSelected =
@@ -48,6 +49,9 @@ function App() {
                     </Route>
                     <Route path="/booknow">
                         <BooknowPage />
+                    </Route>
+                    <Route path="/freeservices">
+                        <FreeServices/>
                     </Route>
                     
                 </Switch>
