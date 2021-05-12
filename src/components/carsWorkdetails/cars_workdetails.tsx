@@ -4,10 +4,10 @@ import { uploadPDF } from "../../utils/firebase/storage";
 
 export default function CarsWorkdetails() {
     const [file, setFile] = useState<any>();
-    const [user, setUser] = useUser();
+    const [user] = useUser();
     useEffect(() => {
-        if (file) uploadPDF(user, file).then(()=>alert("UPLOADED!"));
-    }, [file]);
+        if (file&&user) uploadPDF(user, file).then(()=>alert("UPLOADED!"));
+    }, [file,user]);
     return (
         <div className="container text-light">
             <div className="row-fluid  mb-4 text-center">
