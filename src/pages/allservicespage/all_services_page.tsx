@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Modal, Container} from "react-bootstrap";
+import { Button, Modal, Container, Form } from "react-bootstrap";
 import { useGlobalState } from "../../contexts/global_state";
 import { getBrands } from "../../database/car";
 import { getPlans } from "../../database/plan";
@@ -9,6 +9,10 @@ import { useHistory } from "react-router";
 export default function AllServicesPage() {
     const [globalState, dispatch] = useGlobalState();
     const [selectedPlan, setSelectedPlan] = useState<null | Plan>(null);
+    const [selectedSubPlan, setSelectedSubPlan] =
+        useState<undefined | SubPlan>(undefined);
+        const [selectedSubPlanType, setSelectedSubPlanType] =
+        useState<undefined | string>(undefined);
     const cartSum = globalState.cart.reduce(
         (acc, curr) => acc + curr.subPlan.price,
         0
@@ -23,14 +27,15 @@ export default function AllServicesPage() {
     );
     const selectedType = globalState.selectedType;
 
-    function onPlanSelect(subPlan: SubPlan) {
+    function onPlanSelect() {
         dispatch({
             type: "ADD_TO_CART",
-            payload: { plan: selectedPlan, subPlan },
+            payload: { plan: selectedPlan, subPlan:selectedSubPlan,type:selectedSubPlanType },
         });
         setSelectedPlan(null);
+        setSelectedSubPlanType(undefined);setSelectedSubPlan(undefined);
     }
-    const history=useHistory();
+    const history = useHistory();
 
     return (
         <div className="container-fluid">
@@ -38,28 +43,48 @@ export default function AllServicesPage() {
                 contentClassName="col-11 col-md-8 col-lg-6"
                 dialogClassName="d-flex align-items-center justify-content-center min-vw-100"
                 centered
-                show={selectedPlan!==null}
-                onHide={() => setSelectedPlan(null)}
+                show={selectedPlan !== null}
+                onHide={() => {setSelectedPlan(null);setSelectedSubPlanType(undefined);setSelectedSubPlan(undefined);}}
             >
                 <Modal.Header closeButton>{selectedPlan?.title}</Modal.Header>
                 <Modal.Body>
-                    <div className="d-flex flex-wrap justify-content-center ">
-                        {selectedPlan?.subPlans.map((plan) => (
-                            <Button
-                                variant="outline-dark"
-                                className="text-left m-3 bg-black"
-                                onClick={() => onPlanSelect(plan)}
-                                key={plan.id}
-                            >
-                                <h4 className="card-header">{plan.title}</h4>
-                                <div className="card-body">
-                                    <p className="card-text">
-                                        {plan.description}
-                                    </p>
-                                </div>
-                            </Button>
-                        ))}
-                    </div>
+                    <Form.Group>
+                        <Form.Control
+                            value={selectedSubPlan?.id}
+                            onChange={(e) =>
+                                setSelectedSubPlan(
+                                    selectedPlan?.subPlans.find(
+                                        (subPlan) =>
+                                            subPlan.id === e.target.value
+                                    )
+                                )
+                            }
+                            as="select"
+                        >
+                            <option value={undefined}>SELECT PLAN</option>
+                            {selectedPlan?.subPlans.map((plan) => (
+                                <option
+                                    className=" bg-black"
+                                    key={plan.id}
+                                    value={plan.id}
+                                >
+                                    {plan.title}
+                                </option>
+                            ))}
+                        </Form.Control>
+                    </Form.Group>
+                    {selectedSubPlan && (
+                        <Form.Group>
+                            <Form.Control value={selectedSubPlanType} onChange={e=>setSelectedSubPlanType(e.target.value)} as="select">
+                                <option value={undefined}>Select Type</option>
+                                {selectedSubPlan.types.map((type) => (
+                                    <option value={type}>{type}</option>
+                                ))}
+                            </Form.Control>
+                        </Form.Group>
+                    )}
+                    {selectedSubPlan&&selectedSubPlanType&&<Button onClick={onPlanSelect}>
+                        BOOK</Button>}
                 </Modal.Body>
             </Modal>
             <div className="row">
@@ -106,18 +131,31 @@ export default function AllServicesPage() {
                             {globalState.cart.map(({ plan, subPlan }) => (
                                 <Container
                                     className="text-left border border-light my-2 w-100"
-                                    key={plan.id+subPlan.id}
+                                    key={plan.id + subPlan.id}
                                 >
                                     <h4 className="card-header w-100 flex-wrap d-flex justify-content-between">
                                         <div className="1">
-                                        {plan.title} <span style={{backgroundColor:subPlan.color}} className="badge rounded-pill text-dark">{subPlan.title}</span>
+                                            {plan.title}{" "}
+                                            <span
+                                                style={{
+                                                    backgroundColor: "silver",
+                                                }}
+                                                className="badge rounded-pill text-dark"
+                                            >
+                                                {subPlan.title}
+                                            </span>
                                         </div>
-                                        <div className="btn btn-outline-danger my-auto" onClick={() => {
-                                        dispatch({
-                                            type: "REMOVE_FROM_CART",
-                                            payload: subPlan.id,
-                                        });
-                                    }}>Remove</div>
+                                        <div
+                                            className="btn btn-outline-danger my-auto"
+                                            onClick={() => {
+                                                dispatch({
+                                                    type: "REMOVE_FROM_CART",
+                                                    payload: subPlan.id,
+                                                });
+                                            }}
+                                        >
+                                            Remove
+                                        </div>
                                     </h4>
                                     <div className="card-body">
                                         <p className="card-text">
@@ -127,7 +165,10 @@ export default function AllServicesPage() {
                                 </Container>
                             ))}
                         </div>
-                        <Button onClick={()=>history.push('/estimate')} variant='success'>
+                        <Button
+                            onClick={() => history.push("/estimate")}
+                            variant="success"
+                        >
                             CHECKOUT
                         </Button>
                     </div>

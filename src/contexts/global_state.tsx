@@ -6,7 +6,7 @@ export interface GlobalStateInterface {
     selectedBrand: CarBrand["id"] | null;
     selectedModel: CarModel["id"] | null;
     selectedType: string | null;
-    cart:{plan:Plan;subPlan:SubPlan}[]
+    cart:{plan:Plan;subPlan:SubPlan,type:string}[]
 }
 
 const initialState: GlobalStateInterface = {

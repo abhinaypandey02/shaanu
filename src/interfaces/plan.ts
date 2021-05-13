@@ -2,12 +2,13 @@ export interface Plan{
     id:string;
     title:string;
     description:string;
-    subPlans:SubPlan[]
+    subPlans:SubPlan[];
+
 }
 export interface SubPlan{
     id:string;
     title:string;
     description:string;
     price:number;
-    color:string;
+    types:string[];
 }
