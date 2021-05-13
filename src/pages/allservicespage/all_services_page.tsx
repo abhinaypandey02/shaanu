@@ -128,21 +128,21 @@ export default function AllServicesPage() {
                         <div>Total : ₹{cartSum}</div>
                         <hr className="w-100 bg-light" />
                         <div className="d-flex  w-100 flex-column">
-                            {globalState.cart.map(({ plan, subPlan }) => (
+                            {globalState.cart.map(({ plan, subPlan,type }) => (
                                 <Container
                                     className="text-left border border-light my-2 w-100"
                                     key={plan.id + subPlan.id}
                                 >
                                     <h4 className="card-header w-100 flex-wrap d-flex justify-content-between">
                                         <div className="1">
-                                            {plan.title}{" "}
+                                            {subPlan.title}{" "}
                                             <span
                                                 style={{
                                                     backgroundColor: "silver",
                                                 }}
                                                 className="badge rounded-pill text-dark"
                                             >
-                                                {subPlan.title}
+                                                {type}
                                             </span>
                                         </div>
                                         <div
@@ -159,7 +159,7 @@ export default function AllServicesPage() {
                                     </h4>
                                     <div className="card-body">
                                         <p className="card-text">
-                                            {plan.description}
+                                            {plan.title}
                                         </p>
                                     </div>
                                 </Container>
