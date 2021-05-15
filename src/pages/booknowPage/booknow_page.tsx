@@ -105,6 +105,7 @@ export default function BooknowPage() {
                                 {!loading && (
                                     <DatePicker
                                         startDate={startDate}
+                                        showTimeSelect
                                         dayClassName={(day) => {
                                             let className = "";
 
@@ -137,7 +138,7 @@ export default function BooknowPage() {
                         type="submit"
                         className="btn btn-lg btn-outline-light m-3"
                         onClick={() => {
-                            
+
                             addBookedSessionLocal();
                         }}
                         disabled={!availableDays[startDate.getDate() - 1]}
