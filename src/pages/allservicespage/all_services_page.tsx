@@ -73,7 +73,7 @@ export default function AllServicesPage() {
                             ))}
                         </Form.Control>
                     </Form.Group>
-                    {selectedSubPlan && (
+                    {selectedSubPlan&&selectedSubPlan.types.length>0 && (
                         <Form.Group>
                             <Form.Control value={selectedSubPlanType} onChange={e=>setSelectedSubPlanType(e.target.value)} as="select">
                                 <option value={undefined}>Select Type</option>
@@ -83,7 +83,7 @@ export default function AllServicesPage() {
                             </Form.Control>
                         </Form.Group>
                     )}
-                    {selectedSubPlan&&selectedSubPlanType&&<Button onClick={onPlanSelect}>
+                    {selectedSubPlan&&(selectedSubPlanType||selectedSubPlan.types.length===0)&&<Button onClick={onPlanSelect}>
                         BOOK</Button>}
                 </Modal.Body>
             </Modal>

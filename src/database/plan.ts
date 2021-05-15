@@ -3587,7 +3587,7 @@ export function getPlans(): Plan[] {
                 {
                     id: "SERVICE",
                     title: "SERVICE",
-                    types: ["REPLACE"],
+                    types: [],
                     description: "",
                     price: 100,
                 },

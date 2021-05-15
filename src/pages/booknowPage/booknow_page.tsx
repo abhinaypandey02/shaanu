@@ -1,60 +1,64 @@
-
 import DatePicker from "react-datepicker";
 import { useEffect, useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
-import { addBookedSession, getBookedSessionsByMonth } from "../../utils/firebase/firestore";
+import {
+    addBookedSession,
+    getBookedSessionsByMonth,
+} from "../../utils/firebase/firestore";
 import { BookedSession } from "../../interfaces/bookedSession";
-import {v4 as uid} from 'uuid';
+import { v4 as uid } from "uuid";
 
-const DATE_BOOLS=[ 
+const DATE_BOOLS = [
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
     1, 1, 1, 1, 1, 1,
-    1, 1, 1, 1, 1, 1,
-    1, 1, 1, 1, 1, 1,
-    1, 1, 1, 1, 1, 1,
-    1, 1, 1, 1, 1, 1, 1
-     ]
-const today=new Date();
+];
+const today = new Date();
 export default function BooknowPage() {
     const [startDate, setStartDate] = useState<any>(new Date());
-    const [loading,setLoading]=useState(true);
-    const [availableDays,setAvailableDays]=useState([...DATE_BOOLS])
-        
-    function changeDate(date:Date){
-        if(date<today)return;
-        if(availableDays[date.getDate()-1]||startDate.getMonth()!==date.getMonth()){
-            setStartDate(date)
-        } 
-    }    
-    function updateMonths(){
-        setLoading(true)
-        getBookedSessionsByMonth(startDate.getMonth()+1).then(docs=>{
-            let temp=[...DATE_BOOLS]
-            docs.forEach((doc:BookedSession)=>{
+    const [loading, setLoading] = useState(true);
+    const [availableDays, setAvailableDays] = useState([...DATE_BOOLS]);
 
-                temp[doc.day-1]=0;
-            })
-            setAvailableDays(temp)
+    function changeDate(date: Date) {
+        if (date < today) return;
+        if (
+            availableDays[date.getDate() - 1] ||
+            startDate.getMonth() !== date.getMonth()
+        ) {
+            setStartDate(date);
+        }
+    }
+    function updateMonths() {
+        setLoading(true);
+        getBookedSessionsByMonth(startDate.getMonth() + 1).then((docs) => {
+            let temp = [...DATE_BOOLS];
+            docs.forEach((doc: BookedSession) => {
+                temp[doc.day - 1] = 0;
+            });
+            setAvailableDays(temp);
             setLoading(false);
         });
     }
-    const currMonth=startDate.getMonth();
-    useEffect(()=>{
+    const currMonth = startDate.getMonth();
+    useEffect(() => {
         updateMonths();
         //eslint-disable-next-line
-    },[currMonth])
-    
-    function addBookedSessionLocal(){
-        const tempSession:BookedSession={
-            id:uid(),
-            year:startDate.getYear(),
-            month:startDate.getMonth()+1,
-            day:startDate.getDate(),
-            hours:startDate.getHours(),
-            minutes:startDate.getMinutes()
-        }
+    }, [currMonth]);
+
+    function addBookedSessionLocal() {
+        const tempSession: BookedSession = {
+            id: uid(),
+            year: startDate.getYear(),
+            month: startDate.getMonth() + 1,
+            day: startDate.getDate(),
+            hours: startDate.getHours(),
+            minutes: startDate.getMinutes(),
+        };
         const rand = Math.floor(1000 + Math.random() * 9000);
 
-        addBookedSession(tempSession).then(()=>{updateMonths();alert(`SESSION BOOKED! Your token is ${rand}`);});
+        addBookedSession(tempSession).then(() => {
+            updateMonths();
+            alert(`SESSION BOOKED! Your token is ${rand}`);
+        });
     }
     return (
         <div className="container-fluid d-flex flex-grow-1  justify-content-center align-items-center">
@@ -98,34 +102,45 @@ export default function BooknowPage() {
                         </div>
                         <div className="col-6 text-left">
                             <button type="button" className="btn btn-sm">
-                                {!loading&&<DatePicker
-                                startDate={startDate}
-                                    dayClassName={(day) => {
-                                        let className="";
-                                        
-                                        if(day.getMonth()===startDate.getMonth()){
-                                            if (availableDays[day.getDate()-1]) {
-                                                className+= "available ";
-                                            } 
-                                            else className+= "unavailable ";
-                                        }
-                                        if(day<today){
-                                            className+="disabled "
-                                        }
-                                        return className
-                                        
-                                    }}
-                                    selected={startDate}
-                                    onChange={changeDate}
-                                />}
+                                {!loading && (
+                                    <DatePicker
+                                        startDate={startDate}
+                                        dayClassName={(day) => {
+                                            let className = "";
+
+                                            if (
+                                                day.getMonth() ===
+                                                startDate.getMonth()
+                                            ) {
+                                                if (
+                                                    availableDays[
+                                                        day.getDate() - 1
+                                                    ]
+                                                ) {
+                                                    className += "available ";
+                                                } else
+                                                    className += "unavailable ";
+                                            }
+                                            if (day < today) {
+                                                className += "disabled ";
+                                            }
+                                            return className;
+                                        }}
+                                        selected={startDate}
+                                        onChange={changeDate}
+                                    />
+                                )}
                             </button>
                         </div>
                     </div>
                     <button
                         type="submit"
                         className="btn btn-lg btn-outline-light m-3"
-                        onClick={addBookedSessionLocal}
-                        disabled={!availableDays[startDate.getDate()-1]}
+                        onClick={() => {
+                            
+                            addBookedSessionLocal();
+                        }}
+                        disabled={!availableDays[startDate.getDate() - 1]}
                     >
                         Book
                     </button>
