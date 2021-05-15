@@ -6,7 +6,7 @@ export function getBrands(): CarBrand[] {
             name: "Hyundai",
             id: "hyunai",
             imageURL:
-                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg",
+                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-7.jpeg",
             models: [
                 {
                     name: "grand i10",
@@ -166,7 +166,7 @@ export function getBrands(): CarBrand[] {
             name: "Kia Motors",
             id: "kiamotors",
             imageURL:
-                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg",
+                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-38.jpeg",
             models: [
                 {
                     name: "sonet",
@@ -192,7 +192,7 @@ export function getBrands(): CarBrand[] {
             name: "Maruti",
             id: "Maruti",
             imageURL:
-                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg",
+                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-9.jpeg",
             models: [
                 {
                     name: "SWIFT",
@@ -298,7 +298,7 @@ export function getBrands(): CarBrand[] {
             name: "Chevrolet",
             id: "chevrolet",
             imageURL:
-                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg",
+                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-1.jpeg",
             models: [
                 {
                     name: "BEAT",
@@ -373,7 +373,7 @@ export function getBrands(): CarBrand[] {
             name: "Mahindra",
             id: "mahindra",
             imageURL:
-                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg",
+                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-8.jpeg",
             models: [
                 {
                     name: "XUV",
@@ -438,7 +438,7 @@ export function getBrands(): CarBrand[] {
             name: "Ford",
             id: "ford",
             imageURL:
-                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg",
+                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-5.jpeg",
             models: [
                 {
                     name: "FIGO",
@@ -506,7 +506,7 @@ export function getBrands(): CarBrand[] {
             name: "Fiat",
             id: "fiat",
             imageURL:
-                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg",
+                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-4.jpeg",
             models: [
                 {
                     name: "PUNTO",
@@ -568,7 +568,7 @@ export function getBrands(): CarBrand[] {
             name: "Toyota",
             id: "toyota",
             imageURL:
-                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg",
+                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-15.jpeg",
             models: [
                 {
                     name: "ETIOS",
@@ -620,7 +620,7 @@ export function getBrands(): CarBrand[] {
             name: "Volkswagen",
             id: "volkswagen",
             imageURL:
-                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg",
+                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-16.jpeg",
             models: [
                 {
                     name: "POLO",
@@ -676,7 +676,7 @@ export function getBrands(): CarBrand[] {
             name: "Skoda",
             id: "skoda",
             imageURL:
-                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg",
+                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-13.jpeg",
             models: [
                 {
                     name: "RAPID",
@@ -726,7 +726,7 @@ export function getBrands(): CarBrand[] {
             name: "Tata",
             id: "tata",
             imageURL:
-                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg",
+                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-14.jpeg",
             models: [
                 {
                     name: "TIAGO",
@@ -827,7 +827,7 @@ export function getBrands(): CarBrand[] {
             name: "MG",
             id: "mg",
             imageURL:
-                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg",
+                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-37.jpeg",
             models: [
                 {
                     name: "Hector",
@@ -916,7 +916,7 @@ export function getBrands(): CarBrand[] {
             name: "HINDUSTAN MOTORS",
             id: "HINDUSTANMOTORS",
             imageURL:
-                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-6.jpeg",
+                "https://gm-retail-app.s3.ap-south-1.amazonaws.com/thumbnails/brand-33.jpeg",
             models: [
                 {
                     name: "Ambassador",
