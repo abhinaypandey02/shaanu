@@ -1,6 +1,7 @@
 import DatePicker from "react-datepicker";
 import { useEffect, useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
+import { useHistory } from 'react-router';
 import {
     addBookedSession,
     getBookedSessionsByMonth,
@@ -13,7 +14,9 @@ const DATE_BOOLS = [
     1, 1, 1, 1, 1, 1,
 ];
 const today = new Date();
+
 export default function BooknowPage() {
+    const history=useHistory();
     const [startDate, setStartDate] = useState<any>(new Date());
     const [loading, setLoading] = useState(true);
     const [availableDays, setAvailableDays] = useState([...DATE_BOOLS]);
@@ -138,7 +141,7 @@ export default function BooknowPage() {
                         type="submit"
                         className="btn btn-lg btn-outline-light m-3"
                         onClick={() => {
-
+                            history.push('/appointmentslot')
                             addBookedSessionLocal();
                         }}
                         disabled={!availableDays[startDate.getDate() - 1]}
