@@ -14,6 +14,7 @@ import AdminPage from "./pages/adminPage/admin_page";
 import FaqPage from "./pages/faqPage/faq_page";
 import BooknowPage from "./pages/booknowPage/booknow_page";
 import FreeServices from "./pages/100freePage/100_page";
+import AppointmentSlot from "./components/appointmentSlot/appointment_slot";
 function App() {
     const [globalState] = useGlobalState();
     const carSelected =
@@ -52,6 +53,9 @@ function App() {
                     </Route>
                     <Route path="/freeservices">
                         <FreeServices/>
+                    </Route>
+                    <Route path="/appointmentslot">
+                        <AppointmentSlot/>
                     </Route>
                     
                 </Switch>

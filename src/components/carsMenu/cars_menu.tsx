@@ -55,6 +55,7 @@ export default function CarsMenu() {
                     <div className="text-center" style={{ width: "33%" }}>
                         <img
                             alt={model.name}
+                            height={80}
                             className="pointer-on-hover"
                             src={model.imageURL}
                             key={model.id}

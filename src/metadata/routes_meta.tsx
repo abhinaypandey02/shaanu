@@ -5,7 +5,8 @@ const ROUTES_META={
     adMin: '/admin',
     faQ: '/faq' ,
     bookNow: '/booknow' ,
-    freeSrvs: '/freeservices'
+    freeSrvs: '/freeservices',
+    apptSlot:'/appointmentslot'
 
 }
 export default ROUTES_META;

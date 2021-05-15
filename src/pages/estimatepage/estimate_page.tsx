@@ -1,11 +1,28 @@
 import { useHistory } from 'react-router';
 import './estimate_page.css'
+import { useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 
 
 export default function EstimatePage() {
     const history=useHistory();
+    const [showConfirmationModal,setShowConfirmationModal]=useState(false);
     return (
+        
         <div className='container-fluid d-flex flex-grow-1  justify-content-center align-items-center'>
+            <Modal centered={true} show={showConfirmationModal} onHide={()=>setShowConfirmationModal(false)} >
+                <Modal.Header closeButton={true}>
+
+                </Modal.Header>
+                <Modal.Body className='text-center'>
+                    <h1>THANKS FOR CHOOSING</h1>
+                    <br/>
+                    <h1>CAR PLUS</h1>
+                    <br/>
+                    <Button onClick={()=>history.push('/freeservices')}> Add 100% Freee Servics </Button>
+
+                </Modal.Body>
+            </Modal>
             <div className='row text-center w-100 '>
                 <div className='col-lg-6 '>
                 </div>
@@ -40,7 +57,7 @@ export default function EstimatePage() {
                             <textarea className="form-control" aria-label="With textarea"></textarea>
                         </div>
                     </div>
-                    <button type="submit" className="btn btn-lg mx-auto btn-outline-light m-3">Request A Callback</button>
+                    <button type="submit" className="btn btn-lg mx-auto btn-outline-light m-3" onClick={()=>setShowConfirmationModal(true)}>Request A Callback</button>
 
 
                 </div>
