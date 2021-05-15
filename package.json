@@ -16,7 +16,6 @@
     "bootstrap": "^4.6.0",
     "bootstrap-icons": "^1.4.1",
     "firebase": "^8.4.2",
-    "fs": "*",
     "https": "^1.0.0",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
