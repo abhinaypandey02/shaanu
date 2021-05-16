@@ -36,7 +36,7 @@
   
 }
 .unavailable:hover{
-  cursor:not-allowed;
+  cursor:not-allowed!important;
   background-color: white!important;
 }
 .available{
@@ -50,9 +50,15 @@
 }
 .disabled:hover{
   background-color: white!important;
-  cursor:not-allowed;
+  cursor:not-allowed !important;
 }
 
 .react-datepicker__day--selected{
-  background-color: rgb(218, 218, 218) !important;
+  color:white!important;
+}
+.react-datepicker__day--keyboard-selected{
+  background-color: white!important;
+}
+.selectedTime{
+  color:white!important;
 }

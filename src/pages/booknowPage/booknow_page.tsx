@@ -1,7 +1,7 @@
 import DatePicker from "react-datepicker";
 import { useEffect, useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
-import { useHistory } from 'react-router';
+import { useHistory } from "react-router";
 import {
     addBookedSession,
     getBookedSessionsByMonth,
@@ -9,35 +9,72 @@ import {
 import { BookedSession } from "../../interfaces/bookedSession";
 import { v4 as uid } from "uuid";
 
-const DATE_BOOLS = [
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-    1, 1, 1, 1, 1, 1,
-];
 const today = new Date();
 
 export default function BooknowPage() {
-    const history=useHistory();
-    const [startDate, setStartDate] = useState<any>(new Date());
+    const history = useHistory();
+    let initialDate = new Date();
+    initialDate.setDate(initialDate.getDate() + 1);
+    initialDate.setHours(0);
+    initialDate.setMinutes(0);
+    const [startDate, setStartDate] = useState<Date>(initialDate);
     const [loading, setLoading] = useState(true);
-    const [availableDays, setAvailableDays] = useState([...DATE_BOOLS]);
+    const [availableDays, setAvailableDays] = useState<any>({});
+    const [disabled, setDisabled] = useState(false);
+
+    function checkDisabled() {
+        if (availableDays[startDate.getDate().toString()]) {
+            if (availableDays[startDate.getDate().toString()].length === 24) {
+                return true;
+            }
+            if (
+                availableDays[startDate.getDate().toString()].some(
+                    (time: any) => time.hours === startDate.getHours()
+                )
+            ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function nextAvailableDay(date: Date, startHour: number) {
+        while (
+            availableDays[date.getDate().toString()] &&
+            availableDays[date.getDate().toString()].length === 24
+        ) {
+            startHour = 0;
+            date.setDate(date.getDate() + 1);
+        }
+        date.setHours(startHour);
+        while (
+            availableDays[date.getDate().toString()] &&
+            availableDays[date.getDate().toString()].some(
+                (time: any) => time.hours === date.getHours()
+            )
+        ) {
+            date.setHours(date.getHours() + 1);
+        }
+
+        return new Date(date.getTime());
+    }
 
     function changeDate(date: Date) {
         if (date < today) return;
-        if (
-            availableDays[date.getDate() - 1] ||
-            startDate.getMonth() !== date.getMonth()
-        ) {
-            setStartDate(date);
-        }
+
+        setStartDate(nextAvailableDay(date, date.getHours()));
     }
     function updateMonths() {
         setLoading(true);
         getBookedSessionsByMonth(startDate.getMonth() + 1).then((docs) => {
-            let temp = [...DATE_BOOLS];
+            let temp: any = {};
             docs.forEach((doc: BookedSession) => {
-                temp[doc.day - 1] = 0;
+                if (temp[doc.day.toString()]) {
+                    temp[doc.day.toString()].push(doc);
+                } else temp[doc.day.toString()] = [doc];
             });
-            setAvailableDays(temp);
+            setAvailableDays({ ...temp });
+
             setLoading(false);
         });
     }
@@ -46,11 +83,19 @@ export default function BooknowPage() {
         updateMonths();
         //eslint-disable-next-line
     }, [currMonth]);
+    useEffect(() => {
+        setDisabled(checkDisabled());
+        //eslint-disable-next-line
+    }, [startDate, availableDays]);
+    useEffect(() => {
+        setStartDate((old) => nextAvailableDay(old, 0));
+        //eslint-disable-next-line
+    }, [availableDays]);
 
     function addBookedSessionLocal() {
         const tempSession: BookedSession = {
             id: uid(),
-            year: startDate.getYear(),
+            year: startDate.getFullYear(),
             month: startDate.getMonth() + 1,
             day: startDate.getDate(),
             hours: startDate.getHours(),
@@ -109,22 +154,52 @@ export default function BooknowPage() {
                                     <DatePicker
                                         startDate={startDate}
                                         showTimeSelect
+                                        dateFormat="dd-MM-yyyy HH:mm"
+                                        timeIntervals={60}
+                                        timeClassName={(day) => {
+                                            let className = "";
+                                            if (
+                                                availableDays[
+                                                    day.getDate().toString()
+                                                ]
+                                            ) {
+                                                if (
+                                                    availableDays[
+                                                        day.getDate().toString()
+                                                    ].some(
+                                                        (time: any) =>
+                                                            time.hours ===
+                                                            day.getHours()
+                                                    )
+                                                ) {
+                                                    className += "unavailable";
+                                                } else className += "available";
+                                            } else className += "available";
+                                            if (
+                                                startDate.getHours() ===
+                                                day.getHours()
+                                            ) {
+                                                className += " selectedTime ";
+                                            }
+                                            return className;
+                                        }}
                                         dayClassName={(day) => {
                                             let className = "";
 
                                             if (
-                                                day.getMonth() ===
-                                                startDate.getMonth()
+                                                availableDays[
+                                                    day.getDate().toString()
+                                                ]
                                             ) {
                                                 if (
                                                     availableDays[
-                                                        day.getDate() - 1
-                                                    ]
+                                                        day.getDate().toString()
+                                                    ].length === 24
                                                 ) {
-                                                    className += "available ";
-                                                } else
                                                     className += "unavailable ";
-                                            }
+                                                } else
+                                                    className += "available ";
+                                            } else className += "available ";
                                             if (day < today) {
                                                 className += "disabled ";
                                             }
@@ -141,10 +216,10 @@ export default function BooknowPage() {
                         type="submit"
                         className="btn btn-lg btn-outline-light m-3"
                         onClick={() => {
-                            history.push('/appointmentslot')
+                            history.push("/appointmentslot");
                             addBookedSessionLocal();
                         }}
-                        disabled={!availableDays[startDate.getDate() - 1]}
+                        disabled={disabled}
                     >
                         Book
                     </button>
