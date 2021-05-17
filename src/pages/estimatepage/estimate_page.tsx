@@ -81,6 +81,7 @@ export default function EstimatePage() {
                             DOWNLOAD PDF
                         </a>
                     )}
+                    {link===""&&<div className="display-4 text-info">generating PDF</div>}
                 </div>
 
                 <div className="col-lg-6">
