@@ -24,7 +24,7 @@ export default function EstimatePage() {
                 ? `${user?.firstName} ${user?.lastName}`
                 : "Whomsoever it may concern",
         };
-        fetch("http://149.129.186.98:6969/", {
+        fetch("https://149.129.186.98:6969/", {
             method: "post",
             body: JSON.stringify(dataToSend),
             headers: {
@@ -43,7 +43,7 @@ export default function EstimatePage() {
                 setLink(tempLink);
             });
         });
-    }, [user,cart]);
+    }, [user, cart]);
     return (
         <div className="container-fluid d-flex flex-grow-1  justify-content-center align-items-center">
             <Modal
@@ -66,7 +66,7 @@ export default function EstimatePage() {
                 <div className="col-lg-6 ">
                     {link !== "" && (
                         <iframe
-                        style={{height:1000}}
+                            style={{ height: 1000 }}
                             className="w-100 "
                             title="pdf"
                             src={link}
@@ -74,7 +74,6 @@ export default function EstimatePage() {
                     )}
                     {link !== "" && (
                         <a
-
                             download="invoice.pdf"
                             href={link}
                             className="btn m-3 btn btn-outline-light"
