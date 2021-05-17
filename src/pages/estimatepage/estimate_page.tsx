@@ -24,7 +24,7 @@ export default function EstimatePage() {
                 ? `${user?.firstName} ${user?.lastName}`
                 : "Whomsoever it may concern",
         };
-        fetch("http://localhost:8000/", {
+        fetch("http://149.129.186.98:6969/", {
             method: "post",
             body: JSON.stringify(dataToSend),
             headers: {
