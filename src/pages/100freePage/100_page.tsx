@@ -14,35 +14,55 @@ export default function FreeServices() {
                 <h1>GROUP 1</h1>
                 <div className="row-fluid justify-content-center d-flex">
                     <ul className="list-group p-3 ">
-                        <li className="list-group-item bg-dark">
+                        <li className="list-group-item bg-transparent">
                             <div className="col my-2">
-                            <input className="form-check-input" type="checkbox" value="" aria-label="..." />
-                                First checkbox
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked/>
+                                     <label className="form-check-label" htmlFor="exampleRadios1">
+                                        Default radio
+                                    </label>
                                 </div>
+                            </div>
                         </li>
-                        <li className="list-group-item bg-dark">
+                        <li className="list-group-item bg-transparent">
                             <div className="col my-2">
-                            <input className="form-check-input" type="checkbox" value="" aria-label="..." />
-                                First checkbox
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked/>
+                                     <label className="form-check-label" htmlFor="exampleRadios1">
+                                        Default radio
+                                    </label>
                                 </div>
+                            </div>
                         </li>
-                        <li className="list-group-item bg-dark">
+                        <li className="list-group-item bg-transparent">
                             <div className="col my-2">
-                            <input className="form-check-input" type="checkbox" value="" aria-label="..." />
-                                First checkbox
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked/>
+                                     <label className="form-check-label" htmlFor="exampleRadios1">
+                                        Default radio
+                                    </label>
                                 </div>
+                            </div>
                         </li>
-                        <li className="list-group-item bg-dark">
+                        <li className="list-group-item bg-transparent">
                             <div className="col my-2">
-                            <input className="form-check-input" type="checkbox" value="" aria-label="..." />
-                                First checkbox
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked/>
+                                     <label className="form-check-label" htmlFor="exampleRadios1">
+                                        Default radio
+                                    </label>
                                 </div>
+                            </div>
                         </li>
-                        <li className="list-group-item bg-dark">
+                        <li className="list-group-item bg-transparent">
                             <div className="col my-2">
-                            <input className="form-check-input" type="checkbox" value="" aria-label="..." />
-                                First checkbox
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked/>
+                                     <label className="form-check-label" htmlFor="exampleRadios1">
+                                        Default radio
+                                    </label>
                                 </div>
+                            </div>
                         </li>
                      
                     </ul>
@@ -52,35 +72,55 @@ export default function FreeServices() {
                 <h1>GROUP 2</h1>
                 <div className="row-fluid justify-content-center d-flex">
                     <ul className="list-group p-3 ">
-                        <li className="list-group-item bg-dark">
+                    <li className="list-group-item bg-transparent">
                             <div className="col my-2">
-                            <input className="form-check-input" type="checkbox" value="" aria-label="..." />
-                                First checkbox
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked/>
+                                     <label className="form-check-label" htmlFor="exampleRadios1">
+                                        Default radio
+                                    </label>
                                 </div>
+                            </div>
                         </li>
-                        <li className="list-group-item bg-dark">
+                        <li className="list-group-item bg-transparent">
                             <div className="col my-2">
-                            <input className="form-check-input" type="checkbox" value="" aria-label="..." />
-                                First checkbox
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked/>
+                                     <label className="form-check-label" htmlFor="exampleRadios1">
+                                        Default radio
+                                    </label>
                                 </div>
+                            </div>
                         </li>
-                        <li className="list-group-item bg-dark">
+                        <li className="list-group-item bg-transparent">
                             <div className="col my-2">
-                            <input className="form-check-input" type="checkbox" value="" aria-label="..." />
-                                First checkbox
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked/>
+                                     <label className="form-check-label" htmlFor="exampleRadios1">
+                                        Default radio
+                                    </label>
                                 </div>
+                            </div>
                         </li>
-                        <li className="list-group-item bg-dark">
+                        <li className="list-group-item bg-transparent">
                             <div className="col my-2">
-                            <input className="form-check-input" type="checkbox" value="" aria-label="..." />
-                                First checkbox
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked/>
+                                     <label className="form-check-label" htmlFor="exampleRadios1">
+                                        Default radio
+                                    </label>
                                 </div>
+                            </div>
                         </li>
-                        <li className="list-group-item bg-dark">
+                        <li className="list-group-item bg-transparent">
                             <div className="col my-2">
-                            <input className="form-check-input" type="checkbox" value="" aria-label="..." />
-                                First checkbox
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked/>
+                                     <label className="form-check-label" htmlFor="exampleRadios1">
+                                        Default radio
+                                    </label>
                                 </div>
+                            </div>
                         </li>
                      
                     </ul>
@@ -90,35 +130,55 @@ export default function FreeServices() {
                 <h1>GROUP 3</h1>
                 <div className="row-fluid justify-content-center d-flex">
                     <ul className="list-group p-3 ">
-                        <li className="list-group-item bg-dark">
+                    <li className="list-group-item bg-transparent">
                             <div className="col my-2">
-                            <input className="form-check-input" type="checkbox" value="" aria-label="..." />
-                                First checkbox
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked/>
+                                     <label className="form-check-label" htmlFor="exampleRadios1">
+                                        Default radio
+                                    </label>
                                 </div>
+                            </div>
                         </li>
-                        <li className="list-group-item bg-dark">
+                        <li className="list-group-item bg-transparent">
                             <div className="col my-2">
-                            <input className="form-check-input" type="checkbox" value="" aria-label="..." />
-                                First checkbox
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked/>
+                                     <label className="form-check-label" htmlFor="exampleRadios1">
+                                        Default radio
+                                    </label>
                                 </div>
+                            </div>
                         </li>
-                        <li className="list-group-item bg-dark">
+                        <li className="list-group-item bg-transparent">
                             <div className="col my-2">
-                            <input className="form-check-input" type="checkbox" value="" aria-label="..." />
-                                First checkbox
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked/>
+                                     <label className="form-check-label" htmlFor="exampleRadios1">
+                                        Default radio
+                                    </label>
                                 </div>
+                            </div>
                         </li>
-                        <li className="list-group-item bg-dark">
+                        <li className="list-group-item bg-transparent">
                             <div className="col my-2">
-                            <input className="form-check-input" type="checkbox" value="" aria-label="..." />
-                                First checkbox
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked/>
+                                     <label className="form-check-label" htmlFor="exampleRadios1">
+                                        Default radio
+                                    </label>
                                 </div>
+                            </div>
                         </li>
-                        <li className="list-group-item bg-dark">
+                        <li className="list-group-item bg-transparent">
                             <div className="col my-2">
-                            <input className="form-check-input" type="checkbox" value="" aria-label="..." />
-                                First checkbox
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked/>
+                                     <label className="form-check-label" htmlFor="exampleRadios1">
+                                        Default radio
+                                    </label>
                                 </div>
+                            </div>
                         </li>
                      
                     </ul>
@@ -128,35 +188,45 @@ export default function FreeServices() {
                 <h1>GROUP 4</h1>
                 <div className="row-fluid justify-content-center d-flex">
                     <ul className="list-group p-3 ">
-                        <li className="list-group-item bg-dark">
+                    <li className="list-group-item bg-transparent">
                             <div className="col my-2">
-                            <input className="form-check-input" type="checkbox" value="" aria-label="..." />
-                                First checkbox
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked/>
+                                     <label className="form-check-label" htmlFor="exampleRadios1">
+                                        Default radio
+                                    </label>
                                 </div>
+                            </div>
                         </li>
-                        <li className="list-group-item bg-dark">
+                        <li className="list-group-item bg-transparent">
                             <div className="col my-2">
-                            <input className="form-check-input" type="checkbox" value="" aria-label="..." />
-                                First checkbox
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked/>
+                                     <label className="form-check-label" htmlFor="exampleRadios1">
+                                        Default radio
+                                    </label>
                                 </div>
+                            </div>
                         </li>
-                        <li className="list-group-item bg-dark">
+                        <li className="list-group-item bg-transparent">
                             <div className="col my-2">
-                            <input className="form-check-input" type="checkbox" value="" aria-label="..." />
-                                First checkbox
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked/>
+                                     <label className="form-check-label" htmlFor="exampleRadios1">
+                                        Default radio
+                                    </label>
                                 </div>
+                            </div>
                         </li>
-                        <li className="list-group-item bg-dark">
+                        <li className="list-group-item bg-transparent">
                             <div className="col my-2">
-                            <input className="form-check-input" type="checkbox" value="" aria-label="..." />
-                                First checkbox
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked/>
+                                     <label className="form-check-label" htmlFor="exampleRadios1">
+                                        Default radio
+                                    </label>
                                 </div>
-                        </li>
-                        <li className="list-group-item bg-dark">
-                            <div className="col my-2">
-                            <input className="form-check-input" type="checkbox" value="" aria-label="..." />
-                                First checkbox
-                                </div>
+                            </div>
                         </li>
                      
                     </ul>

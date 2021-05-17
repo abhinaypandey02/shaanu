@@ -75,7 +75,7 @@ export default function CarsMenu() {
                     switch(type){
                         case "petrol":{imgURL="https://zeevector.com/wp-content/uploads/2021/02/Hindustan-Petroleum-Logo-PNG.png";break;}
                         case "cng":{imgURL="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/CNG_logo_China.svg/1280px-CNG_logo_China.svg.png";break;}
-                        case "diesel":{imgURL="https://m.media-amazon.com/images/M/MV5BMjExNzA4MDYxN15BMl5BanBnXkFtZTcwOTI1MDAxOQ@@._V1_.jpg";break;}
+                        case "diesel":{imgURL="https://previews.123rf.com/images/oguzdkn/oguzdkn1809/oguzdkn180900032/109356838-diesel-in-sale-allowed-to-buy-diesel-fuel-gas-station-red-circular-road-sign-isolated.jpg";break;}
                     }
                     return <div className="text-center" style={{ width: "33%" }}><img
                         alt={type}

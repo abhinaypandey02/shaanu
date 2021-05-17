@@ -16,11 +16,11 @@ export default function LandingPage() {
             <div className="row-fluid text-light text-center">
                 <h1 className='display-4'>CAR PLUS</h1>
             </div>
-            <div className='row-fluid bg-danger d-flex justify-content-center text-center'>
+            <div className='row-fluid d-flex justify-content-center text-center'>
                 <Dropdown className="w-50 p-3">
                     <Dropdown.Toggle style={{backgroundColor:"transparent"}} className="p-0 m-0 w-100 border-0">
-                    <button className="btn btn-dark py-3 btn-lg w-100 dropdown-toggle my-3 text-center" type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                    <button className="btn btn-dark py-3 btn-lg w-100 my-3 text-center"
+                            >
                         SELECT {currentlySelecting}
                     </button>
                     </Dropdown.Toggle>

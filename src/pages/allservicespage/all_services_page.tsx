@@ -88,7 +88,7 @@ export default function AllServicesPage() {
                 </Modal.Body>
             </Modal>
             <div className="row">
-                <div className="col-lg-5 col-12 ">
+                <div className="col-lg-5 col-12 pl-5 ">
                     <div
                         className="d-flex align-items-center justify-content-center flex-column p-3 text-light"
                         id="cart"
