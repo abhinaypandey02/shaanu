@@ -5,7 +5,8 @@ import "./navigation_bar.css";
 export default function NavigationBar() {
     const history = useHistory();
     return (
-        <Navbar variant={"dark"} bg="dark" expand="lg">
+        <div className="div">
+        <Navbar variant={"dark"} bg="dark" className='my-md-5' expand="lg">
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mx-auto justify-content-center">
@@ -49,5 +50,6 @@ export default function NavigationBar() {
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
+        </div>
     );
 }
