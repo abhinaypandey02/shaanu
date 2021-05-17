@@ -1,79 +1,49 @@
 import { useHistory } from "react-router";
 import "./estimate_page.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
-import * as https from 'https';
-function generateInvoice(
-    invoice: any,
-    filename: any,
-    success: any,
-    error: any
-) {
-    var postData = JSON.stringify(invoice);
-    var options: any = {
-        hostname: "invoice-generator.com",
-        port: 443,
-        path: "/",
-        method: "POST",
-        body:postData,
-        headers: {
-            "Content-Type": "application/json",
-            "Content-Length": Buffer.byteLength(postData),
-        },
-    };
-    console.log(options)
-    // fetch("https://invoice-generator.com:443", options).then((data: any) => {
-    //     console.log(data);
-    // });
-
-    // var file = fs.createWriteStream(filename);
-
-    var req = https.request(options, function(res) {
-        res.on('data', function(chunk:any) {
-            console.log(chunk,res)
-            // file.write(chunk);
-        })
-        .on('end', function() {
-            // file.end();
-
-            if (typeof success === 'function') {
-                success();
-            }
-        });
-    });
-    req.write(postData);
-    req.end();
-
-    if (typeof error === 'function') {
-        req.on('error', error);
-    }
-}
-
-var invoice = {
-    logo: "http://invoiced.com/img/logo-invoice.png",
-    from: "Invoiced\n701 Brazos St\nAustin, TX 78748",
-    to: "Johnny Appleseed",
-    currency: "inr",
-    number: "INV-0001",
-    payment_terms: "Auto-Billed - Do Not Pay",
-    items: [
-        {
-            name: "[REPLACE] sexyboy abhinay",
-            quantity: 2,
-            unit_cost: 1000,
-        },
-    ],
-    fields: {
-        tax: "%",
-    },
-    tax: 5,
-    notes: "Thanks for being an awesome customer!",
-    terms: "No need to submit payment. You will be auto-billed for this invoice.",
-};
+import { useGlobalState } from "../../contexts/global_state";
+import { useUser } from "../../contexts/user_context";
 
 export default function EstimatePage() {
     const history = useHistory();
+    const [{ cart }] = useGlobalState();
+    const [user] = useUser();
+    console.log(cart);
     const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+    const [link, setLink] = useState("");
+
+    useEffect(() => {
+        const dataToSend = {
+            items: cart.map((item) => ({
+                name: `(${item.type}) ` + item.subPlan.title,
+                quantity: 1,
+                unit_cost: item.subPlan.price,
+            })),
+            to: user
+                ? `${user?.firstName} ${user?.lastName}`
+                : "Whomsoever it may concern",
+        };
+        fetch("http://localhost:8000/", {
+            method: "post",
+            body: JSON.stringify(dataToSend),
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+        }).then((data) => {
+            data.json().then((res) => {
+                res = res.reduce(
+                    (acc: any, value: any) => [...acc, ...value.data],
+                    []
+                );
+                const tempLink: any = window.URL.createObjectURL(
+                    new Blob([new Uint8Array(res)], { type: "application/pdf" })
+                );
+                setLink(tempLink);
+            });
+        });
+    }, [user,cart]);
     return (
         <div className="container-fluid d-flex flex-grow-1  justify-content-center align-items-center">
             <Modal
@@ -88,29 +58,30 @@ export default function EstimatePage() {
                     <h1>CAR PLUS</h1>
                     <br />
                     <Button onClick={() => history.push("/freeservices")}>
-                        {" "}
-                        Add 100% Freee Servics{" "}
+                        Add 100% Free Servics
                     </Button>
                 </Modal.Body>
             </Modal>
             <div className="row text-center w-100 ">
                 <div className="col-lg-6 ">
-                    <Button
-                        onClick={() =>
-                            generateInvoice(
-                                invoice,
-                                "invoice.pdf",
-                                function () {
-                                    console.log("Saved invoice to invoice.pdf");
-                                },
-                                function (error:any) {
-                                    console.error(error);
-                                }
-                            )
-                        }
-                    >
-                        PDF
-                    </Button>
+                    {link !== "" && (
+                        <iframe
+                        style={{height:1000}}
+                            className="w-100 "
+                            title="pdf"
+                            src={link}
+                        ></iframe>
+                    )}
+                    {link !== "" && (
+                        <a
+
+                            download="invoice.pdf"
+                            href={link}
+                            className="btn m-3 btn btn-outline-light"
+                        >
+                            DOWNLOAD PDF
+                        </a>
+                    )}
                 </div>
 
                 <div className="col-lg-6">
