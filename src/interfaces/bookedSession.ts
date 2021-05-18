@@ -5,5 +5,8 @@ export interface BookedSession{
     day:number;
     hours:number;
     minutes:number;
+    fullname:string;
+    phone:string;
+    location:string;
     
 }

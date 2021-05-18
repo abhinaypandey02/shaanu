@@ -21,6 +21,9 @@ export default function BooknowPage() {
     const [loading, setLoading] = useState(true);
     const [availableDays, setAvailableDays] = useState<any>({});
     const [disabled, setDisabled] = useState(false);
+    const [fullname, setFullname] = useState("");
+    const [phone, setPhone] = useState("");
+    const [location, setLocation] = useState("");
 
     function checkDisabled() {
         if (availableDays[startDate.getDate().toString()]) {
@@ -95,6 +98,9 @@ export default function BooknowPage() {
     function addBookedSessionLocal() {
         const tempSession: BookedSession = {
             id: uid(),
+            fullname,
+            location,
+            phone,
             year: startDate.getFullYear(),
             month: startDate.getMonth() + 1,
             day: startDate.getDate(),
@@ -121,7 +127,12 @@ export default function BooknowPage() {
                             FULL NAME
                         </div>
                         <div className="col-6">
-                            <input type="text" className="form-control" />
+                            <input
+                                value={fullname}
+                                onChange={(e) => setFullname(e.target.value)}
+                                type="text"
+                                className="form-control"
+                            />
                         </div>
                     </div>
                     <div className="row mb-3 d-flex  align-items-center justify-content-center text-light">
@@ -129,7 +140,12 @@ export default function BooknowPage() {
                             PHONE NUMBER
                         </div>
                         <div className="col-6">
-                            <input type="text" className="form-control" />
+                            <input
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
+                                type="text"
+                                className="form-control"
+                            />
                         </div>
                     </div>
 
@@ -139,6 +155,8 @@ export default function BooknowPage() {
                         </div>
                         <div className="col-6 ">
                             <textarea
+                                value={location}
+                                onChange={(e) => setLocation(e.target.value)}
                                 className="form-control"
                                 aria-label="With textarea"
                             ></textarea>

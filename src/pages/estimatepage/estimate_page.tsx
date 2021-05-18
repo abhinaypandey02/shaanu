@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useGlobalState } from "../../contexts/global_state";
 import { useUser } from "../../contexts/user_context";
+import { addCallbackRequest } from "../../utils/firebase/firestore";
+import CallbackRequest from "../../interfaces/callbackRequest";
 
 export default function EstimatePage() {
     const history = useHistory();
@@ -12,6 +14,19 @@ export default function EstimatePage() {
     console.log(cart);
     const [showConfirmationModal, setShowConfirmationModal] = useState(false);
     const [link, setLink] = useState("");
+    const [fullname, setFullname] = useState("");
+    const [phone, setPhone] = useState("");
+    const [location, setLocation] = useState("");
+
+    function addCallbackRequestLocal() {
+        const request: CallbackRequest = { fullname, phone, location,date:new Date().toISOString() };
+        addCallbackRequest(request).then(() => {
+            setFullname("");
+            setPhone("");
+            setLocation("");
+            setShowConfirmationModal(true);
+        });
+    }
 
     useEffect(() => {
         const dataToSend = {
@@ -81,7 +96,11 @@ export default function EstimatePage() {
                             DOWNLOAD PDF
                         </a>
                     )}
-                    {link===""&&<div className="display-4 text-info">generating PDF</div>}
+                    {link === "" && (
+                        <div className="display-4 text-info">
+                            generating PDF
+                        </div>
+                    )}
                 </div>
 
                 <div className="col-lg-6">
@@ -106,7 +125,12 @@ export default function EstimatePage() {
                             FULL NAME
                         </div>
                         <div className="col-6">
-                            <input type="text" className="form-control" />
+                            <input
+                                value={fullname}
+                                onChange={(e) => setFullname(e.target.value)}
+                                type="text"
+                                className="form-control"
+                            />
                         </div>
                     </div>
                     <div className="row mb-3 d-flex  align-items-center justify-content-center text-light">
@@ -114,7 +138,12 @@ export default function EstimatePage() {
                             PHONE NUMBER
                         </div>
                         <div className="col-6">
-                            <input type="text" className="form-control" />
+                            <input
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
+                                type="text"
+                                className="form-control"
+                            />
                         </div>
                     </div>
                     <div className="row d-flex mb-3 align-items-center justify-content-center text-light">
@@ -123,6 +152,8 @@ export default function EstimatePage() {
                         </div>
                         <div className="col-6 ">
                             <textarea
+                                value={location}
+                                onChange={(e) => setLocation(e.target.value)}
                                 className="form-control"
                                 aria-label="With textarea"
                             ></textarea>
@@ -131,7 +162,7 @@ export default function EstimatePage() {
                     <button
                         type="submit"
                         className="btn btn-lg mx-auto btn-outline-light m-3"
-                        onClick={() => setShowConfirmationModal(true)}
+                        onClick={() => addCallbackRequestLocal()}
                     >
                         Request A Callback
                     </button>
