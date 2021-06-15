@@ -39,7 +39,7 @@ export default function EstimatePage() {
                 ? `${user?.firstName} ${user?.lastName}`
                 : "Whomsoever it may concern",
         };
-        fetch("https://149.129.186.98:6969/", {
+        fetch("https://us-central1-entertainment-coach-db.cloudfunctions.net/createdAt/pdf", {
             method: "post",
             body: JSON.stringify(dataToSend),
             headers: {
