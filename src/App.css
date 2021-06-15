@@ -1,7 +1,7 @@
 .app{
-  background-image: url("./pages/landingPage/speedometer.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: #232526;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   font-family: 'Lexend', sans-serif;
 }
 ::-webkit-scrollbar {
@@ -61,4 +61,21 @@
 }
 .selectedTime{
   color:white!important;
+}
+#dropdownbutton{
+  box-shadow: rgba(184, 184, 184, 0.15) 0px 48px 100px 0px;
+
+}
+@media screen and (max-width: 600px) {
+  #carbrandimage{
+    height: 50px !important;
+  }
+  #dropdownbutton{
+    min-width: 100% !important;
+  }
+}
+@media screen and (min-width:0px) and (max-width: 1000px) {
+  #dropdownbutton{
+    min-width: 100% !important;
+  }
 }

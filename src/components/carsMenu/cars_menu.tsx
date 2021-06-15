@@ -5,7 +5,6 @@ import {
 } from "../../contexts/global_state";
 import { getBrands } from "../../database/car";
 import { CarBrand, CarModel } from "../../interfaces/car";
-
 export default function CarsMenu() {
     const [globalState, dispatch]: [
         GlobalStateInterface,
@@ -30,7 +29,7 @@ export default function CarsMenu() {
         return (
             <div className="d-flex flex-wrap justify-content-around overflow-auto">
                 {brands.map((brand) => (
-                    <div className="text-center" style={{ width: "33%" }}>
+                    <div className="text-center p-2 m-2" style={{width:'29%', border: "solid 1px white"}}>
                         <img
                             alt={brand.name}
                             height={80}
@@ -38,6 +37,7 @@ export default function CarsMenu() {
                             src={brand.imageURL}
                             key={brand.id}
                             onClick={() => setBrand(brand.id)}
+                            id='carbrandimage'
                         />
                         <div>{brand.name}</div>
                     </div>
@@ -52,7 +52,7 @@ export default function CarsMenu() {
         return (
             <div className="d-flex flex-wrap justify-content-around">
                 {selectedBrand.models.map((model) => (
-                    <div className="text-center" style={{ width: "33%" }}>
+                    <div className="text-center p-2 m-2" style={{width:'29%', border: "solid 1px white"}}>
                         <img
                             alt={model.name}
                             height={80}
@@ -60,6 +60,7 @@ export default function CarsMenu() {
                             src={model.imageURL}
                             key={model.id}
                             onClick={() => setModel(model.id)}
+                            id='carbrandimage'
                         />
                         <div>{model.name} </div>
                     </div>
@@ -77,13 +78,14 @@ export default function CarsMenu() {
                         case "cng":{imgURL="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/CNG_logo_China.svg/1280px-CNG_logo_China.svg.png";break;}
                         case "diesel":{imgURL="https://previews.123rf.com/images/oguzdkn/oguzdkn1809/oguzdkn180900032/109356838-diesel-in-sale-allowed-to-buy-diesel-fuel-gas-station-red-circular-road-sign-isolated.jpg";break;}
                     }
-                    return <div className="text-center" style={{ width: "33%" }}><img
+                    return <div className="text-center p-2 m-2" style={{width:'29%', border: "solid 1px white"}}><img
                         alt={type}
                         height={80}
                         className="pointer-on-hover"
                         src={imgURL}
                         key={type}
                         onClick={() => setType(type)}
+                        id='carbrandimage'
                     /><div className="text-capitalize text-center">{type}</div></div>
                 })}
             </div>

@@ -61,28 +61,44 @@ export default function WorkshopPage() {
             </div>
             <div className="container text-light">
                 <div className="row-fluid">
-                    <Accordion defaultActiveKey="0" >
-                        <Card>
-                            <Card.Header>
-                                <Accordion.Toggle as={Button} variant='link' eventKey="0">
-
-                                    1. Lorem Ipsum is simply dummy text of the printing and typesetting industry ?
-                                </Accordion.Toggle>
-                            </Card.Header>
-                            <Accordion.Collapse  eventKey="0">
-                                <Card.Body>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing</Card.Body>
-                            </Accordion.Collapse>
-                        </Card>
-
-                    </Accordion>
                     <Accordion defaultActiveKey="1" >
                         <Card>
-                            <Card.Header className='border border-light'>
+                            <Card.Header className='border border-light p-0 m-0'>
                                 <Accordion.Toggle as={Card.Header} eventKey="1">
                                     1. Lorem Ipsum is simply dummy text of the printing and typesetting industry ?
                                 </Accordion.Toggle>
                             </Card.Header>
                             <Accordion.Collapse className='border border-light' eventKey="1">
+                                <Card.Body>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing</Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+                        <Card>
+                            <Card.Header className='border border-light p-0 m-0'>
+                                <Accordion.Toggle as={Card.Header} eventKey="2">
+                                    2. Lorem Ipsum is simply dummy text of the printing and typesetting industry ?
+                                </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse className='border border-light' eventKey="2">
+                                <Card.Body>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing</Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+                        <Card>
+                            <Card.Header className='border border-light p-0 m-0'>
+                                <Accordion.Toggle as={Card.Header} eventKey="2">
+                                    4. Lorem Ipsum is simply dummy text of the printing and typesetting industry ?
+                                </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse className='border border-light' eventKey="2">
+                                <Card.Body>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing</Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+                        <Card>
+                            <Card.Header className='border border-light p-0 m-0'>
+                                <Accordion.Toggle as={Card.Header} eventKey="2">
+                                    3. Lorem Ipsum is simply dummy text of the printing and typesetting industry ?
+                                </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse className='border border-light' eventKey="2">
                                 <Card.Body>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing</Card.Body>
                             </Accordion.Collapse>
                         </Card>
