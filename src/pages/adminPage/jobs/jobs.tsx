@@ -1,29 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import { Button } from 'react-bootstrap';
-import { BookedSession } from '../../../interfaces/bookedSession';
-import { getAllBookedSessions } from '../../../utils/firebase/firestore';
+import React, { useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
+import JobInterface from "../../../interfaces/job";
+import { getJobs, deleteJob } from "../../../utils/firebase/firestore";
+import "./jobs.css";
 
-interface BookedSessionWithDate extends BookedSession{
-    date:Date
-}
-
-export default function JobsTab({setTab}:{setTab:Function}) {
-    const [bookedSessions, setBookedSessions] = useState<BookedSessionWithDate[]>([]);
+export default function JobsTab({ setTab }: { setTab: Function }) {
+    const [jobs, setJobs] = useState<JobInterface[]>([]);
+    const his = useHistory();
     useEffect(() => {
-        getAllBookedSessions().then((list: any[]) => {
-            list = list.map((ele) => ({
-                ...ele,
-                date: new Date(
-                    ele.year,
-                    ele.month - 1,
-                    ele.day,
-                    ele.hours,
-                    ele.minutes,
-                    0
-                ),
-            }));
-            list.sort((a, b) => a.date.getTime() - a.date.getTime());
-            setBookedSessions(list);
+        getJobs().then((list: any[]) => {
+            setJobs(list);
         });
     }, []);
     return (
@@ -32,28 +19,60 @@ export default function JobsTab({setTab}:{setTab:Function}) {
                 <h1>JOBS</h1>
             </div>
             <div>
-                <Button onClick={()=>setTab("addJob")}>Add Job</Button>
+                <Button onClick={() => setTab("addJob")}>Add Job</Button>
             </div>
-            <table className="text-white">
+            <table className="text-white w-100">
                 <tbody>
-                    <tr>
-                        <th>Job Card No.</th>
-                        <th>Reg No.</th>
-                        <th>Status</th>
-                        <th>Service Type</th>
-                        <th>Vehicle</th>
+                    <tr className="jobTable">
+                        <th>Registration No</th>
+                        <th>Odometer</th>
+                        <th>Avg KMS/day</th>
+                        <th>Car Maker</th>
+                        <th>Car Model</th>
+                        <th>Car Variant</th>
+                        <th>Car Year</th>
+                        <th>Vehicle Colour</th>
+                        <th>Fuel Type</th>
                     </tr>
-                    {bookedSessions.map((session) => (
-                <tr key={session.id} className="row-fluid ">
-                    <td>{session.id}</td>
-                    <td>{session.id}</td>
-                    <td>{session.fullname}</td>
-                </tr>
-            ))}
-                
+                    {jobs.map((job: any) => (
+                        <tr key={job.id} className="row-fluid jobTable">
+                            <td>{job["Registration No"]}</td>
+                            <td>{job["Odometer"]}</td>
+                            <td>{job["Avg KMS/day"]}</td>
+                            <td>{job["Car Maker"]}</td>
+                            <td>{job["Car Model"]}</td>
+                            <td>{job["Car Variant"]}</td>
+                            <td>{job["Car Year"]}</td>
+                            <td>{job["Vehicle Colour"]}</td>
+                            <td>{job["Fuel Type"]}</td>
+                            <td>
+                                <Button
+                                    onClick={() => his.push("/job/" + job.id)}
+                                    variant="warning"
+                                >
+                                    Edit
+                                </Button>
+                            </td>
+                            <td>
+                                <Button
+                                    onClick={() =>
+                                        deleteJob(job.id).then(() =>
+                                            setJobs((old) =>
+                                                old.filter(
+                                                    (job2) => job2.id !== job.id
+                                                )
+                                            )
+                                        )
+                                    }
+                                    variant="danger"
+                                >
+                                    Delete
+                                </Button>
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
-            
         </div>
-    )
+    );
 }

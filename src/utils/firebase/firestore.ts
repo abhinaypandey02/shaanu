@@ -4,6 +4,7 @@ import "firebase/firestore";
 import { CarProfile } from "../../interfaces/car";
 import { BookedSession } from "../../interfaces/bookedSession";
 import CallbackRequest from "../../interfaces/callbackRequest";
+import JobInterface from "../../interfaces/job";
 export async function createUserDocument(user_data: UserInterface) {
     await fire
         .firestore()
@@ -83,4 +84,22 @@ export async function getBookedSessionsByMonth(month: number) {
         return temp;
     }
     return [];
+}
+
+export async function setJob(job: JobInterface) {
+    return await fire.firestore().collection("jobs").doc(job.id).set(job);
+}
+export async function getJobs() {
+    return await fire
+        .firestore()
+        .collection("jobs")
+        .get()
+        .then((data) => data.docs.map((doc) => doc.data()));
+}
+
+export async function getJob(jobID:string){
+    return await fire.firestore().collection("jobs").doc(jobID).get().then(doc=>doc.data());
+}
+export async function deleteJob(jobID:string){
+    return await fire.firestore().collection("jobs").doc(jobID).delete();
 }

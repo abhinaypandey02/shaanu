@@ -1,8 +1,13 @@
 import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import JobInterface from "../../../interfaces/job";
+import {v4} from 'uuid';
+import { setJob } from "../../../utils/firebase/firestore";
+import { useHistory } from "react-router-dom";
 export default function AddJob({ setTab }: { setTab: Function }) {
     const { register, handleSubmit } = useForm();
+    const his=useHistory();
     function FormGroup({ name, type }: { name: string; type: string }) {
         return (
             <Form.Group>
@@ -17,8 +22,10 @@ export default function AddJob({ setTab }: { setTab: Function }) {
             </Form.Group>
         );
     }
-    function onSubmit(data: any) {
-        console.log(data);
+    async function onSubmit(data: any) {
+        const tempJob:JobInterface={...data,id:v4(),services:[]};
+        await setJob(tempJob);
+        his.push("/job/"+tempJob.id);
     }
 
     return (
@@ -30,7 +37,7 @@ export default function AddJob({ setTab }: { setTab: Function }) {
                 <Button onClick={() => setTab("jobs")}>Back</Button>
             </div>
             <Form onSubmit={handleSubmit(onSubmit)}>
-                <FormGroup name="Registration No." type="text" />
+                <FormGroup name="Registration No" type="text" />
                 <FormGroup name="Odometer" type="number" />
                 <FormGroup name="Avg KMS/day" type="number" />
                 <FormGroup name="Car Maker" type="text" />

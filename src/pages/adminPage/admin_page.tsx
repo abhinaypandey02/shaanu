@@ -1,5 +1,6 @@
 import {  useState } from "react";
 import { Button } from "react-bootstrap";
+import BookedSessions from "./bookedSessions/bookedSessions";
 import CallbackRequests from "./callbackRequests/callback_requests";
 import AddJob from "./jobs/add_job";
 import JobsTab from "./jobs/jobs";
@@ -29,6 +30,8 @@ export default function AdminPage() {
                 return <JobsTab setTab={setTab}/>;
             case "addJob":
                 return <AddJob setTab={setTab}/>;
+            case "bookedSessions":
+                return <BookedSessions setTab={setTab}/>;    
         }
         return null;
     }
@@ -39,6 +42,7 @@ export default function AdminPage() {
             <TabButton name="jobs" />
             <TabButton name="users" />
             <TabButton name="callbackRequests" />
+            <TabButton name="bookedSessions" />
 
             <GetTab name={tab} />
         </div>

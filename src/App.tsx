@@ -15,6 +15,7 @@ import FaqPage from "./pages/faqPage/faq_page";
 import BooknowPage from "./pages/booknowPage/booknow_page";
 import FreeServices from "./pages/100freePage/100_page";
 import AppointmentSlot from "./components/appointmentSlot/appointment_slot";
+import Job from "./pages/adminPage/jobs/job";
 function App() {
     const [globalState] = useGlobalState();
     const carSelected =
@@ -56,6 +57,9 @@ function App() {
                     </Route>
                     <Route path="/appointmentslot">
                         <AppointmentSlot/>
+                    </Route>
+                    <Route path="/job/:jobID">
+                        <Job/>
                     </Route>
                     
                 </Switch>
