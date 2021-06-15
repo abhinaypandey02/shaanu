@@ -1,5 +1,5 @@
 
-import { Card, Accordion, Button } from "react-bootstrap";
+import { Card, Accordion } from "react-bootstrap";
 import FaqPage from "../faqPage/faq_page";
 
 export default function WorkshopPage() {

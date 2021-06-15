@@ -1,5 +1,5 @@
 import React from 'react';
-import { Accordion, Card, Dropdown } from 'react-bootstrap';
+import { Accordion, Card } from 'react-bootstrap';
 import CarsMenu from '../../components/carsMenu/cars_menu';
 import { useGlobalState } from '../../contexts/global_state';
 import './landing_page.css';
