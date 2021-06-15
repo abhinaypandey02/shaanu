@@ -88,7 +88,7 @@ export default function AllServicesPage() {
                 </Modal.Body>
             </Modal>
             <div className="row">
-                <div className="col-lg-5 col-12 pl-5 ">
+                <div className="col-lg-5 pl-lg-5">
                     <div
                         className="d-flex align-items-center justify-content-center flex-column p-3 text-light"
                         id="cart"
@@ -119,7 +119,7 @@ export default function AllServicesPage() {
                                         payload: null,
                                     })
                                 }
-                                className="w-auto"
+                                className="w-auto m-3 m-md-0"
                             >
                                 CHANGE
                             </Button>
@@ -146,7 +146,7 @@ export default function AllServicesPage() {
                                             </span>
                                         </div>
                                         <div
-                                            className="btn btn-outline-danger my-auto"
+                                            className="btn btn-danger mt-3 mt-md-0"
                                             onClick={() => {
                                                 dispatch({
                                                     type: "REMOVE_FROM_CART",
@@ -175,13 +175,14 @@ export default function AllServicesPage() {
                 </div>
 
                 <div className="col-lg-7 text-center">
-                    <h1 className="text-light">Select Services</h1>
+                    <h1 className="text-light mt-5 mt-md-0">Select Services</h1>
                     {plans.map((plan) => (
                         <Button
                             variant="outline-light"
                             className="text-left mt-5 w-75"
                             onClick={() => setSelectedPlan(plan)}
                             key={plan.id}
+                            id='servicesbutton'
                         >
                             <h4 className="card-header">{plan.title}</h4>
                             <div className="card-body">
