@@ -191,7 +191,6 @@ export default function Job() {
     return (
         <div className="text-white ">
             <div>Job</div>
-            <div>{job?.id}</div>
             <Form onSubmit={handleSubmit(onSubmit)} inline>
                 <Form.Group>
                     <Form.Control
@@ -240,6 +239,24 @@ export default function Job() {
                             key={service.id}
                         />
                     ))}
+                    <tr>
+                        <td colSpan={5}>Grand Total</td>
+                        <td colSpan={3}>{services.reduce((accu,curr)=>accu+curr.discount,0)}</td>
+                        <td >{services.reduce((accu,curr)=>accu+curr.taxRs,0)}</td>
+                        <td >{services.reduce((accu,curr)=>accu+curr.total,0)}</td>
+                    </tr>
+                    <tr>
+                        <td colSpan={9}>Discount</td>
+                        <td >{services.reduce((accu,curr)=>accu+curr.discount,0)}</td>
+                    </tr>
+                    <tr>
+                        <td colSpan={9}>Paid</td>
+                        <td >0</td>
+                    </tr>
+                    <tr>
+                        <td colSpan={9}>Balance</td>
+                        <td >{services.reduce((accu,curr)=>accu+curr.total,0)}</td>
+                    </tr>
                 </tbody>
             </table>
             <Button onClick={onSave} variant="success">
