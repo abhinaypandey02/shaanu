@@ -226,24 +226,24 @@ export default function Job() {
         });
     }
     return (
-        <div className="text-white ">
+        <div className="text-white p-5">
             <div>Job</div>
             <Form onSubmit={handleSubmit(onSubmit)} inline>
-                <Form.Group>
+                <Form.Group className='mx-2'>
                     <Form.Control
                         {...register("partName")}
                         placeholder="PART NUMBER / PART NAME"
                     />
                 </Form.Group>
-                <Form.Group>
+                <Form.Group className='mx-2'>
                     <Form.Control
                         type="number"
                         {...register("price")}
                         placeholder="PART PRICE"
                     />
                 </Form.Group>
-                <Form.Group>
-                    <Form.Control
+                <Form.Group className='mx-2'>
+                    <Form.Control 
                         as="select"
                         {...register("serviceLabour")}
                         placeholder="SERVICE/LABOUR"
@@ -252,11 +252,12 @@ export default function Job() {
                         <option value="labour">Labour</option>
                     </Form.Control>
                 </Form.Group>
-                <Button type="submit">+</Button>
+                <Button className='mx-2' type="submit">+</Button>
             </Form>
-            <table className="">
-                <tbody>
-                    <tr>
+            <br/>
+            <table className="table" style={{border: '2px white solid '}}>
+                <tbody >
+                    <tr className='alert alert-dark text-dark'>
                         <th>#</th>
                         <th>Part Name</th>
                         <th>Part/Labour</th>

@@ -29,7 +29,7 @@ export default function AddJob({ setTab }: { setTab: Function }) {
     }
 
     return (
-        <div>
+        <div className='container'>
             <div className="row-fluid p-3 text-center text-light">
                 <h1>ADD JOB</h1>
             </div>
