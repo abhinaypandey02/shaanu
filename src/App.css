@@ -90,3 +90,10 @@ background: linear-gradient(to right, #928DAB, #1F1C2C); /* W3C, IE 10+/ Edge, F
     min-width: 100% !important;
   }
 }
+tr,td{
+  border:2px white solid;
+  color: white;
+}
+th{
+  border:2px white solid;
+}
