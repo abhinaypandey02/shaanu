@@ -14,16 +14,16 @@ export default function CallbackRequests() {
         });
     }, []);
     return (
-        <div>
+        <div className='container'>
             <div className="row-fluid p-3 text-center text-light">
                 <h1>CALLBACK REQUESTS</h1>
                 
             </div>
             {callbackRequests.map((request) => (
                 <div key={request.date} className="row-fluid ">
-                    <div className="col-6  mx-auto">
+                    <div className="col-12 mx-auto">
                         <div
-                            className="card mb-3 text-light border-light"
+                            className="card mx-auto mb-3 text-light border-light"
                             style={{ maxWidth: 540 }}
                         >
                             <div className="row">
