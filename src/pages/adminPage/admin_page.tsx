@@ -36,13 +36,14 @@ export default function AdminPage() {
         return null;
     }
     return (
-        <div className="container">
+        <div className="container-fluid">
             <div className="display-1 text-center text-white">ADMIN CONSOLE</div>
-
+            <div className="d-flex justify-content-center">
             <TabButton name="jobs" />
             <TabButton name="users" />
             <TabButton name="callbackRequests" />
             <TabButton name="bookedSessions" />
+            </div>
 
             <GetTab name={tab} />
         </div>

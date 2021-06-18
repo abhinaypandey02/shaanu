@@ -14,16 +14,19 @@ export default function JobsTab({ setTab }: { setTab: Function }) {
         });
     }, []);
     return (
-        <div>
+        <div className='container-fluid'>
             <div className="row-fluid p-3 text-center text-light">
                 <h1>JOBS</h1>
             </div>
             <div>
                 <Button onClick={() => setTab("addJob")}>Add Job</Button>
+                
             </div>
-            <table className="text-white w-100">
-                <tbody>
-                    <tr className="jobTable">
+            <br/>
+            <div className="container-fluid">
+            <table className="table text-white ">
+                <thead>
+                    <tr className="jobTable alert alert-dark">
                         <th>Registration No</th>
                         <th>Odometer</th>
                         <th>Avg KMS/day</th>
@@ -33,7 +36,11 @@ export default function JobsTab({ setTab }: { setTab: Function }) {
                         <th>Car Year</th>
                         <th>Vehicle Colour</th>
                         <th>Fuel Type</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     {jobs.map((job: any) => (
                         <tr key={job.id} className="row-fluid jobTable">
                             <td>{job["Registration No"]}</td>
@@ -73,6 +80,8 @@ export default function JobsTab({ setTab }: { setTab: Function }) {
                     ))}
                 </tbody>
             </table>
+            </div>
+            
         </div>
     );
 }
