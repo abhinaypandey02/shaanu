@@ -179,12 +179,14 @@ export default function AllServicesPage() {
                     {plans.map((plan) => (
                         <Button
                             variant="outline-light"
-                            className="text-left mt-5 w-75"
+                            className="px-0 text-left mt-5 w-75"
                             onClick={() => setSelectedPlan(plan)}
                             key={plan.id}
-                            id='servicesbutton'
+                            id='servicesbtn'
+                
+                            
                         >
-                            <h4 className="card-header">{plan.title}</h4>
+                            <h4 className='alert alert-dark'>{plan.title}</h4>
                             <div className="card-body">
                                 <p className="card-text">{plan.description}</p>
                             </div>

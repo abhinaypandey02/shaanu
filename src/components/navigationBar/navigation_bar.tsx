@@ -15,6 +15,7 @@ export default function NavigationBar() {
                             variant={"outline-light"}
                             className="m-3 btn-lg"
                             onClick={() => history.push("/profile")}
+                            id='navbutton'
                         >
                             CAR PROFILE
                         </Button>
@@ -24,6 +25,7 @@ export default function NavigationBar() {
                             variant={"outline-light"}
                             onClick={() => history.push("/services")}
                             className="m-3 btn-lg"
+                            id='navbutton'
                         >
                             BOOK SERVICES
                         </Button>
@@ -33,6 +35,7 @@ export default function NavigationBar() {
                             variant={"outline-light"}
                             className="m-3 btn-lg"
                             onClick={() => history.push("/freeservices")}
+                            id='navbutton'
                         >
                             100% FREE
                         </Button>
@@ -42,6 +45,7 @@ export default function NavigationBar() {
                             variant={"outline-light"}
                             onClick={() => history.push("/workshop")}
                             className="m-3 btn-lg"
+                            id='navbutton'
                         >
                             VIEW WORKSHOP
                         </Button>
