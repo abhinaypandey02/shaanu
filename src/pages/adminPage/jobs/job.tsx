@@ -159,6 +159,7 @@ export default function Job() {
     const [job, setJob2] = React.useState<JobInterface>();
     const [services, setServices] = React.useState<ServiceInterface[]>([]);
     const { register, handleSubmit } = useForm();
+    const [link, setLink] = React.useState();
     const params: any = useParams();
     function onSave() {
         if (job)
@@ -168,13 +169,17 @@ export default function Job() {
     }
     useEffect(() => {
         getJob(params.jobID).then((data: any) => {
-            if(data){
-
+            if (data) {
                 setJob2(data);
                 setServices(data.services);
             }
         });
     }, [params.jobID]);
+    useEffect(() => {
+        if (link) {
+            document.getElementById("downloadButton")?.click();
+        }
+    }, [link]);
     function onSubmit(data: any) {
         setServices((old) => [
             ...old,
@@ -187,6 +192,38 @@ export default function Job() {
                 id: v4(),
             },
         ]);
+    }
+    function onDownload() {
+        const dataToSend = {
+            items: services.map((item) => ({
+                name: item.partName,
+                quantity: 1,
+                unit_cost: item.total,
+            })),
+            to: "Whomsoever it may concern",
+        };
+        fetch(
+            "https://us-central1-entertainment-coach-db.cloudfunctions.net/createdAt/pdf",
+            {
+                method: "post",
+                body: JSON.stringify(dataToSend),
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+            }
+        ).then((data) => {
+            data.json().then((res) => {
+                res = res.reduce(
+                    (acc: any, value: any) => [...acc, ...value.data],
+                    []
+                );
+                const tempLink: any = window.URL.createObjectURL(
+                    new Blob([new Uint8Array(res)], { type: "application/pdf" })
+                );
+                setLink(tempLink);
+            });
+        });
     }
     return (
         <div className="text-white ">
@@ -241,27 +278,63 @@ export default function Job() {
                     ))}
                     <tr>
                         <td colSpan={5}>Grand Total</td>
-                        <td colSpan={3}>{services.reduce((accu,curr)=>accu+curr.discount,0)}</td>
-                        <td >{services.reduce((accu,curr)=>accu+curr.taxRs,0)}</td>
-                        <td >{services.reduce((accu,curr)=>accu+curr.total,0)}</td>
+                        <td colSpan={3}>
+                            {services.reduce(
+                                (accu, curr) => accu + curr.discount,
+                                0
+                            )}
+                        </td>
+                        <td>
+                            {services.reduce(
+                                (accu, curr) => accu + curr.taxRs,
+                                0
+                            )}
+                        </td>
+                        <td>
+                            {services.reduce(
+                                (accu, curr) => accu + curr.total,
+                                0
+                            )}
+                        </td>
                     </tr>
                     <tr>
                         <td colSpan={9}>Discount</td>
-                        <td >{services.reduce((accu,curr)=>accu+curr.discount,0)}</td>
+                        <td>
+                            {services.reduce(
+                                (accu, curr) => accu + curr.discount,
+                                0
+                            )}
+                        </td>
                     </tr>
                     <tr>
                         <td colSpan={9}>Paid</td>
-                        <td >0</td>
+                        <td>0</td>
                     </tr>
                     <tr>
                         <td colSpan={9}>Balance</td>
-                        <td >{services.reduce((accu,curr)=>accu+curr.total,0)}</td>
+                        <td>
+                            {services.reduce(
+                                (accu, curr) => accu + curr.total,
+                                0
+                            )}
+                        </td>
                     </tr>
                 </tbody>
             </table>
             <Button onClick={onSave} variant="success">
                 Save
             </Button>
+            <Button onClick={onDownload} variant="success">
+                Download Invoice
+            </Button>
+            <a
+                download="invoice.pdf"
+                href={link}
+                className="d-none"
+                id="downloadButton"
+            >
+                DOWNLOAD PDF
+            </a>
         </div>
     );
 }
