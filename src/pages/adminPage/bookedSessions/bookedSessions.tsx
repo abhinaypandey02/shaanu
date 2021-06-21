@@ -26,17 +26,19 @@ export default function BookedSessions({setTab}:{setTab:Function}) {
         });
     }, []);
     return (
-        <div>
+        <div className='container'>
             <div className="row-fluid p-3 text-center text-light">
                 <h1>Booked Sessions</h1>
             </div>
-            <table className="text-white">
-                <tbody>
+            <table className="table text-white">
+                <thead className='alert alert-dark'>
                     <tr>
                         <th>Name</th>
                         <th>Phone</th>
                         <th>Location</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     {bookedSessions.map((session) => (
                 <tr key={session.id} className="row-fluid ">
                     <td>{session.fullname}</td>

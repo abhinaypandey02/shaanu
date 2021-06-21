@@ -268,6 +268,7 @@ export default function Job() {
                         <th>Tax%</th>
                         <th>Tax Rs</th>
                         <th>Total Rs</th>
+                        <th>Delete</th>
                     </tr>
                     {services.map((service, index) => (
                         <Service

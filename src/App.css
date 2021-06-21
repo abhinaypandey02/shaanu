@@ -96,4 +96,5 @@ tr,td{
 }
 th{
   border:2px white solid;
+  color:black !important;
 }

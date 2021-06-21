@@ -38,7 +38,7 @@ export default function AdminPage() {
     return (
         <div className="container-fluid">
             <div className="display-1 text-center text-white">ADMIN CONSOLE</div>
-            <div className="d-flex justify-content-center">
+            <div className="d-flex flex-wrap justify-content-center">
             <TabButton name="jobs" />
             <TabButton name="users" />
             <TabButton name="callbackRequests" />
