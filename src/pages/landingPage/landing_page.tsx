@@ -12,10 +12,10 @@ export default function LandingPage() {
     else if(!globalState.selectedModel) currentlySelecting="MODEL";
     else currentlySelecting="FUEL"
 
-    return <div className='d-flex justify-content-center min-vh-90 align-items-center flex-grow-1'>
-        <div className='container text-wrap d-flex align-content-around flex-column p-0'>
+    return <div className='min-h-100 d-flex justify-content-center align-items-center'>
+        <div className='container my-auto text-wrap d-flex justify-content-center align-items-center flex-column p-0'>
             <div className="row-fluid text-light text-center">
-                <h1 className='display-4'>CAR PLUS</h1>
+                <h1 className='display-5'>One place for all your Car needs</h1>
             </div>
             <div className='row-fluid d-flex justify-content-center w-100 text-center'>
             

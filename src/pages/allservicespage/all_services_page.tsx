@@ -5,6 +5,7 @@ import { getBrands } from "../../database/car";
 import { getPlans } from "../../database/plan";
 import "./all_services_page.css";
 import { Plan, SubPlan } from "../../interfaces/plan";
+
 import { useHistory } from "react-router";
 export default function AllServicesPage() {
     const [globalState, dispatch] = useGlobalState();
@@ -87,20 +88,23 @@ export default function AllServicesPage() {
                         BOOK</Button>}
                 </Modal.Body>
             </Modal>
-            <div className="row">
+            <div className="row" >
                 <div className="col-lg-5 pl-lg-5">
                     <div
-                        className="d-flex align-items-center justify-content-center flex-column p-3 text-light"
+                        className="d-flex alert alert-light align-items-center justify-content-center flex-column p-3 text-light"
                         id="cart"
                     >
+                        <div className='alert alert-dark w-100 h-100 pb-4 d-flex justify-content-center  align-items-center flex-column flex-wrap'>
                         <h2 className="display-4">CART</h2>
                         <img
+                        src='https://cdn.picpng.com/lamborghini/lamborghini-image-29016.png'
                             alt="cart"
-                            className="img-fluid w-50"
-                            src={selectedModel?.imageURL}
+                            className="img-fluid w-75 border-1 rounded
+                            "
+                          
                         />
-
-                        <hr className="w-100 bg-light" />
+                        </div>
+                 
                         <div className="col-12 d-flex flex-wrap align-items-center justify-content-between">
                             <div className="col">
                                 <h2 className="text-capitalize">
@@ -176,21 +180,39 @@ export default function AllServicesPage() {
 
                 <div className="col-lg-7 text-center">
                     <h1 className="text-light mt-5 mt-md-0">Select Services</h1>
+
                     {plans.map((plan) => (
+                    
                         <Button
                             variant="outline-light"
-                            className="px-0 text-left mt-5 w-75"
+                            className="text-left mt-5 w-75 "
                             onClick={() => setSelectedPlan(plan)}
                             key={plan.id}
                             id='servicesbtn'
+                            
                 
                             
                         >
-                            <h4 className='alert alert-dark'>{plan.title}</h4>
-                            <div className="card-body">
-                                <p className="card-text">{plan.description}</p>
+                             
+                            <div className='p-2' >
+                                <div className="row px-2">
+                                    <div className="col-md-4  p-3">
+                                        <img src="https://s3.ap-south-1.amazonaws.com/gm-retail-app/service-new-images/Basic%20Service%20Package%20sq.jpg" className='img-fluid rounded' alt="..."/>
+                                    </div>
+                                    <div className="col-md-8 ">
+                                        <div className="card-body pl-md-0 ">
+                                            <h4 className="card-title alert alert-dark">{plan.title}</h4>
+                                            <p className="card-text">{plan.description} & obis obcaecati iure molestias delectus, mollitia accusamus sapiente voluptates.</p>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                           
+                            
+                        
                         </Button>
+                        
                     ))}
                 </div>
             </div>
