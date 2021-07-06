@@ -39,18 +39,20 @@ export default function AllServicesPage() {
     const history = useHistory();
 
     return (
-        <div className="container-fluid">
+        <div className="container-fluid p-4" id='allpagesection'>
             <Modal
-                contentClassName="col-11 col-md-8 col-lg-6"
+                
+                contentClassName="col-11 col-md-8 col-lg-6 bg-dark border border-warning p-0 rounded-0"
                 dialogClassName="d-flex align-items-center justify-content-center min-vw-100"
                 centered
                 show={selectedPlan !== null}
                 onHide={() => {setSelectedPlan(null);setSelectedSubPlanType(undefined);setSelectedSubPlan(undefined);}}
             >
-                <Modal.Header closeButton>{selectedPlan?.title}</Modal.Header>
-                <Modal.Body>
+                <Modal.Header className='bg-warning text-dark rounded-0' closeButton>{selectedPlan?.title}</Modal.Header>
+                <Modal.Body >
                     <Form.Group>
                         <Form.Control
+                        className='rounded-0'
                             value={selectedSubPlan?.id}
                             onChange={(e) =>
                                 setSelectedSubPlan(
@@ -65,7 +67,7 @@ export default function AllServicesPage() {
                             <option value={undefined}>SELECT PLAN</option>
                             {selectedPlan?.subPlans.map((plan) => (
                                 <option
-                                    className=" bg-black"
+                                    className="bg-warning"
                                     key={plan.id}
                                     value={plan.id}
                                 >
@@ -79,22 +81,22 @@ export default function AllServicesPage() {
                             <Form.Control value={selectedSubPlanType} onChange={e=>setSelectedSubPlanType(e.target.value)} as="select">
                                 <option value={undefined}>Select Type</option>
                                 {selectedSubPlan.types.map((type) => (
-                                    <option value={type}>{type}</option>
+                                    <option className='bg-warning' value={type}>{type}</option>
                                 ))}
                             </Form.Control>
                         </Form.Group>
                     )}
-                    {selectedSubPlan&&(selectedSubPlanType||selectedSubPlan.types.length===0)&&<Button onClick={onPlanSelect}>
+                    {selectedSubPlan&&(selectedSubPlanType||selectedSubPlan.types.length===0)&&<Button variant='warning' className='rounded-0' onClick={onPlanSelect}>
                         BOOK</Button>}
                 </Modal.Body>
             </Modal>
-            <div className="row" >
+            <div className="row " >
                 <div className="col-lg-5 pl-lg-5">
                     <div
-                        className="d-flex alert alert-light align-items-center justify-content-center flex-column p-3 text-light"
+                        className="d-flex rounded-0 alert alert-light align-items-center justify-content-center flex-column p-3 text-light"
                         id="cart"
                     >
-                        <div className='alert alert-dark w-100 h-100 pb-4 d-flex justify-content-center  align-items-center flex-column flex-wrap'>
+                        <div className='alert rounded-0 alert-dark w-100 h-100 pb-4 d-flex justify-content-center  align-items-center flex-column flex-wrap'>
                         <h2 className="display-4">CART</h2>
                         <img
                         src='https://cdn.picpng.com/lamborghini/lamborghini-image-29016.png'
@@ -116,14 +118,14 @@ export default function AllServicesPage() {
                             </div>
 
                             <Button
-                                variant={"outline-light"}
+                                variant={"outline-warning"}
                                 onClick={() =>
                                     dispatch({
                                         type: "CLEAR_SELECTION",
                                         payload: null,
                                     })
                                 }
-                                className="w-auto m-3 m-md-0"
+                                className="w-auto rounded-0 m-3 m-md-0"
                             >
                                 CHANGE
                             </Button>
@@ -150,7 +152,7 @@ export default function AllServicesPage() {
                                             </span>
                                         </div>
                                         <div
-                                            className="btn btn-danger mt-3 mt-md-0"
+                                            className="btn rounded-0 btn-danger mt-3 mt-md-0"
                                             onClick={() => {
                                                 dispatch({
                                                     type: "REMOVE_FROM_CART",
@@ -172,6 +174,7 @@ export default function AllServicesPage() {
                         <Button
                             onClick={() => history.push("/estimate")}
                             variant="success"
+                            className='rounded-0'
                         >
                             CHECKOUT
                         </Button>
@@ -185,7 +188,7 @@ export default function AllServicesPage() {
                     
                         <Button
                             variant="outline-light"
-                            className="text-left mt-5 w-75 "
+                            className="text-left rounded-0 mt-5 w-75 "
                             onClick={() => setSelectedPlan(plan)}
                             key={plan.id}
                             id='servicesbtn'
@@ -201,7 +204,7 @@ export default function AllServicesPage() {
                                     </div>
                                     <div className="col-md-8 ">
                                         <div className="card-body pl-md-0 ">
-                                            <h4 className="card-title alert alert-dark">{plan.title}</h4>
+                                            <h4 className="card-title rounded-0  alert alert-warning">{plan.title}</h4>
                                             <p className="card-text">{plan.description} & obis obcaecati iure molestias delectus, mollitia accusamus sapiente voluptates.</p>
                                             
                                         </div>

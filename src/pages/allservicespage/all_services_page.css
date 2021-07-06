@@ -7,8 +7,11 @@
     margin-bottom: 1rem;
     background-color: transparent !important;
 }
+#servicesbtn:hover{
+    background: #ffc107;
+}
 #servicesbtn{
- 
+    
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .plan-modal{
@@ -23,4 +26,10 @@
         width: 100% !important;
     }
     
+}
+#allpagesection{
+    background: #636363;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #ffc10785, #000000b0),url('https://wallpaperforu.com/wp-content/uploads/2021/01/minimal-wallpaper-210120153824331920x1200.jpg');  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #af8300af, #00000094),url('https://wallpaperforu.com/wp-content/uploads/2021/01/minimal-wallpaper-210120153824331920x1200.jpg'); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }

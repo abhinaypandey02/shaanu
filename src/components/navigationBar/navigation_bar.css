@@ -5,3 +5,6 @@
     padding-left: 2em !important;
     padding-right: 2em !important;
 }
+#navbutton:hover{
+    background: #ffc107;
+}

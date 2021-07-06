@@ -5,7 +5,7 @@ import "./navigation_bar.css";
 export default function NavigationBar() {
     const history = useHistory();
     return (
-        <div className="div">
+        <div className="container">
         <Navbar variant={"dark"} bg="dark" className='my-md-4' expand="lg">
         <Navbar.Brand href="#home" className='ml-md-3'>
             <img alt="logo" className='img-fluid bg-warning border rounded-circle mr-2' width="50" height="50" src='https://images.vexels.com/media/users/3/144355/isolated/preview/0a53cf7ef3dcdc995f7f20c13c697a25-speed-car-lines-logo-by-vexels.png'/>
@@ -16,7 +16,7 @@ export default function NavigationBar() {
                     <Nav.Item>
                         <Button
                             variant={"outline-light"}
-                            className="m-3 rounded-0"
+                            className="m-2 rounded-0"
                             onClick={() => history.push("/profile")}
                             id='navbutton'
                         >
@@ -27,7 +27,7 @@ export default function NavigationBar() {
                         <Button
                             variant={"outline-light"}
                             onClick={() => history.push("/services")}
-                            className="m-3 rounded-0"
+                            className="m-2 rounded-0"
                             id='navbutton'
                         >
                             BOOK SERVICES
@@ -36,7 +36,7 @@ export default function NavigationBar() {
                     <Nav.Item>
                         <Button
                             variant={"outline-light"}
-                            className="m-3 rounded-0"
+                            className="m-2 rounded-0"
                             onClick={() => history.push("/freeservices")}
                             id='navbutton'
                         >
@@ -47,7 +47,7 @@ export default function NavigationBar() {
                         <Button
                             variant={"outline-light"}
                             onClick={() => history.push("/workshop")}
-                            className="m-3  rounded-0"
+                            className="m-2  rounded-0"
                             id='navbutton'
                         >
                             VIEW WORKSHOP

@@ -1,26 +1,32 @@
-#dropdownMenuButton1{
-    border-radius: 5rem;
-    text-align: center !important;
+#section1{
+    background: -webkit-linear-gradient(to top, #41434559, #141414d5),url(https://images.unsplash.com/photo-1552962730-61f41ae62092?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #41434563, #070707c4),url(https://images.unsplash.com/photo-1552962730-61f41ae62092?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
+     background-position: center;
+    background-size: cover;
+    min-height: 80vh ;
+    
 }
-.btn-dark{
-    border-radius: 0px !important;
-    background-color: rgba(39, 39, 39, 0.568) !important;
-    border: none !important;
+#dropdownbutton{
+    border: yellow;
 }
+#section2{
+    min-height: 80vh ;
+    background: #080808;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #ffc107, #1a1a1a);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #ffc107, #202020); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-
-@media (max-width:600px){
-    #landingPage{
-        min-width:100vw;
-        padding: 2rem;
-        margin:2rem !important;
-    }
 }
-@media (min-width:600px) and (max-width:1400px){
-    #landingPage{
-        min-width: 40vw;
-        padding: 2rem;
-        margin:2rem !important;
-    }
-
+#section3{
+    background: -webkit-linear-gradient(to top, #41434559, #141414d5),url(https://wallpapercave.com/wp/wp7560270.jpg);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #41434563, #070707c4),url(https://wallpapercave.com/wp/wp7560270.jpg); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
+     background-position: center;
+    background-size: cover;
+}
+#servicecard{
+    background: -webkit-linear-gradient(to top, #41434559, #141414d5),url(https://images.unsplash.com/photo-1552962730-61f41ae62092?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #41434563, #070707c4),url(https://images.unsplash.com/photo-1552962730-61f41ae62092?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
+     background-position: center;
+    border: solid black 1px;
+    border-radius: 2rem;
+    color: white;
 }

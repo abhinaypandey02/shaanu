@@ -44,7 +44,7 @@ export default function LoginForm() {
     return (
         <div className="container">
             <div className="col-12 text-center">
-            <h2 className="display-4">Log In</h2>
+            <h2 className="display-4 text-warning">Log In</h2>
             </div>
         <Form onSubmit={onSubmit} noValidate>
             <Form.Group>
@@ -56,6 +56,7 @@ export default function LoginForm() {
                         setEmail((old) => ({ ...old, value: e.target.value }))
                     }
                     type="email"
+                    className='text-light border border-warning rounded-0 bg-transparent'
                 />
                 <Form.Text className="small text-danger">
                     {email.error}
@@ -73,12 +74,13 @@ export default function LoginForm() {
                         }))
                     }
                     type="password"
+                    className='text-light border border-warning rounded-0 bg-transparent'
                 />
                 <Form.Text className="small text-danger">
                     {password.error}
                 </Form.Text>
             </Form.Group>
-            <Button variant="outline-light" type="submit">
+            <Button variant="warning" type="submit">
                 Log In
             </Button>
         </Form>

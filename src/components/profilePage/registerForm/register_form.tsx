@@ -64,7 +64,7 @@ export default function RegisterForm() {
     return (
         <div className="container">
             <div className="col-12 text-center">
-            <h2 className="display-4">Sign Up</h2>
+            <h2 className="display-4 text-warning">Sign Up</h2>
             </div>
             
         <Form onSubmit={onSubmit} noValidate>
@@ -80,6 +80,7 @@ export default function RegisterForm() {
                         }))
                     }
                     type="text"
+                    className='text-light border border-warning rounded-0 bg-transparent'
                 />
                 <Form.Text className="small text-danger">
                     {firstName.error}
@@ -97,6 +98,7 @@ export default function RegisterForm() {
                         }))
                     }
                     type="text"
+                    className='text-light border border-warning rounded-0 bg-transparent'
                 />
                 <Form.Text className="small text-danger">
                     {lastName.error}
@@ -111,6 +113,7 @@ export default function RegisterForm() {
                         setEmail((old) => ({ ...old, value: e.target.value }))
                     }
                     type="email"
+                    className='text-light border border-warning rounded-0 bg-transparent'
                 />
                 <Form.Text className="small text-danger">
                     {email.error}
@@ -128,12 +131,13 @@ export default function RegisterForm() {
                         }))
                     }
                     type="password"
+                    className='text-light border border-warning rounded-0 bg-transparent'
                 />
                 <Form.Text className="small text-danger">
                     {password.error}
                 </Form.Text>
             </Form.Group>
-            <Button variant="outline-light" type="submit">
+            <Button variant="warning" type="submit">
                 Sign Up
             </Button>
         </Form>
