@@ -41,13 +41,13 @@ export default function LandingPage() {
                 </div>
             </div>
          
-        <div className='container-fluid d-flex align-items-center justify-content-center' id='section2'>
-            <div className="container">
-            <div className="row-fluid text-light text-center mb-3">
-                <h1 className='display-5'>Services that make your car perfect.</h1>
+        <div className='container-fluid py-4 d-flex align-items-center justify-content-center' id='section2'>
+            <div className="container p-2 ">
+            <div className="row-fluid text-light text-center">
+                <h1 className='display-5 '>Services that make your car perfect.</h1>
             </div>
             <br/>
-            <div className="row ">
+            <div className="row mt-4">
                 <div className="col-md-4">
                     
                     <div className="card mx-auto" style={{width: 300}} id='servicecard'>
@@ -103,13 +103,13 @@ export default function LandingPage() {
                                                 <div className="col-md-6">
                                                     <div className="card-body ">
                                                         <h5 className="card-title text-warning"><strong>User Name</strong></h5>
-                                                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                        <p className="card-text">This is a wider card with supal content. This content is a little bit longer.</p>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="row text-center text-wrap p-3">
                                                 <div className="col ">
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                            Lorem Ipsum is simply dummy text of thext ap into electronic typeset960s with the release of Letraset shdus Lorem Ipsum.
                                             </div>
                                             </div>
                                         </div>
@@ -123,13 +123,13 @@ export default function LandingPage() {
                                                 <div className="col-md-6">
                                                     <div className="card-body">
                                                         <h5 className="card-title"><strong>User Name</strong></h5>
-                                                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                        <p className="card-text">This t below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="row text-center text-wrap p-3">
                                                 <div className="col">
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                            Lorem Ipsum is simply dummy t. Lorem Ipsum has been type specimen book. It has survived not only five centuries, bing essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                                             </div>
                                             </div>
                                         </div>
@@ -143,13 +143,13 @@ export default function LandingPage() {
                                                 <div className="col-md-6">
                                                     <div className="card-body">
                                                         <h5 className="card-title"><strong>User Name</strong></h5>
-                                                        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                        <p className="card-text">This is a wider caad-in to additional content. This content is a little bit longer.</p>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="row text-center text-wrap p-3">
                                                 <div className="col">
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                            Lorem Ipsum is simply dum text ever sining essentially unchanged. It was populariwith desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                                             </div>
                                             </div>
                                         </div>
@@ -172,17 +172,17 @@ export default function LandingPage() {
                                 </Accordion.Toggle>
                             </Card.Header>
                             <Accordion.Collapse className='border border-warning' eventKey="1">
-                                <Card.Body>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing</Card.Body>
+                                <Card.Body>Lorem Ipsum ied it to make a tronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing</Card.Body>
                             </Accordion.Collapse>
                         </Card>
                         <Card className=' p-0 m-0'>
                             <Card.Header className='bg-dark text-warning  p-0 m-0'>
                                 <Accordion.Toggle as={Card.Header} eventKey="2">
-                                    2. Lorem Ipsum is simply dummy text of the printing and typesetdddddddddddddddddddddddddddasdsadadting industry ?
+                                    2. Lorem Ipsum is simply dummy teddddasdsadadting industry ?
                                 </Accordion.Toggle>
                             </Card.Header>
                             <Accordion.Collapse className='border border-warning' eventKey="2">
-                                <Card.Body>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing</Card.Body>
+                                <Card.Body>Lorem Ipsum is simply duso the leap ie 1960s with the release of Letraset sheets containing</Card.Body>
                             </Accordion.Collapse>
                         </Card>
                         <Card className=' p-0 m-0'>
@@ -192,7 +192,7 @@ export default function LandingPage() {
                                 </Accordion.Toggle>
                             </Card.Header>
                             <Accordion.Collapse className='border border-warning' eventKey="3">
-                                <Card.Body>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing</Card.Body>
+                                <Card.Body>Lorem Ipsum is simplyext ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing</Card.Body>
                             </Accordion.Collapse>
                         </Card>
                         <Card className=' p-0 m-0'>
@@ -202,7 +202,7 @@ export default function LandingPage() {
                                 </Accordion.Toggle>
                             </Card.Header>
                             <Accordion.Collapse className='border border-warning' eventKey="4">
-                                <Card.Body>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing</Card.Body>
+                                <Card.Body>Lorem Ipsum is se the 1500s, when ved not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing</Card.Body>
                             </Accordion.Collapse>
                         </Card>
                         <Card className=' p-0 m-0'>
@@ -212,7 +212,7 @@ export default function LandingPage() {
                                 </Accordion.Toggle>
                             </Card.Header>
                             <Accordion.Collapse className='border border-warning' eventKey="5">
-                                <Card.Body>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing</Card.Body>
+                                <Card.Body>Lorem Ipsum is simply dummy text of the p galley oe centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing</Card.Body>
                             </Accordion.Collapse>
                         </Card>
 

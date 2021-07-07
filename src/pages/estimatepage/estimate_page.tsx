@@ -122,7 +122,7 @@ export default function EstimatePage() {
                     <br />
                     <div className="container pl-2 alert alert-warning rounded-0">
                     <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
-                        <div className="col-md-4 bg-warning text-dark text-left ">
+                        <div className="col-md-4 mb-2 bg-warning text-dark text-left ">
                             FULL NAME
                         </div>
                         <div className="col-md-8">
@@ -135,7 +135,7 @@ export default function EstimatePage() {
                         </div>
                     </div>
                     <div className="row mb-3 d-flex  align-items-center justify-content-center text-light">
-                        <div className="col-md-4 bg-warning text-dark text-left ">
+                        <div className="col-md-4 mb-2 bg-warning text-dark text-left ">
                             PHONE NUMBER
                         </div>
                         <div className="col-md-8">
@@ -148,7 +148,7 @@ export default function EstimatePage() {
                         </div>
                     </div>
                     <div className="row d-flex mb-3 align-items-center justify-content-center text-light">
-                        <div className="col-md-4 bg-warning text-dark text-left ">
+                        <div className="col-md-4 mb-2 bg-warning text-dark text-left ">
                             LOCATION
                         </div>
                         <div className="col-md-8">

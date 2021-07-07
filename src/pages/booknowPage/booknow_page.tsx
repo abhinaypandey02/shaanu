@@ -123,7 +123,7 @@ export default function BooknowPage() {
                     <br />
                    
                         <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
-                            <div className="col-md-4 bg-warning text-dark text-left ">
+                            <div className="col-md-4 mb-2 bg-warning text-dark text-left ">
                                 FULL NAME
                             </div>
                             <div className="col-md-8">
@@ -136,7 +136,7 @@ export default function BooknowPage() {
                             </div>
                         </div>
                         <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
-                            <div className="col-md-4 bg-warning text-dark text-left ">
+                            <div className="col-md-4 mb-2 bg-warning text-dark text-left ">
                                 PHONE NUMBER
                             </div>
                             <div className="col-md-8">
@@ -149,7 +149,7 @@ export default function BooknowPage() {
                             </div>
                         </div>
                         <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
-                            <div className="col-md-4 bg-warning text-dark text-left ">
+                            <div className="col-md-4 mb-2 bg-warning text-dark text-left ">
                                 LOCATION
                             </div>
                             <div className="col-md-8">
@@ -162,15 +162,15 @@ export default function BooknowPage() {
                         </div>
                         
                     <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
-                        <div className="col-md-4 mb-3 bg-warning text-dark text-left ">
+                        <div className="col-md-4 mb-3 mb-2 bg-warning text-dark text-left ">
                             PICK UP CALL AND DATE
                         </div>
                         <div className="col-md-8 text-md-center text-left">
-                            <button type="button" className="btn rounded-0 p-0 btn-outline-warning btn-lg">
+                            <button type="button" className="btn rounded-0 p-0 btn-outline-warning">
                                 {!loading && (
                                     <DatePicker
                                         
-                                        className='rounded-0  m-2 alert alert-warning '
+                                        className='rounded-0 m-2 alert alert-warning '
                                         startDate={startDate}
                                         showTimeSelect
                                         dateFormat="dd-MM-yyyy HH:mm"
