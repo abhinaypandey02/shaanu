@@ -11,7 +11,7 @@ export default function WorkshopPage() {
                     <h1>OUR SERVICES</h1>
                 </div>
             </div>
-            <div className="row d-flex mb-5 justify-content-around">
+            <div className="row d-flex mb-5 justify-content-around px-0">
                 <div className="col-12 col-md-5">
                     <div className="card text-white border rounded-0 border-warning mb-3" id='workshopcard'>
                         <img src="https://images.unsplash.com/photo-1485291571150-772bcfc10da5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" className="card-img-top" alt="..." />
@@ -31,7 +31,7 @@ export default function WorkshopPage() {
                     </div>
                 </div>
             </div>
-            <div className="row d-flex mb-5 justify-content-around">
+            <div className="row d-flex mb-5 justify-content-around px-0">
                 <div className="col-12 col-md-5">
                     <div className="card text-white border rounded-0 border-warning mb-3" id='workshopcard'>
                         <img src="https://images.unsplash.com/photo-1485291571150-772bcfc10da5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" className="card-img-top" alt="..." />
@@ -53,7 +53,7 @@ export default function WorkshopPage() {
             </div>
             </div>
    
-            <div className="container-fluid p-5" id='section3' >
+            <div className="container-fluid py-5" id='section3' >
             <div className="row-fluid text-light p-3 text-center">
                 <h1 className='text-warning'>
                 CUSTOMER REVIEWS
