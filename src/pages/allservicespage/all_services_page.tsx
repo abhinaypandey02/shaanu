@@ -52,7 +52,7 @@ export default function AllServicesPage() {
                 <Modal.Body >
                     <Form.Group>
                         <Form.Control
-                        className='rounded-0'
+                            className='rounded-0'
                             value={selectedSubPlan?.id}
                             onChange={(e) =>
                                 setSelectedSubPlan(
@@ -67,7 +67,7 @@ export default function AllServicesPage() {
                             <option value={undefined}>SELECT PLAN</option>
                             {selectedPlan?.subPlans.map((plan) => (
                                 <option
-                                    className="bg-warning"
+                                    className="bg-warning rounded-0"
                                     key={plan.id}
                                     value={plan.id}
                                 >
@@ -78,7 +78,7 @@ export default function AllServicesPage() {
                     </Form.Group>
                     {selectedSubPlan&&selectedSubPlan.types.length>0 && (
                         <Form.Group>
-                            <Form.Control value={selectedSubPlanType} onChange={e=>setSelectedSubPlanType(e.target.value)} as="select">
+                            <Form.Control className='rounded-0' value={selectedSubPlanType} onChange={e=>setSelectedSubPlanType(e.target.value)} as="select">
                                 <option value={undefined}>Select Type</option>
                                 {selectedSubPlan.types.map((type) => (
                                     <option className='bg-warning' value={type}>{type}</option>
@@ -96,7 +96,8 @@ export default function AllServicesPage() {
                         className="d-flex rounded-0 alert alert-light align-items-center justify-content-center flex-column p-3 text-light"
                         id="cart"
                     >
-                        <div className='alert rounded-0 alert-dark w-100 h-100 pb-4 d-flex justify-content-center  align-items-center flex-column flex-wrap'>
+                        <div className='border border-warning rounded-0 mb-2'>
+                        <div className='alert rounded-0 alert-warning w-100 h-100 pb-4 d-flex justify-content-center  align-items-center flex-column flex-wrap'>
                         <h2 className="display-4">CART</h2>
                         <img
                         src='https://cdn.picpng.com/lamborghini/lamborghini-image-29016.png'
@@ -130,16 +131,21 @@ export default function AllServicesPage() {
                                 CHANGE
                             </Button>
                         </div>
-                        <hr className="w-100 bg-light" />
-                        <div>Total : ₹{cartSum}</div>
-                        <hr className="w-100 bg-light" />
+                        <hr className="w-100 bg-warning" />
+                        <div className="row w-100 m-0 p-2">
+                            <div className='col-auto mx-auto'>Total : ₹{cartSum}</div>
+                        </div>
+                        
+                        
+                    
+                    </div>
                         <div className="d-flex  w-100 flex-column">
                             {globalState.cart.map(({ plan, subPlan,type }) => (
                                 <Container
-                                    className="text-left border border-light my-2 w-100"
+                                    className="text-left p-0 border border-light my-2 w-100"
                                     key={plan.id + subPlan.id}
                                 >
-                                    <h4 className="card-header w-100 flex-wrap d-flex justify-content-between">
+                                    <h4 className="card-header alert alert-warning w-100 flex-wrap d-flex justify-content-between">
                                         <div className="1">
                                             {subPlan.title}{" "}
                                             <span

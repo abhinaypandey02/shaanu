@@ -115,61 +115,62 @@ export default function BooknowPage() {
         });
     }
     return (
-        <div className="container-fluid d-flex flex-grow-1  justify-content-center align-items-center">
+        <div className="container d-flex flex-grow-1 justify-content-center align-items-center">
             <div className="row text-center w-100 ">
-                <div className="col-lg-6 "></div>
 
-                <div className="col-lg-6">
-                    <h1 className="text-light m-3">BOOK NOW</h1>
+                <div className="col-lg-12 pl-2 alert alert-warning text-dark rounded-0">
+                    <h1 className="bg-warning ml-2 my-2">BOOK NOW</h1>
                     <br />
-                    <div className="row mb-3 d-flex  align-items-center justify-content-center text-light">
-                        <div className="col-3 d-flex justify-content-end ">
-                            FULL NAME
+                   
+                        <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
+                            <div className="col-md-4 bg-warning text-dark text-left ">
+                                FULL NAME
+                            </div>
+                            <div className="col-md-8">
+                                <input
+                                    value={fullname}
+                                    onChange={(e) => setFullname(e.target.value)}
+                                    type="text"
+                                    className="form-control bg-transparent border border-warning rounded-0 "
+                                />
+                            </div>
                         </div>
-                        <div className="col-6">
-                            <input
-                                value={fullname}
-                                onChange={(e) => setFullname(e.target.value)}
-                                type="text"
-                                className="form-control"
-                            />
+                        <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
+                            <div className="col-md-4 bg-warning text-dark text-left ">
+                                PHONE NUMBER
+                            </div>
+                            <div className="col-md-8">
+                                <input
+                                    value={phone}
+                                    onChange={(e) => setPhone(e.target.value)}
+                                    type="text"
+                                    className="form-control bg-transparent border border-warning rounded-0 "
+                                />
+                            </div>
                         </div>
-                    </div>
-                    <div className="row mb-3 d-flex  align-items-center justify-content-center text-light">
-                        <div className="col-3 d-flex justify-content-end ">
-                            PHONE NUMBER
+                        <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
+                            <div className="col-md-4 bg-warning text-dark text-left ">
+                                LOCATION
+                            </div>
+                            <div className="col-md-8">
+                                <textarea
+                                    value={location}
+                                    onChange={(e) => setLocation(e.target.value)}
+                                    className="form-control bg-transparent border border-warning rounded-0 "
+                                />
+                            </div>
                         </div>
-                        <div className="col-6">
-                            <input
-                                value={phone}
-                                onChange={(e) => setPhone(e.target.value)}
-                                type="text"
-                                className="form-control"
-                            />
-                        </div>
-                    </div>
-
-                    <div className="row d-flex mb-3 align-items-center justify-content-center text-light">
-                        <div className="col-3 d-flex justify-content-end ">
-                            LOCATION
-                        </div>
-                        <div className="col-6 ">
-                            <textarea
-                                value={location}
-                                onChange={(e) => setLocation(e.target.value)}
-                                className="form-control"
-                                aria-label="With textarea"
-                            ></textarea>
-                        </div>
-                    </div>
-                    <div className="row mb-3 d-flex  align-items-center justify-content-center text-light">
-                        <div className="col-3 d-flex justify-content-end ">
+                        
+                    <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
+                        <div className="col-md-4 mb-3 bg-warning text-dark text-left ">
                             PICK UP CALL AND DATE
                         </div>
-                        <div className="col-6 text-left">
-                            <button type="button" className="btn btn-sm">
+                        <div className="col-md-8 text-md-center text-left">
+                            <button type="button" className="btn rounded-0 p-0 btn-outline-warning btn-lg">
                                 {!loading && (
                                     <DatePicker
+                                        
+                                        className='rounded-0  m-2 alert alert-warning '
                                         startDate={startDate}
                                         showTimeSelect
                                         dateFormat="dd-MM-yyyy HH:mm"
@@ -230,17 +231,20 @@ export default function BooknowPage() {
                             </button>
                         </div>
                     </div>
-                    <button
-                        type="submit"
-                        className="btn btn-lg btn-outline-light m-3"
-                        onClick={() => {
-                            history.push("/appointmentslot");
-                            addBookedSessionLocal();
-                        }}
-                        disabled={disabled}
-                    >
-                        Book
-                    </button>
+                    <div className="row">
+                        <button
+                            type="submit"
+                            className="btn btn-lg btn-warning rounded-0 ml-auto m-3"
+                            onClick={() => {
+                                history.push("/appointmentslot");
+                                addBookedSessionLocal();
+                            }}
+                            disabled={disabled}
+                        >
+                            Book
+                        </button>
+                    </div>
+                    
                 </div>
             </div>
         </div>

@@ -60,19 +60,19 @@ export default function EstimatePage() {
         });
     }, [user, cart]);
     return (
-        <div className="container-fluid d-flex flex-grow-1  justify-content-center align-items-center">
+        <div className="container-fluid d-flex flex-grow-1  justify-content-center align-items-center" id='allpagesection'>
             <Modal
+            contentClassName='bg-dark border border-warning p-0 rounded-0'
                 centered={true}
                 show={showConfirmationModal}
                 onHide={() => setShowConfirmationModal(false)}
             >
-                <Modal.Header closeButton={true}></Modal.Header>
-                <Modal.Body className="text-center">
+                <Modal.Header className='bg-warning rounded-0' closeButton={true}></Modal.Header>
+                <Modal.Body className="text-center text-warning">
                     <h1>THANKS FOR CHOOSING</h1>
-                    <br />
                     <h1>CAR PLUS</h1>
-                    <br />
-                    <Button onClick={() => history.push("/freeservices")}>
+                  
+                    <Button className='btn-warning rounded-0' onClick={() => history.push("/freeservices")}>
                         Add 100% Free Servics
                     </Button>
                 </Modal.Body>
@@ -107,65 +107,70 @@ export default function EstimatePage() {
                     <button
                         onClick={() => history.push("/profile")}
                         type="button"
-                        className="btn btn-lg m-3 btn-outline-light"
+                        className="btn btn-lg m-3 btn-warning rounded-0"
                     >
                         Create your car's profile
                     </button>
                     <button
                         onClick={() => history.push("/booknow")}
                         type="button"
-                        className="btn btn-lg m-3 btn-outline-light"
+                        className="btn btn-lg m-3 btn-outline-warning rounded-0"
                     >
                         Book Now
                     </button>
-                    <h1 className="text-light">OR</h1>
+                    <h1 className="text-warning">OR</h1>
                     <br />
-                    <div className="row mb-3 d-flex  align-items-center justify-content-center text-light">
-                        <div className="col-3 d-flex justify-content-end ">
+                    <div className="container pl-2 alert alert-warning rounded-0">
+                    <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
+                        <div className="col-md-4 bg-warning text-dark text-left ">
                             FULL NAME
                         </div>
-                        <div className="col-6">
+                        <div className="col-md-8">
                             <input
                                 value={fullname}
                                 onChange={(e) => setFullname(e.target.value)}
                                 type="text"
-                                className="form-control"
+                                className="form-control bg-transparent border border-warning rounded-0 "
                             />
                         </div>
                     </div>
                     <div className="row mb-3 d-flex  align-items-center justify-content-center text-light">
-                        <div className="col-3 d-flex justify-content-end ">
+                        <div className="col-md-4 bg-warning text-dark text-left ">
                             PHONE NUMBER
                         </div>
-                        <div className="col-6">
+                        <div className="col-md-8">
                             <input
                                 value={phone}
                                 onChange={(e) => setPhone(e.target.value)}
                                 type="text"
-                                className="form-control"
+                                className="form-control bg-transparent border border-warning rounded-0 "
                             />
                         </div>
                     </div>
                     <div className="row d-flex mb-3 align-items-center justify-content-center text-light">
-                        <div className="col-3 d-flex justify-content-end ">
+                        <div className="col-md-4 bg-warning text-dark text-left ">
                             LOCATION
                         </div>
-                        <div className="col-6 ">
+                        <div className="col-md-8">
                             <textarea
                                 value={location}
                                 onChange={(e) => setLocation(e.target.value)}
-                                className="form-control"
+                                className="form-control bg-transparent border border-warning rounded-0 "
                                 aria-label="With textarea"
                             ></textarea>
                         </div>
                     </div>
+                    <div className="row-fluid text-right p-0">
                     <button
                         type="submit"
-                        className="btn btn-lg mx-auto btn-outline-light m-3"
+                        className="btn btn-lg mx-auto btn-warning rounded-0 pr-3 m-2"
                         onClick={() => addCallbackRequestLocal()}
                     >
                         Request A Callback
                     </button>
+                    </div>
+                    
+                    </div>
                 </div>
             </div>
         </div>

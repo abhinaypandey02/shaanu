@@ -16,14 +16,14 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #ffc107;
 
 
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(190, 190, 190);
+  background: #cc9a06;
 }
 .pointer-on-hover{
   cursor: pointer;
