@@ -1,4 +1,3 @@
-import { url } from 'node:inspector';
 import React from 'react';
 import { Accordion, Card, Carousel } from 'react-bootstrap';
 import CarsMenu from '../../components/carsMenu/cars_menu';
@@ -24,7 +23,7 @@ export default function LandingPage() {
                    
                         <div className='row my-2 text-center'>
                                 <Accordion className='w-50 mx-auto border border-warning text-light' id='dropdownbutton'>
-                                    <Card className='m-0'>
+                                    <Card className='m-0 pointer-on-hover'>
                                         <Card.Header className='p-0 m-0'>
                                             <Accordion.Toggle as={Card.Header} eventKey="0">
                                                     SELECT {currentlySelecting}

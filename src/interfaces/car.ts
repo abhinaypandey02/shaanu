@@ -10,6 +10,13 @@ export interface CarBrand{
     models:CarModel[];
     imageURL:string;
 }
+export interface CarInterface{
+    id:string;
+    brand:string;
+    model:string;
+    segment:string;
+    fuel:string;
+}
 export interface CarProfile{
     name:string;
     regNo:string;

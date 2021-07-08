@@ -1,19 +1,18 @@
-import React, { createContext, Dispatch, useContext, useReducer } from "react";
-import { CarBrand, CarModel } from "../interfaces/car";
-import { Plan, SubPlan } from "../interfaces/plan";
+import React, {createContext, Dispatch, useContext, useReducer} from "react";
+import {CarBrand, CarModel} from "../interfaces/car";
 
 export interface GlobalStateInterface {
     selectedBrand: CarBrand["id"] | null;
     selectedModel: CarModel["id"] | null;
     selectedType: string | null;
-    cart:{plan:Plan;subPlan:SubPlan,type:string}[]
+    cart: { id:string, brand: string; model: string, fuel: string, category: string, service: { name: string, price: number } }[]
 }
 
 const initialState: GlobalStateInterface = {
     selectedBrand: null,
     selectedModel: null,
     selectedType: null,
-    cart:[]
+    cart: []
 };
 
 function reducer(
@@ -22,32 +21,34 @@ function reducer(
 ): GlobalStateInterface {
     switch (action.type) {
         case "SET_BRAND":
-            return { ...state, selectedBrand: action.payload };
+            return {...state, selectedBrand: action.payload};
         case "SET_MODEL":
-            return { ...state, selectedModel: action.payload };
+            return {...state, selectedModel: action.payload};
         case "SET_TYPE":
-            return { ...state, selectedType: action.payload };
+            return {...state, selectedType: action.payload};
         case "CLEAR_SELECTION":
-            return {...state,selectedBrand:null,selectedModel:null,selectedType:null}
-        case "ADD_TO_CART":{
-            if(state.cart.some(item=>item.subPlan.id===action.payload.subPlan.id))return state;
-            return {...state,cart:[...state.cart,action.payload]} 
+            return {...state, selectedBrand: null, selectedModel: null, selectedType: null}
+        case "ADD_TO_CART": {
+            if (state.cart.some(item =>
+                item.id === action.payload.id
+            )) return state;
+            return {...state, cart: [...state.cart, action.payload]}
         }
         case "REMOVE_FROM_CART":
-            return {...state,cart:state.cart.filter(cartItem=>cartItem.subPlan.id!==action.payload)} 
+            return {...state, cart: state.cart.filter(cartItem => cartItem.id !== action.payload)}
         default:
             return state;
     }
 }
 
-export const globalState = createContext<[GlobalStateInterface , any]>([initialState,undefined]);
+export const globalState = createContext<[GlobalStateInterface, any]>([initialState, undefined]);
 
-export function useGlobalState(): [GlobalStateInterface , Dispatch<{ type: string; payload: any; }>] {
+export function useGlobalState(): [GlobalStateInterface, Dispatch<{ type: string; payload: any; }>] {
     return useContext(globalState);
 }
 
-export default function GlobalState({ children }: any) {
-    const [state, dispatch]= useReducer(
+export default function GlobalState({children}: any) {
+    const [state, dispatch] = useReducer(
         reducer,
         initialState
     );
