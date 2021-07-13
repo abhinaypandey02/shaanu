@@ -96,7 +96,7 @@ export default function BooknowPage() {
     }, [availableDays]);
 
     function addBookedSessionLocal() {
-        const rand = Math.floor(1000 + Math.random() * 9000);
+        const rand = new Date().getTime();
 
         const tempSession: BookedSession = {
             id: uid(),
