@@ -8,16 +8,19 @@ import {addCallbackRequest} from "../../utils/firebase/firestore";
 import CallbackRequest from "../../interfaces/callbackRequest";
 import {useForm} from "react-hook-form";
 import { PDFReader } from 'reactjs-pdf-reader';
+import {getErrorText} from "../../utils/globalFunctions";
+
+
+
+
 export default function EstimatePage() {
     const history = useHistory();
     const [{cart}] = useGlobalState();
     const [user] = useUser();
     const [showConfirmationModal, setShowConfirmationModal] = useState(false);
     const [link, setLink] = useState("");
-    const {register} = useForm();
-    const [fullname, setFullname] = useState("");
-    const [phone, setPhone] = useState("");
-    const [location, setLocation] = useState("");
+    const {register,handleSubmit, reset,formState:{errors}} = useForm();
+    console.log(errors );
     const [notLoggedInModalShow,setNotLoggedInModalShow]=useState(false);
 
     function onDownload(){
@@ -29,12 +32,10 @@ export default function EstimatePage() {
         }
     }
 
-    function addCallbackRequestLocal() {
+    function addCallbackRequestLocal({phone,location,fullname}:{phone:number,location:string,fullname:string}) {
         const request: CallbackRequest = {fullname, phone, location, date: new Date().toISOString()};
         addCallbackRequest(request).then(() => {
-            setFullname("");
-            setPhone("");
-            setLocation("");
+            reset();
             setShowConfirmationModal(true);
         });
     }
@@ -152,27 +153,32 @@ export default function EstimatePage() {
                     </button>
                     <h1 className="text-warning">OR</h1>
                     <br/>
-                    <div className="container pl-2 alert alert-warning rounded-0">
+                    <form onSubmit={handleSubmit(addCallbackRequestLocal)} className="container pl-2 alert alert-warning rounded-0">
                         <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
                             <div className="col-md-4 mb-2 bg-warning text-dark text-left ">
                                 FULL NAME
                             </div>
                             <div className="col-md-8">
                                 <input
-                                    {...register("fullname")}
+                                    placeholder="Full Name"
+                                    {...register("fullname",{required:true})}
                                     className="form-control bg-transparent border border-warning rounded-0 "
                                 />
                             </div>
+                            <small className="text-danger">{getErrorText(errors.fullname?.type)}</small>
                         </div>
+
                         <div className="row mb-3 d-flex  align-items-center justify-content-center text-light">
                             <div className="col-md-4 mb-2 bg-warning text-dark text-left ">
                                 PHONE NUMBER
                             </div>
                             <div className="col-md-8">
                                 <input
-                                    {...register("phone")}
+                                    type="number"
+                                    {...register("phone",{required:true,valueAsNumber:true,minLength:10})}
                                     className="form-control bg-transparent border border-warning rounded-0 "
                                 />
+                                <small className="text-danger">{getErrorText(errors.phone?.type)}</small>
                             </div>
                         </div>
                         <div className="row d-flex mb-3 align-items-center justify-content-center text-light">
@@ -181,23 +187,23 @@ export default function EstimatePage() {
                             </div>
                             <div className="col-md-8">
                             <textarea
-                                {...register("location")}
+                                {...register("location",{required:true})}
                                 className="form-control bg-transparent border border-warning rounded-0 "
                                 aria-label="With textarea"
                             />
                             </div>
+                            <small className="text-danger">{getErrorText(errors.location?.type)}</small>
                         </div>
                         <div className="row-fluid text-right p-0">
                             <button
                                 type="submit"
                                 className="btn btn-lg mx-auto btn-warning rounded-0 pr-3 m-2"
-                                onClick={() => addCallbackRequestLocal()}
                             >
                                 Request A Callback
                             </button>
                         </div>
 
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

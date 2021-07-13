@@ -1,6 +1,6 @@
 export default interface CallbackRequest {
     fullname: string;
-    phone: string;
+    phone: number;
     location: string;
     date:string;
 }
