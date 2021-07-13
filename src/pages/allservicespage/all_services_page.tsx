@@ -67,16 +67,14 @@ export default function AllServicesPage() {
                             <option value={undefined}>SELECT PLAN</option>
                             {selectedPlan && plans[selectedPlan].map((plan: any, index: number) => (
                                 <option
-                                    className="bg-warning rounded-0"
+                                    className="bg-warning rounded-0 d-flex justify-content-between"
                                     key={plan.name}
                                     value={index}
                                 >
-                                    {plan.name}
+                                        {plan.name} - Rs.{plan.price}
                                 </option>
                             ))}
                         </Form.Control>
-                        {selectedPlan && selectedSubPlan!=undefined &&
-                        <Form.Text className="text-white">Rs. {plans[selectedPlan][selectedSubPlan].price}</Form.Text>}
                     </Form.Group>
 
                     {selectedSubPlan!=undefined && <Button variant='warning' className='rounded-0' onClick={onPlanSelect}>

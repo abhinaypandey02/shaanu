@@ -6,6 +6,7 @@ import {useGlobalState} from "../../contexts/global_state";
 import {useUser} from "../../contexts/user_context";
 import {addCallbackRequest} from "../../utils/firebase/firestore";
 import CallbackRequest from "../../interfaces/callbackRequest";
+import {useForm} from "react-hook-form";
 
 export default function EstimatePage() {
     const history = useHistory();
@@ -13,6 +14,7 @@ export default function EstimatePage() {
     const [user] = useUser();
     const [showConfirmationModal, setShowConfirmationModal] = useState(false);
     const [link, setLink] = useState("");
+    const {register,handleSubmit} = useForm();
     const [fullname, setFullname] = useState("");
     const [phone, setPhone] = useState("");
     const [location, setLocation] = useState("");
@@ -131,9 +133,7 @@ export default function EstimatePage() {
                             </div>
                             <div className="col-md-8">
                                 <input
-                                    value={fullname}
-                                    onChange={(e) => setFullname(e.target.value)}
-                                    type="text"
+                                    {...register("fullname")}
                                     className="form-control bg-transparent border border-warning rounded-0 "
                                 />
                             </div>
@@ -144,9 +144,7 @@ export default function EstimatePage() {
                             </div>
                             <div className="col-md-8">
                                 <input
-                                    value={phone}
-                                    onChange={(e) => setPhone(e.target.value)}
-                                    type="text"
+                                    {...register("phone")}
                                     className="form-control bg-transparent border border-warning rounded-0 "
                                 />
                             </div>
@@ -157,8 +155,7 @@ export default function EstimatePage() {
                             </div>
                             <div className="col-md-8">
                             <textarea
-                                value={location}
-                                onChange={(e) => setLocation(e.target.value)}
+                                {...register("location")}
                                 className="form-control bg-transparent border border-warning rounded-0 "
                                 aria-label="With textarea"
                             />
