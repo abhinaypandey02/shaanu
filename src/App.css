@@ -87,11 +87,3 @@
     min-width: 100% !important;
   }
 }
-tr,td{
-  border:2px white solid;
-  color: white;
-}
-th{
-  border:2px white solid;
-  color:black !important;
-}

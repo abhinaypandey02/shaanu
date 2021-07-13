@@ -46,21 +46,26 @@ export default function ProfilePage() {
     }
     return (
         <div className="container-fluid">
-            <Modal show={showCreateCarProfile} centered onHide={() => setShowCreateCarProfile(false)} >
-                <Modal.Header closeButton>Create Car Profile</Modal.Header>
-                <Modal.Body>
+            <Modal 
+            
+            show={showCreateCarProfile} centered onHide={() => setShowCreateCarProfile(false)} >
+                <Modal.Header className='bg-warning border border-warning rounded-0 text-dark' closeButton>Create Car Profile</Modal.Header>
+                <Modal.Body className='bg-dark text-warning'>
                     <CreateCarProfile />
                 </Modal.Body>
 
             </Modal>
             <div className="row-fluid mb-4 text-center">
-                <h1 className='text-light'>PROFILE</h1>
+                <h1 className='text-warning'>YOUR PROFILE</h1>
             </div>
-            {user.carProfiles.length>0&&<div className="d-flex align-items-center col-12 col-md-6">
-                <div className="text-white w-25">Current Profile</div>
-            <select className="form-control" onChange={e=>setCurrentCarProfile(user.carProfiles[parseInt(e.target.value)])}>
-                {user.carProfiles.map((profile,index)=><option value={index}>{profile.name}</option>)}
-            </select>
+            {user.carProfiles.length>0&&<div className="container d-flex justify-content-center align-items-center">
+                <div className='col-md-6 mb-5'>
+                    <div className="text-white w-25">Current Profile</div>
+                    <select className="form-control bg-warning text-dark rounded-0" onChange={e=>setCurrentCarProfile(user.carProfiles[parseInt(e.target.value)])}>
+                        {user.carProfiles.map((profile,index)=><option value={index}>{profile.name}</option>)}
+                    </select>
+                </div>
+                
             </div>}
             
             <div className="row">
@@ -68,31 +73,32 @@ export default function ProfilePage() {
                     <div className="col">
                         <div className="row-fluid mt-auto">
                             {currentCarProfile&&<table className="table text-light text-center table-bordered">
-                                <tbody>
+                                <tbody className=''>
+
                                     <tr>
-                                        <th scope="col">CAR'S NAME</th>
+                                        <th className='text-warning' scope="row">CAR'S NAME</th>
                                         <td>{currentCarProfile.name}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">REGISTRATION NUMBER.</th>
+                                        <th className='text-warning' scope="row">REGISTRATION NUMBER.</th>
                                         <td>{currentCarProfile.regNo}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">NEXT SERVICE DUE DATE</th>
+                                        <th className='text-warning' scope="row">NEXT SERVICE DUE DATE</th>
                                         <td>12/24/2002</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">INSURANCE DUE DATE</th>
+                                        <th className='text-warning' scope="row">INSURANCE DUE DATE</th>
                                         <td>{currentCarProfile.insuranceDate}</td>
                                     </tr>
                                 </tbody>
                             </table>}
                         </div>
                         <div className="row-fluid text-center ">
-                            <button onClick={() => setShowCreateCarProfile(true)} className="btn m-2 btn-light">
+                            <button onClick={() => setShowCreateCarProfile(true)} className="btn m-2 btn-warning rounded-0">
                                 CREATE NEW CAR PROFILE
                             </button>
-                            <button onClick={signOut} className="btn m-2 btn-danger">
+                            <button onClick={signOut} className="btn m-2 btn-danger rounded-0">
                                 SIGN OUT
                             </button>
                         </div>
@@ -103,7 +109,7 @@ export default function ProfilePage() {
                     {currentCarProfile&&currentCarProfile.imageURL&&<img
                         src={currentCarProfile.imageURL}
                         alt={currentCarProfile.name}
-                        className="img-fluid w-75 m-2 border rounded-lg"
+                        className="img-fluid w-50 m-2 border-warning border rounded-0"
                     />}
                 </div>
             </div>

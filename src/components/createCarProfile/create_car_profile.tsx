@@ -123,6 +123,7 @@ export default function CreateCarProfile() {
                 <Form.Group>
                     <Form.Label>{value.name}</Form.Label>
                     <Form.Control
+                        className='rounded-0'
                         value={value.value}
                         onChange={(e) =>
                             setFunctions[index]((old) => ({
@@ -168,7 +169,7 @@ export default function CreateCarProfile() {
                     />
                 </div>
             </Form.Group>
-            <Button disabled={loading} type="submit">Create Profile</Button>
+            <Button disabled={loading} variant='warning' className='rounded-0' type="submit">Create Profile</Button>
         </Form>
     );
 }
