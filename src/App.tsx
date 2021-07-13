@@ -49,14 +49,12 @@ function App() {
                     <Route path="/faq">
                         <FaqPage />
                     </Route>
-                    <Route path="/booknow">
-                        <BooknowPage />
+                    <Route component={BooknowPage} path="/booknow">
                     </Route>
                     <Route path="/freeservices">
                         <FreeServices/>
                     </Route>
-                    <Route path="/appointmentslot">
-                        <AppointmentSlot/>
+                    <Route path="/appointmentslot" component={AppointmentSlot}>
                     </Route>
                     <Route path="/job/:jobID">
                         <Job/>

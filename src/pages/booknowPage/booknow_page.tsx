@@ -96,22 +96,27 @@ export default function BooknowPage() {
     }, [availableDays]);
 
     function addBookedSessionLocal() {
+        const rand = Math.floor(1000 + Math.random() * 9000);
+
         const tempSession: BookedSession = {
             id: uid(),
             fullname,
             location,
             phone,
+            dateTime:startDate.getTime(),
+            token:rand,
             year: startDate.getFullYear(),
             month: startDate.getMonth() + 1,
             day: startDate.getDate(),
             hours: startDate.getHours(),
             minutes: startDate.getMinutes(),
         };
-        const rand = Math.floor(1000 + Math.random() * 9000);
 
         addBookedSession(tempSession).then(() => {
             updateMonths();
-            alert(`SESSION BOOKED! Your token is ${rand}`);
+            history.push({pathname:"/appointmentslot",state:{
+                    tempSession
+                }});
         });
     }
     return (
@@ -236,7 +241,7 @@ export default function BooknowPage() {
                             type="submit"
                             className="btn btn-lg btn-warning rounded-0 ml-auto m-3"
                             onClick={() => {
-                                history.push("/appointmentslot");
+
                                 addBookedSessionLocal();
                             }}
                             disabled={disabled}

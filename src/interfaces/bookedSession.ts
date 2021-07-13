@@ -8,5 +8,6 @@ export interface BookedSession{
     fullname:string;
     phone:string;
     location:string;
-    
+    token:number,
+    dateTime:number
 }
