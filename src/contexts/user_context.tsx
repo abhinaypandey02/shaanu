@@ -3,7 +3,7 @@ import UserInterface from '../interfaces/user';
 import fire from '../utils/firebase/fire'
 import { getUserDocument } from '../utils/firebase/firestore';
 import 'firebase/auth';
-const USER_CONTEXT=createContext<[UserInterface|null|undefined,any]>([null,null]);
+const USER_CONTEXT=createContext<[UserInterface|null|undefined,any]>([undefined,null]);
 
 export function useUser(){
     return useContext(USER_CONTEXT);

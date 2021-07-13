@@ -18,6 +18,16 @@ export default function EstimatePage() {
     const [fullname, setFullname] = useState("");
     const [phone, setPhone] = useState("");
     const [location, setLocation] = useState("");
+    const [notLoggedInModalShow,setNotLoggedInModalShow]=useState(false);
+
+    function onDownload(){
+        if(user){
+            document.getElementById('downloadInvoice')?.click();
+        } else {
+            console.log(2)
+            setNotLoggedInModalShow(true);
+        }
+    }
 
     function addCallbackRequestLocal() {
         const request: CallbackRequest = {fullname, phone, location, date: new Date().toISOString()};
@@ -83,6 +93,18 @@ export default function EstimatePage() {
                     </Button>
                 </Modal.Body>
             </Modal>
+            <Modal
+                contentClassName='bg-dark border border-warning p-0 rounded-0'
+                centered={true}
+                show={notLoggedInModalShow}
+                onHide={() => setNotLoggedInModalShow(false)}
+            >
+                <Modal.Header className='bg-warning rounded-0' closeButton={true}>NOT LOGGED IN</Modal.Header>
+                <Modal.Body className="text-center text-warning">
+                    <h1>login krle </h1>
+
+                </Modal.Body>
+            </Modal>
             <div className="row text-center w-100 ">
                 <div className="col-lg-6 ">
                     {link !== "" && (
@@ -97,10 +119,16 @@ export default function EstimatePage() {
                         <a
                             download="invoice.pdf"
                             href={link}
-                            className="btn m-3 btn btn-outline-light"
-                        >
-                            DOWNLOAD PDF
-                        </a>
+                            id="downloadInvoice"
+
+                            className="d-none"
+                        />
+
+                    )}
+                    {link!==""&&(
+                        <button onClick={onDownload} className="btn btn-outline-light m-3">
+                            DOWNLOAD PDF2
+                        </button>
                     )}
                     {link === "" && (
                         <div className="display-4 text-info">
