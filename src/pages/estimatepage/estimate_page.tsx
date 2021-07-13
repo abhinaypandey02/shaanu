@@ -7,14 +7,14 @@ import {useUser} from "../../contexts/user_context";
 import {addCallbackRequest} from "../../utils/firebase/firestore";
 import CallbackRequest from "../../interfaces/callbackRequest";
 import {useForm} from "react-hook-form";
-
+import { PDFReader } from 'reactjs-pdf-reader';
 export default function EstimatePage() {
     const history = useHistory();
     const [{cart}] = useGlobalState();
     const [user] = useUser();
     const [showConfirmationModal, setShowConfirmationModal] = useState(false);
     const [link, setLink] = useState("");
-    const {register,handleSubmit} = useForm();
+    const {register} = useForm();
     const [fullname, setFullname] = useState("");
     const [phone, setPhone] = useState("");
     const [location, setLocation] = useState("");
@@ -106,15 +106,13 @@ export default function EstimatePage() {
                 </Modal.Body>
             </Modal>
             <div className="row text-center w-100 ">
-                <div className="col-lg-6 ">
-                    {link !== "" && (
-                        <iframe
-                            style={{height: 1000}}
-                            className="w-100 "
-                            title="pdf"
-                            src={link}
-                        />
-                    )}
+                <div className="col-lg-6 py-3">
+                    {link!==""&&
+                    <div style={{overflow:"hidden",maxWidth:"100%"}}>
+                        <PDFReader scale={1} url={link}/>
+                    </div>
+                    }
+
                     {link !== "" && (
                         <a
                             download="invoice.pdf"
@@ -127,7 +125,7 @@ export default function EstimatePage() {
                     )}
                     {link!==""&&(
                         <button onClick={onDownload} className="btn btn-outline-light m-3">
-                            DOWNLOAD PDF2
+                            DOWNLOAD PDF
                         </button>
                     )}
                     {link === "" && (
