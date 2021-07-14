@@ -8,7 +8,8 @@ import {
 } from "../../utils/firebase/firestore";
 import { BookedSession } from "../../interfaces/bookedSession";
 import { v4 as uid } from "uuid";
-
+import {useForm} from 'react-hook-form';
+import {getErrorText} from "../../utils/globalFunctions";
 const today = new Date();
 
 export default function BooknowPage() {
@@ -21,9 +22,7 @@ export default function BooknowPage() {
     const [loading, setLoading] = useState(true);
     const [availableDays, setAvailableDays] = useState<any>({});
     const [disabled, setDisabled] = useState(false);
-    const [fullname, setFullname] = useState("");
-    const [phone, setPhone] = useState("");
-    const [location, setLocation] = useState("");
+    const {register,handleSubmit,formState:{errors}}=useForm();
 
     function checkDisabled() {
         if (availableDays[startDate.getDate().toString()]) {
@@ -95,7 +94,7 @@ export default function BooknowPage() {
         //eslint-disable-next-line
     }, [availableDays]);
 
-    function addBookedSessionLocal() {
+    function addBookedSessionLocal({fullname,phone,location}:{fullname:string,phone:number,location:string}) {
         const rand = new Date().getTime();
 
         const tempSession: BookedSession = {
@@ -123,7 +122,7 @@ export default function BooknowPage() {
         <div className="container d-flex flex-grow-1 justify-content-center align-items-center">
             <div className="row text-center w-100 ">
 
-                <div className="col-lg-12 pl-2 alert alert-warning text-dark rounded-0">
+                <form onSubmit={handleSubmit(addBookedSessionLocal)} className="col-lg-12 pl-2 alert alert-warning text-dark rounded-0">
                     <h1 className="bg-warning ml-2 my-2">BOOK NOW</h1>
                     <br />
                    
@@ -133,11 +132,11 @@ export default function BooknowPage() {
                             </div>
                             <div className="col-md-8">
                                 <input
-                                    value={fullname}
-                                    onChange={(e) => setFullname(e.target.value)}
+                                    {...register("fullname",{required:true})}
                                     type="text"
                                     className="form-control bg-transparent border border-warning rounded-0 "
                                 />
+                                <div className="small text-danger text-left">{getErrorText(errors.fullname?.type)}</div>
                             </div>
                         </div>
                         <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
@@ -146,11 +145,11 @@ export default function BooknowPage() {
                             </div>
                             <div className="col-md-8">
                                 <input
-                                    value={phone}
-                                    onChange={(e) => setPhone(e.target.value)}
-                                    type="text"
+                                    {...register("phone",{required:true,minLength:10})}
+                                    type="number"
                                     className="form-control bg-transparent border border-warning rounded-0 "
                                 />
+                                <div className="small text-danger text-left">{getErrorText(errors.phone?.type)}</div>
                             </div>
                         </div>
                         <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
@@ -159,10 +158,10 @@ export default function BooknowPage() {
                             </div>
                             <div className="col-md-8">
                                 <textarea
-                                    value={location}
-                                    onChange={(e) => setLocation(e.target.value)}
+                                    {...register("location",{required:true})}
                                     className="form-control bg-transparent border border-warning rounded-0 "
                                 />
+                                <div className="small text-danger text-left">{getErrorText(errors.location?.type)}</div>
                             </div>
                         </div>
                         
@@ -240,17 +239,13 @@ export default function BooknowPage() {
                         <button
                             type="submit"
                             className="btn btn-lg btn-warning rounded-0 ml-auto m-3"
-                            onClick={() => {
-
-                                addBookedSessionLocal();
-                            }}
                             disabled={disabled}
                         >
                             Book
                         </button>
                     </div>
                     
-                </div>
+                </form>
             </div>
         </div>
     );

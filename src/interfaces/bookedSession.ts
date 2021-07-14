@@ -6,7 +6,7 @@ export interface BookedSession{
     hours:number;
     minutes:number;
     fullname:string;
-    phone:string;
+    phone:number;
     location:string;
     token:number,
     dateTime:number

@@ -32,7 +32,6 @@ export default function JobsTab({ setTab }: { setTab: Function }) {
                         <th>Avg KMS/day</th>
                         <th>Car Maker</th>
                         <th>Car Model</th>
-                        <th>Car Variant</th>
                         <th>Car Year</th>
                         <th>Vehicle Colour</th>
                         <th>Fuel Type</th>
@@ -41,17 +40,16 @@ export default function JobsTab({ setTab }: { setTab: Function }) {
                     </tr>
                     </thead>
                     <tbody>
-                    {jobs.map((job: any) => (
+                    {jobs.map((job: JobInterface) => (
                         <tr key={job.id} className="row-fluid jobTable">
-                            <td>{job["Registration No"]}</td>
-                            <td>{job["Odometer"]}</td>
-                            <td>{job["Avg KMS/day"]}</td>
-                            <td>{job["Car Maker"]}</td>
-                            <td>{job["Car Model"]}</td>
-                            <td>{job["Car Variant"]}</td>
-                            <td>{job["Car Year"]}</td>
-                            <td>{job["Vehicle Colour"]}</td>
-                            <td>{job["Fuel Type"]}</td>
+                            <td>{job.regNo}</td>
+                            <td>{job.odometer}</td>
+                            <td>{job.avg}</td>
+                            <td className="text-capitalize">{job.brand}</td>
+                            <td className="text-capitalize">{job.model}</td>
+                            <td>{job.year}</td>
+                            <td>{job.color}</td>
+                            <td className="text-capitalize">{job.fuel}</td>
                             <td>
                                 <Button
                                     onClick={() => his.push("/job/" + job.id)}

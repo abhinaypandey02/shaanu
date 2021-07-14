@@ -5,8 +5,8 @@ export default function AppointmentSlot({location}:any) {
     const history=useHistory();
     if(location.state&&location.state.tempSession){
         const bookedSession:BookedSession=location.state.tempSession;
-        console.log(bookedSession)
         const date=new Date(bookedSession.dateTime);
+        date.setMinutes(bookedSession.minutes, 0, 0);
         return (
             <div id="yay" className="container mt-3 text-light ">
                 <div className="row ">

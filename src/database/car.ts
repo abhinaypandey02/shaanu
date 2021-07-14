@@ -1,6 +1,5 @@
-import { CarBrand } from "../interfaces/car";
 
-export function getBrands(): CarBrand[] {
+export function getBrands(): any {
     return [
         {
             name: "Hyundai",

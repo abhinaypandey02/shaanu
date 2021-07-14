@@ -62,7 +62,7 @@ export default function ProfilePage() {
                 <div className='col-md-6 mb-5'>
                     <div className="text-white w-25">Current Profile</div>
                     <select className="form-control bg-warning text-dark rounded-0" onChange={e=>setCurrentCarProfile(user.carProfiles[parseInt(e.target.value)])}>
-                        {user.carProfiles.map((profile,index)=><option value={index}>{profile.name}</option>)}
+                        {user.carProfiles.map((profile,index)=><option value={index}>{profile.brand.toUpperCase()} {profile.model.toUpperCase()}</option>)}
                     </select>
                 </div>
                 
@@ -76,8 +76,8 @@ export default function ProfilePage() {
                                 <tbody className=''>
 
                                     <tr>
-                                        <th className='text-warning' scope="row">CAR'S NAME</th>
-                                        <td>{currentCarProfile.name}</td>
+                                        <th className='text-warning ' scope="row">CAR'S NAME</th>
+                                        <td className="text-capitalize">{currentCarProfile.brand} {currentCarProfile.model}</td>
                                     </tr>
                                     <tr>
                                         <th className='text-warning' scope="row">REGISTRATION NUMBER.</th>
@@ -108,7 +108,7 @@ export default function ProfilePage() {
                 <div className="col-lg-6 d-flex justify-content-center">
                     {currentCarProfile&&currentCarProfile.imageURL&&<img
                         src={currentCarProfile.imageURL}
-                        alt={currentCarProfile.name}
+                        alt={currentCarProfile.brand+currentCarProfile.model}
                         className="img-fluid w-50 m-2 border-warning border rounded-0"
                     />}
                 </div>

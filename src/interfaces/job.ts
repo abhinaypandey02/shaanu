@@ -23,28 +23,14 @@ export const defaultService: ServiceInterface = {
     id: "",
 };
 export default interface JobInterface {
-    "Registration No.": number;
-    Odometer: number;
-    "Avg KMS/day": number;
-    "Car Maker": string;
-    "Car Model": string;
-    "Car Variant": string;
-    "Car Year": number;
-    "Vehicle Colour": string;
-    "Fuel Type": string;
+    regNo: number;
+    odometer: number;
+    avg: number;
+    brand: string;
+    model: string;
+    year: number;
+    color: string;
+    fuel: string;
     id:string;
     services:ServiceInterface[];
-}
-export const defaultJob:JobInterface={
-    "Registration No.": 0,
-    Odometer: 0,
-    "Avg KMS/day": 0,
-    "Car Maker": "",
-    "Car Model": "",
-    "Car Variant": "",
-    "Car Year": 0,
-    "Vehicle Colour": "",
-    "Fuel Type": "",
-    id:"",
-    services:[]
 }

@@ -1,20 +1,20 @@
 import React from "react";
+import CarsData  from '../../interfaces/carsData';
 import {
     GlobalStateInterface,
     useGlobalState,
 } from "../../contexts/global_state";
-import { CarBrand, CarModel } from "../../interfaces/car";
 import carsDataJSON from '../../database/carsData.json' ;
 export default function CarsMenu() {
     const [globalState, dispatch]: [
         GlobalStateInterface,
         any
     ] = useGlobalState();
-    const carsData:any=carsDataJSON;
-    function setBrand(id: CarBrand["id"]) {
+    const carsData:CarsData=carsDataJSON as CarsData;
+    function setBrand(id: string) {
         dispatch({ type: "SET_BRAND", payload: id });
     }
-    function setModel(id: CarModel["id"]) {
+    function setModel(id: string) {
         dispatch({ type: "SET_MODEL", payload: id });
     }
     function setType(type: string) {

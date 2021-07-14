@@ -164,8 +164,9 @@ export default function EstimatePage() {
                                     {...register("fullname",{required:true})}
                                     className="form-control bg-transparent border border-warning rounded-0 "
                                 />
+                                <div className="small text-danger text-left">{getErrorText(errors.fullname?.type)}</div>
+
                             </div>
-                            <small className="text-danger">{getErrorText(errors.fullname?.type)}</small>
                         </div>
 
                         <div className="row mb-3 d-flex  align-items-center justify-content-center text-light">
@@ -175,10 +176,10 @@ export default function EstimatePage() {
                             <div className="col-md-8">
                                 <input
                                     type="number"
-                                    {...register("phone",{required:true,valueAsNumber:true,minLength:10})}
+                                    {...register("phone",{required:true,minLength:10})}
                                     className="form-control bg-transparent border border-warning rounded-0 "
                                 />
-                                <small className="text-danger">{getErrorText(errors.phone?.type)}</small>
+                                <div className=" small text-danger text-left">{getErrorText(errors.phone?.type)}</div>
                             </div>
                         </div>
                         <div className="row d-flex mb-3 align-items-center justify-content-center text-light">
@@ -191,8 +192,9 @@ export default function EstimatePage() {
                                 className="form-control bg-transparent border border-warning rounded-0 "
                                 aria-label="With textarea"
                             />
+                                <div  className="small text-danger text-left">{getErrorText(errors.location?.type)}</div>
+
                             </div>
-                            <small className="text-danger">{getErrorText(errors.location?.type)}</small>
                         </div>
                         <div className="row-fluid text-right p-0">
                             <button

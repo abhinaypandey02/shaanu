@@ -5,25 +5,17 @@ import JobInterface from "../../../interfaces/job";
 import {v4} from 'uuid';
 import { setJob } from "../../../utils/firebase/firestore";
 import { useHistory } from "react-router-dom";
+import {getErrorText} from "../../../utils/globalFunctions";
+import carsDataJSON from "../../../database/carsData.json";
+import CarsData from "../../../interfaces/carsData";
 export default function AddJob({ setTab }: { setTab: Function }) {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit,watch, formState: {errors} } = useForm();
     const his=useHistory();
-    function FormGroup({ name, type }: { name: string; type: string }) {
-        return (
-            <Form.Group>
-                <Form.Label className="text-white">{name}</Form.Label>
-                <Form.Control
-                    {...register(name)}
-                    name={name}
-                    id={name}
-                    placeholder={"Enter " + name}
-                    type={type}
-                />
-            </Form.Group>
-        );
-    }
-    async function onSubmit(data: any) {
-        const tempJob:JobInterface={...data,id:v4(),services:[]};
+    const carsData = carsDataJSON as CarsData;
+    const brandWatch = watch("brand");
+    const modelWatch = watch("model");
+    async function onSubmit({brand,model,fuel,regNo,odometer,color,year,avg}: any) {
+        const tempJob:JobInterface={brand,model,fuel,regNo,odometer,color,year,avg,id:v4(),services:[]};
         await setJob(tempJob);
         his.push("/job/"+tempJob.id);
     }
@@ -37,16 +29,105 @@ export default function AddJob({ setTab }: { setTab: Function }) {
                 <Button onClick={() => setTab("jobs")}>Back</Button>
             </div>
             <Form onSubmit={handleSubmit(onSubmit)}>
-                <FormGroup name="Registration No" type="text" />
-                <FormGroup name="Odometer" type="number" />
-                <FormGroup name="Avg KMS/day" type="number" />
-                <FormGroup name="Car Maker" type="text" />
-                <FormGroup name="Car Model" type="text" />
-                <FormGroup name="Car Variant" type="text" />
-                <FormGroup name="Car Year" type="number" />
-                <FormGroup name="Vehicle Colour" type="text" />
-                <FormGroup name="Fuel Type" type="text" />
-                <FormGroup name="Car Year" type="text" />
+                {/*<FormGroup name="Registration No" id="regNo" type="text" />*/}
+                {/*<FormGroup name="Odometer" id="odometer" type="number" />*/}
+                {/*<FormGroup name="Avg KMS/day" id="avg" type="number" />*/}
+                {/*<FormGroup name="Car Maker" id="brand" type="text" />*/}
+                {/*<FormGroup name="Car Model" id="model" type="text" />*/}
+                {/*<FormGroup name="Car Year" id="year" type="number" />*/}
+                {/*<FormGroup name="Vehicle Colour" type="text" />*/}
+                {/*<FormGroup name="Fuel Type" type="text" />*/}
+                {/*<FormGroup name="Car Year" type="text" />*/}
+                <Form.Group>
+                    <Form.Label>Select Brand</Form.Label>
+                    <Form.Control
+                        className='rounded-0'
+                        as="select"
+                        {...register("brand", {required: true})}
+                    >
+                        <option value=''>Car Brand</option>
+                        {Object.keys(carsData).map(key =>
+                            <option value={carsData[key].id}>{carsData[key].name}</option>
+                        )}
+                    </Form.Control>
+                    <Form.Text className="text-danger small">
+                        {getErrorText(errors.brand?.type)}
+                    </Form.Text>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Select Model</Form.Label>
+                    <Form.Control
+                        disabled={!brandWatch}
+                        className='rounded-0'
+                        as="select"
+                        {...register("model", {required: true})}
+                    >
+                        <option value=''>Car Model</option>
+                        {brandWatch && Object.keys(carsData[brandWatch].models).map((key) => {
+                                return <option
+                                    value={carsData[brandWatch].models[key].id}>{carsData[brandWatch].models[key].name}</option>
+                            }
+                        )}
+                    </Form.Control>
+                    <Form.Text className="text-danger small">
+                        {getErrorText(errors.model?.type)}
+                    </Form.Text>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Select Fuel</Form.Label>
+                    <Form.Control
+                        disabled={!modelWatch}
+                        className='rounded-0'
+                        as="select"
+                        {...register("fuel", {required: true})}
+                    >
+                        <option value=''>Car Fuel</option>
+                        {modelWatch && Object.keys(carsData[brandWatch].models[modelWatch].fuel).map((key) => {
+                                return <option
+                                    value={carsData[brandWatch].models[modelWatch].fuel[key].id}>{carsData[brandWatch].models[modelWatch].fuel[key].name}</option>
+                            }
+                        )}
+                    </Form.Control>
+                    <Form.Text className="text-danger small">
+                        {getErrorText(errors.fuel?.type)}
+                    </Form.Text>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Registration No.</Form.Label>
+                    <Form.Control placeholder="Registration No." {...register("regNo", {required: true})}/>
+                    <Form.Text className="text-danger small">
+                        {getErrorText(errors.regNo?.type)}
+                    </Form.Text>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Odometer</Form.Label>
+                    <Form.Control placeholder="Odometer" type="number" {...register("odometer", {required: true})}/>
+                    <Form.Text className="text-danger small">
+                        {getErrorText(errors.odometer?.type)}
+                    </Form.Text>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Avg. Kms/day</Form.Label>
+                    <Form.Control type="number" placeholder="Avg. Kms/day" {...register("avg", {required: true})}/>
+                    <Form.Text className="text-danger small">
+                        {getErrorText(errors.avg?.type)}
+                    </Form.Text>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Car Color</Form.Label>
+                    <Form.Control placeholder="Car Color" {...register("color", {required: true})}/>
+                    <Form.Text className="text-danger small">
+                        {getErrorText(errors.color?.type)}
+                    </Form.Text>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Car Year</Form.Label>
+                    <Form.Control type="number" placeholder="Car Year" {...register("year", {required: true})}/>
+                    <Form.Text className="text-danger small">
+                        {getErrorText(errors.year?.type)}
+                    </Form.Text>
+                </Form.Group>
+
                 <Button type="submit">Add Job</Button>
             </Form>
         </div>

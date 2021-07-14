@@ -278,7 +278,7 @@ export default function Job() {
                             key={service.id}
                         />
                     ))}
-                    <tr>
+                    <tr className="text-white">
                         <td colSpan={5}>Grand Total</td>
                         <td colSpan={3}>
                             {services.reduce(
@@ -299,7 +299,7 @@ export default function Job() {
                             )}
                         </td>
                     </tr>
-                    <tr>
+                    <tr className="text-white">
                         <td colSpan={9}>Discount</td>
                         <td>
                             {services.reduce(
@@ -308,11 +308,11 @@ export default function Job() {
                             )}
                         </td>
                     </tr>
-                    <tr>
+                    <tr className="text-white">
                         <td colSpan={9}>Paid</td>
                         <td>0</td>
                     </tr>
-                    <tr>
+                    <tr className="text-white">
                         <td colSpan={9}>Balance</td>
                         <td>
                             {services.reduce(

@@ -1,9 +1,8 @@
 import React, {createContext, Dispatch, useContext, useReducer} from "react";
-import {CarBrand, CarModel} from "../interfaces/car";
 
 export interface GlobalStateInterface {
-    selectedBrand: CarBrand["id"] | null;
-    selectedModel: CarModel["id"] | null;
+    selectedBrand: string | null;
+    selectedModel: string | null;
     selectedType: string | null;
     cart: { id:string, brand: string; model: string, fuel: string, category: string, service: { name: string, price: number } }[]
 }

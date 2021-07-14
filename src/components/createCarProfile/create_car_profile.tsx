@@ -1,107 +1,56 @@
-import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
-import { useUser } from "../../contexts/user_context";
-import { CarProfile } from "../../interfaces/car";
+import React, {useState} from "react";
+import {Button, Form} from "react-bootstrap";
+import {useUser} from "../../contexts/user_context";
+import {CarProfile} from "../../interfaces/car";
 import UserInterface from "../../interfaces/user";
-import { addCarProfile } from "../../utils/firebase/firestore";
+import {addCarProfile} from "../../utils/firebase/firestore";
 import plus from '../../images/plus.png';
-import { uploadButtonImage } from "../../utils/firebase/storage";
+import {uploadButtonImage} from "../../utils/firebase/storage";
+import {useForm} from "react-hook-form";
+import carsDataJSON from '../../database/carsData.json';
+import CarsData from "../../interfaces/carsData";
+import {getErrorText} from "../../utils/globalFunctions";
+
 export default function CreateCarProfile() {
     const [user, setUser] = useUser();
-    const [loading,setLoading]=useState(false);
+    const [loading, setLoading] = useState(false);
     const [image, setImage] = useState<any>();
-    const [name, setName] = useState({
-        value: "",
-        errors: "",
-        name: "car's name",
-    });
-    const [regNo, setRegNo] = useState({
-        value: "",
-        errors: "",
-        name: "car's name",
-    });
-    const [chasisNo, setChasisNo] = useState({
-        value: "",
-        errors: "",
-        name: "car's name",
-    });
-    const [engineNo, setEngineNo] = useState({
-        value: "",
-        errors: "",
-        name: "car's name",
-    });
-    const [carColor, setCarColor] = useState({
-        value: "",
-        errors: "",
-        name: "car's name",
-    });
-    const [insuranceDate, setInsuranceDate] = useState({
-        value: "",
-        errors: "",
-        name: "car's name",
-    });
-    const [insuranceComp, setInsuranceComp] = useState({
-        value: "",
-        errors: "",
-        name: "car's name",
-    });
-    const [address, setAddress] = useState({
-        value: "",
-        errors: "",
-        name: "car's name",
-    });
+    const {register, handleSubmit, watch, formState: {errors}} = useForm();
+    const carsData = carsDataJSON as CarsData;
+    const brandWatch = watch("brand");
+    const modelWatch = watch("model");
 
-    const reset = (old: any) => ({ ...old, errors: "" });
-    const values = [
-        name,
-        regNo,
-        chasisNo,
-        engineNo,
-        carColor,
-        insuranceComp,
-        insuranceDate,
-        address,
-    ];
-    const setFunctions = [
-        setName,
-        setRegNo,
-        setChasisNo,
-        setEngineNo,
-        setCarColor,
-        setInsuranceComp,
-        setInsuranceDate,
-        setAddress,
-    ];
-
-    async function onSubmit(e: any) {
+    async function onSubmit({
+                                brand,
+                                model,
+                                fuel,
+                                regNo,
+                                chasisNo,
+                                engineNo,
+                                carColor,
+                                insuranceDate,
+                                insuranceComp,
+                                address
+                            }: any) {
         setLoading(true);
-        e.preventDefault();
-        setFunctions.forEach((f) => f(reset));
-        for (let i = 0; i < values.length; i++) {
-            if (values[i].value === "") {
-                console.log("object");
-                setFunctions[i]((old) => ({
-                    ...old,
-                    errors: "Required Field",
-                }));
-                return;
-            }
-        }
         let imageURL = '';
         if (image) {
             imageURL = await uploadButtonImage(user, image);
         }
-        const carProfile: CarProfile = {
-            name: name.value,
-            regNo: regNo.value,
-            chasisNo: chasisNo.value,
-            engineNo: engineNo.value,
-            carColor: carColor.value,
-            insuranceComp: insuranceComp.value,
-            insuranceDate: insuranceDate.value,
-            address: address.value,
-            imageURL,
-        };
+        const carProfile: CarProfile =
+            {
+                brand,
+                model,
+                fuel,
+                chasisNo,
+                engineNo,
+                carColor,
+                insuranceDate,
+                insuranceComp,
+                address,
+                regNo,
+                imageURL
+            };
         if (!user) return;
         await addCarProfile(user, carProfile);
         setUser((old: UserInterface) => ({
@@ -109,42 +58,94 @@ export default function CreateCarProfile() {
             carProfiles: [...old.carProfiles, carProfile],
         }));
         setLoading(false);
-
-        
     }
+
     function onImageChange(e: any) {
         console.log((e.target.files[0]))
         setImage(e.target.files[0]);
     }
 
     return (
-        <Form onSubmit={onSubmit}>
-            {values.map((value, index) => (
-                <Form.Group>
-                    <Form.Label>{value.name}</Form.Label>
-                    <Form.Control
-                        className='rounded-0'
-                        value={value.value}
-                        onChange={(e) =>
-                            setFunctions[index]((old) => ({
-                                ...old,
-                                value: e.target.value,
-                            }))
+        <Form onSubmit={handleSubmit(onSubmit)}>
+            <Form.Group>
+                <Form.Label>Select Brand</Form.Label>
+                <Form.Control
+                    className='rounded-0'
+                    as="select"
+                    {...register("brand", {required: true})}
+                >
+                    <option value=''>Car Brand</option>
+                    {Object.keys(carsData).map(key =>
+                        <option value={carsData[key].id}>{carsData[key].name}</option>
+                    )}
+                </Form.Control>
+                <Form.Text className="text-danger small">
+                    {getErrorText(errors.brand?.type)}
+                </Form.Text>
+            </Form.Group>
+            <Form.Group>
+                <Form.Label>Select Model</Form.Label>
+                <Form.Control
+                    disabled={!brandWatch}
+                    className='rounded-0'
+                    as="select"
+                    {...register("model", {required: true})}
+                >
+                    <option value=''>Car Model</option>
+                    {brandWatch && Object.keys(carsData[brandWatch].models).map((key) => {
+                            return <option
+                                value={carsData[brandWatch].models[key].id}>{carsData[brandWatch].models[key].name}</option>
                         }
-                    />
-                    <Form.Text className="text-danger small">
-                        {value.errors}
-                    </Form.Text>
-                </Form.Group>
-            ))}
+                    )}
+                </Form.Control>
+                <Form.Text className="text-danger small">
+                    {getErrorText(errors.model?.type)}
+                </Form.Text>
+            </Form.Group>
+            <Form.Group>
+                <Form.Label>Select Fuel</Form.Label>
+                <Form.Control
+                    disabled={!modelWatch}
+                    className='rounded-0'
+                    as="select"
+                    {...register("fuel", {required: true})}
+                >
+                    <option value=''>Car Fuel</option>
+                    {modelWatch && Object.keys(carsData[brandWatch].models[modelWatch].fuel).map((key) => {
+                            return <option
+                                value={carsData[brandWatch].models[modelWatch].fuel[key].id}>{carsData[brandWatch].models[modelWatch].fuel[key].name}</option>
+                        }
+                    )}
+                </Form.Control>
+                <Form.Text className="text-danger small">
+                    {getErrorText(errors.fuel?.type)}
+                </Form.Text>
+            </Form.Group>
+            {[
+                {name: "Registration No.", id: "regNo"},
+                {name: "Chasis No.", id: "chasisNo"},
+                {name: "Engine No.", id: "engineNo"},
+                {name: "Car Color", id: "carColor"},
+                {name: "Insurance Date", id: "insuranceDate"},
+                {name: "Insurance Company", id: "insuranceComp"},
+                {name: "Address", id: "address"},
+            ].map(obj => <Form.Group>
+                <Form.Label>{obj.name}</Form.Label>
+                <Form.Control placeholder={obj.name} {...register(obj.id, {required: true})}/>
+                <Form.Text className="text-danger small">
+                    {getErrorText(errors[obj.id]?.type)}
+                </Form.Text>
+            </Form.Group>)
+            }
+
             <Form.Group>
                 <Form.Label>Add Image (Optional)</Form.Label>
                 <div
                     className="d-flex align-items-center justify-content-center pointer-on-hover"
                     style={{
                         backgroundColor: "#F4F5F8",
-                        height:(image  ? 109 : 109),
-                        maxWidth:(image  ? 109 : 92)
+                        height: (image ? 109 : 109),
+                        maxWidth: (image ? 109 : 92)
                     }}
                     onClick={() =>
                         document.getElementById("choose_pp")?.click()
@@ -152,7 +153,7 @@ export default function CreateCarProfile() {
                 >
                     <img
                         alt="plus"
-                        style={{maxHeight:(image  ? 109 : 27),maxWidth:(image  ? 109 : 27)}}
+                        style={{maxHeight: (image ? 109 : 27), maxWidth: (image ? 109 : 27)}}
                         src={
                             image
                                 ? URL.createObjectURL(image)
