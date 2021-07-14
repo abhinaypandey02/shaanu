@@ -13,12 +13,15 @@ export default function CarsMenu() {
     const carsData:CarsData=carsDataJSON as CarsData;
     function setBrand(id: string) {
         dispatch({ type: "SET_BRAND", payload: id });
+        window.scrollTo(0,0);
     }
     function setModel(id: string) {
         dispatch({ type: "SET_MODEL", payload: id });
+        window.scrollTo(0,0);
     }
     function setType(type: string) {
         dispatch({ type: "SET_TYPE", payload: type });
+        window.scrollTo(0,0);
     }
 
     const selectedBrand = globalState.selectedBrand&&carsData[globalState.selectedBrand];
