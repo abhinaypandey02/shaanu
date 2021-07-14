@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React  from "react";
 import { Button, Form } from "react-bootstrap";
 import UserInterface, { defaultUser } from "../../../interfaces/user";
 import { signUpWithEmailAndPassword } from "../../../utils/firebase/auth";
@@ -9,16 +9,26 @@ import {getErrorText} from "../../../utils/globalFunctions";
 const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default function RegisterForm() {
-    const {register,handleSubmit,formState:{errors},getValues}=useForm();
-
+    const {register,handleSubmit,formState:{errors},getValues,setError}=useForm();
     function onSubmit({email,firstName,lastName,password}: any) {
-        // const user:UserInterface={
-        //     ...defaultUser,email,firstName,lastName
-        // }
-        // signUpWithEmailAndPassword(email,password).then(()=>{
-        //     createUserDocument(user)
-        // })
-        //
+        const user:UserInterface={
+            ...defaultUser,email,firstName,lastName
+        }
+        signUpWithEmailAndPassword(email,password).then(()=>{
+            createUserDocument(user)
+        }).catch((error:any)=>{
+            switch(error.code){
+                case "auth/email-already-in-use":{
+                    setError("email",{type:"custom",message:error.message});
+                    break;
+                }
+                default:{
+                    setError("confirmPassword",{type:"custom",message:error.message})
+                }
+
+            }
+        })
+
     }
 
     return (
@@ -27,7 +37,7 @@ export default function RegisterForm() {
             <h2 className="display-4 text-warning">Sign Up</h2>
             </div>
             
-        <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form onSubmit={handleSubmit(onSubmit)} noValidate={true}>
             <Form.Group>
                 <Form.Label className="text-white">First Name</Form.Label>
                 <Form.Control
@@ -59,7 +69,7 @@ export default function RegisterForm() {
                     className='text-light border border-warning rounded-0 bg-transparent'
                 />
                 <Form.Text className="small text-danger">
-                    {getErrorText(errors.email?.type)}
+                    {getErrorText(errors.email?.type,errors.email?.message)}
                 </Form.Text>
             </Form.Group>
             <Form.Group>
@@ -71,6 +81,7 @@ export default function RegisterForm() {
                     className='text-light border border-warning rounded-0 bg-transparent'
                 />
                 <Form.Text className="small text-danger">
+
                     {getErrorText(errors.password?.type)}
                 </Form.Text>
             </Form.Group>
@@ -85,7 +96,7 @@ export default function RegisterForm() {
                     className='text-light border border-warning rounded-0 bg-transparent'
                 />
                 <Form.Text className="small text-danger">
-                    {getErrorText(errors.confirmPassword?.type)}
+                    {getErrorText(errors.confirmPassword?.type,errors.confirmPassword?.message)}
                 </Form.Text>
             </Form.Group>
             <Button variant="warning" type="submit">

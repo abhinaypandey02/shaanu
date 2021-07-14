@@ -122,7 +122,7 @@ export default function BooknowPage() {
         <div className="container d-flex flex-grow-1 justify-content-center align-items-center">
             <div className="row text-center w-100 ">
 
-                <form onSubmit={handleSubmit(addBookedSessionLocal)} className="col-lg-12 pl-2 alert alert-warning text-dark rounded-0">
+                <form noValidate={true} onSubmit={handleSubmit(addBookedSessionLocal)} className="col-lg-12 pl-2 alert alert-warning text-dark rounded-0">
                     <h1 className="bg-warning ml-2 my-2">BOOK NOW</h1>
                     <br />
                    

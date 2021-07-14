@@ -66,7 +66,7 @@ export default function CreateCarProfile() {
     }
 
     return (
-        <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form noValidate={true} onSubmit={handleSubmit(onSubmit)}>
             <Form.Group>
                 <Form.Label>Select Brand</Form.Label>
                 <Form.Control

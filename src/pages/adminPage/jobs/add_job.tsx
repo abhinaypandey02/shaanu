@@ -28,16 +28,8 @@ export default function AddJob({ setTab }: { setTab: Function }) {
             <div>
                 <Button onClick={() => setTab("jobs")}>Back</Button>
             </div>
-            <Form onSubmit={handleSubmit(onSubmit)}>
-                {/*<FormGroup name="Registration No" id="regNo" type="text" />*/}
-                {/*<FormGroup name="Odometer" id="odometer" type="number" />*/}
-                {/*<FormGroup name="Avg KMS/day" id="avg" type="number" />*/}
-                {/*<FormGroup name="Car Maker" id="brand" type="text" />*/}
-                {/*<FormGroup name="Car Model" id="model" type="text" />*/}
-                {/*<FormGroup name="Car Year" id="year" type="number" />*/}
-                {/*<FormGroup name="Vehicle Colour" type="text" />*/}
-                {/*<FormGroup name="Fuel Type" type="text" />*/}
-                {/*<FormGroup name="Car Year" type="text" />*/}
+            <Form noValidate={true} onSubmit={handleSubmit(onSubmit)}>
+
                 <Form.Group>
                     <Form.Label>Select Brand</Form.Label>
                     <Form.Control

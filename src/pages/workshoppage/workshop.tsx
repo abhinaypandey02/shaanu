@@ -1,6 +1,4 @@
-
 import { Card, Accordion, Carousel } from "react-bootstrap";
-import FaqPage from "../faqPage/faq_page";
 
 export default function WorkshopPage() {
     return (

@@ -20,7 +20,7 @@ export default function AllServicesPage() {
     const plans = getPlans(selectedBrand, selectedModel, selectedType);
 
     function onPlanSelect() {
-        if (!selectedPlan || !selectedBrand || !selectedModel || !selectedType ||selectedSubPlan==undefined) return;
+        if (!selectedPlan || !selectedBrand || !selectedModel || !selectedType ||selectedSubPlan===undefined) return;
         const service = plans[selectedPlan][selectedSubPlan]
         if (!service) return;
         dispatch({
@@ -77,7 +77,7 @@ export default function AllServicesPage() {
                         </Form.Control>
                     </Form.Group>
 
-                    {selectedSubPlan!=undefined && <Button variant='warning' className='rounded-0' onClick={onPlanSelect}>
+                    {selectedSubPlan!==undefined && <Button variant='warning' className='rounded-0' onClick={onPlanSelect}>
                         ADD TO CART</Button>}
                 </Modal.Body>
             </Modal>

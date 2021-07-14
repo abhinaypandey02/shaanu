@@ -74,6 +74,7 @@ export default function EstimatePage() {
                 setLink(tempLink);
             });
         });
+        //eslint-disable-next-line
     }, [user, cart]);
     return (
         <div className="container-fluid d-flex flex-grow-1  justify-content-center align-items-center"
@@ -121,7 +122,7 @@ export default function EstimatePage() {
                             id="downloadInvoice"
 
                             className="d-none"
-                        />
+                        >Download PDF</a>
 
                     )}
                     {link!==""&&(
@@ -153,7 +154,7 @@ export default function EstimatePage() {
                     </button>
                     <h1 className="text-warning">OR</h1>
                     <br/>
-                    <form onSubmit={handleSubmit(addCallbackRequestLocal)} className="container pl-2 alert alert-warning rounded-0">
+                    <form noValidate={true} onSubmit={handleSubmit(addCallbackRequestLocal)} className="container pl-2 alert alert-warning rounded-0">
                         <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
                             <div className="col-md-4 mb-2 bg-warning text-dark text-left ">
                                 FULL NAME
