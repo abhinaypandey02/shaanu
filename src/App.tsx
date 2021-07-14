@@ -17,6 +17,7 @@ import FreeServices from "./pages/100freePage/100_page";
 import AppointmentSlot from "./components/appointmentSlot/appointment_slot";
 import Job from "./pages/adminPage/jobs/job";
 import {useUser} from "./contexts/user_context";
+import { Spinner } from "react-bootstrap";
 function App() {
     const [globalState] = useGlobalState();
     const [user]=useUser();
@@ -25,7 +26,15 @@ function App() {
         globalState.selectedModel &&
         globalState.selectedType;
     if(user===undefined)
-        return "LOADING SITE"
+        return <div className='min-vh-100 d-flex justify-content-center align-items-center'>
+              <Spinner animation="grow" variant="primary" />
+  <Spinner animation="grow" variant="secondary" />
+  <Spinner animation="grow" variant="success" />
+  <Spinner animation="grow" variant="danger" />
+  <Spinner animation="grow" variant="warning" />
+  <Spinner animation="grow" variant="info" />
+
+            </div>
     return (
         <div className={"app"}>
             <HashRouter>
