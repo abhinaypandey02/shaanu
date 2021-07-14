@@ -16,12 +16,16 @@ import BooknowPage from "./pages/booknowPage/booknow_page";
 import FreeServices from "./pages/100freePage/100_page";
 import AppointmentSlot from "./components/appointmentSlot/appointment_slot";
 import Job from "./pages/adminPage/jobs/job";
+import {useUser} from "./contexts/user_context";
 function App() {
     const [globalState] = useGlobalState();
+    const [user]=useUser();
     const carSelected =
         globalState.selectedBrand &&
         globalState.selectedModel &&
         globalState.selectedType;
+    if(user===undefined)
+        return "LOADING SITE"
     return (
         <div className={"app"}>
             <HashRouter>

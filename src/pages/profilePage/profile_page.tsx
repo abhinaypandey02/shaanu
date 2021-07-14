@@ -113,7 +113,7 @@ export default function ProfilePage() {
                     />}
                 </div>
             </div>
-            <NotificationBar />
+            <NotificationBar user={user} />
             <CarsWorkdetails />
         </div>
     );
