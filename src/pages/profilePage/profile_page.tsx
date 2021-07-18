@@ -7,7 +7,7 @@ import CarsWorkdetails from "../../components/carsWorkdetails/cars_workdetails";
 import NotificationBar from "../../components/notificationbar/notification_bar";
 import { signOut } from "../../utils/firebase/auth";
 import CreateCarProfile from "../../components/createCarProfile/create_car_profile";
-
+import './profile_page.css';
 export default function ProfilePage() {
     const [user] = useUser();
     const [signIn, setSignIn] = useState(false);
@@ -46,8 +46,7 @@ export default function ProfilePage() {
     }
     return (
         <div className="container-fluid">
-            <Modal 
-            
+            <Modal dialogClassName="dialogClass"
             show={showCreateCarProfile} centered onHide={() => setShowCreateCarProfile(false)} >
                 <Modal.Header className='bg-warning border border-warning rounded-0 text-dark' closeButton>Create Car Profile</Modal.Header>
                 <Modal.Body className='bg-dark text-warning'>
@@ -96,7 +95,7 @@ export default function ProfilePage() {
                         </div>
                         <div className="row-fluid text-center ">
                             <button onClick={() => setShowCreateCarProfile(true)} className="btn m-2 btn-warning rounded-0">
-                                CREATE NEW CAR PROFILE
+                                {currentCarProfile?"ADD NEW CAR PROFILE":"CREATE NEW CAR PROFILE"}
                             </button>
                             <button onClick={signOut} className="btn m-2 btn-danger rounded-0">
                                 SIGN OUT

@@ -1,0 +1,5 @@
+@media (min-width:576px){
+  .dialogClass{
+    max-width: 90%!important;
+  }
+}

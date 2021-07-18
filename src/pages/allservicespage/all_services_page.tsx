@@ -4,8 +4,10 @@ import {useGlobalState} from "../../contexts/global_state";
 import {getPlans} from "../../database/plan";
 import "./all_services_page.css";
 import {useHistory} from "react-router";
+import {useUser} from "../../contexts/user_context";
 
 export default function AllServicesPage() {
+    const [user]=useUser();
     const [globalState, dispatch] = useGlobalState();
     const [selectedPlan, setSelectedPlan] = useState<null | string>(null);
     const [selectedSubPlan, setSelectedSubPlan] = useState<number>();
@@ -125,7 +127,8 @@ export default function AllServicesPage() {
                             </div>
                             <hr className="w-100 bg-warning"/>
                             <div className="row w-100 m-0 p-2">
-                                <div className='col-auto mx-auto'>Total : ₹{cartSum}</div>
+
+                                <div className='col-auto mx-auto'>{user?`Total : ₹${cartSum}`:"Sign in to view total."}</div>
                             </div>
 
 
@@ -136,7 +139,7 @@ export default function AllServicesPage() {
                                     className="text-left p-0 border border-light my-2 w-100"
                                     key={id}
                                 >
-                                    <h4 className="card-header alert alert-warning w-100 flex-wrap d-flex justify-content-between">
+                                    <h4 className="card-header m-0 alert alert-warning w-100 flex-wrap d-flex justify-content-between">
                                         <div className="1">
                                             {service.name}
                                         </div>
@@ -154,7 +157,7 @@ export default function AllServicesPage() {
                                     </h4>
                                     <div className="card-body">
                                         <div className="badge badge-info">
-                                            Rs. {service.price}
+                                            {user?`Rs. ${service.price}`:"Sign in to view price"}
                                         </div>
                                         <p className="card-text">
                                             {category}

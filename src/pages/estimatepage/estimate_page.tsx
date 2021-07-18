@@ -1,7 +1,7 @@
 import {useHistory} from "react-router";
 import "./estimate_page.css";
 import {useEffect, useState} from "react";
-import {Button, Modal} from "react-bootstrap";
+import {Button, Modal, Spinner} from "react-bootstrap";
 import {useGlobalState} from "../../contexts/global_state";
 import {useUser} from "../../contexts/user_context";
 import {addCallbackRequest} from "../../utils/firebase/firestore";
@@ -9,7 +9,7 @@ import CallbackRequest from "../../interfaces/callbackRequest";
 import {useForm} from "react-hook-form";
 import { PDFReader } from 'reactjs-pdf-reader';
 import {getErrorText} from "../../utils/globalFunctions";
-
+import blurredPDF from '../../images/blurredPDF.jpg';
 
 
 
@@ -34,6 +34,7 @@ export default function EstimatePage() {
 
     function addCallbackRequestLocal({phone,location,fullname}:{phone:number,location:string,fullname:string}) {
         const request: CallbackRequest = {fullname, phone, location, date: new Date().toISOString()};
+        if(user) request.user=user;
         addCallbackRequest(request).then(() => {
             reset();
             setShowConfirmationModal(true);
@@ -45,6 +46,7 @@ export default function EstimatePage() {
             history.push('/')
             return;
         }
+        if(!user)return;
         const dataToSend = {
             items: cart.map((item) => ({
                 name: `${item.service.name} for ${item.brand.toUpperCase()} ${item.model.toUpperCase()} (${item.fuel.toUpperCase()})`,
@@ -103,7 +105,7 @@ export default function EstimatePage() {
             >
                 <Modal.Header className='bg-warning rounded-0' closeButton={true}>NOT LOGGED IN</Modal.Header>
                 <Modal.Body className="text-center text-warning">
-                    <h1>login krle </h1>
+                    <h1>Please signup to download/view invoice.</h1>
 
                 </Modal.Body>
             </Modal>
@@ -115,6 +117,7 @@ export default function EstimatePage() {
                     </div>
                     }
 
+                    {!user&&<img src={blurredPDF} alt="blurred invoice"/>}
                     {link !== "" && (
                         <a
                             download="invoice.pdf"
@@ -125,19 +128,23 @@ export default function EstimatePage() {
                         >Download PDF</a>
 
                     )}
-                    {link!==""&&(
+                    {(!user||link!=="")&&(
                         <button onClick={onDownload} className="btn btn-outline-light m-3">
                             DOWNLOAD PDF
                         </button>
                     )}
-                    {link === "" && (
-                        <div className="display-4 text-info">
-                            generating PDF
+                    {user&&link === "" && (
+                        <div className="text-info align-items-center">
+                            Generating PDF
+                            <Spinner className="m-2" animation={'border'}/>
                         </div>
                     )}
                 </div>
 
                 <div className="col-lg-6">
+                    {!user&&<div>
+
+
                     <button
                         onClick={() => history.push("/profile")}
                         type="button"
@@ -154,8 +161,9 @@ export default function EstimatePage() {
                     </button>
                     <h1 className="text-warning">OR</h1>
                     <br/>
+                    </div>}
                     <form noValidate={true} onSubmit={handleSubmit(addCallbackRequestLocal)} className="container pl-2 alert alert-warning rounded-0">
-                        <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
+                        {!user&&<div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
                             <div className="col-md-4 mb-2 bg-warning text-dark text-left ">
                                 FULL NAME
                             </div>
@@ -168,7 +176,7 @@ export default function EstimatePage() {
                                 <div className="small text-danger text-left">{getErrorText(errors.fullname?.type)}</div>
 
                             </div>
-                        </div>
+                        </div>}
 
                         <div className="row mb-3 d-flex  align-items-center justify-content-center text-light">
                             <div className="col-md-4 mb-2 bg-warning text-dark text-left ">

@@ -36,7 +36,9 @@ function App() {
 
             </div>
     return (
-        <div className={"app"}>
+        <div className={"app position-relative"}>
+
+            {!user&&<div className="bg-warning text-center">Please sign in to enjoy more benefits!</div>}
             <HashRouter>
                 <div className="d-flex min-vh-100 flex-column">
                 <NavigationBar />
@@ -82,5 +84,4 @@ function App() {
         </div>
     );
 }
-
 export default App;
