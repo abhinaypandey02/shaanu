@@ -6,11 +6,13 @@ export default interface UserInterface {
     lastName: string;
     carProfiles: CarProfile[];
     notifications:string[];
+    phone:number;
 }
 export const defaultUser: UserInterface = {
     email: "",
     firstName: "",
     lastName: "",
     carProfiles: [],
-    notifications:[]
+    notifications:[],
+    phone:-1
 };

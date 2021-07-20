@@ -1,15 +1,17 @@
 import DatePicker from "react-datepicker";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import "react-datepicker/dist/react-datepicker.css";
-import { useHistory } from "react-router";
-import {
-    addBookedSession,
-    getBookedSessionsByMonth,
-} from "../../utils/firebase/firestore";
-import { BookedSession } from "../../interfaces/bookedSession";
-import { v4 as uid } from "uuid";
+import {useHistory} from "react-router";
+import {addBookedSession, getBookedSessionsByMonth,} from "../../utils/firebase/firestore";
+import {BookedSession} from "../../interfaces/bookedSession";
+import {v4 as uid} from "uuid";
 import {useForm} from 'react-hook-form';
 import {getErrorText} from "../../utils/globalFunctions";
+import {getRecaptchaVerifier, sendSMS} from "../../utils/firebase/auth";
+import firebase from "firebase/app";
+import { Spinner} from "react-bootstrap";
+import VerifyOTP from "../../components/verifyOTP/verifyOTP";
+
 const today = new Date();
 
 export default function BooknowPage() {
@@ -22,7 +24,15 @@ export default function BooknowPage() {
     const [loading, setLoading] = useState(true);
     const [availableDays, setAvailableDays] = useState<any>({});
     const [disabled, setDisabled] = useState(false);
-    const {register,handleSubmit,formState:{errors}}=useForm();
+    const {register, handleSubmit, formState: {errors}, setError,getValues, clearErrors} = useForm();
+    const [phoneResult, setPhoneResult] = useState<firebase.auth.ConfirmationResult>();
+    const [reCaptcha, setReCaptcha] = useState<firebase.auth.RecaptchaVerifier>();
+
+    useEffect(() => {
+        const captcha = getRecaptchaVerifier("captcha")
+        if (!reCaptcha) setReCaptcha(captcha)
+        return () => captcha.clear();
+    }, [])
 
     function checkDisabled() {
         if (availableDays[startDate.getDate().toString()]) {
@@ -44,7 +54,7 @@ export default function BooknowPage() {
         while (
             availableDays[date.getDate().toString()] &&
             availableDays[date.getDate().toString()].length === 24
-        ) {
+            ) {
             startHour = 0;
             date.setDate(date.getDate() + 1);
         }
@@ -54,7 +64,7 @@ export default function BooknowPage() {
             availableDays[date.getDate().toString()].some(
                 (time: any) => time.hours === date.getHours()
             )
-        ) {
+            ) {
             date.setHours(date.getHours() + 1);
         }
 
@@ -66,6 +76,7 @@ export default function BooknowPage() {
 
         setStartDate(nextAvailableDay(date, date.getHours()));
     }
+
     function updateMonths() {
         setLoading(true);
         getBookedSessionsByMonth(startDate.getMonth() + 1).then((docs) => {
@@ -75,11 +86,12 @@ export default function BooknowPage() {
                     temp[doc.day.toString()].push(doc);
                 } else temp[doc.day.toString()] = [doc];
             });
-            setAvailableDays({ ...temp });
+            setAvailableDays({...temp});
 
             setLoading(false);
         });
     }
+
     const currMonth = startDate.getMonth();
     useEffect(() => {
         updateMonths();
@@ -94,16 +106,33 @@ export default function BooknowPage() {
         //eslint-disable-next-line
     }, [availableDays]);
 
-    function addBookedSessionLocal({fullname,phone,location}:{fullname:string,phone:number,location:string}) {
-        const rand = new Date().getTime();
+    async function sendOTP():Promise<boolean>{
+        if (reCaptcha){
+            try{
+                const result=await sendSMS("+91" + getValues("phone").toString(), reCaptcha);
+                setPhoneResult(result);
+                return true;
+            }
+            catch (err){
+                setError("phone", {type: "custom", message: err.message})
+                return false;
+            }
 
+        }
+        return false;
+    }
+
+
+    function addBookedSessionLocal({fullname, phone, location}: { fullname: string, phone: number, location: string }) {
+        const rand = new Date().getTime();
+        setPhoneResult(undefined)
         const tempSession: BookedSession = {
             id: uid(),
             fullname,
             location,
             phone,
-            dateTime:startDate.getTime(),
-            token:rand,
+            dateTime: startDate.getTime(),
+            token: rand,
             year: startDate.getFullYear(),
             month: startDate.getMonth() + 1,
             day: startDate.getDate(),
@@ -113,58 +142,69 @@ export default function BooknowPage() {
 
         addBookedSession(tempSession).then(() => {
             updateMonths();
-            history.push({pathname:"/appointmentslot",state:{
+            history.push({
+                pathname: "/appointmentslot", state: {
                     tempSession
-                }});
+                }
+            });
         });
+    }
+    function onSubmit(e:any){
+        e.preventDefault();
+        clearErrors();
+        setLoading(true);
+        sendOTP().then(()=>setLoading(false));
     }
     return (
         <div className="container d-flex flex-grow-1 justify-content-center align-items-center">
+            <VerifyOTP phoneResult={phoneResult} onSuccess={handleSubmit(addBookedSessionLocal)} onHide={()=>setPhoneResult(undefined)} resendOTP={sendOTP}/>
             <div className="row text-center w-100 ">
 
-                <form noValidate={true} onSubmit={handleSubmit(addBookedSessionLocal)} className="col-lg-12 pl-2 alert alert-warning text-dark rounded-0">
+                <form noValidate={true} onSubmit={onSubmit}
+                      className="col-lg-12 pl-2 alert alert-warning text-dark rounded-0">
                     <h1 className="bg-warning ml-2 my-2">BOOK NOW</h1>
-                    <br />
-                   
-                        <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
-                            <div className="col-md-4 mb-2 bg-warning text-dark text-left ">
-                                FULL NAME
-                            </div>
-                            <div className="col-md-8">
-                                <input
-                                    {...register("fullname",{required:true})}
-                                    type="text"
-                                    className="form-control bg-transparent border border-warning rounded-0 "
-                                />
-                                <div className="small text-danger text-left">{getErrorText(errors.fullname?.type)}</div>
-                            </div>
+                    <br/>
+
+                    <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
+                        <div className="col-md-4 mb-2 bg-warning text-dark text-left ">
+                            FULL NAME
                         </div>
-                        <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
-                            <div className="col-md-4 mb-2 bg-warning text-dark text-left ">
-                                PHONE NUMBER
-                            </div>
-                            <div className="col-md-8">
-                                <input
-                                    {...register("phone",{required:true,minLength:10})}
-                                    type="number"
-                                    className="form-control bg-transparent border border-warning rounded-0 "
-                                />
-                                <div className="small text-danger text-left">{getErrorText(errors.phone?.type)}</div>
-                            </div>
+                        <div className="col-md-8">
+                            <input
+                                {...register("fullname", {required: true})}
+                                type="text"
+                                className="form-control bg-transparent border border-warning rounded-0 "
+                            />
+                            <div className="small text-danger text-left">{getErrorText(errors.fullname?.type)}</div>
                         </div>
-                        <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
-                            <div className="col-md-4 mb-2 bg-warning text-dark text-left ">
-                                LOCATION
-                            </div>
-                            <div className="col-md-8">
+                    </div>
+                    <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
+                        <div className="col-md-4 mb-2 bg-warning text-dark text-left ">
+                            PHONE NUMBER
+                        </div>
+                        <div className="col-md-8">
+                            <input
+                                {...register("phone", {required: true,maxLength:10, minLength: 10,valueAsNumber:true})}
+                                type="number"
+                                className="form-control bg-transparent border border-warning rounded-0 "
+                            />
+                            <div
+                                className="small text-danger text-left">{getErrorText(errors.phone?.type, errors.phone?.message)}</div>
+                        </div>
+                    </div>
+                    <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
+                        <div className="col-md-4 mb-2 bg-warning text-dark text-left ">
+                            LOCATION
+                        </div>
+                        <div className="col-md-8">
                                 <textarea
-                                    {...register("location",{required:true})}
+                                    {...register("location", {required: true})}
                                     className="form-control bg-transparent border border-warning rounded-0 "
                                 />
-                                <div className="small text-danger text-left">{getErrorText(errors.location?.type)}</div>
-                            </div>
+                            <div className="small text-danger text-left">{getErrorText(errors.location?.type)}</div>
                         </div>
-                        
+                    </div>
+
                     <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
                         <div className="col-md-4 mb-3 mb-2 bg-warning text-dark text-left ">
                             PICK UP CALL AND DATE
@@ -173,7 +213,7 @@ export default function BooknowPage() {
                             <button type="button" className="btn rounded-0 p-0 btn-outline-warning">
                                 {!loading && (
                                     <DatePicker
-                                        
+
                                         className='rounded-0 m-2 alert alert-warning '
                                         startDate={startDate}
                                         showTimeSelect
@@ -184,12 +224,12 @@ export default function BooknowPage() {
                                             if (
                                                 availableDays[
                                                     day.getDate().toString()
-                                                ]
+                                                    ]
                                             ) {
                                                 if (
                                                     availableDays[
                                                         day.getDate().toString()
-                                                    ].some(
+                                                        ].some(
                                                         (time: any) =>
                                                             time.hours ===
                                                             day.getHours()
@@ -212,12 +252,12 @@ export default function BooknowPage() {
                                             if (
                                                 availableDays[
                                                     day.getDate().toString()
-                                                ]
+                                                    ]
                                             ) {
                                                 if (
                                                     availableDays[
                                                         day.getDate().toString()
-                                                    ].length === 24
+                                                        ].length === 24
                                                 ) {
                                                     className += "unavailable ";
                                                 } else
@@ -235,16 +275,18 @@ export default function BooknowPage() {
                             </button>
                         </div>
                     </div>
+                    <div id="captcha"/>
                     <div className="row">
                         <button
                             type="submit"
                             className="btn btn-lg btn-warning rounded-0 ml-auto m-3"
-                            disabled={disabled}
+                            disabled={disabled||loading}
                         >
                             Book
                         </button>
+                        {loading&&<Spinner className="m-2" animation={'border'}/>}
                     </div>
-                    
+
                 </form>
             </div>
         </div>

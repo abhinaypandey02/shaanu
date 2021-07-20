@@ -13,6 +13,7 @@ export default function UserContext({children}:any){
     const [user,setUser]=useState<UserInterface|null|undefined>(undefined)
     useEffect(()=>{
         fire.auth().onAuthStateChanged(user=>{
+            console.log(user)
             if(user&&user.email){
                 getUserDocument(user.email).then(user_doc=>setUser(user_doc));
             } else setUser(null);

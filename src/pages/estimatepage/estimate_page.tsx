@@ -10,6 +10,9 @@ import {useForm} from "react-hook-form";
 import { PDFReader } from 'reactjs-pdf-reader';
 import {getErrorText} from "../../utils/globalFunctions";
 import blurredPDF from '../../images/blurredPDF.jpg';
+import firebase from "firebase";
+import {getRecaptchaVerifier, sendSMS} from "../../utils/firebase/auth";
+import VerifyOTP from "../../components/verifyOTP/verifyOTP";
 
 
 
@@ -19,10 +22,38 @@ export default function EstimatePage() {
     const [user] = useUser();
     const [showConfirmationModal, setShowConfirmationModal] = useState(false);
     const [link, setLink] = useState("");
-    const {register,handleSubmit, reset,formState:{errors}} = useForm();
-    console.log(errors );
+    const {register,handleSubmit, reset,formState:{errors},clearErrors,getValues,setError} = useForm();
     const [notLoggedInModalShow,setNotLoggedInModalShow]=useState(false);
+    const [phoneResult, setPhoneResult] = useState<firebase.auth.ConfirmationResult>();
+    const [reCaptcha, setReCaptcha] = useState<firebase.auth.RecaptchaVerifier>();
+    const [loading,setLoading]=useState(false);
+    useEffect(() => {
+        const captcha = getRecaptchaVerifier("captcha")
+        if (!reCaptcha) setReCaptcha(captcha)
+        return () => captcha.clear();
+    }, [])
+    async function sendOTP():Promise<boolean>{
+        if (reCaptcha){
+            try{
+                const result=await sendSMS("+91" + getValues("phone").toString(), reCaptcha);
+                setPhoneResult(result);
+                return true;
+            }
+            catch (err){
+                setError("phone", {type: "custom", message: err.message})
+                return false;
+            }
 
+        }
+        return false;
+    }
+    function onSubmit(e:any){
+        e.preventDefault();
+
+        clearErrors();
+        setLoading(true);
+        sendOTP().then(()=>setLoading(false));
+    }
     function onDownload(){
         if(user){
             document.getElementById('downloadInvoice')?.click();
@@ -81,6 +112,7 @@ export default function EstimatePage() {
     return (
         <div className="container-fluid d-flex flex-grow-1  justify-content-center align-items-center"
              id='allpagesection'>
+            <VerifyOTP phoneResult={phoneResult} onSuccess={handleSubmit(addCallbackRequestLocal)} onHide={()=>setPhoneResult(undefined)} resendOTP={sendOTP}/>
             <Modal
                 contentClassName='bg-dark border border-warning p-0 rounded-0'
                 centered={true}
@@ -162,7 +194,7 @@ export default function EstimatePage() {
                     <h1 className="text-warning">OR</h1>
                     <br/>
                     </div>}
-                    <form noValidate={true} onSubmit={handleSubmit(addCallbackRequestLocal)} className="container pl-2 alert alert-warning rounded-0">
+                    <form noValidate={true} onSubmit={onSubmit} className="container pl-2 alert alert-warning rounded-0">
                         {!user&&<div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
                             <div className="col-md-4 mb-2 bg-warning text-dark text-left ">
                                 FULL NAME
@@ -185,10 +217,10 @@ export default function EstimatePage() {
                             <div className="col-md-8">
                                 <input
                                     type="number"
-                                    {...register("phone",{required:true,minLength:10})}
+                                    {...register("phone",{required:true,minLength:10,maxLength:10,valueAsNumber:true})}
                                     className="form-control bg-transparent border border-warning rounded-0 "
                                 />
-                                <div className=" small text-danger text-left">{getErrorText(errors.phone?.type)}</div>
+                                <div className=" small text-danger text-left">{getErrorText(errors.phone?.type,errors.phone?.message)}</div>
                             </div>
                         </div>
                         <div className="row d-flex mb-3 align-items-center justify-content-center text-light">
@@ -205,13 +237,17 @@ export default function EstimatePage() {
 
                             </div>
                         </div>
+                        <div id="captcha"/>
                         <div className="row-fluid text-right p-0">
+                            {loading&&<Spinner className="m-2" animation={'border'}/>}
                             <button
                                 type="submit"
                                 className="btn btn-lg mx-auto btn-warning rounded-0 pr-3 m-2"
+                                disabled={loading}
                             >
                                 Request A Callback
                             </button>
+
                         </div>
 
                     </form>
