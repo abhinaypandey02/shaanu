@@ -14,42 +14,51 @@ export default function LandingPage() {
 
     return <div>
   
-            <div className='d-flex justify-content-center align-items-center' id='section1'>
-                <div className='container d-flex flex-column'>
-                        <div className="row-fluid text-light text-center">
-                            <h1 className='display-5'>One place for all your Car needs</h1>
+    <div className='d-flex justify-content-center align-items-center' id='section1'>
+                        <div className='container d-flex flex-column'>
+                                <div className="row-fluid text-light text-center">
+                                    <h1 className='display-5'>One place for all your Car needs</h1>
+                                </div>
+                                <br/>
+                        
+                                <div className='row my-2 text-center'>
+                                        <Accordion className='w-50 mx-auto border border-warning text-light' id='dropdownbutton'>
+                                            <Card className='m-0 pointer-on-hover'>
+                                                <Card.Header className='p-0 m-0'>
+                                                    <Accordion.Toggle as={Card.Header} eventKey="0">
+                                                            SELECT {currentlySelecting}
+                                                        </Accordion.Toggle>
+                                                </Card.Header>
+                                                <Accordion.Collapse className='text-light' eventKey="0">
+                                                <Card.Body><CarsMenu/></Card.Body>
+                                                </Accordion.Collapse>
+                                            </Card>
+                                            </Accordion>
+                                        
+                                </div>
+                        
                         </div>
-                        <br/>
-                   
-                        <div className='row my-2 text-center'>
-                                <Accordion className='w-50 mx-auto border border-warning text-light' id='dropdownbutton'>
-                                    <Card className='m-0 pointer-on-hover'>
-                                        <Card.Header className='p-0 m-0'>
-                                            <Accordion.Toggle as={Card.Header} eventKey="0">
-                                                    SELECT {currentlySelecting}
-                                                </Accordion.Toggle>
-                                        </Card.Header>
-                                        <Accordion.Collapse className='text-light' eventKey="0">
-                                        <Card.Body><CarsMenu/></Card.Body>
-                                        </Accordion.Collapse>
-                                    </Card>
-                                    </Accordion>
-                                
-                        </div>
-                   
-                </div>
-            </div>
+        </div>
+        
+            
          
         <div className='container-fluid py-4 d-flex align-items-center justify-content-center' id='section2'>
             <div className="container p-2 ">
-            <div className="row-fluid text-light text-center">
+            <div className="row-fluid text-light text-left">
+   
+                    <div className="row mr-auto">
+                         <hr className='bg-warning py-1  mx-2' style={{width:30}}/> 
+                         <p className='my-auto text-warning'> <strong>Top Services</strong></p>
+                         
+                    </div>                    
+
                 <h1 className='display-5 '>Services that make your car perfect.</h1>
             </div>
             <br/>
             <div className="row mt-4">
                 <div className="col-md-4">
                     
-                    <div className="card mx-auto" style={{width: 300}} id='servicecard'>
+                    <div className="card mx-auto" style={{width: 350}} id='servicecard'>
                     <img src="https://storage.googleapis.com/gomechanic_assets/category_icons/battery-v3.svg" className="card-img-top" alt="..."/>
                     <div className="card-body">
                         <h5 className="card-title text-warning">Card title</h5>
@@ -61,7 +70,7 @@ export default function LandingPage() {
                 </div>
                 <div className="col-md-4">
                 
-                    <div className="card mx-auto" style={{width: 300}} id='servicecard'>
+                    <div className="card mx-auto" style={{width: 350}} id='servicecard'>
                     <img src="https://storage.googleapis.com/gomechanic_assets/category_icons/schedule-services-v3.svg" className="card-img-top" alt="..."/>
                     <div className="card-body">
                         <h5 className="card-title text-warning">Card title</h5>
@@ -72,7 +81,7 @@ export default function LandingPage() {
                   
                 </div>
                 <div className="col-md-4">
-                    <div className="card mx-auto" style={{width: 300}} id='servicecard'>
+                    <div className="card mx-auto" style={{width: 350}} id='servicecard'>
                     <img src="https://storage.googleapis.com/gomechanic_assets/category_icons/tyre-v3.svg" className="card-img-top" alt="..."/>
                     <div className="card-body">
                         <h5 className="card-title text-warning">Card title</h5>
@@ -94,8 +103,8 @@ export default function LandingPage() {
             </div>
                             <Carousel fade>
                             <Carousel.Item>
-                                        <div className="card mx-auto text-light border-light rounded-3 p-3 bg-warning" style={{ maxWidth: 1000 }} >
-                                            <div className="row d-flex justify-content-center">
+                                        <div className="card mx-auto text-light border-warning rounded-0 p-3 bg-warning" style={{ maxWidth: 1000 }} >
+                                            <div className="row">
                                                 <div className="col-md-2 my-auto">
                                                     <img src="https://images.unsplash.com/photo-1488654715439-fbf461f0eb8d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" className='img-fluid border rounded-circle' alt="..." />
                                                 </div>
@@ -114,7 +123,7 @@ export default function LandingPage() {
                                         </div>
                     </Carousel.Item>
                     <Carousel.Item>
-                    <div className="card mx-auto text-light border-light p-3" style={{ maxWidth: 1000 }} >
+                    <div className="card mx-auto text-light border-warning rounded-0 p-3" style={{ maxWidth: 1000 }} >
                                             <div className="row d-flex justify-content-center">
                                                 <div className="col-md-2 my-auto">
                                                     <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" className='img-fluid border rounded-circle' alt="..." />
@@ -134,7 +143,7 @@ export default function LandingPage() {
                                         </div>
                     </Carousel.Item>
                     <Carousel.Item>
-                    <div className="card mx-auto text-light border-light p-3" style={{ maxWidth: 1000 }} >
+                    <div className="card mx-auto text-light border-warning rounded-0 p-3" style={{ maxWidth: 1000 }} >
                                             <div className="row d-flex justify-content-center">
                                                 <div className="col-md-2 my-auto">
                                                     <img src="https://images.unsplash.com/photo-1481114070102-72f9d11057dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1104&q=80" className='img-fluid border rounded-circle' alt="..." />
