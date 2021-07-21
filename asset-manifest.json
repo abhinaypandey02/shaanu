@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.53acba79.chunk.css",
-    "main.js": "/static/js/main.5c6f9c67.chunk.js",
-    "main.js.map": "/static/js/main.5c6f9c67.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.5a2eae3f.js",
-    "runtime-main.js.map": "/static/js/runtime-main.5a2eae3f.js.map",
-    "static/css/2.2ed56973.chunk.css": "/static/css/2.2ed56973.chunk.css",
-    "static/js/2.a368052a.chunk.js": "/static/js/2.a368052a.chunk.js",
-    "static/js/2.a368052a.chunk.js.map": "/static/js/2.a368052a.chunk.js.map",
-    "static/js/3.00cf5907.chunk.js": "/static/js/3.00cf5907.chunk.js",
-    "static/js/3.00cf5907.chunk.js.map": "/static/js/3.00cf5907.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/2.2ed56973.chunk.css.map": "/static/css/2.2ed56973.chunk.css.map",
-    "static/css/main.53acba79.chunk.css.map": "/static/css/main.53acba79.chunk.css.map",
-    "static/js/2.a368052a.chunk.js.LICENSE.txt": "/static/js/2.a368052a.chunk.js.LICENSE.txt",
-    "static/media/blurredPDF.c630aeb3.jpg": "/static/media/blurredPDF.c630aeb3.jpg"
+    "main.css": "./static/css/main.53acba79.chunk.css",
+    "main.js": "./static/js/main.5c6f9c67.chunk.js",
+    "main.js.map": "./static/js/main.5c6f9c67.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.84e063b0.js",
+    "runtime-main.js.map": "./static/js/runtime-main.84e063b0.js.map",
+    "static/css/2.2ed56973.chunk.css": "./static/css/2.2ed56973.chunk.css",
+    "static/js/2.aac20d88.chunk.js": "./static/js/2.aac20d88.chunk.js",
+    "static/js/2.aac20d88.chunk.js.map": "./static/js/2.aac20d88.chunk.js.map",
+    "static/js/3.00cf5907.chunk.js": "./static/js/3.00cf5907.chunk.js",
+    "static/js/3.00cf5907.chunk.js.map": "./static/js/3.00cf5907.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/2.2ed56973.chunk.css.map": "./static/css/2.2ed56973.chunk.css.map",
+    "static/css/main.53acba79.chunk.css.map": "./static/css/main.53acba79.chunk.css.map",
+    "static/js/2.aac20d88.chunk.js.LICENSE.txt": "./static/js/2.aac20d88.chunk.js.LICENSE.txt",
+    "static/media/blurredPDF.c630aeb3.jpg": "./static/media/blurredPDF.c630aeb3.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.5a2eae3f.js",
+    "static/js/runtime-main.84e063b0.js",
     "static/css/2.2ed56973.chunk.css",
-    "static/js/2.a368052a.chunk.js",
+    "static/js/2.aac20d88.chunk.js",
     "static/css/main.53acba79.chunk.css",
     "static/js/main.5c6f9c67.chunk.js"
   ]
