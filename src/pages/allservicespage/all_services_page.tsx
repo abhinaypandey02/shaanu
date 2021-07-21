@@ -143,12 +143,21 @@ export default function AllServicesPage() {
                                     className="text-left p-0 border border-light my-2 w-100"
                                     key={id}
                                 >
-                                    <h4 className="card-header m-0 alert alert-warning w-100 flex-wrap d-flex justify-content-between">
-                                        <div className="1">
+                                    <div className="m-0 alert alert-warning w-100 flex-wrap rounded-0 justify-content-between d-flex">
+                                        <div>
+                                        <h5 className="font-weight-bold mb-0 pb-0">
                                             {service.name}
+                                        </h5>
+                                        <p className="font-weight-light my-0 py-0 card-text">
+                                            {category}
+                                        </p>
+                                        <div className="badge badge-info my-0">
+                                            {user?`Rs. ${service.price}`:"Sign in to view price"}
                                         </div>
+                                        </div>
+                                        <div className=' my-auto'>
                                         <div
-                                            className="btn rounded-0 btn-danger mt-3 mt-md-0"
+                                            className="btn my-auto rounded-0 btn-outline-danger "
                                             onClick={() => {
                                                 dispatch({
                                                     type: "REMOVE_FROM_CART",
@@ -156,17 +165,13 @@ export default function AllServicesPage() {
                                                 });
                                             }}
                                         >
-                                            Remove
+                                            <img src='https://i.ibb.co/Rc0bWnJ/x-png-35400.png' className='my-1' height={15} width={15} alt=''/>
                                         </div>
-                                    </h4>
-                                    <div className="card-body">
-                                        <div className="badge badge-info">
-                                            {user?`Rs. ${service.price}`:"Sign in to view price"}
+
                                         </div>
-                                        <p className="card-text">
-                                            {category}
-                                        </p>
+                                        
                                     </div>
+                
                                 </Container>
                             ))}
                         </div>

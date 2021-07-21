@@ -3,7 +3,7 @@ import UserInterface from "../../interfaces/user";
 export default function NotificationBar({user}:{user:UserInterface}) {
 
     return (
-        <div className="container border rounded border-warning rounded-0 p-3 mt-5 mb-4 text-center">
+        <div className="container border rounded border-warning rounded-0 p-3 mb-4 text-center">
             <div className="row border-bottom border-warning rounded-0">
                 <h1 className='text-light mx-auto'> NOTIFICATION CENTER</h1>
 

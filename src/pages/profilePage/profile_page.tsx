@@ -45,7 +45,7 @@ export default function ProfilePage() {
         );
     }
     return (
-        <div className="container-fluid">
+        <div className="container-fluid px-5">
             <Modal dialogClassName="dialogClass"
             show={showCreateCarProfile} centered onHide={() => setShowCreateCarProfile(false)} >
                 <Modal.Header className='bg-warning border border-warning rounded-0 text-dark' closeButton>Create Car Profile</Modal.Header>
@@ -54,23 +54,40 @@ export default function ProfilePage() {
                 </Modal.Body>
 
             </Modal>
-            <div className="row-fluid mb-4 text-center">
+            <div className="row-fluid px-5 mb-4 text-center">
                 <h1 className='text-warning'>YOUR PROFILE</h1>
             </div>
-            {user.carProfiles.length>0&&<div className="container d-flex justify-content-center align-items-center">
-                <div className='col-md-6 mb-5'>
-                    <div className="text-white w-25">Current Profile</div>
+            
+            {user.carProfiles.length>0&&<div className="container-fluid p-2 mb-5 ">
+                <div className="row">
+                <div className='col-md-3 mr-auto'>
+                    <div className="text-white">Current Profile</div>
                     <select className="form-control bg-warning text-dark rounded-0" onChange={e=>setCurrentCarProfile(user.carProfiles[parseInt(e.target.value)])}>
                         {user.carProfiles.map((profile,index)=><option value={index}>{profile.brand.toUpperCase()} {profile.model.toUpperCase()}</option>)}
                     </select>
                 </div>
+                <div className="col-md-6 ml-auto text-right">
+                            <button onClick={() => setShowCreateCarProfile(true)} className="btn m-2 btn-warning rounded-0">
+                                {currentCarProfile?"ADD NEW CAR PROFILE":"CREATE NEW CAR PROFILE"}
+                            </button>
+                            <button onClick={signOut} className="btn m-2 btn-danger rounded-0">
+                                SIGN OUT
+                            </button>
+            </div>
+                </div>
+                
                 
             </div>}
             
             <div className="row">
-                <div className="col-lg-6 d-flex align-items-center">
-                    <div className="col">
-                        <div className="row-fluid mt-auto">
+                <div className="col-lg-4 d-flex flex-column flex-wrap align-items-center">
+                 
+                    {currentCarProfile&&currentCarProfile.imageURL&&<img
+                        src={currentCarProfile.imageURL}
+                        alt={currentCarProfile.brand+currentCarProfile.model}
+                        className="img-fluid mt-0 mb-2 border-warning border rounded-0"
+                    />}
+                        <div className="row w-100 mt-auto">
                             {currentCarProfile&&<table className="table text-light text-center table-bordered">
                                 <tbody className=''>
 
@@ -93,27 +110,17 @@ export default function ProfilePage() {
                                 </tbody>
                             </table>}
                         </div>
-                        <div className="row-fluid text-center ">
-                            <button onClick={() => setShowCreateCarProfile(true)} className="btn m-2 btn-warning rounded-0">
-                                {currentCarProfile?"ADD NEW CAR PROFILE":"CREATE NEW CAR PROFILE"}
-                            </button>
-                            <button onClick={signOut} className="btn m-2 btn-danger rounded-0">
-                                SIGN OUT
-                            </button>
-                        </div>
+                        
                     </div>
 
-                </div>
-                <div className="col-lg-6 d-flex justify-content-center">
-                    {currentCarProfile&&currentCarProfile.imageURL&&<img
-                        src={currentCarProfile.imageURL}
-                        alt={currentCarProfile.brand+currentCarProfile.model}
-                        className="img-fluid w-50 m-2 border-warning border rounded-0"
-                    />}
+            
+                <div className="col-lg-8 d-flex flex-column flex-wrap ">
+                <NotificationBar user={user} />
+                <CarsWorkdetails />
                 </div>
             </div>
-            <NotificationBar user={user} />
-            <CarsWorkdetails />
+            
+            
         </div>
     );
 }
