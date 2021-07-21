@@ -142,14 +142,22 @@ export default function EstimatePage() {
                 </Modal.Body>
             </Modal>
             <div className="row text-center w-100 ">
-                <div className="col-lg-6 py-3">
+                <div className="col-xl-6 py-3 d-flex justify-content-center align-items-center flex-column">
                     {link!==""&&
                     <div style={{overflow:"hidden",maxWidth:"100%"}}>
                         <PDFReader scale={1} url={link}/>
+                        <br/>
                     </div>
                     }
 
-                    {!user&&<img src={blurredPDF} alt="blurred invoice"/>}
+                    {!user&&<div>
+                        <a  href='#profile'>
+                        <div className="alert alert-danger" id='signinpdfalert' role="alert">
+                            SIGN IN TO VIEW THE PDF!
+                        </div>
+                        </a>
+                            <img src={blurredPDF} className='img-fluid' alt="blurred invoice"/>
+                        </div>}
                     {link !== "" && (
                         <a
                             download="invoice.pdf"
@@ -161,7 +169,7 @@ export default function EstimatePage() {
 
                     )}
                     {(!user||link!=="")&&(
-                        <button onClick={onDownload} className="btn btn-outline-light m-3">
+                        <button onClick={onDownload} className="btn btn-outline-light  m-3">
                             DOWNLOAD PDF
                         </button>
                     )}
@@ -173,7 +181,7 @@ export default function EstimatePage() {
                     )}
                 </div>
 
-                <div className="col-lg-6">
+                <div className="col-xl-6">
                     {!user&&<div>
 
 

@@ -128,7 +128,11 @@ export default function AllServicesPage() {
                             <hr className="w-100 bg-warning"/>
                             <div className="row w-100 m-0 p-2">
 
-                                <div className='col-auto mx-auto'>{user?`Total : ₹${cartSum}`:"Sign in to view total."}</div>
+                                <div className='col-auto mx-auto'>{user?`Total : ₹${cartSum}`:<a  href='#profile'>
+                        <div className="alert alert-danger" id='signinpdfalert' role="alert">
+                            SIGN IN TO VIEW THE TOTAL!
+                        </div>
+                        </a>}</div>
                             </div>
 
 

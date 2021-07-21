@@ -6,16 +6,29 @@
     min-height: 90vh ;
     
 }
+svg{
+    background:#ffc107 ;
+   
+}
+
 #dropdownbutton{
     border: yellow;
 }
+
 #section2{
+    padding-top: 10rem !important;
     min-height: 80vh ;
-    background: linear-gradient(to bottom, #020202e3, #ffd90000),url(https://i.ibb.co/StZhZ2Z/9-C4-D3-F35-D9-AB-46-D5-8690-0575-CCB6264-A.png); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
+    background: linear-gradient(to bottom, #020202e3, #ffc107 ),url(https://i.ibb.co/StZhZ2Z/9-C4-D3-F35-D9-AB-46-D5-8690-0575-CCB6264-A.png); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
     background-position: center;
     background-size: cover;
 }
 #section3{
+    background: black;
+
+    background-position: center;
+    background-size: cover;
+}
+#section4{
     background: -webkit-linear-gradient(to top, #41434559, #141414d5),url(https://wallpapercave.com/wp/wp7560270.jpg);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to top, #41434563, #070707c4),url(https://wallpapercave.com/wp/wp7560270.jpg); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
     background-position: center;
