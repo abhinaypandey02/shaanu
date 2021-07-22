@@ -5,7 +5,8 @@ import {getPlans} from "../../database/plan";
 import "./all_services_page.css";
 import {useHistory} from "react-router";
 import {useUser} from "../../contexts/user_context";
-
+import carsDataJSON from '../../database/carsData.json';
+import CarsData from "../../interfaces/carsData";
 export default function AllServicesPage() {
     const [user]=useUser();
     const [globalState, dispatch] = useGlobalState();
@@ -15,7 +16,7 @@ export default function AllServicesPage() {
         (acc, curr) => acc + curr.service.price,
         0
     );
-
+    const carsData=carsDataJSON as CarsData;
     const selectedBrand = globalState.selectedBrand;
     const selectedModel = globalState.selectedModel;
     const selectedType = globalState.selectedType;
@@ -93,13 +94,13 @@ export default function AllServicesPage() {
                             <div
                                 className='alert rounded-0 alert-warning w-100 h-100 pb-4 d-flex justify-content-center  align-items-center flex-column flex-wrap'>
                                 <h2 className="display-4">CART</h2>
-                                <img
-                                    src='https://cdn.picpng.com/lamborghini/lamborghini-image-29016.png'
+                                {selectedModel&&selectedBrand&&<img
+                                    src={carsData[selectedBrand].models[selectedModel].imageURL}
                                     alt="cart"
                                     className="img-fluid w-75 border-1 rounded
                             "
 
-                                />
+                                />}
                             </div>
 
                             <div className="col-12 d-flex flex-wrap align-items-center justify-content-between">
