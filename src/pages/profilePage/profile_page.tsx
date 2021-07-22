@@ -85,7 +85,7 @@ export default function ProfilePage() {
                     {currentCarProfile&&currentCarProfile.imageURL&&<img
                         src={currentCarProfile.imageURL}
                         alt={currentCarProfile.brand+currentCarProfile.model}
-                        className="img-fluid mt-0 mb-2 border-warning border rounded-0"
+                        className="img-fluid mt-0 mb-2 border-warning border rounded-0 w-100"
                     />}
                         <div className="row w-100 mt-auto">
                             {currentCarProfile&&<table className="table text-light text-center table-bordered">
