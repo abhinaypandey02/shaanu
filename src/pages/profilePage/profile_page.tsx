@@ -3,11 +3,11 @@ import { Button,  Modal } from "react-bootstrap";
 import LoginForm from "../../components/profilePage/loginForm/login_form";
 import RegisterForm from "../../components/profilePage/registerForm/register_form";
 import { useUser } from "../../contexts/user_context";
-import CarsWorkdetails from "../../components/carsWorkdetails/cars_workdetails";
 import NotificationBar from "../../components/notificationbar/notification_bar";
 import { signOut } from "../../utils/firebase/auth";
 import CreateCarProfile from "../../components/createCarProfile/create_car_profile";
 import './profile_page.css';
+import UploadDocuments from "../../components/uploadDocuments/upload_documents";
 export default function ProfilePage() {
     const [user] = useUser();
     const [signIn, setSignIn] = useState(false);
@@ -58,14 +58,14 @@ export default function ProfilePage() {
                 <h1 className='text-warning'>YOUR PROFILE</h1>
             </div>
             
-            {user.carProfiles.length>0&&<div className="container-fluid p-2 mb-5 ">
+            <div className="container-fluid p-2 mb-5 ">
                 <div className="row">
-                <div className='col-md-3 mr-auto'>
+                    {user.carProfiles.length>0&&<div className='col-md-3 mr-auto'>
                     <div className="text-white">Current Profile</div>
                     <select className="form-control bg-warning text-dark rounded-0" onChange={e=>setCurrentCarProfile(user.carProfiles[parseInt(e.target.value)])}>
                         {user.carProfiles.map((profile,index)=><option value={index}>{profile.brand.toUpperCase()} {profile.model.toUpperCase()}</option>)}
                     </select>
-                </div>
+                </div>}
                 <div className="col-md-6 ml-auto text-right">
                             <button onClick={() => setShowCreateCarProfile(true)} className="btn m-2 btn-warning rounded-0">
                                 {currentCarProfile?"ADD NEW CAR PROFILE":"CREATE NEW CAR PROFILE"}
@@ -77,7 +77,7 @@ export default function ProfilePage() {
                 </div>
                 
                 
-            </div>}
+            </div>
             
             <div className="row">
                 <div className="col-lg-4 d-flex flex-column flex-wrap align-items-center">
@@ -115,8 +115,8 @@ export default function ProfilePage() {
 
             
                 <div className="col-lg-8 d-flex flex-column flex-wrap ">
-                <NotificationBar user={user} />
-                <CarsWorkdetails />
+                    <NotificationBar user={user} />
+                    <UploadDocuments  />
                 </div>
             </div>
             

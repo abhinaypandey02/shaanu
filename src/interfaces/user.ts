@@ -7,6 +7,7 @@ export default interface UserInterface {
     carProfiles: CarProfile[];
     notifications:string[];
     phone:number;
+    documents:{name:string,category:string,url:string}[]
 }
 export const defaultUser: UserInterface = {
     email: "",
@@ -14,5 +15,6 @@ export const defaultUser: UserInterface = {
     lastName: "",
     carProfiles: [],
     notifications:[],
-    phone:-1
+    phone:-1,
+    documents:[]
 };

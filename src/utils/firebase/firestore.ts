@@ -5,7 +5,7 @@ import { CarProfile } from "../../interfaces/car";
 import { BookedSession } from "../../interfaces/bookedSession";
 import CallbackRequest from "../../interfaces/callbackRequest";
 import JobInterface from "../../interfaces/job";
-export async function createUserDocument(user_data: UserInterface) {
+export async function setUserDocument(user_data: UserInterface) {
     await fire
         .firestore()
         .collection("users")

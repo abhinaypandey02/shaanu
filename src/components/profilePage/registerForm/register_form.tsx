@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Button, Form, Spinner} from "react-bootstrap";
 import UserInterface, {defaultUser} from "../../../interfaces/user";
 import {getRecaptchaVerifier, sendSMS, signUpWithEmailAndPassword} from "../../../utils/firebase/auth";
-import {createUserDocument} from "../../../utils/firebase/firestore";
+import {setUserDocument} from "../../../utils/firebase/firestore";
 import {useForm} from "react-hook-form";
 import {getErrorText} from "../../../utils/globalFunctions";
 import firebase from "firebase/app";
@@ -50,7 +50,7 @@ export default function RegisterForm() {
         }
         console.log(user)
         signUpWithEmailAndPassword(email, password).then(() => {
-            createUserDocument(user)
+            setUserDocument(user)
         }).catch((error: any) => {
             switch (error.code) {
                 case "auth/email-already-in-use": {
