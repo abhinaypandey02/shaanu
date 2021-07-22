@@ -90,7 +90,7 @@ export default function AllServicesPage() {
                         className="d-flex rounded-0 alert alert-light align-items-center justify-content-center flex-column p-3 text-light"
                         id="cart"
                     >
-                        <div className='border border-warning rounded-0 mb-2'>
+                        <div className='w-100 border border-warning rounded-0 mb-2'>
                             <div
                                 className='alert rounded-0 alert-warning w-100 h-100 pb-4 d-flex justify-content-center  align-items-center flex-column flex-wrap'>
                                 <h2 className="display-4">CART</h2>

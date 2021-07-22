@@ -4,6 +4,8 @@ import CarsMenu from '../../components/carsMenu/cars_menu';
 import { useGlobalState } from '../../contexts/global_state';
 import './landing_page.css';
 import "animate.css/animate.min.css";
+import CountUp from 'react-countup';
+import VisibilitySensor from 'react-visibility-sensor';
 import ScrollAnimation from 'react-animate-on-scroll';
 export default function LandingPage() {
     const [globalState]=useGlobalState();
@@ -18,7 +20,7 @@ export default function LandingPage() {
     <div className='d-flex justify-content-center align-items-center' id='section1'>
                         <div className='container d-flex flex-column'>
                                 <div className="row-fluid text-light text-center">
-                                    <ScrollAnimation animateIn='zoomInUp'  animateOnce={true} initiallyVisible={true} duration={3}>
+                                    <ScrollAnimation animateIn='fadeIn'  animateOnce={true} initiallyVisible={true} duration={3}>
                                     <h1 className='display-5'>One place for all your Car needs</h1>
                                     </ScrollAnimation>
                              
@@ -49,10 +51,10 @@ export default function LandingPage() {
         <div className='container-fluid py-4 d-flex align-items-center justify-content-center' id='section2'>
             <div className="container px-2 ">
             <div className="row-fluid text-light text-left">
-            <ScrollAnimation animateIn='fadeInLeft' animateOnce={true} duration={3}>
+            <ScrollAnimation animateIn='fadeInDown' animateOnce={true} duration={3}>
                     <div className="row mr-auto">
-                         <hr className='bg-warning py-1  mx-2' style={{width:30}}/> 
-                         <p className='my-auto text-warning'> <strong>Top Services</strong></p>
+                         <hr className='bg-light py-1  mx-2' style={{width:30}}/> 
+                         <p className='my-auto text-light'> <strong>Top Services</strong></p>
                          
                     </div>                    
                     
@@ -62,8 +64,8 @@ export default function LandingPage() {
             <br/>
             <div className="row mt-4">
                 <div className="col-md-4">
-                    
-                    <div className="card mx-auto" style={{width: 350}} id='servicecard'>
+                <ScrollAnimation animateIn='fadeInUp' delay={500} animateOnce={true} duration={3}>
+                    <div className="card mx-auto pointer-on-hover" style={{width: 350}} id='servicecard1'>
                     <img src="https://storage.googleapis.com/gomechanic_assets/category_icons/battery-v3.svg" className="card-img-top" alt="..."/>
                     <div className="card-body">
                         <h5 className="card-title text-warning">Card title</h5>
@@ -71,11 +73,12 @@ export default function LandingPage() {
                         
                     </div>
                     </div>
+                    </ScrollAnimation>
                     
                 </div>
                 <div className="col-md-4">
-                
-                    <div className="card mx-auto" style={{width: 350}} id='servicecard'>
+                <ScrollAnimation animateIn='fadeInUp'  delay={1000} animateOnce={true} duration={3}>
+                    <div className="card mx-auto pointer-on-hover" style={{width: 350}} id='servicecard2'>
                     <img src="https://storage.googleapis.com/gomechanic_assets/category_icons/schedule-services-v3.svg" className="card-img-top" alt="..."/>
                     <div className="card-body">
                         <h5 className="card-title text-warning">Card title</h5>
@@ -83,10 +86,12 @@ export default function LandingPage() {
                         
                     </div>
                     </div>
+                    </ScrollAnimation>
                   
                 </div>
                 <div className="col-md-4">
-                    <div className="card mx-auto" style={{width: 350}} id='servicecard'>
+                <ScrollAnimation animateIn='fadeInUp'  delay={1500} animateOnce={true} duration={3}>
+                    <div className="card mx-auto pointer-on-hover" style={{width: 350}} id='servicecard3'>
                     <img src="https://storage.googleapis.com/gomechanic_assets/category_icons/tyre-v3.svg" className="card-img-top" alt="..."/>
                     <div className="card-body">
                         <h5 className="card-title text-warning">Card title</h5>
@@ -94,6 +99,7 @@ export default function LandingPage() {
                    
                     </div>
                     </div>
+                    </ScrollAnimation>
                 </div>
                      
             </div>
@@ -209,14 +215,71 @@ export default function LandingPage() {
                     </Carousel>
 
             <br />
+            
+            <br />
+            
+            <br />
             </div>
             </div>
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#000000" fill-opacity="1" d="M0,96L48,96C96,96,192,96,288,122.7C384,149,480,203,576,197.3C672,192,768,128,864,122.7C960,117,1056,171,1152,202.7C1248,235,1344,245,1392,250.7L1440,256L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>                
-            
-            <div className="container-fluid bg-warning text-light p-3">
-                <div className="container">
-                <ScrollAnimation animateIn='fadeInLeft' animateOnce={true} duration={3}>
+            <div className="container-fluid" id='countupsection'>
+                
+                <div className="container py-5">
+                <div className="row text-light py-5">
+                    <div className="col-md-3 text-center">
+                        <p className='font-weight-bold display-3 mt-3'>
+                        <CountUp start={0} end={20} duration={5} redraw={true}>
+                            {({ countUpRef, start }) => (
+                                <VisibilitySensor onChange={start} delayedCall>
+                                    <span ref={countUpRef} />
+                                </VisibilitySensor>
+                            )}
+                        </CountUp>
+                        </p>
+                        <p className='font-weight-bold  mt-3'><h5>SERVICES</h5></p>
+                    </div>
+                    <div className="col-md-3 text-center">
+                        <p className='font-weight-bold display-3 mt-3'>
+                        <CountUp start={0} end={1200} duration={5} redraw={true}>
+                            {({ countUpRef, start }) => (
+                                <VisibilitySensor onChange={start} delayedCall>
+                                    <span ref={countUpRef} />
+                                </VisibilitySensor>
+                            )}
+                        </CountUp>
+                        </p>
+                        <p className='font-weight-bold  mt-3'><h5>USERS</h5></p>
+                    </div>
+                    <div className="col-md-3 text-center">
+                        <p className='font-weight-bold display-3 mt-3'>
+                        <CountUp start={0} end={900} duration={5} redraw={true}>
+                            {({ countUpRef, start }) => (
+                                <VisibilitySensor onChange={start} delayedCall>
+                                    <span ref={countUpRef} />
+                                </VisibilitySensor>
+                            )}
+                        </CountUp>
+                        </p>
+                        <p className='font-weight-bold  mt-3'><h5>CARS</h5></p>
+                    </div>
+                    <div className="col-md-3 text-center">
+                        <p className='font-weight-bold display-3 mt-3'>
+                        <CountUp start={0} end={30} duration={5} redraw={true}>
+                            {({ countUpRef, start }) => (
+                                <VisibilitySensor onChange={start} delayedCall>
+                                    <span ref={countUpRef} />
+                                </VisibilitySensor>
+                            )}
+                        </CountUp>
+                        </p>
+                        <p className='font-weight-bold  mt-3'><h5>STATES</h5></p>
+                    </div>
+                </div>
+                </div>
+            </div>            
+            <div className="container-fluid text-light pt-5 p-3"  id='section4'>
+                <div className="container pt-5">
+                <ScrollAnimation animateIn='fadeInDown' animateOnce={true} duration={3}>
                     <div className="row mr-auto">
                          <hr className='bg-light py-1 mx-2' style={{width:30}}/> 
                          <p className='my-auto text-light'> <strong>FAQ</strong></p>
@@ -230,13 +293,13 @@ export default function LandingPage() {
                 </div>
           
                 
-                    </div>
-                    <div className="container-fluid bg-warning">
-                    <div className="container bg-warning" >
+                 
+                 
+                    <div className="container bg-transparent" >
                 <div className="row-fluid text-light">
                     <Accordion defaultActiveKey="1" >
                         <Card className='p-0 m-0'>
-                            <Card.Header className='bg-dark text-light  p-0 m-0'>
+                            <Card.Header className='bg-dark text-light pointer-on-hover p-0 m-0'>
                                 <Accordion.Toggle as={Card.Header} eventKey="1">
                                     1. Lorem Ipsum is simpl typesetting industry ?
                                 </Accordion.Toggle>
@@ -246,7 +309,7 @@ export default function LandingPage() {
                             </Accordion.Collapse>
                         </Card>
                         <Card className=' p-0 m-0'>
-                            <Card.Header className='bg-light text-dark  p-0 m-0'>
+                            <Card.Header className='bg-light text-dark pointer-on-hover p-0 m-0'>
                                 <Accordion.Toggle as={Card.Header} eventKey="2">
                                     2. Lorem Ipsum is simply dummy teddddasdsadadting industry ?
                                 </Accordion.Toggle>
@@ -256,7 +319,7 @@ export default function LandingPage() {
                             </Accordion.Collapse>
                         </Card>
                         <Card className=' p-0 m-0'>
-                            <Card.Header className='bg-dark text-light p-0 m-0'>
+                            <Card.Header className='bg-dark text-light pointer-on-hover p-0 m-0'>
                                 <Accordion.Toggle as={Card.Header} eventKey="3">
                                     4. Lorem Ipsprinting and typesetting industry ?
                                 </Accordion.Toggle>
@@ -266,7 +329,7 @@ export default function LandingPage() {
                             </Accordion.Collapse>
                         </Card>
                         <Card className=' p-0 m-0'>
-                            <Card.Header className='bg-light text-dark p-0 m-0'>
+                            <Card.Header className='bg-light text-dark pointer-on-hover p-0 m-0'>
                                 <Accordion.Toggle as={Card.Header} eventKey="4">
                                     3. Lorem Ipsum is simply ddwadadadadaddummy text of the printing and typesetting industry ?
                                 </Accordion.Toggle>
@@ -276,7 +339,7 @@ export default function LandingPage() {
                             </Accordion.Collapse>
                         </Card>
                         <Card className=' p-0 m-0'>
-                            <Card.Header className='bg-dark text-light  p-0 m-0'>
+                            <Card.Header className='bg-dark text-light pointer-on-hover  p-0 m-0'>
                                 <Accordion.Toggle as={Card.Header} eventKey="5">
                                     5. Lorem Ipsum is simply  and typesetting industry ?
                                 </Accordion.Toggle>
@@ -292,7 +355,7 @@ export default function LandingPage() {
                 </div>
                     </div>
             
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#000000" fill-opacity="1" d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" id="lastsvg" viewBox="0 0 1440 320"><path fill="#000000" fill-opacity="1" d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
 
             
               

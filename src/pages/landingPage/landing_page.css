@@ -1,6 +1,6 @@
 #section1{
     background: -webkit-linear-gradient(to top, #41434559, #141414d5),url(https://i.ibb.co/L59KmYf/A871962-D-638-A-4-F04-BCC1-EF06-D78273-EB.png);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #41434563, #070707c4),url(https://i.ibb.co/L59KmYf/A871962-D-638-A-4-F04-BCC1-EF06-D78273-EB.png); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
+    background: linear-gradient(to top, #000000, #07070750),url(https://i.ibb.co/L59KmYf/A871962-D-638-A-4-F04-BCC1-EF06-D78273-EB.png); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
     background-position: center;
     background-size: cover;
     min-height: 90vh ;
@@ -10,7 +10,6 @@ svg{
     background:#ffc107 ;
    
 }
-
 #dropdownbutton{
     border: yellow;
 }
@@ -18,7 +17,12 @@ svg{
 #section2{
     padding-top: 10rem !important;
     min-height: 80vh ;
-    background: linear-gradient(to bottom, #020202e3, #ffc107 ),url(https://i.ibb.co/StZhZ2Z/9-C4-D3-F35-D9-AB-46-D5-8690-0575-CCB6264-A.png); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
+    background: linear-gradient(to bottom, #695600a4, #ffc107 ),url(https://i.ibb.co/ZcyL0Yy/85-FD0436-D402-4-F3-A-8-D23-92262-BA1-FC12.png); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
+    background-position: center;
+    background-size: cover;
+}
+#countupsection{
+    background: linear-gradient(to top, #41434563, #070707c4),url(https://i.ibb.co/rMrjhkx/30-A889-DB-59-DA-4078-BF9-E-23189-CEA2-D50.png); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
     background-position: center;
     background-size: cover;
 }
@@ -29,20 +33,33 @@ svg{
     background-size: cover;
 }
 #section4{
-    background: -webkit-linear-gradient(to top, #41434559, #141414d5),url(https://wallpapercave.com/wp/wp7560270.jpg);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #41434563, #070707c4),url(https://wallpapercave.com/wp/wp7560270.jpg); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
-    background-position: center;
-    background-size: cover;
+    background: #ffc107;
 }
-#servicecard{
-    background: -webkit-linear-gradient(to top, #41434559, #141414d5),url(https://images.unsplash.com/photo-1552962730-61f41ae62092?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #41434563, #070707c4),url(https://images.unsplash.com/photo-1552962730-61f41ae62092?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
-     background-position: center;
+#servicecard1,#servicecard2,#servicecard3 {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
     border: solid #ffc107 1px;
     border-radius: 0% !important;
     color: white;
     transition: transform .3s;
 }
-#servicecard:hover{
+#servicecard1{
+    background: #000000;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+#servicecard2{
+    background: #000000;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+#servicecard3{
+    background: #000000;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+#servicecard1:hover, #servicecard2:hover, #servicecard3:hover{
     transform: scale(1.08)
 }
