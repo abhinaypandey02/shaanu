@@ -18,6 +18,8 @@ import AppointmentSlot from "./components/appointmentSlot/appointment_slot";
 import Job from "./pages/adminPage/jobs/job";
 import {useUser} from "./contexts/user_context";
 import { Spinner } from "react-bootstrap";
+import ReviewPage from "./pages/reviewPage/reviewpage";
+import BlogPage from "./pages/blogPage/blogpage";
 function App() {
     const [globalState] = useGlobalState();
     const [user]=useUser();
@@ -60,6 +62,12 @@ function App() {
                     </Route>
                     <Route path="/admin">
                         <AdminPage />
+                    </Route>
+                    <Route path="/blogs">
+                        <BlogPage />
+                    </Route>
+                    <Route path="/customerreviews">
+                        <ReviewPage />
                     </Route>
                     <Route path="/faq">
                         <FaqPage />

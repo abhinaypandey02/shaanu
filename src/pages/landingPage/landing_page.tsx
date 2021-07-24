@@ -179,6 +179,9 @@ export default function LandingPage() {
                     </Carousel.Item>)}
                 </Carousel>
             </div>
+            <div className="col text-center my-3">
+                    <a href='#customerreviews' className='btn btn-outline-light' >READ MORE</a>
+                    </div>
         </div>
 
         <div className="container-fluid" id='countupsection'>
@@ -321,6 +324,10 @@ export default function LandingPage() {
                         </Card>
 
                     </Accordion>
+                    <div className="col text-center my-3">
+                    <a href='#faq' className='btn btn-outline-dark' >READ MORE</a>
+                    </div>
+                    
 
                 </div>
             </div>

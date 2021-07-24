@@ -1,0 +1,45 @@
+div.stars {
+    width: 220px;
+    display: inline-block
+}
+
+.mt-200 {
+    margin-top: 200px
+}
+
+input.star {
+    display: none
+}
+
+label.star {
+    float: right;
+    padding: 10px;
+    font-size: 36px;
+    color: #4A148C;
+    transition: all .2s
+}
+
+input.star:checked~label.star:before {
+    content: url('https://img.icons8.com/material-rounded/24/000000/star--v1.png');
+    color: #FD4;
+    transition: all .25s;
+    size: 1rem !important;
+}
+
+input.star-5:checked~label.star:before {
+    color: #FE7;
+    text-shadow: 0 0 20px #952
+}
+
+input.star-1:checked~label.star:before {
+    color: #F62
+}
+
+label.star:hover {
+    transform: translateY(-5px) scale(1.1)
+}
+
+label.star:before {
+    content: url('https://img.icons8.com/material-outlined/24/000000/star--v2.png');
+    font-family: FontAwesome
+}

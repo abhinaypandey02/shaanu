@@ -1,5 +1,6 @@
 import React from "react";
-import { Carousel } from "react-bootstrap";
+import ScrollAnimation from "react-animate-on-scroll";
+import { Accordion, Card, Carousel } from "react-bootstrap";
 
 export default function FaqPage(){
     return(
@@ -9,68 +10,148 @@ export default function FaqPage(){
                 CUSTOMER REVIEWS
                 </h1>
             </div>
-        <Carousel fade>
-        <Carousel.Item>
-  <div className="card mx-auto text-light border-light p-3" style={{ maxWidth: 1000 }} >
-                        <div className="row d-flex justify-content-center">
-                            <div className="col-md-2 my-auto">
-                                <img src="https://images.unsplash.com/photo-1488654715439-fbf461f0eb8d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" className='img-fluid border rounded-circle' alt="..." />
-                            </div>
-                            <div className="col-md-6">
-                                <div className="card-body">
-                                    <h5 className="card-title"><strong>User Name</strong></h5>
-                                    <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row text-center text-wrap p-3">
-                            <div className="col">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                        </div>
-                        </div>
+            <div className="container-fluid text-light pt-5 p-3" id='section4'>
+            <div className="container pt-5">
+                <ScrollAnimation animateIn='fadeInDown' animateOnce={true} duration={3}>
+                    <div className="row mr-auto">
+                        <hr className='bg-light py-1 mx-2' style={{width: 30}}/>
+                        <p className='my-auto text-light'><strong>FAQ</strong></p>
+
+
                     </div>
-  </Carousel.Item>
-  <Carousel.Item>
-  <div className="card mx-auto text-light border-light p-3" style={{ maxWidth: 1000 }} >
-                        <div className="row d-flex justify-content-center">
-                            <div className="col-md-2 my-auto">
-                                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" className='img-fluid border rounded-circle' alt="..." />
-                            </div>
-                            <div className="col-md-6">
-                                <div className="card-body">
-                                    <h5 className="card-title"><strong>User Name</strong></h5>
-                                    <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row text-center text-wrap p-3">
-                            <div className="col">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                        </div>
-                        </div>
-                    </div>
-  </Carousel.Item>
-  <Carousel.Item>
-  <div className="card mx-auto text-light border-light p-3" style={{ maxWidth: 1000 }} >
-                        <div className="row d-flex justify-content-center">
-                            <div className="col-md-2 my-auto">
-                                <img src="https://images.unsplash.com/photo-1481114070102-72f9d11057dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1104&q=80" className='img-fluid border rounded-circle' alt="..." />
-                            </div>
-                            <div className="col-md-6">
-                                <div className="card-body">
-                                    <h5 className="card-title"><strong>User Name</strong></h5>
-                                    <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row text-center text-wrap p-3">
-                            <div className="col">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                        </div>
-                        </div>
-                    </div>
-  </Carousel.Item>
-</Carousel>
-</div>
+                    <h1 className='text-dark mb-5'>
+                        Commonly Asked Questions
+                    </h1>
+                </ScrollAnimation>
+            </div>
+
+
+            <div className="container bg-transparent">
+                <div className="row-fluid text-light">
+                    <Accordion defaultActiveKey="1">
+                        <Card className='p-0 m-0'>
+                            <Card.Header className='bg-dark text-light pointer-on-hover p-0 m-0'>
+                                <Accordion.Toggle as={Card.Header} eventKey="1">
+                                    1. Lorem Ipsum is simpl typesetting industry ?
+                                </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse className='border border-light' eventKey="1">
+                                <Card.Body className='text-dark'>Lorem Ipsum ied it to make a tronic typesetting,
+                                    remaining essentially unchanged. It was popularised in the 1960s with the release of
+                                    Letraset sheets containing</Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+                        <Card className=' p-0 m-0'>
+                            <Card.Header className='bg-light text-dark pointer-on-hover p-0 m-0'>
+                                <Accordion.Toggle as={Card.Header} eventKey="2">
+                                    2. Lorem Ipsum is simply dummy teddddasdsadadting industry ?
+                                </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse className='border border-light' eventKey="2">
+                                <Card.Body className='text-dark'>Lorem Ipsum is simply duso the leap ie 1960s with the
+                                    release of Letraset sheets containing</Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+                        <Card className=' p-0 m-0'>
+                            <Card.Header className='bg-dark text-light pointer-on-hover p-0 m-0'>
+                                <Accordion.Toggle as={Card.Header} eventKey="3">
+                                    4. Lorem Ipsprinting and typesetting industry ?
+                                </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse className='border border-light' eventKey="3">
+                                <Card.Body className='text-dark'>Lorem Ipsum is simplyext ever since the 1500s, when an
+                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                    It has survived not only five centuries, but also the leap into electronic
+                                    typesetting, remaining essentially unchanged. It was popularised in the 1960s with
+                                    the release of Letraset sheets containing</Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+                        <Card className=' p-0 m-0'>
+                            <Card.Header className='bg-light text-dark pointer-on-hover p-0 m-0'>
+                                <Accordion.Toggle as={Card.Header} eventKey="4">
+                                    3. Lorem Ipsum is simply ddwadadadadaddummy text of the printing and typesetting
+                                    industry ?
+                                </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse className='border border-light' eventKey="4">
+                                <Card.Body className='text-dark'>Lorem Ipsum is se the 1500s, when ved not only five
+                                    centuries, but also the leap into electronic typesetting, remaining essentially
+                                    unchanged. It was popularised in the 1960s with the release of Letraset sheets
+                                    containing</Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+                        <Card className=' p-0 m-0'>
+                            <Card.Header className='bg-dark text-light pointer-on-hover  p-0 m-0'>
+                                <Accordion.Toggle as={Card.Header} eventKey="5">
+                                    5. Lorem Ipsum is simply and typesetting industry ?
+                                </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse className='border border-light' eventKey="5">
+                                <Card.Body className='text-dark'>Lorem Ipsum is simply dummy text of the p galley oe
+                                    centuries, but also the leap into electronic typesetting, remaining essentially
+                                    unchanged. It was popularised in the 1960s with the release of Letraset sheets
+                                    containing</Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+                        <Card className=' p-0 m-0'>
+                            <Card.Header className='bg-light text-dark pointer-on-hover  p-0 m-0'>
+                                <Accordion.Toggle as={Card.Header} eventKey="6">
+                                    5. Lorem Ipsum is simply and typesetting industry ?
+                                </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse className='border border-light' eventKey="6">
+                                <Card.Body className='text-dark'>Lorem Ipsum is simply dummy text of the p galley oe
+                                    centuries, but also the leap into electronic typesetting, remaining essentially
+                                    unchanged. It was popularised in the 1960s with the release of Letraset sheets
+                                    containing</Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+                        <Card className=' p-0 m-0'>
+                            <Card.Header className='bg-dark text-light pointer-on-hover  p-0 m-0'>
+                                <Accordion.Toggle as={Card.Header} eventKey="7">
+                                    5. Lorem Ipsum is simply and typesetting industry ?
+                                </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse className='border border-light' eventKey="7">
+                                <Card.Body className='text-dark'>Lorem Ipsum is simply dummy text of the p galley oe
+                                    centuries, but also the leap into electronic typesetting, remaining essentially
+                                    unchanged. It was popularised in the 1960s with the release of Letraset sheets
+                                    containing</Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+                        <Card className=' p-0 m-0'>
+                            <Card.Header className='bg-light text-dark pointer-on-hover  p-0 m-0'>
+                                <Accordion.Toggle as={Card.Header} eventKey="8">
+                                    5. Lorem Ipsum is simply and typesetting industry ?
+                                </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse className='border border-light' eventKey="8">
+                                <Card.Body className='text-dark'>Lorem Ipsum is simply dummy text of the p galley oe
+                                    centuries, but also the leap into electronic typesetting, remaining essentially
+                                    unchanged. It was popularised in the 1960s with the release of Letraset sheets
+                                    containing</Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+                        <Card className=' p-0 m-0'>
+                            <Card.Header className='bg-dark text-light pointer-on-hover  p-0 m-0'>
+                                <Accordion.Toggle as={Card.Header} eventKey="9">
+                                    5. Lorem Ipsum is simply and typesetting industry ?
+                                </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse className='border border-light' eventKey="9">
+                                <Card.Body className='text-dark'>Lorem Ipsum is simply dummy text of the p galley oe
+                                    centuries, but also the leap into electronic typesetting, remaining essentially
+                                    unchanged. It was popularised in the 1960s with the release of Letraset sheets
+                                    containing</Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+
+                    </Accordion>
+
+                </div>
+            </div>
+        </div>
+
+        </div>
     );
 }
