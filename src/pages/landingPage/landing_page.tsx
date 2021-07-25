@@ -14,6 +14,7 @@ interface Service{
     title:string;
     content:string;
     imageURL:string;
+
 }
 
 function ServiceContent({service}:{service:Service}){
@@ -33,12 +34,30 @@ export default function LandingPage() {
     else currentlySelecting = "FUEL"
 
     return <div>
-        <Modal contentClassName="full-modal-content" dialogClassName="full-modal-dialog" centered show={!!selectedService} onHide={()=>setSelectedService(undefined)}>
-            <Modal.Header closeButton>
+        <Modal contentClassName="full-modal-content border border-dark rounded-0 bg-dark text-light" dialogClassName="full-modal-dialog " centered show={!!selectedService} onHide={()=>setSelectedService(undefined)}>
+            <Modal.Header closeButton className='bg-warning rounded-0'>
                 {selectedService?.title}
             </Modal.Header>
             <Modal.Body>
-                {selectedService&&<ServiceContent service={selectedService}/>}
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-md-4 p-3 d-flex justify-content-center align-items-center bg-warning">
+                            <img src='https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'
+                            className='img-fluid'/>
+                        </div>
+                        <div className="col-md-8">
+                            <h1 className='font-weight-bold'>{selectedService?.title}</h1>
+                            <p className='text-wrap'>
+                                dddddddddd Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto assumenda minus deserunt quia fugiat odio incidunt voluptatem maiores hic totam ipsum accusamus ex natus error, soluta amet qui praesentium earum!
+                                {selectedService&&<ServiceContent service={selectedService}/>}
+
+                                <div className="col my-3">
+                                    <a href='#blogs' className='btn btn-outline-light' >READ MORE</a>
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </Modal.Body>
         </Modal>
         <div className='d-flex justify-content-center align-items-center' id='section1'>

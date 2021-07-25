@@ -20,12 +20,28 @@ export default function BlogPage() {
     const [selectedBlog,setSelectedBlog]=useState<Blog>();
     return (
         <div className="container-fluid bg-warning p-2">
-            <Modal contentClassName="full-modal-content" dialogClassName="full-modal-dialog" centered show={!!selectedBlog} onHide={()=>setSelectedBlog(undefined)}>
-                <Modal.Header closeButton>
+            <Modal contentClassName="full-modal-content border border-dark rounded-0 bg-dark text-light" dialogClassName="full-modal-dialog" centered show={!!selectedBlog} onHide={()=>setSelectedBlog(undefined)}>
+                <Modal.Header closeButton className='bg-warning rounded-0'>
                     {selectedBlog?.title}
                 </Modal.Header>
                 <Modal.Body>
-                    {selectedBlog&&<BlogContent blog={selectedBlog}/>}
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-md-4 p-3 d-flex justify-content-center align-items-center bg-warning">
+                            <img src='https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'
+                            className='img-fluid'/>
+                        </div>
+                        <div className="col-md-8">
+                            <h1 className='font-weight-bold'>{selectedBlog?.title}</h1>
+                            <p>
+                            {selectedBlog&&<BlogContent blog={selectedBlog}/>}
+                             
+                             
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
                 </Modal.Body>
             </Modal>
             <div className='container '>
