@@ -47,30 +47,41 @@ export default function EstimatePage() {
         }
         return false;
     }
-    function onSubmit(e:any){
-        e.preventDefault();
-
-        clearErrors();
-        setLoading(true);
-        sendOTP().then(()=>setLoading(false));
-    }
-    function onDownload(){
-        if(user){
-            document.getElementById('downloadInvoice')?.click();
-        } else {
-            console.log(2)
-            setNotLoggedInModalShow(true);
-        }
-    }
-
     function addCallbackRequestLocal({phone,location,fullname}:{phone:number,location:string,fullname:string}) {
         const request: CallbackRequest = {fullname, phone, location, date: new Date().toISOString()};
-        if(user) request.user=user;
+        if(user) {
+            request.fullname="";
+            request.user = user;
+        }
+
+        console.log(request)
         addCallbackRequest(request).then(() => {
             reset();
             setShowConfirmationModal(true);
         });
     }
+    function onSubmit(e:any){
+        e.preventDefault();
+
+        clearErrors();
+
+        if(user) {
+            console.log("HI");
+            handleSubmit(addCallbackRequestLocal)()
+        }
+         else {
+            setLoading(true);
+            sendOTP().then(() => setLoading(false));
+        }
+    }
+    function onDownload(){
+        if(user)
+            document.getElementById('downloadInvoice')?.click();
+         else
+            setNotLoggedInModalShow(true);
+    }
+
+
 
     useEffect(() => {
         if (cart.length === 0) {
@@ -246,7 +257,7 @@ export default function EstimatePage() {
                             </div>
                         </div>
                         <div id="captcha"/>
-                        <div className="row-fluid text-right p-0">
+                        <div className="row-fluid text-right p-0 align-items-center">
                             {loading&&<Spinner className="m-2" animation={'border'}/>}
                             <button
                                 type="submit"

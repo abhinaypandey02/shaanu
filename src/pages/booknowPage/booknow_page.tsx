@@ -187,6 +187,7 @@ export default function BooknowPage() {
                                 {...register("phone", {required: true,maxLength:10, minLength: 10,valueAsNumber:true})}
                                 type="number"
                                 className="form-control bg-transparent border border-warning rounded-0 "
+                                placeholder="Phone Number"
                             />
                             <div
                                 className="small text-danger text-left">{getErrorText(errors.phone?.type, errors.phone?.message)}</div>
@@ -198,6 +199,7 @@ export default function BooknowPage() {
                         </div>
                         <div className="col-md-8">
                                 <textarea
+                                    placeholder="Location"
                                     {...register("location", {required: true})}
                                     className="form-control bg-transparent border border-warning rounded-0 "
                                 />
@@ -276,7 +278,7 @@ export default function BooknowPage() {
                         </div>
                     </div>
                     <div id="captcha"/>
-                    <div className="row">
+                    <div className="row align-items-center">
                         <button
                             type="submit"
                             className="btn btn-lg btn-warning rounded-0 ml-auto m-3"

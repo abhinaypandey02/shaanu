@@ -155,10 +155,13 @@ export default function RegisterForm() {
                     </Form.Text>
                 </Form.Group>
                 <div id="captcha"/>
-                <Button disabled={loading} variant="warning" type="submit">
-                    Sign Up
-                </Button>
-                {loading&&<Spinner className="m-2" animation={'border'}/>}
+                <div className="d-flex align-items-center">
+                    <Button disabled={loading} variant="warning" type="submit">
+                        Sign Up
+                    </Button>
+                    {loading&&<Spinner className="m-2" animation={'border'}/>}
+                </div>
+
             </Form>
         </div>
 
