@@ -2,20 +2,18 @@
   "services": [
     {
       "title": "My Blog 1",
-      
-      "content": "wadadadadddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd sadadadadd adwadaddadaddad ",
+      "subtitle": "A good blog",
+      "content": " sadadadadd adwadaddadaddad sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  sadadadadd adwadaddadaddad  ",
       "imageURL":"https://storage.googleapis.com/gomechanic_assets/category_icons/battery-v3.svg"
-    },
-    {
-      "title": "My Blog 2",
-     
-      "content": "asdhasiud auidhauisdhauishdauisdh auisdh auishd uias uiada hefefefdwefef}",
+    },{
+      "title": "My Blog 1",
+      "subtitle": "A good blog",
+      "content": " sadadadadd adwadaddadaddad ",
       "imageURL":"https://storage.googleapis.com/gomechanic_assets/category_icons/battery-v3.svg"
-    },
-    {
-      "title": "My Blog 3",
-      "content": "fwdasddddddddasdadadwasdadsdddddddddddddddddddddddddddddddddddddddsdddd",
-     
+    },{
+      "title": "My Blog 1",
+      "subtitle": "A good blog",
+      "content": " sadadadadd adwadaddadaddad ",
       "imageURL":"https://storage.googleapis.com/gomechanic_assets/category_icons/battery-v3.svg"
     }
   ]

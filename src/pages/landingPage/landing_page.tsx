@@ -13,6 +13,7 @@ import landingPageServices from '../../database/landingPageServices.json';
 interface Service{
     title:string;
     content:string;
+    subtitle:string;
     imageURL:string;
 
 }
@@ -34,12 +35,12 @@ export default function LandingPage() {
     else currentlySelecting = "FUEL"
 
     return <div>
-        <Modal contentClassName="full-modal-content border border-dark rounded-0 bg-dark text-light" dialogClassName="full-modal-dialog " centered show={!!selectedService} onHide={()=>setSelectedService(undefined)}>
-            <Modal.Header closeButton className='bg-warning rounded-0'>
+        <Modal contentClassName=" overflow-auto full-modal-content border border-dark rounded-0 bg-dark text-light" dialogClassName="full-modal-dialog " centered show={!!selectedService} onHide={()=>setSelectedService(undefined)}>
+            <Modal.Header closeButton className='bg-warning rounded-0 overflow-auto'>
                 {selectedService?.title}
             </Modal.Header>
             <Modal.Body>
-                <div className="container-fluid">
+                <div className="container-fluid overflow-auto">
                     <div className="row">
                         <div className="col-md-4 p-3 d-flex justify-content-center align-items-center bg-warning">
                             <img src='https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'
@@ -105,15 +106,15 @@ export default function LandingPage() {
                 </div>
                 <br/>
                 <div className="d-flex flex-wrap mt-4">
-                    {SERVICES.map(service=><div className="col-md-4 pointer-on-hover" onClick={()=>setSelectedService(service)}>
-                        <ScrollAnimation animateIn='fadeInUp' delay={500} animateOnce={true} duration={3}>
-                            <div className="card mx-auto pointer-on-hover" style={{width: 350}} id='servicecard1'>
+                    {SERVICES.map((service,index)=><div className="col-md-4 pointer-on-hover" onClick={()=>setSelectedService(service)}>
+                        <ScrollAnimation animateIn='fadeInUp' delay={index*500} animateOnce={true} duration={3}>
+                            <div className="card mx-auto pointer-on-hover servicecard" style={{width: 350}}>
                                 <img
                                     src={service.imageURL}
                                     className="card-img-top" alt="..."/>
                                 <div className="card-body">
                                     <h5 className="card-title text-warning">{service.title}</h5>
-                                    <p className="card-text">{service.content}</p>
+                                    <p className="card-text">{service.subtitle}</p>
 
                                 </div>
                             </div>

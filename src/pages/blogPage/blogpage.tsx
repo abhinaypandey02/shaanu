@@ -4,6 +4,7 @@ import blogData from '../../database/blogs.json';
 
 interface Blog {
     title: string;
+    subtitle:string;
     content: string;
     author: string;
     time: number
@@ -58,7 +59,7 @@ export default function BlogPage() {
                             <Card.Body>
                                 <Card.Title className='font-weight-bold'>{blog.title}</Card.Title>
                                 <Card.Text className=''>
-                                    {blog.content}
+                                    {blog.subtitle}
                                 </Card.Text>
                                 <p className="text-muted">
                                     {blog.time} minutes read.

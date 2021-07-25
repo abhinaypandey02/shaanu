@@ -88,8 +88,8 @@
   }
 }
 .full-modal-dialog{
-  max-width:95vw;
-  max-height: 90vh;
+  min-width:95vw;
+  min-height: 90vh;
 }
 .full-modal-content{
   min-height: 90vh;
