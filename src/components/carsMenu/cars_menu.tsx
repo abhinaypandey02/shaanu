@@ -5,6 +5,7 @@ import {
     useGlobalState,
 } from "../../contexts/global_state";
 import carsDataJSON from '../../database/carsData.json' ;
+import { Button } from "react-bootstrap";
 export default function CarsMenu() {
     const [globalState, dispatch]: [
         GlobalStateInterface,
@@ -30,6 +31,7 @@ export default function CarsMenu() {
             <div className="d-flex flex-wrap justify-content-around overflow-auto">
                 {Object.keys(carsData).map((brand:string) => (
                     <div onClick={() => setBrand(carsData[brand].id)} key={carsData[brand].id} className="text-center p-2 m-2 pointer-on-hover" style={{width:'29%', border: "solid 1px white"}}>
+                       
                         <img
                             alt={carsData[brand].name}
                             height={80}
@@ -52,6 +54,7 @@ export default function CarsMenu() {
             <div className="d-flex flex-wrap justify-content-around">
                 {Object.keys(selectedBrand.models).map((model) => (
                     <div onClick={() => setModel(selectedBrand.models[model].id)} key={selectedBrand.models[model].id} className="text-center p-2 m-2 pointer-on-hover" style={{width:'29%', border: "solid 1px white"}}>
+                      
                         <img
                             alt={selectedBrand.models[model].name}
                             height={80}
