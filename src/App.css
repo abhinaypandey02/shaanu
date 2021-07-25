@@ -87,3 +87,7 @@
     min-width: 100% !important;
   }
 }
+.sticky-top{
+  position: sticky;
+  top:0;
+}

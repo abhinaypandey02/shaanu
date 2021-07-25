@@ -5,9 +5,10 @@ import "./navigation_bar.css";
 export default function NavigationBar() {
     const history = useHistory();
     return (
-        <div className="container">
-        <Navbar sticky="top" fixed='top' variant={"dark"} bg="dark" className='my-md-4 sticky-top' expand="lg">
-        <Navbar.Brand href="#services" className='ml-md-3 sticky-top'>
+   
+        <Navbar sticky="top" variant={"dark"} bg="dark" className='my-md-4 sticky-top my-3' expand="lg">
+            <div className="container">
+        <Navbar.Brand href="#services" className='ml-md-3'>
             <img alt="logo" className='img-fluid bg-warning border rounded-circle mr-2' width="50" height="50" src='https://images.vexels.com/media/users/3/144355/isolated/preview/0a53cf7ef3dcdc995f7f20c13c697a25-speed-car-lines-logo-by-vexels.png'/>
             <strong>Car Plus</strong></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -56,8 +57,8 @@ export default function NavigationBar() {
                     
                 </Nav>
             </Navbar.Collapse>
-            
+            </div>
         </Navbar>
-        </div>
+      
     );
 }
