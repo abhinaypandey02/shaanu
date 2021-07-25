@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Accordion, Card, Carousel, Modal} from 'react-bootstrap';
+import {Accordion, Button, Card, Carousel, Modal} from 'react-bootstrap';
 import CarsMenu from '../../components/carsMenu/cars_menu';
 import {useGlobalState} from '../../contexts/global_state';
 import './landing_page.css';
@@ -74,7 +74,9 @@ export default function LandingPage() {
                     <Accordion className='w-50 mx-auto border border-warning text-light' id='dropdownbutton'>
                         <Card className='m-0 pointer-on-hover'>
                             <Card.Header className='p-0 m-0'>
-                                <Accordion.Toggle as={Card.Header} eventKey="0">
+                           
+                                <Accordion.Toggle className='d-flex flex-row justify-content-around align-items-center' as={Card.Header} eventKey="0">
+                                <Button className='rounded-0' variant='warning'>BACK</Button>
                                     SELECT {currentlySelecting}
                                 </Accordion.Toggle>
                             </Card.Header>
