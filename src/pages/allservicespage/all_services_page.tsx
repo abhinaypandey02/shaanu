@@ -74,7 +74,7 @@ export default function AllServicesPage() {
                                     key={plan.name}
                                     value={index}
                                 >
-                                        {plan.name} - Rs.{plan.price}
+                                        {plan.name}{user?` - Rs. ${plan.price}`:""}
                                 </option>
                             ))}
                         </Form.Control>
