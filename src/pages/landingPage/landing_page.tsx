@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Accordion, Button, Card, Carousel, Modal} from 'react-bootstrap';
 import CarsMenu from '../../components/carsMenu/cars_menu';
 import {useGlobalState} from '../../contexts/global_state';
@@ -25,14 +25,19 @@ function ServiceContent({service}:{service:Service}){
 }
 
 export default function LandingPage() {
-    const [globalState] = useGlobalState();
-    let currentlySelecting;
+    const [globalState,dispatch] = useGlobalState();
+    let currentlySelecting:string;
     const SERVICES:Service[]=landingPageServices.services;
     const [selectedService,setSelectedService]=useState<Service>();
-
     if (!globalState.selectedBrand) currentlySelecting = "BRAND";
     else if (!globalState.selectedModel) currentlySelecting = "MODEL";
     else currentlySelecting = "FUEL"
+
+    function onBack(e:any){
+        e.stopPropagation();
+        if(currentlySelecting==="MODEL") dispatch({type:"SET_BRAND",payload:null})
+        else dispatch({type:"SET_MODEL",payload:null})
+    }
 
     return <div>
         <Modal contentClassName=" overflow-auto full-modal-content border border-dark rounded-0 bg-dark text-light" dialogClassName="full-modal-dialog " centered show={!!selectedService} onHide={()=>setSelectedService(undefined)}>
@@ -76,9 +81,10 @@ export default function LandingPage() {
                         <Card className='m-0 pointer-on-hover'>
                             <Card.Header className='p-0 m-0'>
                            
-                                <Accordion.Toggle className='d-flex flex-row justify-content-around align-items-center' as={Card.Header} eventKey="0">
-                                <Button className='rounded-0' variant='warning'>BACK</Button>
-                                    SELECT {currentlySelecting}
+                                <Accordion.Toggle className='zIndex0 d-flex justify-content-center align-items-center position-relative' as={Card.Header} eventKey="0">
+                                    {currentlySelecting!=="BRAND"&&<Button onClick={onBack} style={{left:10}} className=' zIndex1 rounded-0 position-absolute' variant='warning'>BACK</Button>}
+                                <span className="">SELECT {currentlySelecting}</span>
+
                                 </Accordion.Toggle>
                             </Card.Header>
                             <Accordion.Collapse className='text-light' eventKey="0">
