@@ -8,6 +8,7 @@ import CountUp from 'react-countup';
 import ScrollAnimation from 'react-animate-on-scroll';
 import VisibilitySensor from 'react-visibility-sensor';
 import landingPageServices from '../../database/landingPageServices.json';
+import ReviewComponent from "../../components/reviews/reviewComponent";
 
 
 interface Service{
@@ -150,50 +151,7 @@ export default function LandingPage() {
                 </ScrollAnimation>
 
                 <br/>
-                <Carousel>
-                    {[{
-                        name: "Abhinay Pandey",
-                        image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-                        designation: "Web Developer",
-                        review: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-                    },{
-                        name: "Abhinay Pandey",
-                        image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-                        designation: "Web Developer",
-                        review: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-                    },{
-                        name: "Abhinay Pandey",
-                        image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-                        designation: "Web Developer",
-                        review: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-                    },].map(ele => <Carousel.Item>
-                        <div className="card mx-auto text-light rounded-0 p-3" style={{ maxWidth: 1000 }} >
-                            <div className="row d-flex align-items-center justify-content-center">
-
-                                <div className="col-md-4 d-flex align-items-center justify-content-center flex-column mx-auto">
-
-                                    <img src={ele.image} className='img-fluid border w-50 rounded-circle' alt="..." />
-                                    <br/>
-                                    <h5 className="card-title text-warning">
-                                        <strong >{ele.name}</strong>
-                                    </h5>
-                                    <p className="card-text">{ele.designation}</p>
-
-                                </div>
-                                <div className="row text-center text-wrap p-3">
-                                    <div className="col-12 mb-4">
-                                        <img src="https://i.imgur.com/csn3MwK.png" className='img-fluid ' width={250} alt="..." />
-
-                                    </div>
-
-                                    <div className="col-12">
-                                        {ele.review}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </Carousel.Item>)}
-                </Carousel>
+                <ReviewComponent/>
             </div>
             <div className="col text-center my-3">
                     <a href='#customerreviews' className='btn btn-outline-light' >READ MORE</a>
