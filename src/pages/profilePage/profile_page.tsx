@@ -8,6 +8,7 @@ import { signOut } from "../../utils/firebase/auth";
 import CreateCarProfile from "../../components/createCarProfile/create_car_profile";
 import './profile_page.css';
 import UploadDocuments from "../../components/uploadDocuments/upload_documents";
+
 export default function ProfilePage() {
     const [user] = useUser();
     const [signIn, setSignIn] = useState(false);

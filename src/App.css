@@ -87,6 +87,13 @@
     min-width: 100% !important;
   }
 }
+.full-modal-dialog{
+  max-width:95vw;
+  max-height: 90vh;
+}
+.full-modal-content{
+  min-height: 90vh;
+}
 .sticky-top{
   position: sticky;
   top:0;

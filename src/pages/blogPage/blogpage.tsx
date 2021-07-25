@@ -1,115 +1,58 @@
-import React from "react";
-import ScrollAnimation from "react-animate-on-scroll";
-import { Accordion, Card, Button, Carousel, Dropdown } from "react-bootstrap";
-export default function BlogPage(){
-    return(
+import React, {useState} from "react";
+import {Card, Modal} from "react-bootstrap";
+import blogData from '../../database/blogs.json';
+
+interface Blog {
+    title: string;
+    content: string;
+    author: string;
+    time: number
+}
+
+function BlogContent({blog}:{blog:Blog}){
+    return <div>
+        {blog.content}
+    </div>
+}
+
+export default function BlogPage() {
+    const blogs: Blog[] = blogData.blogs;
+    const [selectedBlog,setSelectedBlog]=useState<Blog>();
+    return (
         <div className="container-fluid bg-warning p-2">
-        <div className='container '>
-            <br/>
-            <h1>OUR COOL BLOGS</h1>
-            <hr className='bg-dark'/>
-            <br/>
-            <div className="row mb-4">
-                <div className="col-md-4">
-                <Card  style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="https://cdn.luxe.digital/media/2020/12/15110747/fastest-cars-world-2021-luxe-digital%402x.jpg" />
-                    <Card.Body>
-                        <Card.Title className='font-weight-bold'>Card Title</Card.Title>
-                        <Card.Text className=''>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                        </Card.Text>
-                        <p className="text-muted">
-                            @ minutes read.
-                        </p>
-                        
-                    </Card.Body>
-                </Card>
-                </div>
-                <div className="col-md-4">
-                <Card  style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="https://cdn.luxe.digital/media/2020/12/15110747/fastest-cars-world-2021-luxe-digital%402x.jpg" />
-                    <Card.Body>
-                        <Card.Title className='font-weight-bold'>Card Title</Card.Title>
-                        <Card.Text className=''>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                        </Card.Text>
-                        <p className="text-muted">
-                            @ minutes read.
-                        </p>
-                        
-                    </Card.Body>
-                </Card>
-                </div>
-                <div className="col-md-4">
-                <Card  style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="https://cdn.luxe.digital/media/2020/12/15110747/fastest-cars-world-2021-luxe-digital%402x.jpg" />
-                    <Card.Body>
-                        <Card.Title className='font-weight-bold'>Card Title</Card.Title>
-                        <Card.Text className=''>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                        </Card.Text>
-                        <p className="text-muted">
-                            @ minutes read.
-                        </p>
-                        
-                    </Card.Body>
-                </Card>
+            <Modal contentClassName="full-modal-content" dialogClassName="full-modal-dialog" centered show={!!selectedBlog} onHide={()=>setSelectedBlog(undefined)}>
+                <Modal.Header closeButton>
+                    {selectedBlog?.title}
+                </Modal.Header>
+                <Modal.Body>
+                    {selectedBlog&&<BlogContent blog={selectedBlog}/>}
+                </Modal.Body>
+            </Modal>
+            <div className='container '>
+                <br/>
+                <h1>OUR COOL BLOGS</h1>
+                <hr className='bg-dark'/>
+                <br/>
+                <div className="d-flex flex-wrap">
+                    {blogs.map(blog =>
+                        <div className="col-md-4 pointer-on-hover" onClick={()=>setSelectedBlog(blog)}>
+                        <Card style={{width: '18rem'}}>
+                            <Card.Img variant="top"
+                                      src="https://cdn.luxe.digital/media/2020/12/15110747/fastest-cars-world-2021-luxe-digital%402x.jpg"/>
+                            <Card.Body>
+                                <Card.Title className='font-weight-bold'>{blog.title}</Card.Title>
+                                <Card.Text className=''>
+                                    {blog.content}
+                                </Card.Text>
+                                <p className="text-muted">
+                                    {blog.time} minutes read.
+                                </p>
+
+                            </Card.Body>
+                        </Card>
+                    </div>)}
                 </div>
             </div>
-            <div className="row">
-                <div className="col-md-4">
-                <Card  style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="https://cdn.luxe.digital/media/2020/12/15110747/fastest-cars-world-2021-luxe-digital%402x.jpg" />
-                    <Card.Body>
-                        <Card.Title className='font-weight-bold'>Card Title</Card.Title>
-                        <Card.Text className=''>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                        </Card.Text>
-                        <p className="text-muted">
-                            @ minutes read.
-                        </p>
-                        
-                    </Card.Body>
-                </Card>
-                </div>
-                <div className="col-md-4">
-                <Card  style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="https://cdn.luxe.digital/media/2020/12/15110747/fastest-cars-world-2021-luxe-digital%402x.jpg" />
-                    <Card.Body>
-                        <Card.Title className='font-weight-bold'>Card Title</Card.Title>
-                        <Card.Text className=''>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                        </Card.Text>
-                        <p className="text-muted">
-                            @ minutes read.
-                        </p>
-                        
-                    </Card.Body>
-                </Card>
-                </div>
-                <div className="col-md-4">
-                <Card  style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="https://cdn.luxe.digital/media/2020/12/15110747/fastest-cars-world-2021-luxe-digital%402x.jpg" />
-                    <Card.Body>
-                        <Card.Title className='font-weight-bold'>Card Title</Card.Title>
-                        <Card.Text className=''>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                        </Card.Text>
-                        <p className="text-muted">
-                            @ minutes read.
-                        </p>
-                        
-                    </Card.Body>
-                </Card>
-                </div>
-            </div>
-        </div>
         </div>
     );
 }

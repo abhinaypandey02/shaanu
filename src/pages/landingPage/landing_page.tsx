@@ -1,23 +1,46 @@
-import React from 'react';
-import {Accordion, Card, Carousel} from 'react-bootstrap';
+import React, {useState} from 'react';
+import {Accordion, Card, Carousel, Modal} from 'react-bootstrap';
 import CarsMenu from '../../components/carsMenu/cars_menu';
 import {useGlobalState} from '../../contexts/global_state';
 import './landing_page.css';
 import "animate.css/animate.min.css";
 import CountUp from 'react-countup';
-import VisibilitySensor from 'react-visibility-sensor';
 import ScrollAnimation from 'react-animate-on-scroll';
+import VisibilitySensor from 'react-visibility-sensor';
+import landingPageServices from '../../database/landingPageServices.json';
+
+
+interface Service{
+    title:string;
+    content:string;
+    imageURL:string;
+}
+
+function ServiceContent({service}:{service:Service}){
+    return <div>
+        {service.content}
+    </div>
+}
 
 export default function LandingPage() {
     const [globalState] = useGlobalState();
     let currentlySelecting;
+    const SERVICES:Service[]=landingPageServices.services;
+    const [selectedService,setSelectedService]=useState<Service>();
 
     if (!globalState.selectedBrand) currentlySelecting = "BRAND";
     else if (!globalState.selectedModel) currentlySelecting = "MODEL";
     else currentlySelecting = "FUEL"
 
     return <div>
-
+        <Modal contentClassName="full-modal-content" dialogClassName="full-modal-dialog" centered show={!!selectedService} onHide={()=>setSelectedService(undefined)}>
+            <Modal.Header closeButton>
+                {selectedService?.title}
+            </Modal.Header>
+            <Modal.Body>
+                {selectedService&&<ServiceContent service={selectedService}/>}
+            </Modal.Body>
+        </Modal>
         <div className='d-flex justify-content-center align-items-center' id='section1'>
             <div className='container d-flex flex-column'>
                 <div className="row-fluid text-light text-center">
@@ -62,59 +85,27 @@ export default function LandingPage() {
                     </ScrollAnimation>
                 </div>
                 <br/>
-                <div className="row mt-4">
-                    <div className="col-md-4">
+                <div className="d-flex flex-wrap mt-4">
+                    {SERVICES.map(service=><div className="col-md-4 pointer-on-hover" onClick={()=>setSelectedService(service)}>
                         <ScrollAnimation animateIn='fadeInUp' delay={500} animateOnce={true} duration={3}>
                             <div className="card mx-auto pointer-on-hover" style={{width: 350}} id='servicecard1'>
                                 <img
-                                    src="https://storage.googleapis.com/gomechanic_assets/category_icons/battery-v3.svg"
+                                    src={service.imageURL}
                                     className="card-img-top" alt="..."/>
                                 <div className="card-body">
-                                    <h5 className="card-title text-warning">Card title</h5>
-                                    <p className="card-text">Some quick example text to build on the card title and make
-                                        up the bulk of the card's content.</p>
+                                    <h5 className="card-title text-warning">{service.title}</h5>
+                                    <p className="card-text">{service.content}</p>
 
                                 </div>
                             </div>
                         </ScrollAnimation>
 
-                    </div>
-                    <div className="col-md-4">
-                        <ScrollAnimation animateIn='fadeInUp' delay={1000} animateOnce={true} duration={3}>
-                            <div className="card mx-auto pointer-on-hover" style={{width: 350}} id='servicecard2'>
-                                <img
-                                    src="https://storage.googleapis.com/gomechanic_assets/category_icons/schedule-services-v3.svg"
-                                    className="card-img-top" alt="..."/>
-                                <div className="card-body">
-                                    <h5 className="card-title text-warning">Card title</h5>
-                                    <p className="card-text">Some quick example text to build on the card title and make
-                                        up the bulk of the card's content.</p>
-
-                                </div>
-                            </div>
-                        </ScrollAnimation>
-
-                    </div>
-                    <div className="col-md-4">
-                        <ScrollAnimation animateIn='fadeInUp' delay={1500} animateOnce={true} duration={3}>
-                            <div className="card mx-auto pointer-on-hover" style={{width: 350}} id='servicecard3'>
-                                <img src="https://storage.googleapis.com/gomechanic_assets/category_icons/tyre-v3.svg"
-                                     className="card-img-top" alt="..."/>
-                                <div className="card-body">
-                                    <h5 className="card-title text-warning">Card title</h5>
-                                    <p className="card-text">Some quick example text to build on the card title and make
-                                        up the bulk of the card's content.</p>
-
-                                </div>
-                            </div>
-                        </ScrollAnimation>
-                    </div>
-
+                    </div>)}
                 </div>
             </div>
         </div>
 
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#000000" fill-opacity="1" d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#000000" fillOpacity="1" d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/></svg>
         <div className="container-fluid mb-5" id='section3'>
 
             <div className="container">
