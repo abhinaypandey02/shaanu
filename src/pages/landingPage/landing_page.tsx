@@ -179,9 +179,6 @@ export default function LandingPage() {
                                     </h5>
                                     <p className="card-text">{ele.designation}</p>
 
-
-
-
                                 </div>
                                 <div className="row text-center text-wrap p-3">
                                     <div className="col-12 mb-4">
