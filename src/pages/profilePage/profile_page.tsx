@@ -8,9 +8,12 @@ import { signOut } from "../../utils/firebase/auth";
 import CreateCarProfile from "../../components/createCarProfile/create_car_profile";
 import "./profile_page.css";
 import UploadDocuments from "../../components/uploadDocuments/upload_documents";
+import { CarProfile } from "../../interfaces/car";
+import UserInterface from "../../interfaces/user";
+import { setUserDocument } from "../../utils/firebase/firestore";
 
 export default function ProfilePage() {
-  const [user] = useUser();
+  const [user, setUser] = useUser();
   const [signIn, setSignIn] = useState(false);
   const [showCreateCarProfile, setShowCreateCarProfile] = useState(false);
   const [currentCarProfile, setCurrentCarProfile] = useState(
@@ -21,6 +24,21 @@ export default function ProfilePage() {
   function closeModal() {
     setShowCreateCarProfile(false);
     setEditCarProfile(false);
+  }
+
+  function cloudUpdateCarProfile(carProfile: CarProfile) {
+    if (user) {
+      let carProfileIndex = user.carProfiles.findIndex(
+        (car) => car.id === carProfile.id
+      );
+      if (carProfileIndex !== -1) {
+        setUser((oldUser: UserInterface) => {
+          oldUser.carProfiles[carProfileIndex] = carProfile;
+          setUserDocument({ ...oldUser });
+          return { ...oldUser };
+        });
+      }
+    }
   }
 
   useEffect(() => {
@@ -99,7 +117,7 @@ export default function ProfilePage() {
                 }
               >
                 {user.carProfiles.map((profile, index) => (
-                  <option value={index}>
+                  <option key={profile.id} value={index}>
                     {profile.brand.toUpperCase()} {profile.model.toUpperCase()}
                   </option>
                 ))}
@@ -174,6 +192,7 @@ export default function ProfilePage() {
           <div className="col-lg-8 d-flex flex-column flex-wrap ">
             <NotificationBar currentCarProfile={currentCarProfile} />
             <UploadDocuments
+              cloudUpdateCarProfile={cloudUpdateCarProfile}
               setCurrentCarProfile={setCurrentCarProfile}
               currentCarProfile={currentCarProfile}
             />

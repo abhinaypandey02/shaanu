@@ -11,4 +11,5 @@ export interface CarProfile {
   imageURL: string;
   documents: { name: string; category: string; url: string }[];
   notifications: string[];
+  id: string;
 }

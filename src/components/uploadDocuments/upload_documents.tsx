@@ -7,9 +7,11 @@ import { useUser } from "../../contexts/user_context";
 export default function UploadDocuments({
   currentCarProfile,
   setCurrentCarProfile,
+  cloudUpdateCarProfile,
 }: {
   currentCarProfile: CarProfile;
   setCurrentCarProfile: any;
+  cloudUpdateCarProfile: (carProfile: CarProfile) => void;
 }) {
   const [user] = useUser();
   const [category, setCategory] = useState<string>("RC");
@@ -75,14 +77,16 @@ export default function UploadDocuments({
       });
       setActiveKey(category);
       uploadDocuments(user, file).then((url) => {
-        setCurrentCarProfile((old: CarProfile) => {
-          const doc = old.documents.find((ele) => ele.name === file.name);
-          if (doc) {
-            doc.category = category;
-            doc.url = url;
-          } else old.documents.push({ name: file.name, url, category });
-          return { ...old };
-        });
+        const docIndex = currentCarProfile.documents.findIndex(
+          (ele) => ele.name === file.name
+        );
+        const newCarProfile = { ...currentCarProfile };
+        if (docIndex !== -1) {
+          newCarProfile.documents[docIndex].category = category;
+          newCarProfile.documents[docIndex].url = url;
+        } else newCarProfile.documents.push({ name: file.name, url, category });
+        cloudUpdateCarProfile(newCarProfile);
+        setCurrentCarProfile(newCarProfile);
       });
     }
     return null;
@@ -94,10 +98,12 @@ export default function UploadDocuments({
 
   function deleteFileLocal(filename: string) {
     if (user) {
-      setCurrentCarProfile((old: CarProfile) => {
-        old.documents = old.documents.filter((doc) => doc.name !== filename);
-        return { ...old };
-      });
+      const newCarProfile = { ...currentCarProfile };
+      newCarProfile.documents = newCarProfile.documents.filter(
+        (doc) => doc.name !== filename
+      );
+      cloudUpdateCarProfile(newCarProfile);
+      setCurrentCarProfile(newCarProfile);
       deleteFile(user, filename);
     }
   }

@@ -6,16 +6,16 @@ import UserInterface from "../../interfaces/user";
 export const uploadButtonImage = async (user: any, file: any) => {
   const ref = fire
     .storage()
-    .ref(`${user.email}/buttonImage/${uuid()}${file.name}`);
+    .ref(`+91${user.phone}/buttonImage/${uuid()}${file.name}`);
   await ref.put(file);
   return await ref.getDownloadURL();
 };
 export const uploadDocuments = async (user: any, file: any) => {
-  const ref = fire.storage().ref(`${user.email}/docs/${file.name}`);
+  const ref = fire.storage().ref(`+91${user.phone}/docs/${file.name}`);
   await ref.put(file);
   return await ref.getDownloadURL();
 };
 
 export async function deleteFile(user: UserInterface, fileName: string) {
-  return await fire.storage().ref(`${user.phone}/docs/${fileName}`).delete();
+  return await fire.storage().ref(`+91${user.phone}/docs/${fileName}`).delete();
 }

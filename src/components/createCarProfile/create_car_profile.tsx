@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import carsDataJSON from "../../database/carsData.json";
 import CarsData from "../../interfaces/carsData";
 import { getErrorText } from "../../utils/globalFunctions";
+import { v4 } from "uuid";
 
 export default function CreateCarProfile({
   carProfile,
@@ -61,12 +62,12 @@ export default function CreateCarProfile({
       imageURL,
       documents: [],
       notifications: [],
+      id: v4(),
     };
     if (!user) return;
     const carProfiles = user.carProfiles;
     const thisCarProfile = carProfiles.findIndex(
-      (car) =>
-        car.brand === carProfileTemp.brand && car.model === carProfileTemp.model
+      (car) => car.id === carProfile?.id
     );
 
     if (thisCarProfile !== -1) {
@@ -104,7 +105,9 @@ export default function CreateCarProfile({
             >
               <option value="">Car Brand</option>
               {Object.keys(carsData).map((key) => (
-                <option value={carsData[key].id}>{carsData[key].name}</option>
+                <option key={key} value={carsData[key].id}>
+                  {carsData[key].name}
+                </option>
               ))}
             </Form.Control>
             <Form.Text className="text-danger small">
@@ -123,7 +126,10 @@ export default function CreateCarProfile({
               {brandWatch &&
                 Object.keys(carsData[brandWatch].models).map((key) => {
                   return (
-                    <option value={carsData[brandWatch].models[key].id}>
+                    <option
+                      key={key}
+                      value={carsData[brandWatch].models[key].id}
+                    >
                       {carsData[brandWatch].models[key].name}
                     </option>
                   );
@@ -138,7 +144,7 @@ export default function CreateCarProfile({
             { name: "Registration No.", id: "regNo", required: true },
             { name: "Address", id: "address", required: true },
           ].map((obj: any) => (
-            <Form.Group>
+            <Form.Group key={obj.id}>
               <Form.Label>
                 {obj.name} {!obj.required && "(Optional)"}
               </Form.Label>
@@ -162,7 +168,7 @@ export default function CreateCarProfile({
             { name: "Insurance Date", id: "insuranceDate", required: false },
             { name: "Insurance Company", id: "insuranceComp", required: false },
           ].map((obj: any) => (
-            <Form.Group>
+            <Form.Group key={obj.id}>
               <Form.Label>
                 {obj.name} {!obj.required && "(Optional)"}
               </Form.Label>
@@ -184,7 +190,7 @@ export default function CreateCarProfile({
               disabled={!modelWatch}
               className="rounded-0"
               as="select"
-              {...register("fuel", { required: true })}
+              {...register("fuel")}
             >
               <option value="">Car Fuel (Optional)</option>
               {modelWatch &&
@@ -192,6 +198,7 @@ export default function CreateCarProfile({
                   (key) => {
                     return (
                       <option
+                        key={key}
                         value={
                           carsData[brandWatch].models[modelWatch].fuel[key].id
                         }
