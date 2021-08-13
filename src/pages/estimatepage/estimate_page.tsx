@@ -293,6 +293,7 @@ export default function EstimatePage() {
                 <div className="col-md-8">
                   <input
                     type="number"
+                    placeholder="Phone Number"
                     {...register("phone", {
                       required: true,
                       minLength: 10,
@@ -312,6 +313,7 @@ export default function EstimatePage() {
                 </div>
                 <div className="col-md-8">
                   <textarea
+                    placeholder="Location"
                     {...register("location", { required: true })}
                     className="form-control bg-transparent border border-warning rounded-0 "
                     aria-label="With textarea"

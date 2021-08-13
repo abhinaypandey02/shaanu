@@ -22,15 +22,16 @@ const VerifyOTP = (props: VerifyOTPType) => {
   } = useForm();
 
   function onSubmit({ otp }: { otp: number }) {
+    console.log(props.phoneResult?.verificationId);
     props.phoneResult
       ?.confirm(otp.toString())
+      .then(props.onSuccess)
       .then(() => {
         if (!props.authenticate) {
           console.log("SIGNING OUT");
           signOut();
         }
       })
-      .then(props.onSuccess)
       .catch(() =>
         setError("otp", {
           type: "custom",

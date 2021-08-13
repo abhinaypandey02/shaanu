@@ -18,9 +18,12 @@ export default function UserContext({ children }: any) {
   useEffect(() => {
     fire.auth().onAuthStateChanged((user) => {
       console.log(user);
-      if (user && user.phoneNumber) {
+      if (user && user.phoneNumber && user.displayName === "AUTHENTICATED") {
         getUserDocument(user.phoneNumber).then((user_doc) => setUser(user_doc));
-      } else setUser(null);
+      } else {
+        console.log("SETTING NULL");
+        setUser(null);
+      }
     });
   }, []);
   return (

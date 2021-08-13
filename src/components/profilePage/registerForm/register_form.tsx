@@ -1,18 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Spinner } from "react-bootstrap";
 import UserInterface, { defaultUser } from "../../../interfaces/user";
-import { getRecaptchaVerifier, sendSMS } from "../../../utils/firebase/auth";
-import { setUserDocument } from "../../../utils/firebase/firestore";
+import {
+  getRecaptchaVerifier,
+  sendSMS,
+  updateUserDisplayName,
+} from "../../../utils/firebase/auth";
+import {
+  getUserDocument,
+  setUserDocument,
+} from "../../../utils/firebase/firestore";
 import { useForm } from "react-hook-form";
 import { getErrorText } from "../../../utils/globalFunctions";
 import firebase from "firebase/app";
 import VerifyOTP from "../../verifyOTP/verifyOTP";
+import { useHistory } from "react-router";
+import { useUser } from "../../../contexts/user_context";
 
 export default function RegisterForm() {
+  const his = useHistory();
   const [reCaptcha, setReCaptcha] = useState<firebase.auth.RecaptchaVerifier>();
   const [phoneResult, setPhoneResult] =
     useState<firebase.auth.ConfirmationResult>();
-
+  const [, setUser] = useUser();
   const [loading, setLoading] = useState(false);
 
   const {
@@ -22,6 +32,7 @@ export default function RegisterForm() {
     getValues,
     setError,
     clearErrors,
+    trigger,
   } = useForm();
 
   useEffect(() => {
@@ -53,14 +64,20 @@ export default function RegisterForm() {
       name,
       phone,
     };
-    setUserDocument(user);
+    setUserDocument(user).then(() => {
+      setUser(user);
+      updateUserDisplayName("AUTHENTICATED");
+      his.push("/services");
+    });
   }
 
-  function onSubmit(e: any) {
+  async function onSubmit(e: any) {
     e.preventDefault();
-    clearErrors();
-    setLoading(true);
-    sendOTP().then(() => setLoading(false));
+    if (await trigger()) {
+      clearErrors();
+      setLoading(true);
+      sendOTP().then(() => setLoading(false));
+    } else console.log("NO");
   }
 
   return (
@@ -85,7 +102,7 @@ export default function RegisterForm() {
             className="text-light border border-warning rounded-0 bg-transparent"
           />
           <Form.Text className="small text-danger">
-            {getErrorText(errors.firstName?.type)}
+            {getErrorText(errors.name?.type)}
           </Form.Text>
         </Form.Group>
         <Form.Group>
@@ -94,9 +111,16 @@ export default function RegisterForm() {
             id="phone"
             {...register("phone", {
               required: true,
+              min: 1000000000,
+              max: 9999999999,
               minLength: 10,
               maxLength: 10,
               valueAsNumber: true,
+              validate: {
+                alreadyExists: async (v) => {
+                  return !(await getUserDocument("+91" + v.toString()));
+                },
+              },
             })}
             type="number"
             className="text-light border border-warning rounded-0 bg-transparent"

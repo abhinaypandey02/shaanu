@@ -16,80 +16,89 @@ import BooknowPage from "./pages/booknowPage/booknow_page";
 import FreeServices from "./pages/100freePage/100_page";
 import AppointmentSlot from "./components/appointmentSlot/appointment_slot";
 import Job from "./pages/adminPage/jobs/job";
-import {useUser} from "./contexts/user_context";
+import { useUser } from "./contexts/user_context";
 import { Spinner } from "react-bootstrap";
 import ReviewPage from "./pages/reviewPage/reviewpage";
 import BlogPage from "./pages/blogPage/blogpage";
+
 function App() {
-    const [globalState] = useGlobalState();
-    const [user]=useUser();
-    const carSelected =
-        globalState.selectedBrand &&
-        globalState.selectedModel &&
-        globalState.selectedType;
-    if(user===undefined)
-        return <div className='min-vh-100 d-flex justify-content-center align-items-center'>
-              <Spinner animation="grow" variant="primary" />
-  <Spinner animation="grow" variant="secondary" />
-  <Spinner animation="grow" variant="success" />
-  <Spinner animation="grow" variant="danger" />
-  <Spinner animation="grow" variant="warning" />
-  <Spinner animation="grow" variant="info" />
-
-            </div>
+  const [globalState] = useGlobalState();
+  const [user] = useUser();
+  const carSelected =
+    globalState.selectedBrand &&
+    globalState.selectedModel &&
+    globalState.selectedType;
+  if (user === undefined)
     return (
-        <div className={"app position-relative"}>
-
-            {!user&&<div className="bg-warning text-center">Please sign in to enjoy more benefits!</div>}
-            <HashRouter>
-                <div className="d-flex min-vh-100 flex-column">
-                <NavigationBar />
-                <div className="flex-grow-1">
-                <Switch className='p-0'>
-                    <Route exact path="/"><Redirect to="/services"/></Route>
-                    <Route exact path="/services">
-                        {!carSelected && <LandingPage />}
-                        {carSelected && <AllServicesPage />}
-                    </Route>
-                    <Route path="/workshop">
-                        <WorkshopPage />
-                    </Route>
-                    <Route path="/profile">
-                        <ProfilePage />
-                    </Route>
-                    <Route path="/estimate">
-                        <EstimatePage />
-                    </Route>
-                    <Route path="/admin">
-                        <AdminPage />
-                    </Route>
-                    <Route path="/blogs">
-                        <BlogPage />
-                    </Route>
-                    <Route path="/customerreviews">
-                        <ReviewPage />
-                    </Route>
-                    <Route path="/faq">
-                        <FaqPage />
-                    </Route>
-                    <Route component={BooknowPage} path="/booknow">
-                    </Route>
-                    <Route path="/freeservices">
-                        <FreeServices/>
-                    </Route>
-                    <Route path="/appointmentslot" component={AppointmentSlot}>
-                    </Route>
-                    <Route path="/job/:jobID">
-                        <Job/>
-                    </Route>
-                    
-                </Switch>
-                </div>
-                
-                <Footer />
-                </div>
-            </HashRouter>
-        </div>
+      <div className="min-vh-100 d-flex justify-content-center align-items-center">
+        <Spinner animation="grow" variant="primary" />
+        <Spinner animation="grow" variant="secondary" />
+        <Spinner animation="grow" variant="success" />
+        <Spinner animation="grow" variant="danger" />
+        <Spinner animation="grow" variant="warning" />
+        <Spinner animation="grow" variant="info" />
+      </div>
     );
+  console.log(user);
+  return (
+    <div className={"app position-relative"}>
+      {!user && (
+        <div className="bg-warning text-center">
+          Please sign in to enjoy more benefits!
+        </div>
+      )}
+      <HashRouter>
+        <div className="d-flex min-vh-100 flex-column">
+          <NavigationBar />
+          <div className="flex-grow-1">
+            <Switch className="p-0">
+              <Route exact path="/">
+                <Redirect to="/services" />
+              </Route>
+              <Route exact path="/services">
+                {!carSelected && <LandingPage />}
+                {carSelected && <AllServicesPage />}
+              </Route>
+              <Route path="/workshop">
+                <WorkshopPage />
+              </Route>
+              <Route path="/profile">
+                <ProfilePage />
+              </Route>
+              <Route path="/estimate">
+                <EstimatePage />
+              </Route>
+              <Route path="/admin">
+                <AdminPage />
+              </Route>
+              <Route path="/blogs">
+                <BlogPage />
+              </Route>
+              <Route path="/customerreviews">
+                <ReviewPage />
+              </Route>
+              <Route path="/faq">
+                <FaqPage />
+              </Route>
+              <Route component={BooknowPage} path="/booknow"></Route>
+              <Route path="/freeservices">
+                <FreeServices />
+              </Route>
+              <Route
+                path="/appointmentslot"
+                component={AppointmentSlot}
+              ></Route>
+              <Route path="/job/:jobID">
+                <Job />
+              </Route>
+            </Switch>
+          </div>
+
+          <Footer />
+        </div>
+      </HashRouter>
+    </div>
+  );
 }
-export default App;
+
+export default App

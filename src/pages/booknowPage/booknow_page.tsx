@@ -42,11 +42,15 @@ export default function BooknowPage() {
   const [reCaptcha, setReCaptcha] = useState<firebase.auth.RecaptchaVerifier>();
 
   useEffect(() => {
-    if (user) return;
+    if (user) {
+      console.log("USER EXISTS");
+      return;
+    }
+    console.log("MAKING RECAPTCHA");
     const captcha = getRecaptchaVerifier("captcha");
     if (!reCaptcha) setReCaptcha(captcha);
     return () => captcha.clear();
-  }, []);
+  }, [user]);
 
   function checkDisabled() {
     if (availableDays[startDate.getDate().toString()]) {
@@ -146,6 +150,7 @@ export default function BooknowPage() {
     phone: number;
     location: string;
   }) {
+    console.log("CALLED");
     const rand = new Date().getTime();
     setPhoneResult(undefined);
     const tempSession: BookedSession = {
@@ -188,15 +193,14 @@ export default function BooknowPage() {
 
   return (
     <div className="container d-flex flex-grow-1 justify-content-center align-items-center">
-      {!user && (
-        <VerifyOTP
-          phoneResult={phoneResult}
-          onSuccess={handleSubmit(addBookedSessionLocal)}
-          onHide={() => setPhoneResult(undefined)}
-          resendOTP={sendOTP}
-          authenticate={false}
-        />
-      )}
+      <VerifyOTP
+        phoneResult={phoneResult}
+        onSuccess={handleSubmit(addBookedSessionLocal)}
+        onHide={() => setPhoneResult(undefined)}
+        resendOTP={sendOTP}
+        authenticate={false}
+      />
+
       <div className="row text-center w-100 ">
         <form
           noValidate={true}
@@ -316,7 +320,7 @@ export default function BooknowPage() {
               </button>
             </div>
           </div>
-          {!user && <div id="captcha" />}
+          <div id="captcha" />
           <div className="row align-items-center">
             <button
               type="submit"

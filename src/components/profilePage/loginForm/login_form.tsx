@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Spinner } from "react-bootstrap";
 import { getRecaptchaVerifier, sendSMS } from "../../../utils/firebase/auth";
 import { useForm } from "react-hook-form";
 import { getErrorText } from "../../../utils/globalFunctions";
 import VerifyOTP from "../../verifyOTP/verifyOTP";
 import firebase from "firebase";
+import { useHistory } from "react-router";
+import { useUser } from "../../../contexts/user_context";
 
 export default function LoginForm() {
+  const his = useHistory();
   const {
     register,
-    handleSubmit,
     formState: { errors },
     setError,
     getValues,
@@ -19,6 +21,7 @@ export default function LoginForm() {
     useState<firebase.auth.ConfirmationResult>();
   const [reCaptcha, setReCaptcha] = useState<firebase.auth.RecaptchaVerifier>();
   const [loading, setLoading] = useState(false);
+  const [user] = useUser();
   useEffect(() => {
     const captcha = getRecaptchaVerifier("captcha");
     if (!reCaptcha) setReCaptcha(captcha);
@@ -53,7 +56,17 @@ export default function LoginForm() {
     <div className="container">
       <VerifyOTP
         phoneResult={phoneResult}
-        onSuccess={() => {}}
+        onSuccess={() => {
+          if (!user) {
+            setTimeout(() => {
+              setError("phone", {
+                type: "custom",
+                message: "No user with this phone exists! Please Sign Up!",
+              });
+              setPhoneResult(undefined);
+            }, 3000);
+          } else his.push("/services");
+        }}
         onHide={() => setPhoneResult(undefined)}
         resendOTP={sendOTP}
         authenticate={true}
@@ -83,6 +96,7 @@ export default function LoginForm() {
         <Button variant="warning" type="submit">
           Send OTP
         </Button>
+        {loading && <Spinner className="m-2" animation={"border"} />}
         <div id="captcha" />
       </Form>
     </div>

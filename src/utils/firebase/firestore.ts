@@ -18,6 +18,7 @@ export async function getUserDocument(
   phone: string
 ): Promise<UserInterface | null> {
   let user_doc: UserInterface | null = null;
+  console.log(phone);
   const doc = await fire.firestore().collection("users").doc(phone).get();
   if (doc && doc.exists) {
     const doc_data = doc.data();

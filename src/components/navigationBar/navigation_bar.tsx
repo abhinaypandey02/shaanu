@@ -35,7 +35,7 @@ export default function NavigationBar() {
                 onClick={() => history.push("/profile")}
                 id="navbutton"
               >
-                {user ? "CAR PROFILE" : "SIGN IN"}
+                {user ? "CAR PROFILE" : "SIGN UP"}
               </Button>
             </Nav.Item>
             <Nav.Item>
