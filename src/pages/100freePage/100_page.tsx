@@ -59,7 +59,7 @@ export default function FreeServices() {
                 <div className="col-md-3">
                     <div className="container-fluid p-3 d-flex flex-wrap flex-column">
                         <div className="row bg-warning">
-                            <h1 className='mx-auto my-2'>GROUP 1</h1>
+                            <h1 className='mx-auto my-2'>GROUP 2</h1>
                         </div>
                         
                         <div className="row border border-warning text-light">
@@ -67,7 +67,7 @@ export default function FreeServices() {
                                 <li className="list-group-item border border-dark bg-warning">
                                     <div className="col-12 my-2">
                                     <label className="container1">One
-                                        <input type="radio"  name="radio"/>
+                                        <input type="radio"  name="radio1"/>
                                         <span className="checkmark"></span>
                                         </label>
                                     </div>
@@ -75,7 +75,7 @@ export default function FreeServices() {
                                 <li className="list-group-item border border-dark bg-warning">
                                     <div className="col-12 my-2">
                                     <label className="container1">two
-                                        <input type="radio"  name="radio"/>
+                                        <input type="radio"  name="radio1"/>
                                         <span className="checkmark"></span>
                                         </label>
                                     </div>
@@ -83,7 +83,7 @@ export default function FreeServices() {
                                 <li className="list-group-item border border-dark bg-warning">
                                     <div className="col-12 my-2">
                                     <label className="container1">three
-                                        <input type="radio"  name="radio"/>
+                                        <input type="radio"  name="radio1"/>
                                         <span className="checkmark"></span>
                                         </label>
                                     </div>
@@ -91,7 +91,7 @@ export default function FreeServices() {
                                 <li className="list-group-item border border-dark bg-warning">
                                     <div className="col-12 my-2">
                                     <label className="container1">four
-                                        <input type="radio"  name="radio"/>
+                                        <input type="radio"  name="radio1"/>
                                         <span className="checkmark"></span>
                                         </label>
                                     </div>
@@ -105,7 +105,7 @@ export default function FreeServices() {
                 <div className="col-md-3">
                     <div className="container-fluid p-3 d-flex flex-wrap flex-column">
                         <div className="row bg-warning">
-                            <h1 className='mx-auto my-2'>GROUP 1</h1>
+                            <h1 className='mx-auto my-2'>GROUP 3</h1>
                         </div>
                         
                         <div className="row border border-warning text-light">
@@ -113,7 +113,7 @@ export default function FreeServices() {
                                 <li className="list-group-item border border-dark bg-warning">
                                     <div className="col-12 my-2">
                                     <label className="container1">One
-                                        <input type="radio"  name="radio"/>
+                                        <input type="radio"  name="radio2"/>
                                         <span className="checkmark"></span>
                                         </label>
                                     </div>
@@ -121,7 +121,7 @@ export default function FreeServices() {
                                 <li className="list-group-item border border-dark bg-warning">
                                     <div className="col-12 my-2">
                                     <label className="container1">two
-                                        <input type="radio"  name="radio"/>
+                                        <input type="radio"  name="radio2"/>
                                         <span className="checkmark"></span>
                                         </label>
                                     </div>
@@ -129,7 +129,7 @@ export default function FreeServices() {
                                 <li className="list-group-item border border-dark bg-warning">
                                     <div className="col-12 my-2">
                                     <label className="container1">three
-                                        <input type="radio"  name="radio"/>
+                                        <input type="radio"  name="radio2"/>
                                         <span className="checkmark"></span>
                                         </label>
                                     </div>
@@ -137,7 +137,7 @@ export default function FreeServices() {
                                 <li className="list-group-item border border-dark bg-warning">
                                     <div className="col-12 my-2">
                                     <label className="container1">four
-                                        <input type="radio"  name="radio"/>
+                                        <input type="radio"  name="radio2"/>
                                         <span className="checkmark"></span>
                                         </label>
                                     </div>
@@ -151,31 +151,31 @@ export default function FreeServices() {
                 <div className="col-md-3">
                     <div className="container-fluid p-3 d-flex flex-wrap flex-column">
                         <div className="row bg-warning">
-                            <h1 className='mx-auto my-2'>GROUP 1</h1>
+                            <h1 className='mx-auto my-2'>GROUP 4</h1>
                         </div>
                         
                         <div className="row border border-warning text-light">
                             <ul className="list-group border border-dark p-3 text-dark w-100 bg-dark rounded-0">
-                                <li className="list-group-item border border-dark bg-warning">
+                                <li className="list-group-item border   border-dark bg-warning">
                                     <div className="col-12 my-2">
                                     <label className="container1">One
-                                        <input type="radio"  name="radio"/>
-                                        <span className="checkmark"></span>
+                                        <input type="radio"name="radio3"/>
+                                        <span className="checkmark "></span>
                                         </label>
                                     </div>
                                 </li>
-                                <li className="list-group-item border border-dark bg-warning">
+                                <li className="list-group-item border  border-dark bg-warning">
                                     <div className="col-12 my-2">
                                     <label className="container1">two
-                                        <input type="radio"  name="radio"/>
+                                        <input type="radio"  name="radio3"/>
                                         <span className="checkmark"></span>
                                         </label>
                                     </div>
                                 </li>
-                                <li className="list-group-item border border-dark bg-warning">
+                                <li className="list-group-item border  border-dark bg-warning">
                                     <div className="col-12 my-2">
                                     <label className="container1">three
-                                        <input type="radio"  name="radio"/>
+                                        <input type="radio"  name="radio3"/>
                                         <span className="checkmark"></span>
                                         </label>
                                     </div>
@@ -183,7 +183,7 @@ export default function FreeServices() {
                                 <li className="list-group-item border border-dark bg-warning">
                                     <div className="col-12 my-2">
                                     <label className="container1">four
-                                        <input type="radio"  name="radio"/>
+                                        <input type="radio"  name="radio3"/>
                                         <span className="checkmark"></span>
                                         </label>
                                     </div>

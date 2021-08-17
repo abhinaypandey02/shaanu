@@ -97,7 +97,7 @@ export default function AllServicesPage() {
                                 {selectedModel&&selectedBrand&&<img
                                     src={carsData[selectedBrand].models[selectedModel].imageURL}
                                     alt="cart"
-                                    className="img-fluid w-75 border-1 rounded
+                                    className="img-fluid w-50 border-1 rounded
                             "
 
                                 />}
@@ -153,7 +153,7 @@ export default function AllServicesPage() {
                                             {category}
                                         </p>
                                         <div className="badge badge-info my-0">
-                                            {user?`Rs. ${service.price}`:"Sign in to view price"}
+                                            {user?`Rs. ${service.price}`:<strong>"Sign in to view price"</strong>}
                                         </div>
                                         </div>
                                         <div className=' my-auto'>

@@ -175,7 +175,7 @@ export default function EstimatePage() {
             className="btn-warning rounded-0"
             onClick={() => history.push("/freeservices")}
           >
-            Add 100% Free Servics
+            Add <strong>100% Free</strong> Servics
           </Button>
         </Modal.Body>
       </Modal>
@@ -189,7 +189,7 @@ export default function EstimatePage() {
           NOT LOGGED IN
         </Modal.Header>
         <Modal.Body className="text-center text-warning">
-          <h1>Please signup to download/view invoice.</h1>
+          <h1>Please signup to download/view estimated bill.</h1>
         </Modal.Body>
       </Modal>
       <div className="row text-center w-100 ">
@@ -209,7 +209,7 @@ export default function EstimatePage() {
                   id="signinpdfalert"
                   role="alert"
                 >
-                  SIGN IN TO VIEW THE PDF!
+                  <strong>SIGN IN TO VIEW THE ESTIMATED BILL!</strong>
                 </div>
               </a>
               <img
