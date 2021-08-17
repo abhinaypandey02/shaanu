@@ -117,9 +117,8 @@ export default function RegisterForm() {
               maxLength: 10,
               valueAsNumber: true,
               validate: {
-                alreadyExists: async (v) => {
-                  return !(await getUserDocument("+91" + v.toString()));
-                },
+                alreadyExists: async (v) =>
+                  !(await getUserDocument("+91" + v.toString())),
               },
             })}
             type="number"

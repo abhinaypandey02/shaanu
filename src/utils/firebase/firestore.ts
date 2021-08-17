@@ -69,10 +69,14 @@ export async function addCarProfile(
 }
 
 export async function addCallbackRequest(request: CallbackRequest) {
-  return await fire.firestore().collection("callbackRequests").add(request);
+  console.log("DONE");
+
+  await fire.firestore().collection("callbackRequests").add(request);
+  console.log("DONE");
 }
 
 export async function addBookedSession(session: BookedSession) {
+  console.log(session);
   return await fire.firestore().collection("bookedSessions").add(session);
 }
 

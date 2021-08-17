@@ -27,6 +27,7 @@ export default function EstimatePage() {
     formState: { errors },
     clearErrors,
     getValues,
+    trigger,
     setError,
   } = useForm();
   const [notLoggedInModalShow, setNotLoggedInModalShow] = useState(false);
@@ -58,7 +59,7 @@ export default function EstimatePage() {
     return false;
   }
 
-  function addCallbackRequestLocal({
+  async function addCallbackRequestLocal({
     phone,
     location,
     fullname,
@@ -73,25 +74,23 @@ export default function EstimatePage() {
       location,
       date: new Date().toISOString(),
     };
-    console.log(request);
-    addCallbackRequest(request).then(() => {
-      reset();
-      setPhoneResult(undefined);
-      setShowConfirmationModal(true);
-    });
+    await addCallbackRequest(request);
+    reset();
+    setPhoneResult(undefined);
+    setShowConfirmationModal(true);
   }
 
-  function onSubmit(e: any) {
+  async function onSubmit(e: any) {
     e.preventDefault();
+    if (await trigger()) {
+      clearErrors();
 
-    clearErrors();
-
-    if (user) {
-      console.log("HI");
-      handleSubmit(addCallbackRequestLocal)();
-    } else {
-      setLoading(true);
-      sendOTP().then(() => setLoading(false));
+      if (user) {
+        await handleSubmit(addCallbackRequestLocal)();
+      } else {
+        setLoading(true);
+        sendOTP().then(() => setLoading(false));
+      }
     }
   }
 

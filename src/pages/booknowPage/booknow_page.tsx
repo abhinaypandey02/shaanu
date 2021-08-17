@@ -34,6 +34,7 @@ export default function BooknowPage() {
     handleSubmit,
     formState: { errors },
     setError,
+    trigger,
     getValues,
     clearErrors,
   } = useForm();
@@ -95,19 +96,17 @@ export default function BooknowPage() {
     setStartDate(nextAvailableDay(date, date.getHours()));
   }
 
-  function updateMonths() {
+  async function updateMonths() {
     setLoading(true);
-    getBookedSessionsByMonth(startDate.getMonth() + 1).then((docs) => {
-      let temp: any = {};
-      docs.forEach((doc: BookedSession) => {
-        if (temp[doc.day.toString()]) {
-          temp[doc.day.toString()].push(doc);
-        } else temp[doc.day.toString()] = [doc];
-      });
-      setAvailableDays({ ...temp });
-
-      setLoading(false);
+    const docs = await getBookedSessionsByMonth(startDate.getMonth() + 1);
+    let temp: any = {};
+    docs.forEach((doc: BookedSession) => {
+      if (temp[doc.day.toString()]) {
+        temp[doc.day.toString()].push(doc);
+      } else temp[doc.day.toString()] = [doc];
     });
+    setAvailableDays({ ...temp });
+    setLoading(false);
   }
 
   const currMonth = startDate.getMonth();
@@ -141,7 +140,7 @@ export default function BooknowPage() {
     return false;
   }
 
-  function addBookedSessionLocal({
+  async function addBookedSessionLocal({
     fullname,
     phone,
     location,
@@ -166,29 +165,30 @@ export default function BooknowPage() {
       hours: startDate.getHours(),
       minutes: startDate.getMinutes(),
     };
-
-    addBookedSession(tempSession).then(() => {
-      updateMonths();
-      history.push({
-        pathname: "/appointmentslot",
-        state: {
-          tempSession,
-        },
-      });
+    await addBookedSession(tempSession);
+    await updateMonths();
+    console.log("UPDATES MONTHS");
+    await history.push({
+      pathname: "/appointmentslot",
+      state: {
+        tempSession,
+      },
     });
   }
 
-  function onSubmit(e: any) {
+  async function onSubmit(e: any) {
     e.preventDefault();
-    clearErrors();
-    setLoading(true);
-    if (user) {
-      addBookedSessionLocal({
-        fullname: user.name,
-        phone: user.phone,
-        location: getValues("location"),
-      });
-    } else sendOTP().then(() => setLoading(false));
+    if (await trigger()) {
+      clearErrors();
+      setLoading(true);
+      if (user) {
+        await addBookedSessionLocal({
+          fullname: user.name,
+          phone: user.phone,
+          location: getValues("location"),
+        });
+      } else sendOTP().then(() => setLoading(false));
+    }
   }
 
   return (
@@ -217,6 +217,7 @@ export default function BooknowPage() {
               </div>
               <div className="col-md-8">
                 <input
+                  placeholder="Full Name"
                   {...register("fullname", { required: true })}
                   type="text"
                   className="form-control bg-transparent border border-warning rounded-0 "

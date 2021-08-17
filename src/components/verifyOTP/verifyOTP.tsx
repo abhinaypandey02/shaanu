@@ -7,7 +7,7 @@ import { signOut } from "../../utils/firebase/auth";
 
 interface VerifyOTPType {
   phoneResult: firebase.auth.ConfirmationResult | undefined;
-  onSuccess: () => void;
+  onSuccess: () => Promise<void>;
   onHide: () => void;
   resendOTP: () => Promise<boolean>;
   authenticate: boolean;
@@ -22,14 +22,12 @@ const VerifyOTP = (props: VerifyOTPType) => {
   } = useForm();
 
   function onSubmit({ otp }: { otp: number }) {
-    console.log(props.phoneResult?.verificationId);
     props.phoneResult
       ?.confirm(otp.toString())
       .then(props.onSuccess)
-      .then(() => {
+      .then(async () => {
         if (!props.authenticate) {
-          console.log("SIGNING OUT");
-          signOut();
+          await signOut();
         }
       })
       .catch(() =>

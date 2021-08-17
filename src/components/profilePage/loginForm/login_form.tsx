@@ -56,7 +56,7 @@ export default function LoginForm() {
     <div className="container">
       <VerifyOTP
         phoneResult={phoneResult}
-        onSuccess={() => {
+        onSuccess={async () => {
           if (!user) {
             setTimeout(() => {
               setError("phone", {
