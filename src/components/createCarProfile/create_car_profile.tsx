@@ -55,7 +55,10 @@ export default function CreateCarProfile({
       fuel,
       chasisNo,
       engineNo,
-      insuranceDate,
+      insuranceDate:
+        insuranceDate.toString() !== "Invalid Date"
+          ? insuranceDate.toISOString()
+          : null,
       insuranceComp,
       address,
       regNo,
@@ -64,6 +67,7 @@ export default function CreateCarProfile({
       notifications: [],
       id: v4(),
     };
+    console.log(carProfileTemp);
     if (!user) return;
     const carProfiles = user.carProfiles;
     const thisCarProfile = carProfiles.findIndex(
@@ -165,7 +169,6 @@ export default function CreateCarProfile({
           {[
             { name: "Chasis No.", id: "chasisNo", required: false },
             { name: "Engine No.", id: "engineNo", required: false },
-            { name: "Insurance Date", id: "insuranceDate", required: false },
             { name: "Insurance Company", id: "insuranceComp", required: false },
           ].map((obj: any) => (
             <Form.Group key={obj.id}>
@@ -184,6 +187,17 @@ export default function CreateCarProfile({
               </Form.Text>
             </Form.Group>
           ))}
+          <Form.Group>
+            <Form.Label>Insurance Date</Form.Label>
+            <Form.Control
+              type="date"
+              placeholder={"Insurance Date"}
+              {...register("insuranceDate", { valueAsDate: true })}
+            />
+            <Form.Text className="text-danger small">
+              {getErrorText(errors.insuranceDate?.type)}
+            </Form.Text>
+          </Form.Group>
           <Form.Group>
             <Form.Label>Select Fuel</Form.Label>
             <Form.Control

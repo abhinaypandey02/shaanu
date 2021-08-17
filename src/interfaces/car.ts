@@ -5,7 +5,7 @@ export interface CarProfile {
   regNo: string;
   chasisNo: string;
   engineNo: string;
-  insuranceDate: string;
+  insuranceDate: string | null;
   insuranceComp: string;
   address: string;
   imageURL: string;
