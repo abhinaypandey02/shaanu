@@ -1,6 +1,6 @@
 import { Accordion, Button, Card, Modal, Spinner } from "react-bootstrap";
 import { useState } from "react";
-import { deleteFile, uploadDocuments } from "../../utils/firebase/storage";
+import { uploadDocuments } from "../../utils/firebase/storage";
 import { CarProfile } from "../../interfaces/car";
 import { useUser } from "../../contexts/user_context";
 
@@ -104,7 +104,6 @@ export default function UploadDocuments({
       );
       cloudUpdateCarProfile(newCarProfile);
       setCurrentCarProfile(newCarProfile);
-      deleteFile(user, filename);
     }
   }
 

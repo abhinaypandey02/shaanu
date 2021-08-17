@@ -20,6 +20,7 @@ import { useUser } from "./contexts/user_context";
 import { Spinner } from "react-bootstrap";
 import ReviewPage from "./pages/reviewPage/reviewpage";
 import BlogPage from "./pages/blogPage/blogpage";
+import ROUTES_META from "./metadata/routes_meta";
 
 function App() {
   const [globalState] = useGlobalState();
@@ -53,43 +54,47 @@ function App() {
           <div className="flex-grow-1">
             <Switch className="p-0">
               <Route exact path="/">
-                <Redirect to="/services" />
+                <Redirect to={ROUTES_META.services} />
               </Route>
-              <Route exact path="/services">
+              <Route exact path={ROUTES_META.services}>
                 {!carSelected && <LandingPage />}
                 {carSelected && <AllServicesPage />}
               </Route>
-              <Route path="/workshop">
+              <Route path={ROUTES_META.workShop}>
                 <WorkshopPage />
               </Route>
-              <Route path="/profile">
+              <Route path={ROUTES_META.profile}>
                 <ProfilePage />
               </Route>
-              <Route path="/estimate">
+              <Route path={ROUTES_META.estimate}>
                 <EstimatePage />
               </Route>
-              <Route path="/admin">
-                <AdminPage />
-              </Route>
-              <Route path="/blogs">
+
+              <Route path={ROUTES_META.blogs}>
                 <BlogPage />
               </Route>
-              <Route path="/customerreviews">
+              <Route path={ROUTES_META.reviews}>
                 <ReviewPage />
               </Route>
-              <Route path="/faq">
+              <Route path={ROUTES_META.faq}>
                 <FaqPage />
               </Route>
-              <Route component={BooknowPage} path="/booknow"></Route>
-              <Route path="/freeservices">
+              <Route component={BooknowPage} path={ROUTES_META.bookNow} />
+              <Route path={ROUTES_META.freeServices}>
                 <FreeServices />
               </Route>
               <Route
-                path="/appointmentslot"
+                path={ROUTES_META.appointmentSlot}
                 component={AppointmentSlot}
-              ></Route>
+              />
               <Route path="/job/:jobID">
                 <Job />
+              </Route>
+              <Route exact path={ROUTES_META.admin}>
+                <Redirect to={ROUTES_META.admin + "/jobs"} />
+              </Route>
+              <Route path={ROUTES_META.admin + "/:category"}>
+                <AdminPage />
               </Route>
             </Switch>
           </div>
@@ -101,4 +106,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

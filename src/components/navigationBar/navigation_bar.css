@@ -1,10 +1,18 @@
-.navbar{
-    background-color:black !important;
+.navbar {
+    background-color: black !important;
 }
-.btn-outline-light{
+
+.btn-outline-light {
     padding-left: 2em !important;
     padding-right: 2em !important;
 }
-#navbutton:hover{
-    background: #ffc107;
+
+#navbutton.active, #navbutton:hover {
+    color: black !important;
 }
+
+#navbutton {
+    color: white;
+    border-color: white;
+}
+
