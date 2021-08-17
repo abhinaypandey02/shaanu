@@ -5,6 +5,7 @@ import { useHistory } from "react-router";
 import {
   addBookedSession,
   getBookedSessionsByMonth,
+  getToken,
 } from "../../utils/firebase/firestore";
 import { BookedSession } from "../../interfaces/bookedSession";
 import { v4 as uid } from "uuid";
@@ -150,7 +151,7 @@ export default function BooknowPage() {
     location: string;
   }) {
     console.log("CALLED");
-    const rand = new Date().getTime();
+    const rand = await getToken();
     setPhoneResult(undefined);
     const tempSession: BookedSession = {
       id: uid(),

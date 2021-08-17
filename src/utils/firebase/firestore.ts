@@ -69,15 +69,12 @@ export async function addCarProfile(
 }
 
 export async function addCallbackRequest(request: CallbackRequest) {
-  console.log("DONE");
-
-  await fire.firestore().collection("callbackRequests").add(request);
-  console.log("DONE");
+  return await fire.firestore().collection("callbackRequests").add(request);
 }
 
 export async function addBookedSession(session: BookedSession) {
-  console.log(session);
-  return await fire.firestore().collection("bookedSessions").add(session);
+  await fire.firestore().collection("bookedSessions").add(session);
+  await updateBookedSessionsCount((await getBookedSessionsCount()) + 1);
 }
 
 export async function getBookedSessionsByMonth(month: number) {
@@ -120,4 +117,24 @@ export async function getJob(jobID: string) {
 
 export async function deleteJob(jobID: string) {
   return await fire.firestore().collection("jobs").doc(jobID).delete();
+}
+
+async function updateBookedSessionsCount(newCount: number) {
+  return await fire.firestore().collection("metadata").doc("metadata").update({
+    bookedSessions: newCount,
+  });
+}
+
+export async function getBookedSessionsCount(): Promise<number> {
+  const data = (
+    await fire.firestore().collection("metadata").doc("metadata").get()
+  ).data();
+  if (data) {
+    return data.bookedSessions;
+  }
+  return 0;
+}
+
+export async function getToken(): Promise<number> {
+  return (await getBookedSessionsCount()) + 10000;
 }
