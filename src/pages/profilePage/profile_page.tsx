@@ -122,7 +122,10 @@ export default function ProfilePage() {
                   </option>
                 ))}
               </select>
-              <Button className='bg-outline-warning  rounded-0 my-2' onClick={() => setEditCarProfile(true)}>
+              <Button
+                className="bg-outline-warning  rounded-0 my-2"
+                onClick={() => setEditCarProfile(true)}
+              >
                 Edit Car Profile
               </Button>
             </div>
@@ -132,9 +135,7 @@ export default function ProfilePage() {
               onClick={() => setShowCreateCarProfile(true)}
               className="btn m-2 btn-warning rounded-0"
             >
-              {currentCarProfile
-                ? "ADD NEW CAR PROFILE"
-                : "CREATE NEW CAR PROFILE"}
+              {currentCarProfile ? "CREATE CAR PROFILE" : "ADD YOUR CAR"}
             </button>
             <button onClick={signOut} className="btn m-2 btn-danger rounded-0">
               SIGN OUT
