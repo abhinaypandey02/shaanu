@@ -12,7 +12,7 @@ const ROUTES_META = {
   services: "/services",
   workShop: "/workshop",
   profile: "/profile",
-  estimate: "estimate",
+  estimate: "/estimate",
   adminJobs: "/jobs",
   adminUsers: "/users",
   adminCallback: "/callback",
