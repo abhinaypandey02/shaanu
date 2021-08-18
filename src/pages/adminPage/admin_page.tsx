@@ -36,20 +36,13 @@ export default function AdminPage() {
     });
   }, []);
   useEffect(() => {
-    getAllBookedSessions().then((list: any[]) => {
-      list = list.map((ele) => ({
+    getAllBookedSessions().then((list: BookedSession[]) => {
+      const LIST: BookedSessionWithDate[] = list.map((ele: BookedSession) => ({
         ...ele,
-        date: new Date(
-          ele.year,
-          ele.month - 1,
-          ele.day,
-          ele.hours,
-          ele.minutes,
-          0
-        ),
+        date: new Date(ele.dateTime),
       }));
-      list.sort((a, b) => a.date.getTime() - a.date.getTime());
-      setBookedSessions(list);
+      LIST.sort((a, b) => a.date.getTime() - a.date.getTime());
+      setBookedSessions(LIST);
     });
   }, []);
 

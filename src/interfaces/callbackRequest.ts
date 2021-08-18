@@ -3,4 +3,5 @@ export default interface CallbackRequest {
   phone: number;
   location: string;
   date: string;
+  id: string;
 }
