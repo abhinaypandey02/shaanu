@@ -11,6 +11,7 @@ import carsDataJSON from "../../database/carsData.json";
 import CarsData from "../../interfaces/carsData";
 import { getErrorText } from "../../utils/globalFunctions";
 import { v4 } from "uuid";
+import { useGlobalState } from "../../contexts/global_state";
 
 export default function CreateCarProfile({
   carProfile,
@@ -22,12 +23,21 @@ export default function CreateCarProfile({
   const [user, setUser] = useUser();
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState<any>();
+  const [{ selectedBrand, selectedModel, selectedType }] = useGlobalState();
+  let defaultValues: any = {};
+  if (carProfile) {
+    defaultValues = carProfile;
+  } else {
+    if (selectedBrand) defaultValues.brand = selectedBrand;
+    if (selectedModel) defaultValues.model = selectedModel;
+    if (selectedType) defaultValues.fuel = selectedType;
+  }
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm({ defaultValues: carProfile ? carProfile : undefined });
+  } = useForm({ defaultValues });
 
   const carsData = carsDataJSON as CarsData;
   const brandWatch = watch("brand");
