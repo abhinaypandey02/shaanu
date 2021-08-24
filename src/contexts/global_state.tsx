@@ -1,10 +1,19 @@
-import React, {createContext, Dispatch, useContext, useReducer} from "react";
+import React, { createContext, Dispatch, useContext, useReducer } from "react";
+
+export interface Cart {
+  id: string;
+  brand: string;
+  model: string;
+  fuel: string;
+  category: string;
+  service: { name: string; price: number };
+}
 
 export interface GlobalStateInterface {
     selectedBrand: string | null;
     selectedModel: string | null;
     selectedType: string | null;
-    cart: { id:string, brand: string; model: string, fuel: string, category: string, service: { name: string, price: number } }[]
+    cart: Cart[]
 }
 
 const initialState: GlobalStateInterface = {
@@ -20,21 +29,21 @@ function reducer(
 ): GlobalStateInterface {
     switch (action.type) {
         case "SET_BRAND":
-            return {...state, selectedBrand: action.payload};
+            return { ...state, selectedBrand: action.payload };
         case "SET_MODEL":
-            return {...state, selectedModel: action.payload};
+            return { ...state, selectedModel: action.payload };
         case "SET_TYPE":
-            return {...state, selectedType: action.payload};
+            return { ...state, selectedType: action.payload };
         case "CLEAR_SELECTION":
-            return {...state, selectedBrand: null, selectedModel: null, selectedType: null}
+            return { ...state, selectedBrand: null, selectedModel: null, selectedType: null }
         case "ADD_TO_CART": {
             if (state.cart.some(item =>
                 item.id === action.payload.id
             )) return state;
-            return {...state, cart: [...state.cart, action.payload]}
+            return { ...state, cart: [...state.cart, action.payload] }
         }
         case "REMOVE_FROM_CART":
-            return {...state, cart: state.cart.filter(cartItem => cartItem.id !== action.payload)}
+            return { ...state, cart: state.cart.filter(cartItem => cartItem.id !== action.payload) }
         default:
             return state;
     }
@@ -46,7 +55,7 @@ export function useGlobalState(): [GlobalStateInterface, Dispatch<{ type: string
     return useContext(globalState);
 }
 
-export default function GlobalState({children}: any) {
+export default function GlobalState({ children }: any) {
     const [state, dispatch] = useReducer(
         reducer,
         initialState

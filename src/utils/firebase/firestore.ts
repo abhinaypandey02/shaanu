@@ -5,6 +5,7 @@ import { CarProfile } from "../../interfaces/car";
 import { BookedSession } from "../../interfaces/bookedSession";
 import CallbackRequest from "../../interfaces/callbackRequest";
 import JobInterface from "../../interfaces/job";
+import { Checkout } from "../../interfaces/checkout";
 
 export async function setUserDocument(user_data: UserInterface) {
   await fire
@@ -137,4 +138,8 @@ export async function getBookedSessionsCount(): Promise<number> {
 
 export async function getToken(): Promise<number> {
   return (await getBookedSessionsCount()) + 10000;
+}
+
+export async function addCheckout(checkout: Checkout) {
+  return await fire.firestore().collection("checkouts").add(checkout);
 }
