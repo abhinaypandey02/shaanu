@@ -4,14 +4,17 @@ import "./navigation_bar.css";
 import { useUser } from "../../contexts/user_context";
 import ROUTES_META from "../../metadata/routes_meta";
 import { useState } from "react";
+import { useGlobalState } from "../../contexts/global_state";
 
 export default function NavigationBar() {
   const history = useHistory();
   const location = useLocation();
   const [user] = useUser();
   const [expanded, setExpanded] = useState(false);
-  let ROUTES = [];
-  if (location.pathname.startsWith(ROUTES_META.admin))
+  let ROUTES: any[];
+  const [{ cart }] = useGlobalState();
+  const isAdminPage = location.pathname.startsWith(ROUTES_META.admin);
+  if (isAdminPage)
     ROUTES = [
       {
         path: ROUTES_META.admin + ROUTES_META.adminJobs,
@@ -49,6 +52,11 @@ export default function NavigationBar() {
         path: ROUTES_META.workShop,
         name: "VIEW WORKSHOP",
       },
+      {
+        path: ROUTES_META.services,
+        name: `CART (${cart.length})`,
+        button: true, //used to disable it being selected
+      },
     ];
   return (
     <Navbar
@@ -77,7 +85,10 @@ export default function NavigationBar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto justify-content-center">
             {ROUTES.map((navItem) => (
-              <Nav.Item className='d-flex align-items-center' key={navItem.path}>
+              <Nav.Item
+                className="d-flex align-items-center"
+                key={navItem.path}
+              >
                 <Button
                   variant={"outline-warning"}
                   className="m-2 rounded-0"
@@ -86,9 +97,10 @@ export default function NavigationBar() {
                     history.push(navItem.path);
                   }}
                   active={
-                    location.pathname === navItem.path ||
-                    (navItem.altPaths &&
-                      navItem.altPaths.includes(location.pathname))
+                    !navItem.button &&
+                    (location.pathname === navItem.path ||
+                      (navItem.altPaths &&
+                        navItem.altPaths.includes(location.pathname)))
                   }
                   id="navbutton"
                 >
@@ -96,11 +108,6 @@ export default function NavigationBar() {
                 </Button>
               </Nav.Item>
             ))}
-            <Nav.Item>
-                    <a href='#services' className='m-2 p-1 btn btn-warning rounded-0' id="navbutton" >
-                      <img src='https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png' alt='' className='img-fluid' width={27}/>
-                    </a>
-              </Nav.Item>
           </Nav>
         </Navbar.Collapse>
       </div>

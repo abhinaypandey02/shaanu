@@ -60,14 +60,15 @@ export default function AllServicesPage() {
   const history = useHistory();
 
   function checkout() {
-    history.push("/estimate");
     if (user) {
       const checkout: Checkout = {
         cart: globalState.cart,
         timestamp: new Date().getTime(),
         user: user.phone,
       };
-      addCheckout(checkout);
+      addCheckout(checkout).then(() => {
+        history.push("/estimate");
+      });
     }
   }
 

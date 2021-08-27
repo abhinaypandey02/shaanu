@@ -17,7 +17,7 @@ import { v4 } from "uuid";
 
 export default function EstimatePage() {
   const history = useHistory();
-  const [{ cart }] = useGlobalState();
+  const [{ cart }, dispatch] = useGlobalState();
   const [user] = useUser();
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [link, setLink] = useState("");
@@ -126,6 +126,7 @@ export default function EstimatePage() {
       })),
       to: user ? `${user?.name}` : "Whomsoever it may concern",
     };
+    dispatch({ type: "CLEAR_CART", payload: undefined });
     fetch(
       "https://us-central1-entertainment-coach-db.cloudfunctions.net/createdAt/pdf",
       {
@@ -146,7 +147,7 @@ export default function EstimatePage() {
       });
     });
     //eslint-disable-next-line
-  }, [user, cart]);
+  }, [user]);
   return (
     <div
       className="container-fluid d-flex flex-grow-1  justify-content-center align-items-center"
