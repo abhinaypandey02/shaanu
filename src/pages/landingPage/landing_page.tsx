@@ -130,6 +130,13 @@ export default function LandingPage() {
                         </ScrollAnimation>
 
                     </div>)}
+                
+                        <div className="col text-center my-3">
+                        <ScrollAnimation animateIn='fadeInUp' delay={1500} animateOnce={true} duration={3}>
+                        <a href='#blogs' className=' btn btn-dark rounded-0' >READ MORE</a>
+                        </ScrollAnimation>
+                        </div>
+        
                 </div>
             </div>
         </div>
@@ -154,7 +161,7 @@ export default function LandingPage() {
                 <ReviewComponent/>
             </div>
             <div className="col text-center my-3">
-                    <a href='#customerreviews' className='btn btn-outline-light' >READ MORE</a>
+                    <a href='#customerreviews' className='m-2 btn btn-light' >WRITE A REVIEW</a><a href='#customerreviews' className='m-2 btn btn-outline-light' >READ MORE</a>
                     </div>
         </div>
 

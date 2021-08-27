@@ -119,6 +119,9 @@ export default function WorkshopPage() {
                                         </div>
                     </Carousel.Item>
                     </Carousel>
+                    <div className="col text-center my-3">
+                    <a href='#customerreviews' className='m-2 btn btn-light' >WRITE A REVIEW</a><a href='#customerreviews' className='m-2 btn btn-outline-light' >READ MORE</a>
+                    </div>
 
             <br />
                 <div className="row-fluid text-light p-3 text-center">
@@ -181,7 +184,9 @@ export default function WorkshopPage() {
                         </Card>
 
                     </Accordion>
-    
+                    <div className="col text-center my-3">
+                    <a href='#faq' className='btn btn-outline-light' >READ MORE</a>
+                    </div>
                 </div>
                 </div>
             </div>
