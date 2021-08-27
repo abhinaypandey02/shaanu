@@ -21,8 +21,11 @@ import { Spinner } from "react-bootstrap";
 import ReviewPage from "./pages/reviewPage/reviewpage";
 import BlogPage from "./pages/blogPage/blogpage";
 import ROUTES_META from "./metadata/routes_meta";
+import blogsJSON from "./database/blogs.json";
+import EachBlog from "./pages/blogPage/eachBlog";
 
 function App() {
+  const blogs = blogsJSON.blogs;
   const [globalState] = useGlobalState();
   const [user] = useUser();
   const carSelected =
@@ -96,6 +99,11 @@ function App() {
               <Route path={ROUTES_META.admin + "/:category"}>
                 <AdminPage />
               </Route>
+              {blogs.map((blog) => (
+                <Route path={"/blog/" + blog.slug}>
+                  <EachBlog blog={blog} />
+                </Route>
+              ))}
             </Switch>
           </div>
 
