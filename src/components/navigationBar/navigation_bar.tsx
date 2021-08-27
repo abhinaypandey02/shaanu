@@ -3,12 +3,13 @@ import { useHistory, useLocation } from "react-router";
 import "./navigation_bar.css";
 import { useUser } from "../../contexts/user_context";
 import ROUTES_META from "../../metadata/routes_meta";
+import { useState } from "react";
 
 export default function NavigationBar() {
   const history = useHistory();
   const location = useLocation();
-  console.log(location);
   const [user] = useUser();
+  const [expanded, setExpanded] = useState(false);
   let ROUTES = [];
   if (location.pathname.startsWith(ROUTES_META.admin))
     ROUTES = [
@@ -51,6 +52,7 @@ export default function NavigationBar() {
     ];
   return (
     <Navbar
+      expanded={expanded}
       sticky="top"
       variant={"dark"}
       bg="dark"
@@ -68,7 +70,10 @@ export default function NavigationBar() {
           />
           <strong>Car Plus</strong>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle
+          onClick={() => setExpanded((o) => !o)}
+          aria-controls="basic-navbar-nav"
+        />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto justify-content-center">
             {ROUTES.map((navItem) => (
@@ -76,7 +81,10 @@ export default function NavigationBar() {
                 <Button
                   variant={"outline-warning"}
                   className="m-2 rounded-0"
-                  onClick={() => history.push(navItem.path)}
+                  onClick={() => {
+                    setExpanded(false);
+                    history.push(navItem.path);
+                  }}
                   active={
                     location.pathname === navItem.path ||
                     (navItem.altPaths &&
