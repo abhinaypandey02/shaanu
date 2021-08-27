@@ -1,103 +1,129 @@
-.app{
-  background: #000;
-  font-family: 'Lexend', sans-serif;
+.app {
+    background: #000;
+    font-family: 'Lexend', sans-serif;
 }
+
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 7px;
+    width: 8px;
+    height: 7px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #353535;
+    background: #353535;
 
 
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #ffc107;
+    background: #ffc107;
 
 
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #cc9a06;
-}
-.pointer-on-hover{
-  cursor: pointer;
+    background: #cc9a06;
 }
 
-.unavailable{
-  color:red !important;
-  
-}
-.unavailable:hover{
-  cursor:not-allowed!important;
-  background-color: white!important;
-}
-.available{
-  color:green !important;
-  
+.pointer-on-hover {
+    cursor: pointer;
 }
 
-.disabled{
-  color:grey !important;
-  background-color: white!important;
-}
-.disabled:hover{
-  background-color: white!important;
-  cursor:not-allowed !important;
-}
-
-.react-datepicker__day--selected{
-  color:white!important;
-}
-.react-datepicker__day--keyboard-selected{
-  background-color: white!important;
-}
-.selectedTime{
-  color:white!important;
-}
-#dropdownbutton{
-  box-shadow: rgba(184, 184, 184, 0.15) 0px 48px 100px 0px;
+.unavailable {
+    color: red !important;
 
 }
-#servicesbtn{
-  box-shadow: rgba(146, 146, 151, 0.2) 0px 7px 29px 0px;
-  padding: 0px 0px !important;
+
+.unavailable:hover {
+    cursor: not-allowed !important;
+    background-color: white !important;
 }
-#workshopcard{
-  box-shadow: rgba(146, 146, 151, 0.2) 0px 7px 29px 0px;
+
+.available {
+    color: green !important;
+
 }
-#navbutton{
-  box-shadow: rgba(146, 146, 151, 0.2) 0px 7px 29px 0px;
+
+.disabled {
+    color: grey !important;
+    background-color: white !important;
 }
+
+.disabled:hover {
+    background-color: white !important;
+    cursor: not-allowed !important;
+}
+
+.react-datepicker__day--selected {
+    color: white !important;
+}
+
+.react-datepicker__day--keyboard-selected {
+    background-color: white !important;
+}
+
+.selectedTime {
+    color: white !important;
+}
+
+#dropdownbutton {
+    box-shadow: rgba(184, 184, 184, 0.15) 0px 48px 100px 0px;
+
+}
+
+#servicesbtn {
+    box-shadow: rgba(146, 146, 151, 0.2) 0px 7px 29px 0px;
+    padding: 0px 0px !important;
+}
+
+#workshopcard {
+    box-shadow: rgba(146, 146, 151, 0.2) 0px 7px 29px 0px;
+}
+
+#navbutton {
+    box-shadow: rgba(146, 146, 151, 0.2) 0px 7px 29px 0px;
+}
+
 @media screen and (max-width: 600px) {
-  #carbrandimage{
-    height: 50px !important;
-  }
-  #dropdownbutton{
-    min-width: 100% !important;
-  }
+    #carbrandimage {
+        height: 50px !important;
+    }
+
+    #dropdownbutton {
+        min-width: 100% !important;
+    }
 }
-@media screen and (min-width:0px) and (max-width: 1000px) {
-  #dropdownbutton{
-    min-width: 100% !important;
-  }
+
+@media screen and (min-width: 0px) and (max-width: 1000px) {
+    #dropdownbutton {
+        min-width: 100% !important;
+    }
 }
-.full-modal-dialog{
-  min-width:95vw;
-  min-height: 90vh;
+
+.full-modal-dialog {
+    min-width: 95vw;
+    min-height: 90vh;
 }
-.full-modal-content{
-  min-height: 90vh;
+
+.full-modal-content {
+    min-height: 90vh;
 }
-.sticky-top{
-  position: sticky;
-  top:0;
+
+.sticky-top {
+    position: sticky;
+    top: 0;
 }
-.current{
-  background-color: #ffc107 !important;
+
+.current {
+    background-color: #ffc107 !important;
+}
+
+.no-select {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
 }
