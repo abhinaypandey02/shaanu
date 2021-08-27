@@ -72,7 +72,7 @@ export default function NavigationBar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto justify-content-center">
             {ROUTES.map((navItem) => (
-              <Nav.Item key={navItem.path}>
+              <Nav.Item className='d-flex align-items-center' key={navItem.path}>
                 <Button
                   variant={"outline-warning"}
                   className="m-2 rounded-0"
@@ -88,6 +88,11 @@ export default function NavigationBar() {
                 </Button>
               </Nav.Item>
             ))}
+            <Nav.Item>
+                    <a href='#services' className='m-2 p-1 btn btn-warning rounded-0' id="navbutton" >
+                      <img src='https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png' alt='' className='img-fluid' width={27}/>
+                    </a>
+              </Nav.Item>
           </Nav>
         </Navbar.Collapse>
       </div>
