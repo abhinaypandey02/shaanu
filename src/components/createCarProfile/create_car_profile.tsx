@@ -77,7 +77,6 @@ export default function CreateCarProfile({
       notifications: [],
       id: v4(),
     };
-    console.log(carProfileTemp);
     if (!user) return;
     const carProfiles = user.carProfiles;
     const thisCarProfile = carProfiles.findIndex(
@@ -105,6 +104,7 @@ export default function CreateCarProfile({
     setImage(e.target.files[0]);
   }
 
+  const regNo = register("regNo", { required: true });
   // @ts-ignore
   return (
     <Form noValidate={true} onSubmit={handleSubmit(onSubmit)}>
@@ -118,6 +118,7 @@ export default function CreateCarProfile({
               {...register("brand", { required: true })}
             >
               <option value="">Car Brand</option>
+
               {Object.keys(carsData).map((key) => (
                 <option key={key} value={carsData[key].id}>
                   {carsData[key].name}
@@ -153,27 +154,42 @@ export default function CreateCarProfile({
               {getErrorText(errors.model?.type)}
             </Form.Text>
           </Form.Group>
-
-          {[
-            { name: "Registration No.", id: "regNo", required: true },
-            { name: "Address", id: "address", required: true },
-          ].map((obj: any) => (
-            <Form.Group key={obj.id}>
-              <Form.Label>
-                {obj.name} {!obj.required && "(Optional)"}
-              </Form.Label>
-              <Form.Control
-                placeholder={obj.name}
-                {...register(obj.id, { required: obj.required })}
-              />
-              <Form.Text className="text-danger small">
-                {() => {
-                  // @ts-ignore
-                  getErrorText(errors[obj.id]?.type);
-                }}
-              </Form.Text>
-            </Form.Group>
-          ))}
+          <Form.Group>
+            <Form.Label>Registration No.</Form.Label>
+            <Form.Control
+              placeholder="Registration No."
+              {...regNo}
+              onChange={(e) => {
+                e.target.value = e.target.value.toUpperCase();
+                regNo.onChange(e);
+              }}
+            />
+            <Form.Text className="text-danger small">
+              {() => {
+                // @ts-ignore
+                getErrorText(errors[obj.id]?.type);
+              }}
+            </Form.Text>
+          </Form.Group>
+          {[{ name: "Address", id: "address", required: true }].map(
+            (obj: any) => (
+              <Form.Group key={obj.id}>
+                <Form.Label>
+                  {obj.name} {!obj.required && "(Optional)"}
+                </Form.Label>
+                <Form.Control
+                  placeholder={obj.name}
+                  {...register(obj.id, { required: obj.required })}
+                />
+                <Form.Text className="text-danger small">
+                  {() => {
+                    // @ts-ignore
+                    getErrorText(errors[obj.id]?.type);
+                  }}
+                </Form.Text>
+              </Form.Group>
+            )
+          )}
         </Col>
         <Col xs={12} md={6}>
           {[
