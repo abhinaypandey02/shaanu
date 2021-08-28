@@ -19,8 +19,14 @@ export default function BooknowPage() {
   const history = useHistory();
   let initialDate = new Date();
   initialDate.setDate(initialDate.getDate() + 1);
-  initialDate.setHours(0);
+  initialDate.setHours(10);
   initialDate.setMinutes(0);
+  const startTime = new Date();
+  startTime.setHours(10);
+  startTime.setMinutes(0);
+  const stopTime = new Date();
+  stopTime.setHours(18);
+  stopTime.setMinutes(0);
   const [user] = useUser();
   const [startDate, setStartDate] = useState<Date>(initialDate);
   const [loading, setLoading] = useState(false);
@@ -270,6 +276,8 @@ export default function BooknowPage() {
                     showTimeSelect
                     dateFormat="dd-MM-yyyy HH:mm"
                     timeIntervals={60}
+                    minTime={startTime}
+                    maxTime={stopTime}
                     // timeClassName={(day) => {
                     //   return "";
                     //   let className = "";
