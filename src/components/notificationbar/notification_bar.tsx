@@ -25,7 +25,11 @@ export default function NotificationBar({
             <li>Your Insurance is due in {dueDays.toFixed(0)} days!</li>
           )}
           {currentCarProfile.notifications?.map((text) => (
-            <li>{text}</li>
+            <li>
+    
+              {text}
+           
+            </li>
           ))}
           {(!currentCarProfile.notifications ||
             currentCarProfile.notifications.length === 0) &&

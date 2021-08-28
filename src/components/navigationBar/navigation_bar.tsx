@@ -78,6 +78,22 @@ export default function NavigationBar() {
           />
           <strong>Car Plus</strong>
         </Navbar.Brand>
+         <Nav className="ml-auto  d-sm-block d-md-none d-flex align-items-center flex-row justify-content-center">
+          <Nav.Item
+                  className="d-flex align-items-center"
+                >
+                  <a className='btn btn-warning rounded-0' href='#faq'>
+                    <img src='https://icon-library.com/images/back-icon-png/back-icon-png-20.jpg' className='img-fluid' width={30}/>
+                  </a>
+          </Nav.Item>
+          <Nav.Item
+                  className="d-flex  align-items-center"
+                >
+                  <a className='btn btn-warning rounded-0' href='#faq'>
+                    <img src='http://cdn.onlinewebfonts.com/svg/img_68746.png' className='img-fluid' width={30}/>
+                  </a>
+          </Nav.Item>
+         </Nav>
         <Navbar.Toggle
           onClick={() => setExpanded((o) => !o)}
           aria-controls="basic-navbar-nav"
