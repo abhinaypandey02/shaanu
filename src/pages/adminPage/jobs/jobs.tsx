@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import JobInterface from "../../../interfaces/job";
-import { deleteJob, getJobs } from "../../../utils/firebase/firestore";
+import { deleteJob } from "../../../utils/firebase/firestore";
 import "./jobs.css";
 import ROUTES_META from "../../../metadata/routes_meta";
 
-export default function JobsTab({ setTab }: { setTab: Function }) {
-  const [jobs, setJobs] = useState<JobInterface[]>([]);
+export default function JobsTab({
+  setTab,
+  jobs,
+  setJobs,
+}: {
+  setTab: Function;
+  jobs: JobInterface[];
+  setJobs: any;
+}) {
   const his = useHistory();
-  useEffect(() => {
-    getJobs().then((list: any[]) => {
-      setJobs(list);
-    });
-  }, []);
   return (
     <div className="container-fluid">
       <div className="row-fluid p-3 text-center text-light">
@@ -66,8 +68,8 @@ export default function JobsTab({ setTab }: { setTab: Function }) {
                   <Button
                     onClick={() =>
                       deleteJob(job.id).then(() =>
-                        setJobs((old) =>
-                          old.filter((job2) => job2.id !== job.id)
+                        setJobs((old: JobInterface[]) =>
+                          old.filter((job2: JobInterface) => job2.id !== job.id)
                         )
                       )
                     }

@@ -8,11 +8,12 @@ import { useGlobalState } from "../../contexts/global_state";
 
 export default function NavigationBar() {
   const history = useHistory();
+
   const location = useLocation();
   const [user] = useUser();
   const [expanded, setExpanded] = useState(false);
   let ROUTES: any[];
-  const [{ cart }] = useGlobalState();
+  const [{ cart }, dispatch] = useGlobalState();
   const isAdminPage = location.pathname.startsWith(ROUTES_META.admin);
   if (isAdminPage)
     ROUTES = [
@@ -53,11 +54,26 @@ export default function NavigationBar() {
         name: "VIEW WORKSHOP",
       },
       {
-        path: ROUTES_META.services,
+        path: ROUTES_META.services + "/",
         name: `CART (${cart.length})`,
         button: true, //used to disable it being selected
       },
     ];
+
+  function onBrandClick() {
+    dispatch({ type: "CLEAR_SELECTION", payload: undefined });
+    dispatch({ type: "CLEAR_CART", payload: undefined });
+    history.push(ROUTES_META.services);
+  }
+
+  function back() {
+    history.goBack();
+  }
+
+  function forward() {
+    history.goForward();
+  }
+
   return (
     <Navbar
       expanded={expanded}
@@ -68,7 +84,7 @@ export default function NavigationBar() {
       expand="lg"
     >
       <div className="container">
-        <Navbar.Brand href="#services" className="ml-md-3">
+        <Navbar.Brand onClick={onBrandClick} className="ml-md-3" href="#">
           <img
             alt="logo"
             className="img-fluid bg-warning border rounded-circle mr-2"
@@ -78,22 +94,26 @@ export default function NavigationBar() {
           />
           <strong>Car Plus</strong>
         </Navbar.Brand>
-         <Nav className="ml-auto  d-sm-block d-md-none d-flex align-items-center flex-row justify-content-center">
-          <Nav.Item
-                  className="d-flex align-items-center"
-                >
-                  <a className='btn btn-warning rounded-0' href='#faq'>
-                    <img src='https://icon-library.com/images/back-icon-png/back-icon-png-20.jpg' className='img-fluid' width={30}/>
-                  </a>
+        <Nav className="ml-auto  d-sm-block d-md-none d-flex align-items-center flex-row justify-content-center">
+          <Nav.Item className="d-flex align-items-center">
+            <button className="btn btn-warning rounded-0" onClick={back}>
+              <img
+                src="https://icon-library.com/images/back-icon-png/back-icon-png-20.jpg"
+                className="img-fluid"
+                width={30}
+              />
+            </button>
           </Nav.Item>
-          <Nav.Item
-                  className="d-flex  align-items-center"
-                >
-                  <a className='btn btn-warning rounded-0' href='#faq'>
-                    <img src='http://cdn.onlinewebfonts.com/svg/img_68746.png' className='img-fluid' width={30}/>
-                  </a>
+          <Nav.Item className="d-flex  align-items-center">
+            <button className="btn btn-warning rounded-0" onClick={forward}>
+              <img
+                src="http://cdn.onlinewebfonts.com/svg/img_68746.png"
+                className="img-fluid"
+                width={30}
+              />
+            </button>
           </Nav.Item>
-         </Nav>
+        </Nav>
         <Navbar.Toggle
           onClick={() => setExpanded((o) => !o)}
           aria-controls="basic-navbar-nav"

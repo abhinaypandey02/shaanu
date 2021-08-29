@@ -135,7 +135,7 @@ export default function ProfilePage() {
               onClick={() => setShowCreateCarProfile(true)}
               className="btn m-2 btn-warning rounded-0"
             >
-              {currentCarProfile ? "CREATE CAR PROFILE" : "ADD YOUR CAR"}
+              {currentCarProfile ? "ADD CAR PROFILE" : "CREATE CAR PROFILE"}
             </button>
             <button onClick={signOut} className="btn m-2 btn-danger rounded-0">
               SIGN OUT

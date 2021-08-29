@@ -69,6 +69,8 @@ export default function AllServicesPage() {
       addCheckout(checkout).then(() => {
         history.push("/estimate");
       });
+    } else {
+      history.push("/estimate");
     }
   }
 

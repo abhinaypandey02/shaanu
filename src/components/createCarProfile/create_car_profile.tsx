@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useUser } from "../../contexts/user_context";
 import { CarProfile } from "../../interfaces/car";
@@ -37,11 +37,19 @@ export default function CreateCarProfile({
     handleSubmit,
     watch,
     formState: { errors },
+    setValue,
   } = useForm({ defaultValues });
 
   const carsData = carsDataJSON as CarsData;
   const brandWatch = watch("brand");
   const modelWatch = watch("model");
+  useEffect(() => {
+    setValue("model", "");
+    setValue("fuel", "");
+  }, [brandWatch]);
+  useEffect(() => {
+    setValue("fuel", "");
+  }, [modelWatch]);
 
   async function onSubmit({
     brand,
@@ -59,6 +67,7 @@ export default function CreateCarProfile({
     if (image) {
       imageURL = await uploadButtonImage(user, image);
     }
+
     const carProfileTemp: CarProfile = {
       brand,
       model,
@@ -104,6 +113,13 @@ export default function CreateCarProfile({
     setImage(e.target.files[0]);
   }
 
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const todayMonths = today.getMonth();
+  const todayDate = today.getDate();
+  const maxDate = `${today.getFullYear()}-${todayMonths < 9 ? 0 : ""}${
+    todayMonths + 1
+  }-${todayDate < 9 ? 0 : ""}${todayDate}`;
   const regNo = register("regNo", { required: true });
   // @ts-ignore
   return (
@@ -138,7 +154,7 @@ export default function CreateCarProfile({
               {...register("model", { required: true })}
             >
               <option value="">Car Model</option>
-              {brandWatch &&
+              {carsData[brandWatch] &&
                 Object.keys(carsData[brandWatch].models).map((key) => {
                   return (
                     <option
@@ -165,31 +181,19 @@ export default function CreateCarProfile({
               }}
             />
             <Form.Text className="text-danger small">
-              {() => {
-                // @ts-ignore
-                getErrorText(errors[obj.id]?.type);
-              }}
+              {getErrorText(errors.regNo?.type)}
             </Form.Text>
           </Form.Group>
-          {[{ name: "Address", id: "address", required: true }].map(
-            (obj: any) => (
-              <Form.Group key={obj.id}>
-                <Form.Label>
-                  {obj.name} {!obj.required && "(Optional)"}
-                </Form.Label>
-                <Form.Control
-                  placeholder={obj.name}
-                  {...register(obj.id, { required: obj.required })}
-                />
-                <Form.Text className="text-danger small">
-                  {() => {
-                    // @ts-ignore
-                    getErrorText(errors[obj.id]?.type);
-                  }}
-                </Form.Text>
-              </Form.Group>
-            )
-          )}
+          <Form.Group>
+            <Form.Label>Address</Form.Label>
+            <Form.Control
+              placeholder={"Address"}
+              {...register("address", { required: true })}
+            />
+            <Form.Text className="text-danger small">
+              {getErrorText(errors.address?.type)}
+            </Form.Text>
+          </Form.Group>
         </Col>
         <Col xs={12} md={6}>
           {[
@@ -213,17 +217,35 @@ export default function CreateCarProfile({
               </Form.Text>
             </Form.Group>
           ))}
+
           <Form.Group>
             <Form.Label>Insurance Date</Form.Label>
             <Form.Control
               type="date"
+              max={maxDate}
               placeholder={"Insurance Date"}
-              {...register("insuranceDate", { valueAsDate: true })}
+              {...register("insuranceDate", {
+                valueAsDate: true,
+                validate: {
+                  notOld: (v) => {
+                    v.setHours(0, 0, 0, 0);
+                    console.log(v);
+                    if (v.toString() === "Invalid Date") return true;
+                    return (
+                      v <= today || "Can't select a date greater than today!"
+                    );
+                  },
+                },
+              })}
             />
             <Form.Text className="text-danger small">
-              {getErrorText(errors.insuranceDate?.type)}
+              {getErrorText(
+                errors.insuranceDate?.type,
+                errors.insuranceDate?.message
+              )}
             </Form.Text>
           </Form.Group>
+
           <Form.Group>
             <Form.Label>Select Fuel</Form.Label>
             <Form.Control
@@ -233,7 +255,8 @@ export default function CreateCarProfile({
               {...register("fuel")}
             >
               <option value="">Car Fuel (Optional)</option>
-              {modelWatch &&
+              {carsData[brandWatch] &&
+                carsData[brandWatch].models[modelWatch] &&
                 Object.keys(carsData[brandWatch].models[modelWatch].fuel).map(
                   (key) => {
                     return (

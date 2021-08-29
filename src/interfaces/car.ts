@@ -9,7 +9,7 @@ export interface CarProfile {
   insuranceComp: string;
   address: string;
   imageURL: string;
-  documents: { name: string; category: string; url: string }[];
+  documents: { name: string; category: string; url: string; id: string }[];
   notifications: string[];
   id: string;
 }

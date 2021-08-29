@@ -3,6 +3,7 @@ import { useState } from "react";
 import { uploadDocuments } from "../../utils/firebase/storage";
 import { CarProfile } from "../../interfaces/car";
 import { useUser } from "../../contexts/user_context";
+import { v4 } from "uuid";
 
 export default function UploadDocuments({
   currentCarProfile,
@@ -17,6 +18,79 @@ export default function UploadDocuments({
   const [category, setCategory] = useState<string>("RC");
   const [selectCategory, setSelectCategory] = useState(false);
   const [activeKey, setActiveKey] = useState<string>("RC");
+
+  function renameFile(fileID: string, fileName: string) {
+    const newName = window.prompt("Enter new name for the file", fileName);
+    if (newName && newName !== "") {
+      const newCarProfile = {
+        ...currentCarProfile,
+      };
+      let docIndex = currentCarProfile.documents.findIndex(
+        (ele) => ele.id === fileID
+      );
+      if (docIndex !== -1) {
+        newCarProfile.documents[docIndex].name = newName;
+      }
+      setCurrentCarProfile(newCarProfile);
+      cloudUpdateCarProfile(newCarProfile);
+    }
+  }
+
+  function onFileChange(e: any) {
+    const file = e.target.files[0];
+    if (file) {
+      const _ID = v4();
+      setCurrentCarProfile((old: CarProfile) => {
+        const doc = old.documents.find((ele) => ele.id === file.id);
+        if (doc) {
+          doc.category = category;
+          doc.url = "null";
+        } else
+          old.documents.push({
+            name: file.name,
+            url: "null",
+            category,
+            id: _ID,
+          });
+        return { ...old };
+      });
+      setActiveKey(category);
+      uploadDocuments(user, file).then((url) => {
+        const docIndex = currentCarProfile.documents.findIndex(
+          (ele) => ele.id === _ID
+        );
+        const newCarProfile = { ...currentCarProfile };
+        if (docIndex !== -1) {
+          newCarProfile.documents[docIndex].category = category;
+          newCarProfile.documents[docIndex].url = url;
+        } else
+          newCarProfile.documents.push({
+            name: file.name,
+            url,
+            category,
+            id: _ID,
+          });
+        cloudUpdateCarProfile(newCarProfile);
+        setCurrentCarProfile(newCarProfile);
+      });
+    }
+    return null;
+  }
+
+  function uploadDocument() {
+    setSelectCategory(true);
+  }
+
+  function deleteFileLocal(fileID: string) {
+    if (user) {
+      const newCarProfile = { ...currentCarProfile };
+      newCarProfile.documents = newCarProfile.documents.filter(
+        (doc) => doc.id !== fileID
+      );
+      cloudUpdateCarProfile(newCarProfile);
+      setCurrentCarProfile(newCarProfile);
+    }
+  }
 
   function getCategory(category: string) {
     const docs = currentCarProfile?.documents.filter(
@@ -45,13 +119,18 @@ export default function UploadDocuments({
                     {doc.name}
                   </a>
                   {doc.url !== "null" ? (
-                    <Button
-                      onClick={() => deleteFileLocal(doc.name)}
-                      className="rounded-circle "
-                      variant="danger"
-                    >
-                      X
-                    </Button>
+                    <div>
+                      <Button
+                        onClick={() => deleteFileLocal(doc.id)}
+                        className="rounded-circle "
+                        variant="danger"
+                      >
+                        X
+                      </Button>
+                      <Button onClick={() => renameFile(doc.id, doc.name)}>
+                        Rename
+                      </Button>
+                    </div>
                   ) : (
                     <Spinner animation={"border"} />
                   )}
@@ -64,49 +143,6 @@ export default function UploadDocuments({
     }
   }
 
-  function onFileChange(e: any) {
-    const file = e.target.files[0];
-    if (file) {
-      setCurrentCarProfile((old: CarProfile) => {
-        const doc = old.documents.find((ele) => ele.name === file.name);
-        if (doc) {
-          doc.category = category;
-          doc.url = "null";
-        } else old.documents.push({ name: file.name, url: "null", category });
-        return { ...old };
-      });
-      setActiveKey(category);
-      uploadDocuments(user, file).then((url) => {
-        const docIndex = currentCarProfile.documents.findIndex(
-          (ele) => ele.name === file.name
-        );
-        const newCarProfile = { ...currentCarProfile };
-        if (docIndex !== -1) {
-          newCarProfile.documents[docIndex].category = category;
-          newCarProfile.documents[docIndex].url = url;
-        } else newCarProfile.documents.push({ name: file.name, url, category });
-        cloudUpdateCarProfile(newCarProfile);
-        setCurrentCarProfile(newCarProfile);
-      });
-    }
-    return null;
-  }
-
-  function uploadDocument() {
-    setSelectCategory(true);
-  }
-
-  function deleteFileLocal(filename: string) {
-    if (user) {
-      const newCarProfile = { ...currentCarProfile };
-      newCarProfile.documents = newCarProfile.documents.filter(
-        (doc) => doc.name !== filename
-      );
-      cloudUpdateCarProfile(newCarProfile);
-      setCurrentCarProfile(newCarProfile);
-    }
-  }
-
   return (
     <div className="container border rounded border-warning rounded-0  mb-4 text-center">
       <Modal
@@ -116,7 +152,7 @@ export default function UploadDocuments({
       >
         <Modal.Header closeButton>Select Category</Modal.Header>
         <Modal.Body>
-          {["RC", "INSURANCE"].map((category) => (
+          {["RC", "INSURANCE", "SERVICE RECORDS"].map((category) => (
             <Button
               className="m-2"
               key={category}
@@ -147,6 +183,7 @@ export default function UploadDocuments({
         <Accordion activeKey={activeKey} className="w-100">
           {getCategory("RC")}
           {getCategory("INSURANCE")}
+          {getCategory("SERVICE RECORDS")}
         </Accordion>
         {currentCarProfile.documents.length === 0 && (
           <div className="text-warning">NO DOCUMENTS UPLOADED</div>
