@@ -1,17 +1,29 @@
-import { Button } from "react-bootstrap";
 import { useHistory } from "react-router";
 import "./100pages.css";
 import { useState } from "react";
+import BookNowForm from "../../components/booknowForm/booknow_form";
+import { addBookedSession, getToken } from "../../utils/firebase/firestore";
+import { BookedSession } from "../../interfaces/bookedSession";
+import { v4 as uid } from "uuid";
+
+interface Service {
+  name: string;
+  id: string;
+}
+
+interface Group {
+  name: string;
+  id: string;
+  services: Service[];
+}
 
 export default function FreeServices() {
   const history = useHistory();
-  const [selectedServices, setSelectedServices] = useState([
-    null,
-    null,
-    null,
-    null,
-  ]);
-  const groups = [
+  const [selectedServices, setSelectedServices] = useState<
+    ({ group: Group["id"]; service: Service } | null)[]
+  >([null, null, null, null]);
+  const allSelected = !selectedServices.some((x) => x === null);
+  const groups: Group[] = [
     {
       name: "Group 1",
       id: "group1",
@@ -101,6 +113,42 @@ export default function FreeServices() {
       ],
     },
   ];
+  console.log(selectedServices);
+
+  async function add100FreeService({
+    fullname,
+    phone,
+    location,
+    date,
+  }: {
+    fullname: string;
+    phone: number;
+    location: string;
+    date: Date;
+  }) {
+    const rand = await getToken();
+    const tempSession: BookedSession = {
+      id: uid(),
+      fullname,
+      location,
+      phone,
+      dateTime: date.getTime(),
+      token: rand,
+      year: date.getFullYear(),
+      month: date.getMonth() + 1,
+      day: date.getDate(),
+      hours: date.getHours(),
+      minutes: date.getMinutes(),
+      freeServices: selectedServices.filter((f) => f !== null) as any[],
+    };
+    await addBookedSession(tempSession);
+    await history.push({
+      pathname: "/appointmentslot",
+      state: {
+        tempSession,
+      },
+    });
+  }
 
   return (
     <div className="container-fluid">
@@ -108,8 +156,8 @@ export default function FreeServices() {
         <h1>CHOOSE ANY FREE SERVICE</h1>
       </div>
       <div className="row">
-        {groups.map((group) => (
-          <div className="col-md-3">
+        {groups.map((group, index) => (
+          <div className="col-md-3" key={group.id}>
             <div className="container-fluid p-3 d-flex flex-wrap flex-column">
               <div className="row bg-warning">
                 <h1 className="mx-auto my-2">{group.name}</h1>
@@ -122,7 +170,17 @@ export default function FreeServices() {
                       <div className="col-12 my-2">
                         <label className="container1">
                           {service.name}
-                          <input type="radio" name={service.id} />
+                          <input
+                            onChange={(e) => {
+                              if (e.target.checked)
+                                setSelectedServices((old) => {
+                                  old[index] = { group: group.id, service };
+                                  return [...old];
+                                });
+                            }}
+                            type="radio"
+                            name={group.id}
+                          />
                           <span className="checkmark" />
                         </label>
                       </div>
@@ -133,99 +191,18 @@ export default function FreeServices() {
             </div>
           </div>
         ))}
-        
       </div>
       <div className="row">
-      <div className="container d-flex flex-grow-1 justify-content-center align-items-center">
- 
-
-      <div className="row mt-4 text-center w-100 ">
-        <form
-          noValidate={true}
-       
-          className="col-lg-12 pl-2 alert alert-warning text-dark rounded-0"
-        >
-          <h1 className="bg-warning ml-2 my-2">100% FREE FORM</h1>
-          <br />
-
-       
-            <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
-              <div className="col-md-4 mb-2 bg-warning text-dark text-left ">
-                FULL NAME
-              </div>
-              <div className="col-md-8">
-                <input
-                  placeholder="Full Name"
-              
-                  type="text"
-                  className="form-control bg-transparent border border-warning rounded-0 "
-                />
-                <div className="small text-danger text-left">
-               
-                </div>
-              </div>
-            </div>
-
-            <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
-              <div className="col-md-4 mb-2 bg-warning text-dark text-left ">
-                PHONE NUMBER
-              </div>
-              <div className="col-md-8">
-                <input
-            
-                  type="number"
-                  className="form-control bg-transparent border border-warning rounded-0 "
-                  placeholder="Phone Number"
-                />
-                <div className="small text-danger text-left">
-                
-                </div>
-              </div>
-            </div>
-         
-          <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
-            <div className="col-md-4 mb-2 bg-warning text-dark text-left ">
-              LOCATION
-            </div>
-            <div className="col-md-8">
-              <textarea
-                placeholder="Location"
-            
-                className="form-control bg-transparent border border-warning rounded-0 "
-              />
-              <div className="small text-danger text-left">
-              
-              </div>
-            </div>
+        <div className="container d-flex flex-grow-1 justify-content-center align-items-center">
+          <div className="row mt-4 text-center w-100 ">
+            {allSelected && <BookNowForm onSuccess={add100FreeService} />}
+            {!allSelected && (
+              <h2 className="text-center text-warning w-100">
+                PLEASE SELECT SERVICES FROM EACH GROUP TO CONTINUE
+              </h2>
+            )}
           </div>
-
-          <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
-            <div className="col-md-4 mb-3 mb-2 bg-warning text-dark text-left ">
-              PICK UP DATE AND TIME
-            </div>
-            <div className="col-md-8 text-md-center text-left">
-              <button
-                type="button"
-                className="btn rounded-0 p-0 btn-outline-warning">
-                  LOCATION
-              </button>
-            </div>
-          </div>
-          <div id="captcha" />
-          <div className="row align-items-center">
-          <div className="text-center w-100">
-          <Button
-            onClick={() => history.push("/appointmentslot")}
-            variant="warning rounded-0 btn-lg ml-auto"
-          >
-            BOOK FREE APPOINTMENT
-          </Button>
         </div>
-            
-          </div>
-        </form>
-      </div>
-    </div>
       </div>
     </div>
   );
