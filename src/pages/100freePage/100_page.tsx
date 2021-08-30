@@ -133,14 +133,99 @@ export default function FreeServices() {
             </div>
           </div>
         ))}
-        <div className="text-center w-100">
+        
+      </div>
+      <div className="row">
+      <div className="container d-flex flex-grow-1 justify-content-center align-items-center">
+ 
+
+      <div className="row mt-4 text-center w-100 ">
+        <form
+          noValidate={true}
+       
+          className="col-lg-12 pl-2 alert alert-warning text-dark rounded-0"
+        >
+          <h1 className="bg-warning ml-2 my-2">100% FREE FORM</h1>
+          <br />
+
+       
+            <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
+              <div className="col-md-4 mb-2 bg-warning text-dark text-left ">
+                FULL NAME
+              </div>
+              <div className="col-md-8">
+                <input
+                  placeholder="Full Name"
+              
+                  type="text"
+                  className="form-control bg-transparent border border-warning rounded-0 "
+                />
+                <div className="small text-danger text-left">
+               
+                </div>
+              </div>
+            </div>
+
+            <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
+              <div className="col-md-4 mb-2 bg-warning text-dark text-left ">
+                PHONE NUMBER
+              </div>
+              <div className="col-md-8">
+                <input
+            
+                  type="number"
+                  className="form-control bg-transparent border border-warning rounded-0 "
+                  placeholder="Phone Number"
+                />
+                <div className="small text-danger text-left">
+                
+                </div>
+              </div>
+            </div>
+         
+          <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
+            <div className="col-md-4 mb-2 bg-warning text-dark text-left ">
+              LOCATION
+            </div>
+            <div className="col-md-8">
+              <textarea
+                placeholder="Location"
+            
+                className="form-control bg-transparent border border-warning rounded-0 "
+              />
+              <div className="small text-danger text-left">
+              
+              </div>
+            </div>
+          </div>
+
+          <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
+            <div className="col-md-4 mb-3 mb-2 bg-warning text-dark text-left ">
+              PICK UP DATE AND TIME
+            </div>
+            <div className="col-md-8 text-md-center text-left">
+              <button
+                type="button"
+                className="btn rounded-0 p-0 btn-outline-warning">
+                  LOCATION
+              </button>
+            </div>
+          </div>
+          <div id="captcha" />
+          <div className="row align-items-center">
+          <div className="text-center w-100">
           <Button
             onClick={() => history.push("/appointmentslot")}
-            variant="outline-warning rounded-0 btn-lg m-3"
+            variant="warning rounded-0 btn-lg ml-auto"
           >
             BOOK FREE APPOINTMENT
           </Button>
         </div>
+            
+          </div>
+        </form>
+      </div>
+    </div>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { Button, Nav, Navbar } from "react-bootstrap";
+import { Button, Dropdown, DropdownButton, Nav, Navbar } from "react-bootstrap";
 import { useHistory, useLocation } from "react-router";
 import "./navigation_bar.css";
 import { useUser } from "../../contexts/user_context";
@@ -114,10 +114,12 @@ export default function NavigationBar() {
             </button>
           </Nav.Item>
         </Nav>
+       
         <Navbar.Toggle
           onClick={() => setExpanded((o) => !o)}
           aria-controls="basic-navbar-nav"
         />
+      
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto justify-content-center">
             {ROUTES.map((navItem) => (
@@ -146,6 +148,27 @@ export default function NavigationBar() {
             ))}
           </Nav>
         </Navbar.Collapse>
+        <Nav className="m-2 p-0 d-flex align-items-center justify-content-center">
+          <Nav.Item className="m-0 d-flex align-items-center">
+            
+            <div className="dropdown">
+            <button className="btn btn-warning  dropdown-toggle rounded-0"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img
+                src="https://image.flaticon.com/icons/png/512/1946/1946429.png"
+                className="img-fluid"
+                width={30}
+              />
+            </button>
+              <div className="dropdown-menu rounded-0 bg-dark text-warning w-25" aria-labelledby="dropdownMenuButton">
+                <a className="dropdown-item text-warning" href="#">LOG IN</a>
+                <a className="dropdown-item text-warning" href="#">SIGN UP</a>
+                <a className="dropdown-item text-warning" href="#">CAR PROFILE</a>
+              </div>
+            </div>
+          </Nav.Item>
+      
+        </Nav>
+      
       </div>
     </Navbar>
   );
