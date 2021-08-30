@@ -38,6 +38,7 @@ export default function BookedSessions({
             <th>Name</th>
             <th>Phone</th>
             <th>Location</th>
+            <th>Time</th>
           </tr>
         </thead>
         <tbody>
@@ -50,6 +51,7 @@ export default function BookedSessions({
               <td>{session.fullname}</td>
               <td>{session.phone}</td>
               <td>{session.location}</td>
+              <td>{new Date(session.dateTime).toLocaleString()}</td>
             </tr>
           ))}
         </tbody>

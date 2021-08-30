@@ -20,7 +20,7 @@ interface BookedSessionWithDate extends BookedSession {
   date: Date;
 }
 
-const whitelist = [1234567890]
+const whitelist = [1234567890];
 
 export default function AdminPage() {
   const params: any = useParams();
@@ -29,12 +29,12 @@ export default function AdminPage() {
   const [user] = useUser();
   const [jobs, setJobs] = useState<JobInterface[]>([]);
   const [bookedSessions, setBookedSessions] = useState<BookedSessionWithDate[]>(
-      []
+    []
   );
   const [callbackRequests, setCallbackRequests] = useState<CallbackRequest[]>(
-      []
+    []
   );
-  console.log(user)
+  console.log(user);
   useEffect(() => {
     if (user && whitelist.includes(user.phone)) {
       getCallbackRequests().then((list: any[]) => {
@@ -43,21 +43,22 @@ export default function AdminPage() {
         setCallbackRequests(list);
       });
       getAllBookedSessions().then((list: BookedSession[]) => {
-        const LIST: BookedSessionWithDate[] = list.map((ele: BookedSession) => ({
-          ...ele,
-          date: new Date(ele.dateTime),
-        }));
-        LIST.sort((a, b) => b.date.getTime() - a.date.getTime());
+        const LIST: BookedSessionWithDate[] = list.map(
+          (ele: BookedSession) => ({
+            ...ele,
+            date: new Date(ele.dateTime),
+          })
+        );
+        LIST.sort((a, b) => a.date.getTime() - b.date.getTime());
         setBookedSessions(LIST);
       });
       getJobs().then((list: any[]) => {
         setJobs(list);
       });
     } else {
-      his.push('/');
-      alert("UNAUTHORIZED")
+      his.push("/");
+      alert("UNAUTHORIZED");
     }
-
   }, []);
 
   function setTab(tab: string) {
@@ -68,10 +69,10 @@ export default function AdminPage() {
     switch (name) {
       case ROUTES_META.adminUsers:
         return (
-            <UsersTab
-                bookedSessions={bookedSessions}
-                callbackRequests={callbackRequests}
-            />
+          <UsersTab
+            bookedSessions={bookedSessions}
+            callbackRequests={callbackRequests}
+          />
         );
       case ROUTES_META.adminCallback:
         return <CallbackRequests callbackRequests={callbackRequests} />;
@@ -86,9 +87,9 @@ export default function AdminPage() {
   }
 
   return (
-      <div className="container-fluid">
-        <div className="display-1 text-center text-white">ADMIN CONSOLE</div>
-        <GetTab name={tab} />
-      </div>
+    <div className="container-fluid">
+      <div className="display-1 text-center text-white">ADMIN CONSOLE</div>
+      <GetTab name={tab} />
+    </div>
   );
 }
