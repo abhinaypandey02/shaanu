@@ -92,7 +92,7 @@ export default function AllServicesPage() {
         <Modal.Body>
           <Form.Group>
             <Form.Control
-              className="rounded-0"
+              className="rounded-0 form-select"
               value={selectedSubPlan}
               onChange={(e) => setSelectedSubPlan(parseInt(e.target.value))}
               as="select"
@@ -104,6 +104,8 @@ export default function AllServicesPage() {
                     className="bg-warning rounded-0 d-flex justify-content-between"
                     key={plan.name}
                     value={index}
+                    data-content={plan.name}
+                    title={plan.name}
                   >
                     {plan.name}
                     {user ? ` - Rs. ${plan.price}` : ""}

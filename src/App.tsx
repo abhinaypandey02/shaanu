@@ -23,6 +23,8 @@ import BlogPage from "./pages/blogPage/blogpage";
 import ROUTES_META from "./metadata/routes_meta";
 import blogsJSON from "./database/blogs.json";
 import EachBlog from "./pages/blogPage/eachBlog";
+import SignupPage from "./pages/signupPage/signup_page";
+import LoginPage from "./pages/loginPage/login_page";
 
 function App() {
   const blogs = blogsJSON.blogs;
@@ -66,8 +68,15 @@ function App() {
               <Route path={ROUTES_META.workShop}>
                 <WorkshopPage />
               </Route>
+              <Route path={ROUTES_META.signUp}>
+                <SignupPage />
+              </Route>
+              <Route path={ROUTES_META.logIn}>
+                <LoginPage />
+              </Route>
+
               <Route path={ROUTES_META.profile}>
-                <ProfilePage />
+                {user ? <ProfilePage /> : <Redirect to={ROUTES_META.signUp} />}
               </Route>
               <Route path={ROUTES_META.estimate}>
                 <EstimatePage />

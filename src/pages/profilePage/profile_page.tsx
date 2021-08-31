@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
-import LoginForm from "../../components/profilePage/loginForm/login_form";
-import RegisterForm from "../../components/profilePage/registerForm/register_form";
 import { useUser } from "../../contexts/user_context";
 import NotificationBar from "../../components/notificationbar/notification_bar";
 import { signOut } from "../../utils/firebase/auth";
@@ -14,7 +12,6 @@ import { setUserDocument } from "../../utils/firebase/firestore";
 
 export default function ProfilePage() {
   const [user, setUser] = useUser();
-  const [signIn, setSignIn] = useState(false);
   const [showCreateCarProfile, setShowCreateCarProfile] = useState(false);
   const [currentCarProfile, setCurrentCarProfile] = useState(
     user && user.carProfiles.length > 0 ? user.carProfiles[0] : null
@@ -48,36 +45,7 @@ export default function ProfilePage() {
   useEffect(() => {
     setShowCreateCarProfile(false);
   }, [user]);
-  if (!user) {
-    if (signIn) {
-      return (
-        <div className="text-light mt-3 container">
-          <LoginForm />
-          <div className="mt-2 w-100 text-center  p-2">
-            <div className="hi">
-              New User?{" "}
-              <Button variant="link" onClick={() => setSignIn(false)}>
-                Sign Up
-              </Button>
-            </div>
-          </div>
-        </div>
-      );
-    }
-    return (
-      <div className="text-light mt-3 container">
-        <RegisterForm />
-        <div className="mt-2 w-100 text-center  p-2">
-          <div className="hi">
-            Existing User?{" "}
-            <Button variant="link" onClick={() => setSignIn(true)}>
-              Sign In
-            </Button>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  if (!user) return null;
   return (
     <div className="container-fluid px-5">
       <Modal

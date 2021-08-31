@@ -1,10 +1,11 @@
-import { Button, Dropdown, DropdownButton, Nav, Navbar } from "react-bootstrap";
-import { useHistory, useLocation } from "react-router";
+import { Button, Dropdown, Nav, Navbar } from "react-bootstrap";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import "./navigation_bar.css";
 import { useUser } from "../../contexts/user_context";
 import ROUTES_META from "../../metadata/routes_meta";
 import { useState } from "react";
 import { useGlobalState } from "../../contexts/global_state";
+import { signOut } from "../../utils/firebase/auth";
 
 export default function NavigationBar() {
   const history = useHistory();
@@ -37,10 +38,6 @@ export default function NavigationBar() {
     ];
   else
     ROUTES = [
-      {
-        path: ROUTES_META.profile,
-        name: user ? "CAR PROFILE" : "SIGN UP",
-      },
       {
         path: ROUTES_META.services,
         name: "BOOK SERVICES",
@@ -114,12 +111,12 @@ export default function NavigationBar() {
             </button>
           </Nav.Item>
         </Nav>
-       
+
         <Navbar.Toggle
           onClick={() => setExpanded((o) => !o)}
           aria-controls="basic-navbar-nav"
         />
-      
+
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto justify-content-center">
             {ROUTES.map((navItem) => (
@@ -150,25 +147,60 @@ export default function NavigationBar() {
         </Navbar.Collapse>
         <Nav className="m-2 p-0 d-flex align-items-center justify-content-center">
           <Nav.Item className="m-0 d-flex align-items-center">
-            
-            <div className="dropdown">
-            <button className="btn btn-warning  dropdown-toggle rounded-0"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img
-                src="https://image.flaticon.com/icons/png/512/1946/1946429.png"
-                className="img-fluid"
-                width={30}
-              />
-            </button>
-              <div className="dropdown-menu rounded-0 bg-dark text-warning w-25" aria-labelledby="dropdownMenuButton">
-                <a className="dropdown-item text-warning" href="#">LOG IN</a>
-                <a className="dropdown-item text-warning" href="#">SIGN UP</a>
-                <a className="dropdown-item text-warning" href="#">CAR PROFILE</a>
-              </div>
-            </div>
+            <Dropdown
+              onToggle={() => {
+                if (user) history.push(ROUTES_META.profile);
+              }}
+            >
+              <Dropdown.Toggle variant={"warning"} className="rounded-0">
+                <img
+                  src="https://image.flaticon.com/icons/png/512/1946/1946429.png"
+                  className="img-fluid"
+                  width={30}
+                />
+              </Dropdown.Toggle>
+              <Dropdown.Menu className="rounded-0 bg-dark text-warning w-25">
+                {!user && (
+                  <Dropdown.Item
+                    as={Link}
+                    className="dropdown-item text-warning"
+                    to={ROUTES_META.logIn}
+                  >
+                    LOG IN
+                  </Dropdown.Item>
+                )}
+                {!user && (
+                  <Dropdown.Item
+                    as={Link}
+                    className="dropdown-item text-warning"
+                    to={ROUTES_META.signUp}
+                  >
+                    SIGN UP
+                  </Dropdown.Item>
+                )}
+                {user && (
+                  <Dropdown.Item
+                    as={Link}
+                    className="dropdown-item text-warning"
+                    to={ROUTES_META.profile}
+                  >
+                    CAR PROFILE
+                  </Dropdown.Item>
+                )}
+                {user && (
+                  <Dropdown.Item
+                    as={Link}
+                    onClick={signOut}
+                    className="dropdown-item text-warning"
+                    to={ROUTES_META.services}
+                  >
+                    SIGN OUT
+                  </Dropdown.Item>
+                )}
+              </Dropdown.Menu>
+            </Dropdown>
           </Nav.Item>
-      
         </Nav>
-      
       </div>
     </Navbar>
   );
