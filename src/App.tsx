@@ -34,6 +34,7 @@ function App() {
     globalState.selectedBrand &&
     globalState.selectedModel &&
     globalState.selectedType;
+  console.log(user);
   if (user === undefined)
     return (
       <div className="min-vh-100 d-flex justify-content-center align-items-center">
@@ -69,10 +70,10 @@ function App() {
                 <WorkshopPage />
               </Route>
               <Route path={ROUTES_META.signUp}>
-                <SignupPage />
+                {user ? <Redirect to={ROUTES_META.profile} /> : <SignupPage />}
               </Route>
               <Route path={ROUTES_META.logIn}>
-                <LoginPage />
+                {user ? <Redirect to={ROUTES_META.profile} /> : <LoginPage />}
               </Route>
 
               <Route path={ROUTES_META.profile}>

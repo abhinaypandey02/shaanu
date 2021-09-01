@@ -115,7 +115,10 @@ export default function EstimatePage() {
       history.push("/");
       return;
     }
-    if (!user) return;
+    if (!user) {
+      dispatch({ type: "CLEAR_CART", payload: undefined });
+      return;
+    }
     const dataToSend = {
       items: cart.map((item) => ({
         name: `${

@@ -51,6 +51,19 @@ const BookedSessionInfo = ({
             <td>{bookedSession.phone}</td>
           </tr>
         )}
+        {visible && bookedSession.freeServices.length > 0 && (
+          <div className="my-3">
+            <h4>100% Free Services</h4>
+            <table>
+              {bookedSession.freeServices.map((freeService) => (
+                <tr key={freeService.group + freeService.service.id}>
+                  <th>{freeService.group}:</th>
+                  <td>{freeService.service.name}</td>
+                </tr>
+              ))}
+            </table>
+          </div>
+        )}
       </table>
     </div>
   );

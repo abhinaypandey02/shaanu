@@ -9,12 +9,15 @@ import { useEffect, useState } from "react";
 import {
   getAllBookedSessions,
   getCallbackRequests,
+  getCheckouts,
   getJobs,
 } from "../../utils/firebase/firestore";
 import { BookedSession } from "../../interfaces/bookedSession";
 import CallbackRequest from "../../interfaces/callbackRequest";
 import { useUser } from "../../contexts/user_context";
 import JobInterface from "../../interfaces/job";
+import { Checkout } from "../../interfaces/checkout";
+import Checkouts from "./checkouts/checkouts";
 
 interface BookedSessionWithDate extends BookedSession {
   date: Date;
@@ -34,6 +37,7 @@ export default function AdminPage() {
   const [callbackRequests, setCallbackRequests] = useState<CallbackRequest[]>(
     []
   );
+  const [checkouts, setCheckouts] = useState<Checkout[]>([]);
   console.log(user);
   useEffect(() => {
     if (user && whitelist.includes(user.phone)) {
@@ -54,6 +58,10 @@ export default function AdminPage() {
       });
       getJobs().then((list: any[]) => {
         setJobs(list);
+      });
+      getCheckouts().then((list: any[]) => {
+        list.sort((a, b) => b.timestamp - a.timestamp);
+        setCheckouts(list);
       });
     } else {
       his.push("/");
@@ -82,6 +90,8 @@ export default function AdminPage() {
         return <AddJob setTab={setTab} />;
       case ROUTES_META.adminBooked:
         return <BookedSessions bookedSessions={bookedSessions} />;
+      case ROUTES_META.adminCheckouts:
+        return <Checkouts checkouts={checkouts} />;
     }
     return null;
   }

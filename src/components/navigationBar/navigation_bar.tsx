@@ -35,6 +35,10 @@ export default function NavigationBar() {
         path: ROUTES_META.admin + ROUTES_META.adminBooked,
         name: "BOOKED SESSIONS",
       },
+      {
+        path: ROUTES_META.admin + ROUTES_META.adminCheckouts,
+        name: "CHECKOUTS",
+      },
     ];
   else
     ROUTES = [

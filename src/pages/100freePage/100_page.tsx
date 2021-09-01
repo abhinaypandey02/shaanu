@@ -127,6 +127,13 @@ export default function FreeServices() {
     date: Date;
   }) {
     const rand = await getToken();
+    const filteredServices: any[] = selectedServices.filter((f) => f !== null);
+    if (filteredServices.length !== 4) {
+      alert(
+        "INTERNAL ERROR. PLEASE REPORT TO ADMIN. ERROR CODE: FREE_SERVICES_NOT_4"
+      );
+      return;
+    }
     const tempSession: BookedSession = {
       id: uid(),
       fullname,
@@ -139,7 +146,7 @@ export default function FreeServices() {
       day: date.getDate(),
       hours: date.getHours(),
       minutes: date.getMinutes(),
-      freeServices: selectedServices.filter((f) => f !== null) as any[],
+      freeServices: filteredServices,
     };
     await addBookedSession(tempSession);
     await history.push({

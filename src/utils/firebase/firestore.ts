@@ -107,6 +107,14 @@ export async function getJobs() {
     .then((data) => data.docs.map((doc) => doc.data()));
 }
 
+export async function getCheckouts() {
+  return await fire
+    .firestore()
+    .collection("checkouts")
+    .get()
+    .then((data) => data.docs.map((doc) => doc.data()));
+}
+
 export async function getJob(jobID: string) {
   return await fire
     .firestore()

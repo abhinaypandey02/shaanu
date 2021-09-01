@@ -18,5 +18,6 @@ const ROUTES_META = {
   adminCallback: "/callback",
   adminBooked: "/bookedSessions",
   adminAddJob: "/addJob",
+  adminCheckouts: "/checkouts",
 };
 export default ROUTES_META;
