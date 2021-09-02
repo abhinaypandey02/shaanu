@@ -26,9 +26,10 @@ export default function NotificationBar({
           )}
           {currentCarProfile.notifications?.map((text) => (
             <li>
-    
+              <div className="marquee">
+                <p>Test</p>
+              </div>
               {text}
-           
             </li>
           ))}
           {(!currentCarProfile.notifications ||

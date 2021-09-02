@@ -173,14 +173,14 @@ export default function EstimatePage() {
       >
         <Modal.Header className="bg-warning rounded-0" closeButton={true} />
         <Modal.Body className="text-center text-warning">
-          <h1>THANKS FOR CHOOSING</h1>
-          <h1>CAR PLUS</h1>
+          <h2>THANKS FOR CHOOSING</h2>
+          <h2>CAR PLUS</h2>
 
           <Button
             className="btn-warning rounded-0"
             onClick={() => history.push("/freeservices")}
           >
-            Add <strong>100% Free</strong> Servics
+             <h1>Add <strong>100% Free</strong> Servics</h1>
           </Button>
         </Modal.Body>
       </Modal>
@@ -200,8 +200,8 @@ export default function EstimatePage() {
       <div className="row text-center w-100 ">
         <div className="col-xl-6 py-3 d-flex justify-content-center align-items-center flex-column">
           {link !== "" && (
-            <div style={{ overflow: "hidden", maxWidth: "100%" }}>
-              <PDFReader scale={1} url={link} />
+            <div className='img-fluid' style={{ overflow: "hidden" }}>
+              <PDFReader clasName='img-fluid' scale={1} url={link} />
               <br />
             </div>
           )}
