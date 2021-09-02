@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Container, Form, Modal } from "react-bootstrap";
+import { Button, Container, Dropdown, Form, Modal } from "react-bootstrap";
 import { useGlobalState } from "../../contexts/global_state";
 import { getPlans } from "../../database/plan";
 import "./all_services_page.css";
@@ -90,6 +90,17 @@ export default function AllServicesPage() {
           {selectedPlan}
         </Modal.Header>
         <Modal.Body>
+        <Dropdown>
+          <Dropdown.Toggle variant="success" id="dropdown-basic">
+            Dropdown Button
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
           <Form.Group>
             <Form.Control
               className="rounded-0 form-select"
@@ -97,6 +108,7 @@ export default function AllServicesPage() {
               onChange={(e) => setSelectedSubPlan(parseInt(e.target.value))}
               as="select"
             >
+              
               <option value={undefined}>SELECT PLAN</option>
               {selectedPlan &&
                 plans[selectedPlan].map((plan: any, index: number) => (

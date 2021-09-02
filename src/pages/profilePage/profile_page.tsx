@@ -71,7 +71,7 @@ export default function ProfilePage() {
         <h1 className="text-warning">YOUR PROFILE</h1>
       </div>
 
-      <div className="container-fluid p-2 mb-5 ">
+      <div className="container-fluid  p-2 mb-5 ">
         <div className="row">
           {user.carProfiles.length > 0 && (
             <div className="col-md-3 mr-auto">
@@ -113,7 +113,7 @@ export default function ProfilePage() {
       </div>
 
       <div className="row">
-        <div className="col-lg-4 d-flex flex-column flex-wrap align-items-center">
+        <div className="col-lg-4 m-0 d-flex flex-column flex-wrap align-items-center">
           {currentCarProfile && currentCarProfile.imageURL && (
             <img
               src={currentCarProfile.imageURL}
@@ -121,7 +121,7 @@ export default function ProfilePage() {
               className="img-fluid mt-0 mb-2 border-warning border rounded-0 w-100"
             />
           )}
-          <div className="row w-100 mt-auto">
+          <div className="row w-100 mt-2">
             {currentCarProfile && (
               <table className="table text-light text-center table-bordered">
                 <tbody className="">
