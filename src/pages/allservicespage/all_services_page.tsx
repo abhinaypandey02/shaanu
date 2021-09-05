@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Container, Dropdown, Form, Modal } from "react-bootstrap";
+import { Button, Container, Dropdown, Modal } from "react-bootstrap";
 import { useGlobalState } from "../../contexts/global_state";
 import { getPlans } from "../../database/plan";
 import "./all_services_page.css";
@@ -90,51 +90,48 @@ export default function AllServicesPage() {
           {selectedPlan}
         </Modal.Header>
         <Modal.Body>
-        <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-            Dropdown Button
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-          <Form.Group>
-            <Form.Control
-              className="rounded-0 form-select"
-              value={selectedSubPlan}
-              onChange={(e) => setSelectedSubPlan(parseInt(e.target.value))}
-              as="select"
+          <Dropdown className="mb-3">
+            <Dropdown.Toggle
+              className="rounded-0"
+              variant="outline-warning"
+              id="dropdown-basic"
             >
-              
-              <option value={undefined}>SELECT PLAN</option>
+              {selectedSubPlan === undefined && "SELECT PLAN"}
+              {selectedPlan && selectedSubPlan !== undefined && (
+                <span>
+                  {plans[selectedPlan][selectedSubPlan].name}
+                  {user
+                    ? ` - Rs. ${plans[selectedPlan][selectedSubPlan].price}`
+                    : ""}
+                </span>
+              )}
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu className="w-100">
               {selectedPlan &&
                 plans[selectedPlan].map((plan: any, index: number) => (
-                  <option
-                    className="bg-warning rounded-0 d-flex justify-content-between"
+                  <Dropdown.Item
+                    className=""
                     key={plan.name}
-                    value={index}
-                    data-content={plan.name}
-                    title={plan.name}
+                    onClick={() => setSelectedSubPlan(index)}
                   >
-                    {plan.name}
-                    {user ? ` - Rs. ${plan.price}` : ""}
-                  </option>
+                    <div>{plan.name}</div>
+                    <div className="small">{user ? `₹${plan.price}` : ""}</div>
+                  </Dropdown.Item>
                 ))}
-            </Form.Control>
-          </Form.Group>
-
-          {selectedSubPlan !== undefined && (
-            <Button
-              variant="warning"
-              className="rounded-0"
-              onClick={onPlanSelect}
-            >
-              ADD TO CART
-            </Button>
-          )}
+            </Dropdown.Menu>
+          </Dropdown>
+          <div className="w-100 text-center">
+            {selectedSubPlan !== undefined && (
+              <Button
+                variant="warning"
+                className="rounded-0"
+                onClick={onPlanSelect}
+              >
+                ADD TO CART
+              </Button>
+            )}
+          </div>
         </Modal.Body>
       </Modal>
       <div className="row ">

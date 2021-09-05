@@ -6,6 +6,7 @@ import { BookedSession } from "../../interfaces/bookedSession";
 import CallbackRequest from "../../interfaces/callbackRequest";
 import JobInterface from "../../interfaces/job";
 import { Checkout } from "../../interfaces/checkout";
+import { ReviewInterface } from "../../interfaces/reviewInterface";
 
 export async function setUserDocument(user_data: UserInterface) {
   await fire
@@ -150,4 +151,16 @@ export async function getToken(): Promise<number> {
 
 export async function addCheckout(checkout: Checkout) {
   return await fire.firestore().collection("checkouts").add(checkout);
+}
+
+export async function addReview(review: ReviewInterface) {
+  return await fire.firestore().collection("review").add(review);
+}
+
+export async function getReviews() {
+  return await fire
+    .firestore()
+    .collection("review")
+    .get()
+    .then((data) => data.docs.map((doc) => doc.data()));
 }

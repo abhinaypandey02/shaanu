@@ -111,6 +111,13 @@
     min-height: 90vh;
 }
 
+.full-services-modal-dialog {
+    min-width: 65vw;
+}
+
+.full-services-modal-content {
+}
+
 .sticky-top {
     position: sticky;
     top: 0;
@@ -127,12 +134,13 @@
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none;
 }
+
 .marquee {
     width: 450px;
-	height: 450px;
-	text-align: center;
-	background-color: red;
-	color: white;
+    height: 450px;
+    text-align: center;
+    background-color: red;
+    color: white;
     white-space: nowrap;
     overflow: hidden;
     box-sizing: border-box;
@@ -145,6 +153,10 @@
 }
 
 @keyframes marquee {
-    0%   { transform: translate(0, 0); }
-    100% { transform: translate(0, -100%); }
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(0, -100%);
+    }
 }

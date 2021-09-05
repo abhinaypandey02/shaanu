@@ -4,38 +4,84 @@ import { Dropdown } from "react-bootstrap";
 import "./reviewpage.css";
 import filledStar from "../../images/filledStar.png";
 import emptyStar from "../../images/emptyStar.png";
-import reviewsJSON from "../../database/reviews.json";
 import { ReviewInterface } from "../../interfaces/reviewInterface";
 import ReviewComponent from "../../components/reviews/reviewComponent";
+import { useForm } from "react-hook-form";
+import { getErrorText } from "../../utils/globalFunctions";
+import { addReview, getReviews } from "../../utils/firebase/firestore";
+import { useUser } from "../../contexts/user_context";
 
 export default function ReviewPage() {
   const [rating, setRating] = useState(3);
+  const [reviews, setReviews] = useState<ReviewInterface[]>([]);
+  const [user] = useUser();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+  const [loading, setLoading] = useState(false);
   const [sortBy, setSortBy] = useState<
     "RATING_ASC" | "RATING_DSC" | "LATEST" | "OLDEST"
   >("RATING_ASC");
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    updateReviews();
   }, []);
-  let REVIEWS: ReviewInterface[] = reviewsJSON.reviews;
+
+  async function updateReviews() {
+    const r: any = await getReviews();
+    setReviews([...r]);
+  }
+
   switch (sortBy) {
     case "RATING_ASC": {
-      REVIEWS.sort((a, b) => a.rating - b.rating);
+      reviews.sort((a, b) => a.rating - b.rating);
       break;
     }
     case "RATING_DSC": {
-      REVIEWS.sort((a, b) => b.rating - a.rating);
+      reviews.sort((a, b) => b.rating - a.rating);
       break;
     }
     case "LATEST": {
-      REVIEWS.sort((a, b) => b.time - a.time);
+      reviews.sort((a, b) => b.time - a.time);
       break;
     }
     case "OLDEST": {
-      REVIEWS.sort((a, b) => a.time - b.time);
+      reviews.sort((a, b) => a.time - b.time);
       break;
     }
   }
+  console.log("RERENDER");
+
+  async function addReviewLocal(data: {
+    name: string;
+    designation: string;
+    review: string;
+  }) {
+    setLoading(true);
+    const review: ReviewInterface = {
+      name: data.name,
+      designation: data.designation,
+      review: data.review,
+      rating,
+      time: new Date().getTime(),
+      image:
+        "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    };
+    await addReview(review);
+    setLoading(false);
+    updateReviews();
+    reset();
+    alert("Review Added!");
+  }
+
+  useEffect(() => {
+    console.log(reviews);
+  }, [reviews]);
+
   return (
     <div className="container">
       <div className="container">
@@ -50,21 +96,28 @@ export default function ReviewPage() {
         </ScrollAnimation>
 
         <br />
-        <ReviewComponent />
+        {reviews.length}
+        <ReviewComponent reviews={[...reviews]} />
       </div>
       <div className="container">
         <h1 className="text-warning mb-5">WRITE A REVIEW</h1>
-        <form className="container pl-2 alert alert-warning rounded-0">
+        <form
+          onSubmit={handleSubmit(addReviewLocal)}
+          className="container pl-2 alert alert-warning rounded-0"
+        >
           <div className="row mb-3 d-flex flex-wrap align-items-center justify-content-center text-light">
             <div className="col-md-4 mb-2 bg-warning text-dark text-left ">
               FULL NAME
             </div>
             <div className="col-md-8">
               <input
+                {...register("name", { required: true })}
                 placeholder="Full Name"
                 className="form-control bg-transparent border border-warning rounded-0 "
               />
-              <div className="small text-danger text-left" />
+              <div className="small text-danger text-left">
+                {getErrorText(errors.name?.type)}
+              </div>
             </div>
           </div>
           <div className="row d-flex mb-3 align-items-center justify-content-center text-light">
@@ -72,8 +125,13 @@ export default function ReviewPage() {
               ABOUT YOU (optional)
             </div>
             <div className="col-md-8">
-              <input className="form-control bg-transparent border border-warning rounded-0 " />
-              <div className="small text-danger text-left" />
+              <input
+                {...register("designation")}
+                className="form-control bg-transparent border border-warning rounded-0 "
+              />
+              <div className="small text-danger text-left">
+                {getErrorText(errors.designation?.type)}
+              </div>
             </div>
           </div>
           <div className="row d-flex mb-3 align-items-center justify-content-center text-light">
@@ -86,6 +144,7 @@ export default function ReviewPage() {
                   <span
                     className="pointer-on-hover"
                     onClick={() => setRating(number)}
+                    key={number}
                   >
                     <img
                       height={30}
@@ -103,9 +162,13 @@ export default function ReviewPage() {
             </div>
             <div className="col-md-8">
               <textarea
+                {...register("review")}
                 className="form-control bg-transparent border border-warning rounded-0 "
                 aria-label="With textarea"
               />
+            </div>
+            <div className="small text-danger text-left">
+              {getErrorText(errors.review?.type)}
             </div>
           </div>
 
@@ -113,8 +176,9 @@ export default function ReviewPage() {
             <button
               type="submit"
               className="btn btn-lg mx-auto btn-warning rounded-0 pr-3 m-2"
+              disabled={loading || !user}
             >
-              Submit
+              {user ? "Submit" : "Sign In to submit Review"}
             </button>
           </div>
         </form>
@@ -152,8 +216,8 @@ export default function ReviewPage() {
             </Dropdown.Menu>
           </Dropdown>
         </div>
-        {REVIEWS.map((review) => (
-          <div className="row">
+        {reviews.map((review) => (
+          <div key={review.time} className="row">
             <div
               className="card border border-warning rounded-0 mx-auto text-light rounded-0 p-3"
               style={{ maxWidth: 1000 }}
