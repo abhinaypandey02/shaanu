@@ -90,9 +90,9 @@ export default function AllServicesPage() {
           {selectedPlan}
         </Modal.Header>
         <Modal.Body>
-          <Dropdown className="mb-3">
+          <Dropdown className="mb-3 ">
             <Dropdown.Toggle
-              className="rounded-0"
+              className="rounded-0 w-100 text-truncate"
               variant="outline-warning"
               id="dropdown-basic"
             >
@@ -111,7 +111,7 @@ export default function AllServicesPage() {
               {selectedPlan &&
                 plans[selectedPlan].map((plan: any, index: number) => (
                   <Dropdown.Item
-                    className=""
+                    className="text-wrap"
                     key={plan.name}
                     onClick={() => setSelectedSubPlan(index)}
                   >

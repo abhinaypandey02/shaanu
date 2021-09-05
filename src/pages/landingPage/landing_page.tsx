@@ -64,10 +64,7 @@ export default function LandingPage() {
               <div className="col-md-8">
                 <h1 className="font-weight-bold">{selectedService?.title}</h1>
                 <p className="text-wrap">
-                  dddddddddd Lorem ipsum dolor sit amet consectetur adipisicing
-                  elit. Architecto assumenda minus deserunt quia fugiat odio
-                  incidunt voluptatem maiores hic totam ipsum accusamus ex natus
-                  error, soluta amet qui praesentium earum!
+                  
                   {selectedService && (
                     <ServiceContent service={selectedService} />
                   )}
@@ -321,97 +318,50 @@ export default function LandingPage() {
 
         <div className="container bg-transparent">
           <div className="row-fluid text-light">
-            <Accordion defaultActiveKey="1">
-              <Card className="p-0 m-0">
-                <Card.Header className="bg-dark text-light pointer-on-hover p-0 m-0">
-                  <Accordion.Toggle as={Card.Header} eventKey="1">
-                    1. Lorem Ipsum is simpl typesetting industry ?
-                  </Accordion.Toggle>
-                </Card.Header>
-                <Accordion.Collapse
-                  className="border border-light"
-                  eventKey="1"
-                >
-                  <Card.Body className="text-dark">
-                    Lorem Ipsum ied it to make a tronic typesetting, remaining
-                    essentially unchanged. It was popularised in the 1960s with
-                    the release of Letraset sheets containing
-                  </Card.Body>
-                </Accordion.Collapse>
-              </Card>
-              <Card className=" p-0 m-0">
-                <Card.Header className="bg-light text-dark pointer-on-hover p-0 m-0">
-                  <Accordion.Toggle as={Card.Header} eventKey="2">
-                    2. Lorem Ipsum is simply dummy teddddasdsadadting industry ?
-                  </Accordion.Toggle>
-                </Card.Header>
-                <Accordion.Collapse
-                  className="border border-light"
-                  eventKey="2"
-                >
-                  <Card.Body className="text-dark">
-                    Lorem Ipsum is simply duso the leap ie 1960s with the
-                    release of Letraset sheets containing
-                  </Card.Body>
-                </Accordion.Collapse>
-              </Card>
-              <Card className=" p-0 m-0">
-                <Card.Header className="bg-dark text-light pointer-on-hover p-0 m-0">
-                  <Accordion.Toggle as={Card.Header} eventKey="3">
-                    4. Lorem Ipsprinting and typesetting industry ?
-                  </Accordion.Toggle>
-                </Card.Header>
-                <Accordion.Collapse
-                  className="border border-light"
-                  eventKey="3"
-                >
-                  <Card.Body className="text-dark">
-                    Lorem Ipsum is simplyext ever since the 1500s, when an
-                    unknown printer took a galley of type and scrambled it to
-                    make a type specimen book. It has survived not only five
-                    centuries, but also the leap into electronic typesetting,
-                    remaining essentially unchanged. It was popularised in the
-                    1960s with the release of Letraset sheets containing
-                  </Card.Body>
-                </Accordion.Collapse>
-              </Card>
-              <Card className=" p-0 m-0">
-                <Card.Header className="bg-light text-dark pointer-on-hover p-0 m-0">
-                  <Accordion.Toggle as={Card.Header} eventKey="4">
-                    3. Lorem Ipsum is simply ddwadadadadaddummy text of the
-                    printing and typesetting industry ?
-                  </Accordion.Toggle>
-                </Card.Header>
-                <Accordion.Collapse
-                  className="border border-light"
-                  eventKey="4"
-                >
-                  <Card.Body className="text-dark">
-                    Lorem Ipsum is se the 1500s, when ved not only five
-                    centuries, but also the leap into electronic typesetting,
-                    remaining essentially unchanged. It was popularised in the
-                    1960s with the release of Letraset sheets containing
-                  </Card.Body>
-                </Accordion.Collapse>
-              </Card>
-              <Card className=" p-0 m-0">
-                <Card.Header className="bg-dark text-light pointer-on-hover  p-0 m-0">
-                  <Accordion.Toggle as={Card.Header} eventKey="5">
-                    5. Lorem Ipsum is simply and typesetting industry ?
-                  </Accordion.Toggle>
-                </Card.Header>
-                <Accordion.Collapse
-                  className="border border-light"
-                  eventKey="5"
-                >
-                  <Card.Body className="text-dark">
-                    Lorem Ipsum is simply dummy text of the p galley oe
-                    centuries, but also the leap into electronic typesetting,
-                    remaining essentially unchanged. It was popularised in the
-                    1960s with the release of Letraset sheets containing
-                  </Card.Body>
-                </Accordion.Collapse>
-              </Card>
+          <Accordion defaultActiveKey="1">
+                        <Card className='p-0 m-0'>
+                            <Card.Header className='bg-dark text-light pointer-on-hover p-0 m-0'>
+                                <Accordion.Toggle as={Card.Header} eventKey="1">
+                                1. In a car servicing, what engine oil do you use?
+                                </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse className='border border-light' eventKey="1">
+                                <Card.Body className='text-dark'>
+                                    We use Mobil 5W-30 Engine oil in our car service center, which improves engine productivity and effectiveness while also offering superior protection against wear and tear, extending the life of your automobile engine.
+</Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+                        <Card className=' p-0 m-0'>
+                            <Card.Header className='bg-light text-dark pointer-on-hover p-0 m-0'>
+                                <Accordion.Toggle as={Card.Header} eventKey="2">
+                                2. What kind of spare parts are used for my car?
+                                </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse className='border border-light' eventKey="2">
+                                <Card.Body className='text-dark'>Reliable spares and consumables are guaranteed 100%. Because of our unified spare sourcing and comprehensive inventory management, we are able to obtain high-quality OEM and OES spares, guaranteeing that only the finest parts get into your vehicle.</Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+                        <Card className=' p-0 m-0'>
+                            <Card.Header className='bg-dark text-light pointer-on-hover p-0 m-0'>
+                                <Accordion.Toggle as={Card.Header} eventKey="3">
+                                    3. How long will it take for my car to be serviced?
+                                </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse className='border border-light' eventKey="3">
+                                <Card.Body className='text-dark'>The servicing time for your vehicle is determined mostly on service package and car detailing. A regular service will take 4-5 hours, while a complete service will take at least 5-6 hours.</Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+                        <Card className=' p-0 m-0'>
+                            <Card.Header className='bg-light text-dark pointer-on-hover p-0 m-0'>
+                                <Accordion.Toggle as={Card.Header} eventKey="4">
+                                4.      Is it necessary for me to drop off my car at the workshop for the auto service?
+
+                                </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse className='border border-light' eventKey="4">
+                                <Card.Body className='text-dark'>No, not at all. With our FREE pick-up and drop-off service for your car anywhere in your city, we provide a hassle-free and seamless car repair service experience.</Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
             </Accordion>
             <div className="col text-center my-3">
               <a href="#faq" className="btn btn-outline-dark">
