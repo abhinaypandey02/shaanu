@@ -225,7 +225,7 @@ export default function CreateCarProfile({
                     ))}
 
                     <Form.Group>
-                        <Form.Label>Insurance Date</Form.Label>
+                        <Form.Label>Insurance Start Date</Form.Label>
                         <Form.Control
                             type="date"
                             max={maxDate}
