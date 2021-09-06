@@ -112,8 +112,8 @@ export default function EstimatePage() {
 
     useEffect(() => {
         if (cart.length === 0) {
-            history.push("/")
-            return
+            // history.push("/")
+            // return
         }
         if (!user) {
             dispatch({ type: "CLEAR_CART", payload: undefined })
@@ -201,7 +201,7 @@ export default function EstimatePage() {
                 <div className="col-xl-6 py-3 d-flex justify-content-center align-items-center flex-column">
                     {link !== "" && (
                         <div>
-                            <div className="d-md-none" style={{ height: 820, width: "100%" }}>
+                            <div className="d-md-none" style={{ height: 800, width: "100%" }}>
                                 <MobilePDFReader isShowHeader={false} url={link} />
                             </div>
                             <div className="d-none d-md-block">
@@ -240,19 +240,28 @@ export default function EstimatePage() {
                             Download PDF
                         </a>
                     )}
-                    {(!user || link !== "") && (
-                        <button onClick={onDownload} className="btn btn-outline-light  m-3">
-                            DOWNLOAD PDF
-                        </button>
-                    )}
+
                     {user && link === "" && (
                         <div className="text-info align-items-center">
                             Generating PDF
                             <Spinner className="m-2" animation={"border"} />
                         </div>
                     )}
+                    <div className="text-center w-100 d-none d-xl-block">
+                        {(!user || link !== "") && (
+                            <button onClick={onDownload} className="btn btn-outline-light  m-3">
+                                DOWNLOAD PDF
+                            </button>
+                        )}
+                    </div>
                 </div>
-
+                <div className="text-center w-100 d-xl-none">
+                    {(!user || link !== "") && (
+                        <button onClick={onDownload} className="btn btn-outline-light  m-3">
+                            DOWNLOAD PDF
+                        </button>
+                    )}
+                </div>
                 <div className="col-xl-6">
                     <div>
                         {!user && (

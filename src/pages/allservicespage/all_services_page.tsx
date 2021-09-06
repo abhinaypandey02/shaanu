@@ -23,6 +23,7 @@ export default function AllServicesPage() {
     const selectedBrand = globalState.selectedBrand
     const selectedModel = globalState.selectedModel
     const selectedType = globalState.selectedType
+
     const plans = getPlans(selectedBrand, selectedModel, selectedType)
 
     function onPlanSelect() {
@@ -102,7 +103,8 @@ export default function AllServicesPage() {
                             {selectedSubPlan === undefined && "SELECT PLAN"}
                             {selectedPlan && selectedSubPlan !== undefined && (
                                 <span>
-                  {plans[selectedPlan][selectedSubPlan].name}
+
+                                        {plans[selectedPlan][selectedSubPlan].name}
                                     {user
                                         ? ` - Rs. ${plans[selectedPlan][selectedSubPlan].price}`
                                         : ""}
@@ -114,11 +116,12 @@ export default function AllServicesPage() {
                             {selectedPlan &&
                             plans[selectedPlan].map((plan: any, index: number) => (
                                 <Dropdown.Item
-                                    className="text-wrap"
+                                    className="text-wrap text-center"
                                     key={plan.name}
                                     onClick={() => setSelectedSubPlan(index)}
                                 >
-                                    <div>{plan.name}</div>
+                                    <h4>{plan.name}</h4>
+                                    <div>{plan.description}</div>
                                     <div className="small">{user ? `₹${plan.price}` : ""}</div>
                                 </Dropdown.Item>
                             ))}
