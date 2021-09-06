@@ -16,7 +16,6 @@ const ReviewComponent = (props: { reviews: ReviewInterface[] | null }) => {
     }, [props.reviews])
     return (
         <Carousel>
-            {reviews.length}
             {reviews.map((ele) => (
                 <Carousel.Item key={ele.time}>
                     <div

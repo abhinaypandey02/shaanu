@@ -44,10 +44,12 @@ export default function CreateCarProfile({
     const brandWatch = watch("brand")
     const modelWatch = watch("model")
     useEffect(() => {
+        if (modelWatch === defaultValues.model && brandWatch === defaultValues.brand) return
         setValue("model", "")
         setValue("fuel", "")
     }, [brandWatch])
     useEffect(() => {
+        if (modelWatch === defaultValues.model && brandWatch === defaultValues.brand) return
         setValue("fuel", "")
     }, [modelWatch])
 
