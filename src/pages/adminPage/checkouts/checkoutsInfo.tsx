@@ -1,11 +1,6 @@
 import React, { useState } from "react"
-import { BookedSession } from "../../../interfaces/bookedSession"
 import { Button } from "react-bootstrap"
 import { Checkout } from "../../../interfaces/checkout"
-
-interface BookedSessionWithDate extends BookedSession {
-    date: Date;
-}
 
 const CheckoutsInfo = ({
                            checkout,

@@ -18,7 +18,7 @@ export default function Checkouts({ checkouts }: { checkouts: Checkout[] }) {
                 onHide={() => setCurrentCheckout(undefined)}
             >
                 <Modal.Header closeButton>
-                    {currentCheckout?.user}'s Checkout
+                    {currentCheckout?.user.name}'s Checkout
                 </Modal.Header>
                 <Modal.Body>
                     {currentCheckout && (
