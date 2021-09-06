@@ -39,8 +39,13 @@ export default function ProfilePage() {
     }
 
     useEffect(() => {
-        if (user && user.carProfiles.length > 0 && !currentCarProfile)
-            setCurrentCarProfile(user.carProfiles[0])
+        if (user && user.carProfiles.length > 0) {
+            if (currentCarProfile) {
+                const newProfile = user.carProfiles.find(car => car.id === currentCarProfile.id)
+                console.log(newProfile, currentCarProfile, user.carProfiles)
+                if (newProfile) setCurrentCarProfile(newProfile)
+            } else setCurrentCarProfile(user.carProfiles[0])
+        }
     }, [user])
     useEffect(() => {
         setShowCreateCarProfile(false)
@@ -62,6 +67,7 @@ export default function ProfilePage() {
                 </Modal.Header>
                 <Modal.Body className="bg-dark text-warning">
                     <CreateCarProfile
+                        setCurrentCarProfile={setCurrentCarProfile}
                         closeModal={closeModal}
                         carProfile={editCarProfile ? currentCarProfile : null}
                     />
@@ -83,6 +89,7 @@ export default function ProfilePage() {
                                         user.carProfiles[parseInt(e.target.value)]
                                     )
                                 }
+                                value={user.carProfiles.findIndex(car => car.id === currentCarProfile?.id)}
                             >
                                 {user.carProfiles.map((profile, index) => (
                                     <option key={profile.id} value={index}>
@@ -145,12 +152,12 @@ export default function ProfilePage() {
                                     </th>
                                     <td>12/24/2002</td>
                                 </tr>
-                                <tr>
+                                {currentCarProfile.insuranceDate && <tr>
                                     <th className="text-warning" scope="row">
                                         INSURANCE DUE DATE
                                     </th>
-                                    <td>{currentCarProfile.insuranceDate}</td>
-                                </tr>
+                                    <td>{new Date(currentCarProfile.insuranceDate).toLocaleDateString()}</td>
+                                </tr>}
                                 </tbody>
                             </table>
                         )}

@@ -13,12 +13,22 @@ import { getErrorText } from "../../utils/globalFunctions"
 import { v4 } from "uuid"
 import { useGlobalState } from "../../contexts/global_state"
 
+const getDateFormat = (date: Date) => {
+    const months = date.getMonth()
+    const dates = date.getDate()
+    return `${date.getFullYear()}-${months < 9 ? 0 : ""}${
+        months + 1
+    }-${dates < 9 ? 0 : ""}${dates}`
+}
+
 export default function CreateCarProfile({
                                              carProfile,
-                                             closeModal
+                                             closeModal,
+                                             setCurrentCarProfile
                                          }: {
     carProfile: CarProfile | null;
     closeModal: () => void;
+    setCurrentCarProfile: any;
 }) {
     const [user, setUser] = useUser()
     const [loading, setLoading] = useState(false)
@@ -26,12 +36,15 @@ export default function CreateCarProfile({
     const [{ selectedBrand, selectedModel, selectedType }] = useGlobalState()
     let defaultValues: any = {}
     if (carProfile) {
-        defaultValues = carProfile
+        defaultValues = { ...carProfile }
+        delete defaultValues.insuranceDate
     } else {
         if (selectedBrand) defaultValues.brand = selectedBrand
         if (selectedModel) defaultValues.model = selectedModel
         if (selectedType) defaultValues.fuel = selectedType
     }
+
+    console.log(defaultValues)
     const {
         register,
         handleSubmit,
@@ -43,6 +56,8 @@ export default function CreateCarProfile({
     const carsData = carsDataJSON as CarsData
     const brandWatch = watch("brand")
     const modelWatch = watch("model")
+    const datewatch = watch("insuranceDate")
+    console.log(datewatch)
     useEffect(() => {
         if (modelWatch === defaultValues.model && brandWatch === defaultValues.brand) return
         setValue("model", "")
@@ -86,7 +101,7 @@ export default function CreateCarProfile({
             imageURL,
             documents: [],
             notifications: [],
-            id: v4()
+            id: carProfile ? carProfile.id : v4()
         }
         if (!user) return
         const carProfiles = user.carProfiles
@@ -102,6 +117,7 @@ export default function CreateCarProfile({
         console.log(carProfiles, thisCarProfile)
 
         await addCarProfile(user, carProfiles)
+        setCurrentCarProfile(carProfileTemp)
         setUser((old: UserInterface) => ({
             ...old,
             carProfiles
@@ -121,11 +137,8 @@ export default function CreateCarProfile({
 
     const today = new Date()
     today.setHours(0, 0, 0, 0)
-    const todayMonths = today.getMonth()
-    const todayDate = today.getDate()
-    const maxDate = `${today.getFullYear()}-${todayMonths < 9 ? 0 : ""}${
-        todayMonths + 1
-    }-${todayDate < 9 ? 0 : ""}${todayDate}`
+    const maxDate = getDateFormat(today)
+    const defaultDate = carProfile?.insuranceDate ? getDateFormat(new Date(carProfile.insuranceDate)) : maxDate
     const regNo = register("regNo", { required: true })
     // @ts-ignore
     return (
@@ -228,6 +241,7 @@ export default function CreateCarProfile({
                         <Form.Label>Insurance Start Date</Form.Label>
                         <Form.Control
                             type="date"
+                            defaultValue={defaultDate}
                             max={maxDate}
                             placeholder={"Insurance Date"}
                             {...register("insuranceDate", {
