@@ -9,9 +9,14 @@ import UploadDocuments from "../../components/uploadDocuments/upload_documents"
 import { CarProfile } from "../../interfaces/car"
 import UserInterface from "../../interfaces/user"
 import { setUserDocument } from "../../utils/firebase/firestore"
+import { useHistory } from "react-router"
+import ROUTES_META from "../../metadata/routes_meta"
+import { useGlobalState } from "../../contexts/global_state"
 
 export default function ProfilePage() {
+    const his = useHistory()
     const [user, setUser] = useUser()
+    const [, dispatch] = useGlobalState()
     const [showCreateCarProfile, setShowCreateCarProfile] = useState(false)
     const [currentCarProfile, setCurrentCarProfile] = useState(
         user && user.carProfiles.length > 0 ? user.carProfiles[0] : null
@@ -51,6 +56,16 @@ export default function ProfilePage() {
         setShowCreateCarProfile(false)
     }, [user])
     if (!user) return null
+
+    function onCartClick() {
+        his.push(ROUTES_META.services)
+        if (currentCarProfile) {
+            dispatch({ type: "SET_BRAND", payload: currentCarProfile.brand })
+            dispatch({ type: "SET_MODEL", payload: currentCarProfile.model })
+            dispatch({ type: "SET_TYPE", payload: currentCarProfile.fuel })
+        }
+    }
+
     return (
         <div className="container-fluid px-5">
             <Modal
@@ -112,9 +127,13 @@ export default function ProfilePage() {
                         >
                             {currentCarProfile ? "ADD CAR PROFILE" : "CREATE CAR PROFILE"}
                         </button>
+                        <button onClick={onCartClick} className="btn m-2 btn-outline-warning rounded-0">
+                            CART
+                        </button>
                         <button onClick={signOut} className="btn m-2 btn-danger rounded-0">
                             SIGN OUT
                         </button>
+
                     </div>
                 </div>
             </div>
