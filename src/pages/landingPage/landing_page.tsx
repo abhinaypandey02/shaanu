@@ -56,7 +56,7 @@ export default function LandingPage() {
                 <Modal.Body>
                     <div className="container-fluid overflow-auto">
                         <div className="row">
-                            <div className="col-md-4 p-3 d-flex align-items-start">
+                            <div className="col-md-4 p-3 d-flex justify-content-center align-items-start">
                                 <img
                                     src={selectedService?.imageURL}
                                     className="img-fluid"
