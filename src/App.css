@@ -134,3 +134,13 @@
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none;
 }
+.ccaption{
+    padding:0 !important;
+    position: relative;
+   
+    left: 0rem;
+    top: 0.3rem;
+    background-color: rgba(66, 66, 66,0.5);
+    padding: 1.5rem !important;
+    
+}

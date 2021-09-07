@@ -242,7 +242,7 @@ export default function LandingPage() {
           <div className="row text-light py-5">
             <div className="col-md-3 text-center">
               <p className="font-weight-bold display-3 mt-3">
-                <CountUp start={0} end={20} duration={5} redraw={true}>
+                <CountUp start={0} end={34} duration={5} redraw={true}>
                   {({ countUpRef, start }) => (
                     <VisibilitySensor onChange={start} delayedCall>
                       <span ref={countUpRef} />
@@ -256,7 +256,7 @@ export default function LandingPage() {
             </div>
             <div className="col-md-3 text-center">
               <p className="font-weight-bold display-3 mt-3">
-                <CountUp start={0} end={1200} duration={5} redraw={true}>
+                <CountUp start={0} end={1105} duration={5} redraw={true}>
                   {({ countUpRef, start }) => (
                     <VisibilitySensor onChange={start} delayedCall>
                       <span ref={countUpRef} />
@@ -270,7 +270,7 @@ export default function LandingPage() {
             </div>
             <div className="col-md-3 text-center">
               <p className="font-weight-bold display-3 mt-3">
-                <CountUp start={0} end={900} duration={5} redraw={true}>
+                <CountUp start={0} end={836} duration={5} redraw={true}>
                   {({ countUpRef, start }) => (
                     <VisibilitySensor onChange={start} delayedCall>
                       <span ref={countUpRef} />
@@ -284,7 +284,7 @@ export default function LandingPage() {
             </div>
             <div className="col-md-3 text-center">
               <p className="font-weight-bold display-3 mt-3">
-                <CountUp start={0} end={30} duration={5} redraw={true}>
+                <CountUp start={0} end={24} duration={5} redraw={true}>
                   {({ countUpRef, start }) => (
                     <VisibilitySensor onChange={start} delayedCall>
                       <span ref={countUpRef} />
