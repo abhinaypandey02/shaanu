@@ -112,8 +112,8 @@ export default function EstimatePage() {
 
     useEffect(() => {
         if (cart.length === 0) {
-            // history.push("/")
-            // return
+            history.push("/")
+            return
         }
         if (!user) {
             dispatch({ type: "CLEAR_CART", payload: undefined })

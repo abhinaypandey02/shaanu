@@ -10,6 +10,7 @@ import VisibilitySensor from "react-visibility-sensor"
 import landingPageServices from "../../database/landingPageServices.json"
 import ReviewComponent from "../../components/reviews/reviewComponent"
 import ReactMarkdown from "react-markdown"
+import FAQComponent from "../../components/faqs/faqComponent"
 
 interface Service {
     title: string;
@@ -243,7 +244,7 @@ export default function LandingPage() {
                     <div className="row text-light py-5">
                         <div className="col-md-3 text-center">
                             <p className="font-weight-bold display-3 mt-3">
-                                <CountUp start={0} end={20} duration={5} redraw={true}>
+                                <CountUp start={0} end={28} duration={5} redraw={true}>
                                     {({ countUpRef, start }) => (
                                         <VisibilitySensor onChange={start} delayedCall>
                                             <span ref={countUpRef} />
@@ -257,7 +258,7 @@ export default function LandingPage() {
                         </div>
                         <div className="col-md-3 text-center">
                             <p className="font-weight-bold display-3 mt-3">
-                                <CountUp start={0} end={1200} duration={5} redraw={true}>
+                                <CountUp start={0} end={57} duration={5} redraw={true}>
                                     {({ countUpRef, start }) => (
                                         <VisibilitySensor onChange={start} delayedCall>
                                             <span ref={countUpRef} />
@@ -271,7 +272,7 @@ export default function LandingPage() {
                         </div>
                         <div className="col-md-3 text-center">
                             <p className="font-weight-bold display-3 mt-3">
-                                <CountUp start={0} end={900} duration={5} redraw={true}>
+                                <CountUp start={0} end={1029} duration={5} redraw={true}>
                                     {({ countUpRef, start }) => (
                                         <VisibilitySensor onChange={start} delayedCall>
                                             <span ref={countUpRef} />
@@ -285,7 +286,7 @@ export default function LandingPage() {
                         </div>
                         <div className="col-md-3 text-center">
                             <p className="font-weight-bold display-3 mt-3">
-                                <CountUp start={0} end={30} duration={5} redraw={true}>
+                                <CountUp start={0} end={3} duration={5} redraw={true}>
                                     {({ countUpRef, start }) => (
                                         <VisibilitySensor onChange={start} delayedCall>
                                             <span ref={countUpRef} />
@@ -319,61 +320,8 @@ export default function LandingPage() {
 
                 <div className="container bg-transparent">
                     <div className="row-fluid text-light">
-                        <Accordion defaultActiveKey="1">
-                            <Card className="p-0 m-0">
-                                <Card.Header className="bg-dark text-light pointer-on-hover p-0 m-0">
-                                    <Accordion.Toggle as={Card.Header} eventKey="1">
-                                        1. In a car servicing, what engine oil do you use?
-                                    </Accordion.Toggle>
-                                </Card.Header>
-                                <Accordion.Collapse className="border border-light" eventKey="1">
-                                    <Card.Body className="text-dark">
-                                        We use Mobil 5W-30 Engine oil in our car service center, which improves engine
-                                        productivity and effectiveness while also offering superior protection against
-                                        wear and tear, extending the life of your automobile engine.
-                                    </Card.Body>
-                                </Accordion.Collapse>
-                            </Card>
-                            <Card className=" p-0 m-0">
-                                <Card.Header className="bg-light text-dark pointer-on-hover p-0 m-0">
-                                    <Accordion.Toggle as={Card.Header} eventKey="2">
-                                        2. What kind of spare parts are used for my car?
-                                    </Accordion.Toggle>
-                                </Card.Header>
-                                <Accordion.Collapse className="border border-light" eventKey="2">
-                                    <Card.Body className="text-dark">Reliable spares and consumables are guaranteed
-                                        100%. Because of our unified spare sourcing and comprehensive inventory
-                                        management, we are able to obtain high-quality OEM and OES spares, guaranteeing
-                                        that only the finest parts get into your vehicle.</Card.Body>
-                                </Accordion.Collapse>
-                            </Card>
-                            <Card className=" p-0 m-0">
-                                <Card.Header className="bg-dark text-light pointer-on-hover p-0 m-0">
-                                    <Accordion.Toggle as={Card.Header} eventKey="3">
-                                        3. How long will it take for my car to be serviced?
-                                    </Accordion.Toggle>
-                                </Card.Header>
-                                <Accordion.Collapse className="border border-light" eventKey="3">
-                                    <Card.Body className="text-dark">The servicing time for your vehicle is determined
-                                        mostly on service package and car detailing. A regular service will take 4-5
-                                        hours, while a complete service will take at least 5-6 hours.</Card.Body>
-                                </Accordion.Collapse>
-                            </Card>
-                            <Card className=" p-0 m-0">
-                                <Card.Header className="bg-light text-dark pointer-on-hover p-0 m-0">
-                                    <Accordion.Toggle as={Card.Header} eventKey="4">
-                                        4. Is it necessary for me to drop off my car at the workshop for the auto
-                                        service?
-
-                                    </Accordion.Toggle>
-                                </Card.Header>
-                                <Accordion.Collapse className="border border-light" eventKey="4">
-                                    <Card.Body className="text-dark">No, not at all. With our FREE pick-up and drop-off
-                                        service for your car anywhere in your city, we provide a hassle-free and
-                                        seamless car repair service experience.</Card.Body>
-                                </Accordion.Collapse>
-                            </Card>
-                        </Accordion>
+                        <FAQComponent answersClass="text-dark" firstAlternatingCardHeaderClass="bg-dark text-light"
+                                      secondAlternatingCardHeaderClass="bg-light text-dark" />
                         <div className="col text-center my-3">
                             <a href="#faq" className="btn btn-outline-dark">
                                 READ MORE
