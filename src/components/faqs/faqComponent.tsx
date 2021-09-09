@@ -7,7 +7,7 @@ const FAQComponent = (props: { answersClass: string, firstAlternatingCardHeaderC
     const { FAQs }: { FAQs: FAQ[] } = faqs
     return (
         <Accordion defaultActiveKey="0">
-            {FAQs.map((faq, index) => <Card className="p-0 m-0">
+            {FAQs.map((faq, index) => <Card key={index} className="p-0 m-0">
                 <Card.Header
                     className={"pointer-on-hover p-0 m-0 " + (index % 2 === 0 ? props.firstAlternatingCardHeaderClass : props.secondAlternatingCardHeaderClass)}>
                     <Accordion.Toggle as={Card.Header} eventKey={index.toString()}>

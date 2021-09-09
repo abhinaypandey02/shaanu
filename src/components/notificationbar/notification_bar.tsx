@@ -30,8 +30,8 @@ export default function NotificationBar({
                     {dueDays && (
                         <li>Your Insurance is due in {dueDays.toFixed(0)} days!</li>
                     )}
-                    {currentCarProfile.notifications?.map((text) => (
-                        <li>
+                    {currentCarProfile.notifications?.map((text, index) => (
+                        <li key={index}>
                             <div className="marquee">
                                 <p>Test</p>
                             </div>

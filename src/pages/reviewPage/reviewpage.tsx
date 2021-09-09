@@ -295,7 +295,7 @@ export default function ReviewPage() {
                                 </div>
                                 <div className="my-3">
                                     {[1, 2, 3, 4, 5].map((number) => (
-                                        <span>
+                                        <span key={number}>
                       <img
                           height={30}
                           src={review.rating >= number ? filledStar : emptyStar}

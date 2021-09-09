@@ -17,15 +17,16 @@ export default function BlogPage() {
                 <div className="d-flex flex-wrap">
                     {blogs.map((blog) => (
                         <div
+                            key={blog.slug}
                             className="col-md-4 pointer-on-hover"
                             onClick={() => his.push("/blog/" + blog.slug)}
                         >
-                            <Card className='bg-dark text-light' style={{ width: "18rem" }}>
+                            <Card className="bg-dark text-light" style={{ width: "18rem" }}>
                                 <Card.Img
                                     variant="top"
                                     src="https://cdn.luxe.digital/media/2020/12/15110747/fastest-cars-world-2021-luxe-digital%402x.jpg"
                                 />
-                                <Card.Body className='bg-dark'>
+                                <Card.Body className="bg-dark">
                                     <Card.Title className="font-weight-bold">
                                         {blog.title}
                                     </Card.Title>
