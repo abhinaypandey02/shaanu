@@ -20,12 +20,12 @@ export default function BlogPage() {
                             className="col-md-4 pointer-on-hover"
                             onClick={() => his.push("/blog/" + blog.slug)}
                         >
-                            <Card style={{ width: "18rem" }}>
+                            <Card className='bg-dark text-light' style={{ width: "18rem" }}>
                                 <Card.Img
                                     variant="top"
                                     src="https://cdn.luxe.digital/media/2020/12/15110747/fastest-cars-world-2021-luxe-digital%402x.jpg"
                                 />
-                                <Card.Body>
+                                <Card.Body className='bg-dark'>
                                     <Card.Title className="font-weight-bold">
                                         {blog.title}
                                     </Card.Title>
