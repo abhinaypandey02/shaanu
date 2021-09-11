@@ -165,7 +165,7 @@ export default function AllServicesPage() {
                                     <h2 className="text-capitalize text-dark">
                                         {selectedBrand} {selectedModel}
                                     </h2>
-                                    <span className=" rounded-pill p-1 badge bg-primary text-dark text-capitalize">
+                                    <span className=" rounded-pill p-2 badge bg-primary text-capitalize">
                     {selectedType}
                   </span>
                                 </div>
