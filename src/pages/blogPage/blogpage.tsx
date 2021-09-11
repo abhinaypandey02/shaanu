@@ -21,11 +21,15 @@ export default function BlogPage() {
                             className="col-md-4 pointer-on-hover"
                             onClick={() => his.push("/blog/" + blog.slug)}
                         >
-                            <Card className="bg-dark text-light" style={{ width: "18rem" }}>
+                            <Card className="bg-dark border border-dark text-light" id='blogcard' style={{ width: "18rem" }}>
+                                <div className="imagecontainer">
                                 <Card.Img
+                                    className=' img-fluid'
                                     variant="top"
                                     src={blog.imageURL}
                                 />
+                                </div>
+                                
                                 <Card.Body className="bg-dark">
                                     <Card.Title className="font-weight-bold">
                                         {blog.title}

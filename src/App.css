@@ -137,10 +137,20 @@
 .ccaption{
     padding:0 !important;
     position: relative;
-   
     left: 0rem;
     top: 0.3rem;
-    background-color: rgba(66, 66, 66,0.5);
     padding: 1.5rem !important;
+    color: #ffc107 !important;
     
+}
+#blogcard{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.imagecontainer{
+    min-height: 18rem !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white ;
+    padding:.4rem;
 }
