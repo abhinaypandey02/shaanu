@@ -99,8 +99,8 @@ export default function CreateCarProfile({
             address,
             regNo,
             imageURL,
-            documents: [],
-            notifications: [],
+            documents: carProfile ? carProfile.documents : [],
+            notifications: carProfile ? carProfile.notifications : [],
             id: carProfile ? carProfile.id : v4()
         }
         if (!user) return
@@ -334,7 +334,7 @@ export default function CreateCarProfile({
                 className="rounded-0"
                 type="submit"
             >
-                {carProfile ? "Edit" : "Create"} Profile
+                {carProfile ? "Save" : "Create"} Profile
             </Button>
         </Form>
     )

@@ -68,7 +68,7 @@ export default function NavigationBar() {
     }
 
     function back() {
-        
+
         history.goBack()
     }
 
@@ -154,9 +154,6 @@ export default function NavigationBar() {
                 <Nav className="m-2 p-0 d-flex align-items-center justify-content-center">
                     <Nav.Item className="m-0 d-flex align-items-center">
                         <Dropdown
-                            onToggle={() => {
-                                if (user) history.push(ROUTES_META.profile)
-                            }}
                         >
                             <Dropdown.Toggle variant={"warning"} className="rounded-0">
                                 <img
