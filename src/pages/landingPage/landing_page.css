@@ -47,3 +47,11 @@ svg{
 .servicecard:hover{
     transform: scale(1.08)
 }
+.imagecontainer{
+    min-height: 18rem !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white ;
+    padding:.4rem;
+}

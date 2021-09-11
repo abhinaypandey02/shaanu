@@ -11,6 +11,7 @@ import ReviewComponent from "../../components/reviews/reviewComponent"
 import Blog from "../../interfaces/blog"
 import blogsJSON from "../../database/blogs.json"
 import { useHistory } from "react-router"
+import { relative } from "path"
 
 export default function LandingPage() {
     const [globalState, dispatch] = useGlobalState()
@@ -111,7 +112,7 @@ export default function LandingPage() {
                         {SERVICES.map((blog, index) => (
                             <div
                                 key={index}
-                                className="col-md-4 pointer-on-hover"
+                                className="col-lg-4 pointer-on-hover"
                                 onClick={() => his.push("/blog/" + blog.slug)}
                             >
                                 <ScrollAnimation
@@ -124,17 +125,23 @@ export default function LandingPage() {
                                         className="card mx-auto pointer-on-hover servicecard"
                                         style={{ width: 350 }}
                                     >
-                                        <img
-                                            src={blog.imageURL}
-                                            className="card-img-top"
-                                            alt="..."
-                                        />
-                                        <div className="card-body">
-                                            <h5 className="card-title text-warning">
-                                                {blog.title}
-                                            </h5>
-                                            <p className="card-text">{blog.subtitle}</p>
-                                        </div>
+                                           
+                                                <div className=" imagecontainer">
+                                                    <img
+                                                        src={blog.imageURL}
+                                                        className="img-fluid"
+                                                        alt="..."
+                                                    />
+                                                </div>
+                                                    <div className="card-body d-flex align-items-end">
+                                                        <div className=''>
+                                                        <h5 className="card-title text-warning">
+                                                            {blog.title}
+                                                        </h5>
+                                                        <p className="card-text">{blog.subtitle}</p>
+                                                        </div>
+                                                    </div>
+                                           
                                     </div>
                                 </ScrollAnimation>
                             </div>
@@ -193,7 +200,7 @@ export default function LandingPage() {
                     <div className="row text-light py-5">
                         <div className="col-md-3 text-center">
                             <p className="font-weight-bold display-3 mt-3">
-                                <CountUp start={0} end={20} duration={5} redraw={true}>
+                                <CountUp start={0} end={32} duration={5} redraw={true}>
                                     {({ countUpRef, start }) => (
                                         <VisibilitySensor onChange={start} delayedCall>
                                             <span ref={countUpRef} />
@@ -207,7 +214,7 @@ export default function LandingPage() {
                         </div>
                         <div className="col-md-3 text-center">
                             <p className="font-weight-bold display-3 mt-3">
-                                <CountUp start={0} end={1200} duration={5} redraw={true}>
+                                <CountUp start={0} end={764} duration={5} redraw={true}>
                                     {({ countUpRef, start }) => (
                                         <VisibilitySensor onChange={start} delayedCall>
                                             <span ref={countUpRef} />
@@ -221,7 +228,7 @@ export default function LandingPage() {
                         </div>
                         <div className="col-md-3 text-center">
                             <p className="font-weight-bold display-3 mt-3">
-                                <CountUp start={0} end={900} duration={5} redraw={true}>
+                                <CountUp start={0} end={12467} duration={5} redraw={true}>
                                     {({ countUpRef, start }) => (
                                         <VisibilitySensor onChange={start} delayedCall>
                                             <span ref={countUpRef} />
@@ -235,7 +242,7 @@ export default function LandingPage() {
                         </div>
                         <div className="col-md-3 text-center">
                             <p className="font-weight-bold display-3 mt-3">
-                                <CountUp start={0} end={30} duration={5} redraw={true}>
+                                <CountUp start={0} end={3} duration={5} redraw={true}>
                                     {({ countUpRef, start }) => (
                                         <VisibilitySensor onChange={start} delayedCall>
                                             <span ref={countUpRef} />
