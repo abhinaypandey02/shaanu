@@ -65,7 +65,6 @@ export default function ReviewPage() {
             break
         }
     }
-    console.log("RERENDER")
 
     async function addReviewLocal(data: {
         name: string;

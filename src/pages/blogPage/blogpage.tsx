@@ -24,7 +24,7 @@ export default function BlogPage() {
                             <Card className="bg-dark text-light" style={{ width: "18rem" }}>
                                 <Card.Img
                                     variant="top"
-                                    src="https://cdn.luxe.digital/media/2020/12/15110747/fastest-cars-world-2021-luxe-digital%402x.jpg"
+                                    src={blog.imageURL}
                                 />
                                 <Card.Body className="bg-dark">
                                     <Card.Title className="font-weight-bold">

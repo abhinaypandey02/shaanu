@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { Accordion, Button, Card, Modal } from "react-bootstrap"
+import React from "react"
+import { Accordion, Button, Card } from "react-bootstrap"
 import CarsMenu from "../../components/carsMenu/cars_menu"
 import { useGlobalState } from "../../contexts/global_state"
 import "./landing_page.css"
@@ -7,29 +7,19 @@ import "animate.css/animate.min.css"
 import CountUp from "react-countup"
 import ScrollAnimation from "react-animate-on-scroll"
 import VisibilitySensor from "react-visibility-sensor"
-import landingPageServices from "../../database/landingPageServices.json"
 import ReviewComponent from "../../components/reviews/reviewComponent"
-import ReactMarkdown from "react-markdown"
-
-interface Service {
-    title: string;
-    content: string;
-    subtitle: string;
-    imageURL: string;
-}
-
-function ServiceContent({ service }: { service: Service }) {
-    return <ReactMarkdown>{service.content}</ReactMarkdown>
-}
+import Blog from "../../interfaces/blog"
+import blogsJSON from "../../database/blogs.json"
+import { useHistory } from "react-router"
 
 export default function LandingPage() {
     const [globalState, dispatch] = useGlobalState()
     let currentlySelecting: string
-    const SERVICES: Service[] = landingPageServices.services
-    const [selectedService, setSelectedService] = useState<Service>()
+    const SERVICES: Blog[] = blogsJSON.blogs.filter(blog => blog.page === "home")
     if (!globalState.selectedBrand) currentlySelecting = "BRAND"
     else if (!globalState.selectedModel) currentlySelecting = "MODEL"
     else currentlySelecting = "FUEL"
+    const his = useHistory()
 
     function onBack(e: any) {
         e.stopPropagation()
@@ -40,46 +30,6 @@ export default function LandingPage() {
 
     return (
         <div>
-            <Modal
-                contentClassName=" overflow-auto full-modal-content border border-dark rounded-0 bg-dark text-light"
-                dialogClassName="full-modal-dialog "
-                centered
-                show={!!selectedService}
-                onHide={() => setSelectedService(undefined)}
-            >
-                <Modal.Header
-                    closeButton
-                    className="bg-warning text-dark rounded-0 overflow-auto"
-                >
-                    {selectedService?.title}
-                </Modal.Header>
-                <Modal.Body>
-                    <div className="container-fluid overflow-auto">
-                        <div className="row">
-                            <div className="col-md-4 p-3 d-flex justify-content-center align-items-start">
-                                <img
-                                    src={selectedService?.imageURL}
-                                    className="img-fluid"
-                                />
-                            </div>
-                            <div className="col-md-8">
-                                <h1 className="font-weight-bold">{selectedService?.title}</h1>
-                                <p className="text-wrap">
-
-                                    {selectedService && (
-                                        <ServiceContent service={selectedService} />
-                                    )}
-                                    <div className="col my-3">
-                                        <a href="#blogs" className="btn btn-outline-light">
-                                            READ MORE
-                                        </a>
-                                    </div>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </Modal.Body>
-            </Modal>
             <div
                 className="d-flex justify-content-center align-items-center"
                 id="section1"
@@ -158,11 +108,11 @@ export default function LandingPage() {
                     </div>
                     <br />
                     <div className="d-flex flex-wrap mt-4">
-                        {SERVICES.map((service, index) => (
+                        {SERVICES.map((blog, index) => (
                             <div
                                 key={index}
                                 className="col-md-4 pointer-on-hover"
-                                onClick={() => setSelectedService(service)}
+                                onClick={() => his.push("/blog/" + blog.slug)}
                             >
                                 <ScrollAnimation
                                     animateIn="fadeInUp"
@@ -175,15 +125,15 @@ export default function LandingPage() {
                                         style={{ width: 350 }}
                                     >
                                         <img
-                                            src={service.imageURL}
+                                            src={blog.imageURL}
                                             className="card-img-top"
                                             alt="..."
                                         />
                                         <div className="card-body">
                                             <h5 className="card-title text-warning">
-                                                {service.title}
+                                                {blog.title}
                                             </h5>
-                                            <p className="card-text">{service.subtitle}</p>
+                                            <p className="card-text">{blog.subtitle}</p>
                                         </div>
                                     </div>
                                 </ScrollAnimation>

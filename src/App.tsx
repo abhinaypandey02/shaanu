@@ -113,6 +113,7 @@ function App() {
                                 <Route key={blog.slug} path={"/blog/" + blog.slug}>
                                     <EachBlog blog={blog} />
                                 </Route>
+                                
                             ))}
                         </Switch>
                     </div>
