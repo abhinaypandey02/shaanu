@@ -141,14 +141,14 @@ export default function AllServicesPage() {
                 </Modal.Body>
             </Modal>
             <div className="row ">
-                <div className="col-lg-5 pl-lg-5">
+                <div className="col-lg-4 pl-lg-5">
                     <div
                         className="d-flex rounded-0 alert alert-light align-items-center justify-content-center flex-column p-3 text-light"
                         id="cart"
                     >
                         <div className="w-100 border border-warning rounded-0 mb-2">
                             <div
-                                className="alert rounded-0 alert-warning w-100 h-100 pb-4 d-flex justify-content-center  align-items-center flex-column flex-wrap">
+                                className="alert rounded-0 alert-dark w-100 h-100 pb-4 d-flex justify-content-center  align-items-center flex-column flex-wrap">
                                 <h2 className="display-4">CART</h2>
                                 {selectedModel && selectedBrand && (
                                     <img
@@ -162,16 +162,16 @@ export default function AllServicesPage() {
 
                             <div className="col-12 d-flex flex-wrap align-items-center justify-content-between">
                                 <div className="col">
-                                    <h2 className="text-capitalize">
+                                    <h2 className="text-capitalize text-dark">
                                         {selectedBrand} {selectedModel}
                                     </h2>
-                                    <span className=" rounded-pill p-1 badge bg-light text-dark text-capitalize">
+                                    <span className=" rounded-pill p-1 badge bg-primary text-dark text-capitalize">
                     {selectedType}
                   </span>
                                 </div>
 
                                 <Button
-                                    variant={"outline-warning"}
+                                    variant={"warning"}
                                     onClick={() =>
                                         dispatch({
                                             type: "CLEAR_SELECTION",
@@ -183,11 +183,12 @@ export default function AllServicesPage() {
                                     CHANGE
                                 </Button>
                             </div>
-                            <hr className="w-100 bg-warning" />
-                            <div className="row w-100 m-0 p-2">
-                                <div className="col-auto mx-auto">
+                            
+                            <div className="row w-100 mt-3 mx-0 bg-warning p-2">
+                                <h2 className="col-auto bg-warning text-dark mx-auto">
                                     {user ? (
-                                        `Total : ₹${cartSum}`
+                                       <strong> Total : ₹{cartSum} </strong>
+                                    
                                     ) : (
                                         <a href="#profile">
                                             <div
@@ -199,7 +200,7 @@ export default function AllServicesPage() {
                                             </div>
                                         </a>
                                     )}
-                                </div>
+                                </h2>
                             </div>
                         </div>
                         <div className="d-flex  w-100 flex-column">
@@ -209,7 +210,7 @@ export default function AllServicesPage() {
                                     key={id}
                                 >
                                     <div
-                                        className="m-0 alert alert-warning w-100 flex-wrap rounded-0 justify-content-between d-flex">
+                                        className="m-0 alert alert-dark w-100 flex-wrap rounded-0 justify-content-between d-flex">
                                         <div>
                                             <h5 className="font-weight-bold mb-0 pb-0">
                                                 {service.name}
@@ -217,13 +218,16 @@ export default function AllServicesPage() {
                                             <p className="font-weight-light my-0 py-0 card-text">
                                                 {category}
                                             </p>
-                                            <div className="badge badge-info my-0">
-                                                {user ? (
-                                                    `Rs. ${service.price}`
-                                                ) : (
-                                                    <strong>"Sign in to view price"</strong>
-                                                )}
-                                            </div>
+                                            <h3> 
+                                                <div className="badge badge-warning text-dark my-0">
+                                                    {user ? (
+                                                        `Rs. ${service.price}`
+                                                    ) : (
+                                                        <strong>"Sign in to view price"</strong>
+                                                    )}
+                                                </div>
+                                            </h3>
+                                            
                                         </div>
                                         <div className=" my-auto">
                                             <div
@@ -259,7 +263,7 @@ export default function AllServicesPage() {
                     </div>
                 </div>
 
-                <div className="col-lg-7 text-center">
+                <div className="col-lg-8 text-center">
                     <h1 className="text-light mt-5 mt-md-0">Select Services</h1>
 
                     {Object.keys(plans).map((plan) => (
