@@ -274,9 +274,9 @@ export default function AllServicesPage() {
                             key={plan}
                             id="servicesbtn"
                         >
-                            <div className="p-2">
-                                <div className="row">
-                                    <div className="col-md-4 p-4">
+                            <div className="p-0">
+                                <div className="row p-0 ">
+                                    <div className="col-md-4 p-5">
                                         <img
                                             src="https://s3.ap-south-1.amazonaws.com/gm-retail-app/service-new-images/Basic%20Service%20Package%20sq.jpg"
                                             className="img-fluid rounded"
@@ -286,7 +286,7 @@ export default function AllServicesPage() {
                                     <div className="col-md-8 ">
                                         <div className="card-body pl-md-0 ">
                                             <h4 className="card-title rounded-0  alert bg-warning text-dark">
-                                                {plan}
+                                                <strong>{plan} </strong>
                                             </h4>
                                             <p className="card-text text-capitalize">
                                                 {plan} for {selectedBrand} {selectedModel} (
