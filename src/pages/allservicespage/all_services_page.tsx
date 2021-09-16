@@ -268,15 +268,15 @@ export default function AllServicesPage() {
 
                     {Object.keys(plans).map((plan) => (
                         <Button
-                            variant="outline-light"
-                            className="text-left rounded-0 mt-5 w-75 "
+                            variant="light"
+                            className="text-left rounded-0 mt-5 w-100 "
                             onClick={() => setSelectedPlan(plan)}
                             key={plan}
                             id="servicesbtn"
                         >
                             <div className="p-2">
-                                <div className="row px-2">
-                                    <div className="col-md-4  p-3">
+                                <div className="row">
+                                    <div className="col-md-4 p-4">
                                         <img
                                             src="https://s3.ap-south-1.amazonaws.com/gm-retail-app/service-new-images/Basic%20Service%20Package%20sq.jpg"
                                             className="img-fluid rounded"
@@ -285,7 +285,7 @@ export default function AllServicesPage() {
                                     </div>
                                     <div className="col-md-8 ">
                                         <div className="card-body pl-md-0 ">
-                                            <h4 className="card-title rounded-0  alert alert-warning">
+                                            <h4 className="card-title rounded-0  alert bg-warning text-dark">
                                                 {plan}
                                             </h4>
                                             <p className="card-text text-capitalize">

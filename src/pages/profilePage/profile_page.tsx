@@ -67,7 +67,7 @@ export default function ProfilePage() {
     }
 
     return (
-        <div className="container-fluid px-5">
+        <div className="container-fluid">
             <Modal
                 dialogClassName="dialogClass"
                 show={showCreateCarProfile || editCarProfile}
@@ -88,11 +88,11 @@ export default function ProfilePage() {
                     />
                 </Modal.Body>
             </Modal>
-            <div className="row-fluid px-5 mb-4 text-center">
+            <div className="row-fluid mb-4 text-center">
                 <h1 className="text-warning">YOUR PROFILE</h1>
             </div>
 
-            <div className="container-fluid  p-2 mb-5 ">
+            <div className="container-fluid mb-5 ">
                 <div className="row">
                     {user.carProfiles.length > 0 && (
                         <div className="col-md-3 mr-auto">
@@ -139,7 +139,7 @@ export default function ProfilePage() {
             </div>
 
             <div className="row">
-                <div className="col-lg-4 m-0 d-flex flex-column flex-wrap align-items-center">
+                <div className="col-xl-4 d-flex flex-column flex-wrap align-items-center">
                     {currentCarProfile && currentCarProfile.imageURL && (
                         <img
                             src={currentCarProfile.imageURL}
@@ -147,10 +147,11 @@ export default function ProfilePage() {
                             className="img-fluid mt-0 mb-2 border-warning border rounded-0 w-100"
                         />
                     )}
-                    <div className="row w-100 mt-2">
+                    <div className="row mt-2">
+                        <div className="col-12 px-3">
                         {currentCarProfile && (
                             <table className="table text-light text-center table-bordered">
-                                <tbody className="">
+                                <tbody>
                                 <tr>
                                     <th className="text-warning " scope="row">
                                         CAR'S NAME
@@ -163,7 +164,7 @@ export default function ProfilePage() {
                                     <th className="text-warning" scope="row">
                                         REGISTRATION NUMBER.
                                     </th>
-                                    <td>{currentCarProfile.regNo}</td>
+                                    <td className='text-wrap'>{currentCarProfile.regNo}</td>
                                 </tr>
                                 <tr>
                                     <th className="text-warning" scope="row">
@@ -180,11 +181,12 @@ export default function ProfilePage() {
                                 </tbody>
                             </table>
                         )}
+                        </div>
                     </div>
                 </div>
 
                 {currentCarProfile && (
-                    <div className="col-lg-8 d-flex flex-column flex-wrap ">
+                    <div className="col-xl-8 d-flex flex-column flex-wrap ">
                         <NotificationBar currentCarProfile={currentCarProfile} />
                         <UploadDocuments
                             cloudUpdateCarProfile={cloudUpdateCarProfile}
