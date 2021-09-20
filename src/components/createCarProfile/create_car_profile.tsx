@@ -83,7 +83,10 @@ export default function CreateCarProfile({
         let imageURL = ""
         if (image) {
             imageURL = await uploadButtonImage(user, image)
+        } else if(carProfile?.imageURL){
+            imageURL=carProfile.imageURL;
         }
+
 
         const carProfileTemp: CarProfile = {
             brand,
@@ -302,18 +305,18 @@ export default function CreateCarProfile({
                             className="d-flex align-items-center justify-content-center pointer-on-hover"
                             style={{
                                 backgroundColor: "#F4F5F8",
-                                height: image ? 109 : 109,
-                                maxWidth: image ? 109 : 92
+                                height: image||carProfile?.imageURL ? 109 : 109,
+                                maxWidth: image||carProfile?.imageURL ? 109 : 92
                             }}
                             onClick={() => document.getElementById("choose_pp")?.click()}
                         >
                             <img
                                 alt="plus"
                                 style={{
-                                    maxHeight: image ? 109 : 27,
-                                    maxWidth: image ? 109 : 27
+                                    maxHeight: image||carProfile?.imageURL ? 109 : 27,
+                                    maxWidth: image||carProfile?.imageURL ? 109 : 27
                                 }}
-                                src={image ? URL.createObjectURL(image) : plus}
+                                src={image ? URL.createObjectURL(image) : (carProfile?.imageURL?carProfile?.imageURL:plus)}
                             />
                             <input
                                 id="choose_pp"
