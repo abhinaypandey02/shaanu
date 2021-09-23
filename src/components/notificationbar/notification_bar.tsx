@@ -1,11 +1,22 @@
 import { CarProfile } from "../../interfaces/car"
 import Marquee from "react-fast-marquee"
+import {useEffect, useState} from "react";
+import {BookedSession} from "../../interfaces/bookedSession";
+import {getUserFutureSessions} from "../../utils/firebase/firestore";
+import {useUser} from "../../contexts/user_context";
 
 export default function NotificationBar({
                                             currentCarProfile
                                         }: {
     currentCarProfile: CarProfile;
 }) {
+    const [upcomingSessions,setUpcomingSessions]=useState<BookedSession[]>([]);
+    const [user]=useUser();
+    useEffect(()=>{
+        if(user) getUserFutureSessions(user.phone).then(data=>{
+            console.log(data)
+        })
+    },[])
     let dueDays = NaN
     if (currentCarProfile.insuranceDate) {
         dueDays =
@@ -32,9 +43,6 @@ export default function NotificationBar({
                     )}
                     {currentCarProfile.notifications?.map((text, index) => (
                         <li key={index}>
-                            <div className="marquee">
-                                <p>Test</p>
-                            </div>
                             {text}
                         </li>
                     ))}

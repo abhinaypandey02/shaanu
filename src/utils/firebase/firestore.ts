@@ -164,3 +164,6 @@ export async function getReviews() {
     .get()
     .then((data) => data.docs.map((doc) => doc.data()));
 }
+export async function getUserFutureSessions(userPhone:number) {
+  return await fire.firestore().collection("bookedSessions").where("phone","==",userPhone).where("dateTime",">=",new Date().getTime()).get().then((data) => data.docs.map((doc) => doc.data()));
+}

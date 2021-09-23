@@ -120,7 +120,7 @@ export default function AllServicesPage() {
                                     key={plan.name}
                                     onClick={() => setSelectedSubPlan(index)}
                                 >
-                                    <h4>{plan.name}</h4>
+                                    <h4><strong>{plan.name}</strong></h4>
                                     <div>{plan.description}</div>
                                     <div className="small">{user ? `₹${plan.price}` : ""}</div>
                                 </Dropdown.Item>
