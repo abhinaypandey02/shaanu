@@ -4,10 +4,11 @@ export default function Footer() {
         <footer className="container pt-3 my-md-5 pt-md-5 border-top text-light">
             <div className="row text-center">
                 <div className="col-md-6">
-                    <h6>D-50 Pocket D Chattarpur Enclave 1, ND</h6>
+                    <h5>
+C-307, Sector 10, Noida, Uttar Pradesh 201301</h5>
                 </div>
                 <div className="col-md-6">
-                    <h6>083989 70970 || 0983483452 || poorvi@carplus.com</h6>
+                    <h5>+91 85880 05112 || ankur.dinesh.kumra@gmail.com</h5>
                 </div>
             </div>
         </footer>
