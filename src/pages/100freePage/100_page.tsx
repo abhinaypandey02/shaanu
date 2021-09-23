@@ -178,18 +178,18 @@ export default function FreeServices() {
             </div>
             <div className="row">
                 {groups.map((group, index) => (
-                    <div className="col-md-3" key={group.id}>
+                    <div className="col-lg-3" key={group.id}>
                         <div className="container-fluid p-3 d-flex flex-wrap flex-column">
                             <div className="row bg-warning">
                                 <h1 className="mx-auto my-2">{group.name}</h1>
                             </div>
 
-                            <div className="row border border-warning text-light">
-                                <ul className="list-group border border-dark p-3 text-dark w-100 bg-dark rounded-0">
+                            <div className="row border border-warning ">
+                                <ul className="list-group border border-dark w-100 bg-dark p-3 h-100 rounded-0">
                                     {group.services.map((service) => (
-                                        <li key={service.id} className="list-group-item border border-dark bg-warning">
-                                            <div className="col-12 my-2">
-                                                <label className="container1">
+                                        <li key={service.id} className="list-group-item h-100 border border-dark bg-warning">
+                                            <div className="col-12 h-100 my-2">
+                                                <label className="container1 h-100">
                                                     {service.name}
                                                     <input
                                                         onChange={(e) => {
