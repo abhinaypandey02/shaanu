@@ -122,7 +122,7 @@ export default function AllServicesPage() {
                                 >
                                     <h4><strong>{plan.name}</strong></h4>
                                     <p>{plan.description}</p>
-                                    <h5><strong><div className="badge badge-primary">{user ? `₹${plan.price}` : ""}</div></strong></h5>
+                                    <h4><strong><div className="badge badge-primary">{user ? `₹${plan.price}` : ""}</div></strong></h4>
                                 </Dropdown.Item>
                             ))}
                         </Dropdown.Menu>
@@ -219,7 +219,7 @@ export default function AllServicesPage() {
                                                 {category}
                                             </p>
                                             <h3> 
-                                                <div className="badge badge-warning text-dark my-0">
+                                                <div className="badge badge-primary text-light my-0">
                                                     {user ? (
                                                         `Rs. ${service.price}`
                                                     ) : (
