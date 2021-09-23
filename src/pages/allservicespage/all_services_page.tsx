@@ -121,8 +121,8 @@ export default function AllServicesPage() {
                                     onClick={() => setSelectedSubPlan(index)}
                                 >
                                     <h4><strong>{plan.name}</strong></h4>
-                                    <div>{plan.description}</div>
-                                    <div className="small">{user ? `₹${plan.price}` : ""}</div>
+                                    <p>{plan.description}</p>
+                                    <h5><strong><div className="badge badge-primary">{user ? `₹${plan.price}` : ""}</div></strong></h5>
                                 </Dropdown.Item>
                             ))}
                         </Dropdown.Menu>

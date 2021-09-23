@@ -25,19 +25,19 @@ const groups: Group[] = [
         id: "group1",
         services: [
             {
-                name: "One",
+                name: "THROTTLE BODY CLEAN",
                 id: "one"
             },
             {
-                name: "Two",
+                name: "AC GAS TOP-UP 200GM",
                 id: "two"
             },
             {
-                name: "Three",
+                name: "CAR TOUCHUP(PAINT)",
                 id: "three"
             },
             {
-                name: "Four",
+                name: "TOP WASHING",
                 id: "four"
             }
         ]
@@ -47,19 +47,19 @@ const groups: Group[] = [
         id: "group2",
         services: [
             {
-                name: "One",
+                name: "PAID SERVICE DISCOUNT LABOUR 5%",
                 id: "one"
             },
             {
-                name: "Two",
+                name: "ALIGNMENT",
                 id: "two"
             },
             {
-                name: "Three",
+                name: "VACUUM CLEANING",
                 id: "three"
             },
             {
-                name: "Four",
+                name: "BREAK CLEAN",
                 id: "four"
             }
         ]
@@ -69,19 +69,19 @@ const groups: Group[] = [
         id: "group3",
         services: [
             {
-                name: "One",
+                name: "BRAKE CALIPER GREASING",
                 id: "one"
             },
             {
-                name: "Two",
+                name: "ALL CAR LUBRICATION",
                 id: "two"
             },
             {
-                name: "Three",
+                name: "DASHBOARD POLISH",
                 id: "three"
             },
             {
-                name: "Four",
+                name: "SPARK PLUG CLEAN",
                 id: "four"
             }
         ]
@@ -91,19 +91,19 @@ const groups: Group[] = [
         id: "group4",
         services: [
             {
-                name: "One",
+                name: "GENERAL CHECKUP",
                 id: "one"
             },
             {
-                name: "Two",
+                name: "AIR FILTER CLEAN",
                 id: "two"
             },
             {
-                name: "Three",
+                name: "CABIN FILTER CLEAN",
                 id: "three"
             },
             {
-                name: "Four",
+                name: "TYRE CLEANING",
                 id: "four"
             }
         ]
