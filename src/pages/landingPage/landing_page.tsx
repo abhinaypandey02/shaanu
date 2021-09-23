@@ -117,7 +117,7 @@ export default function LandingPage() {
                             >
                                 <ScrollAnimation
                                     animateIn="fadeInUp"
-                                    delay={index * 500}
+                                    delay={index * 100}
                                     animateOnce={true}
                                     duration={3}
                                 >
@@ -150,7 +150,7 @@ export default function LandingPage() {
                         <div className="col text-center my-3">
                             <ScrollAnimation
                                 animateIn="fadeInUp"
-                                delay={1500}
+                                delay={0}
                                 animateOnce={true}
                                 duration={3}
                             >

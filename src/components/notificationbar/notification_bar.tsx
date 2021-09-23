@@ -13,8 +13,8 @@ export default function NotificationBar({
     const [upcomingSessions,setUpcomingSessions]=useState<BookedSession[]>([]);
     const [user]=useUser();
     useEffect(()=>{
-        if(user) getUserFutureSessions(user.phone).then(data=>{
-            console.log(data)
+        if(user) getUserFutureSessions(user.phone).then((data:any)=>{
+            setUpcomingSessions(data)
         })
     },[])
     let dueDays = NaN
@@ -46,6 +46,9 @@ export default function NotificationBar({
                             {text}
                         </li>
                     ))}
+                    {upcomingSessions.map(session=><li>
+                        Upcoming booked Session on {new Date(session.dateTime).toLocaleString()}. Token is {session.token}!
+                    </li>)}
                     {(!currentCarProfile.notifications ||
                         currentCarProfile.notifications.length === 0) &&
                     isNaN(dueDays) && (
