@@ -27,6 +27,18 @@ export default function ProfilePage() {
         setShowCreateCarProfile(false)
         setEditCarProfile(false)
     }
+    function deleteCarProfile(){
+        if(currentCarProfile){
+            const {id}=currentCarProfile;
+            setUser((old:UserInterface)=>{
+                old.carProfiles=old.carProfiles.filter((profile)=>profile.id!==id);
+                setCurrentCarProfile(old.carProfiles.length > 0 ? old.carProfiles[0] : null);
+                setUserDocument({ ...old })
+                return {...old}
+            })
+        }
+
+    }
 
     function cloudUpdateCarProfile(carProfile: CarProfile) {
         if (user) {
@@ -42,7 +54,13 @@ export default function ProfilePage() {
             }
         }
     }
-
+    useEffect(()=>{
+        if (currentCarProfile) {
+            dispatch({ type: "SET_BRAND", payload: currentCarProfile.brand })
+            dispatch({ type: "SET_MODEL", payload: currentCarProfile.model })
+            dispatch({ type: "SET_TYPE", payload: currentCarProfile.fuel })
+        }
+    },[currentCarProfile])
     useEffect(() => {
         if (user && user.carProfiles.length > 0) {
             if (currentCarProfile) {
@@ -59,11 +77,6 @@ export default function ProfilePage() {
 
     function onCartClick() {
         his.push(ROUTES_META.services)
-        if (currentCarProfile) {
-            dispatch({ type: "SET_BRAND", payload: currentCarProfile.brand })
-            dispatch({ type: "SET_MODEL", payload: currentCarProfile.model })
-            dispatch({ type: "SET_TYPE", payload: currentCarProfile.fuel })
-        }
     }
 
     return (
@@ -127,9 +140,12 @@ export default function ProfilePage() {
                         >
                             {currentCarProfile ? "ADD CAR PROFILE" : "CREATE CAR PROFILE"}
                         </button>
-                        <button onClick={onCartClick} className="btn m-2 btn-outline-warning rounded-0">
+                        {currentCarProfile&&<button onClick={onCartClick} className="btn m-2 btn-outline-warning rounded-0">
                             CART
-                        </button>
+                        </button>}
+                        {currentCarProfile&&<button onClick={deleteCarProfile} className="btn m-2 btn-outline-danger rounded-0">
+                            DELETE PROFILE
+                        </button>}
                         <button onClick={signOut} className="btn m-2 btn-danger rounded-0">
                             SIGN OUT
                         </button>

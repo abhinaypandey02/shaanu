@@ -52,12 +52,14 @@ export default function LandingPage() {
                         <Accordion
                             className="w-50 mx-auto border border-warning text-light"
                             id="dropdownbutton"
+                            defaultActiveKey={currentlySelecting==="FUEL"?"0":"1"}
                         >
                             <Card className="m-0 pointer-on-hover">
                                 <Card.Header className="p-0 m-0">
                                     <Accordion.Toggle
                                         className="zIndex0 d-flex justify-content-center align-items-center position-relative"
                                         as={Card.Header}
+
                                         eventKey="0"
                                     >
                                         {currentlySelecting !== "BRAND" && (

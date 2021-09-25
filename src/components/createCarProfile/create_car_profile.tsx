@@ -252,7 +252,6 @@ export default function CreateCarProfile({
                                 validate: {
                                     notOld: (v) => {
                                         v.setHours(0, 0, 0, 0)
-                                        console.log(v)
                                         if (v.toString() === "Invalid Date") return true
                                         return (
                                             v <= today || "Can't select a date greater than today!"
