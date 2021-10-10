@@ -12,16 +12,16 @@ interface WorkshopService {
 
 const services: WorkshopService[] = [
     {
-        name: "Service 1",
+        name: "The A Team",
         description:
-            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+            "Meet the team behind Poorvi Autmobiles.",
         id: "service1",
         imageURLs: [
             "https://images.unsplash.com/photo-1485291571150-772bcfc10da5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
         ]
     },
     {
-        name: "Service 2",
+        name: "The Big Place",
         description:
             "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
         id: "service2",
@@ -30,7 +30,7 @@ const services: WorkshopService[] = [
         ]
     },
     {
-        name: "Service 3",
+        name: "Products we use",
         description:
             "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
         id: "service3",
@@ -39,7 +39,7 @@ const services: WorkshopService[] = [
         ]
     },
     {
-        name: "Service 4",
+        name: "Repair Shop",
         description:
             "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
         id: "service4",
