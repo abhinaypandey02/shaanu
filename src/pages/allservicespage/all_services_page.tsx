@@ -17,7 +17,7 @@ function getImageURL(plan:string){
         case "Wheel Care":return "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/cart/wheel%20care%202.JPG?raw=true"
         case "Denting-Painting":return "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/cart/DENTING%20PAINTING%201.png?raw=true"
         case "AC Service":return "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/cart/ac%204.JPG?raw=true"
-        case "Cleaning":return "https://s3.ap-south-1.amazonaws.com/gm-retail-app/service-new-images/Basic%20Service%20Package%20sq.jpg"
+        case "Cleaning":return "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/cart/cleaning%203.jpg?raw=true"
         default: return "https://s3.ap-south-1.amazonaws.com/gm-retail-app/service-new-images/Basic%20Service%20Package%20sq.jpg"
     }
 }
@@ -153,7 +153,7 @@ export default function AllServicesPage() {
                 </Modal.Body>
             </Modal>
             <div className="row ">
-                <div className="col-lg-4 pl-lg-5">
+                <div className="col-xl-4 pl-xl-5">
                     <div
                         className="d-flex rounded-0 alert alert-light align-items-center justify-content-center flex-column p-3 text-light"
                         id="cart"
@@ -275,7 +275,7 @@ export default function AllServicesPage() {
                     </div>
                 </div>
 
-                <div className="col-lg-8 text-center">
+                <div className="col-xl-8 text-center">
                     <h1 className="text-light mt-5 mt-md-0">Select Services</h1>
 
                     {Object.keys(plans).map((plan) => (
@@ -292,6 +292,7 @@ export default function AllServicesPage() {
                                         <img
                                             src={getImageURL(plan)}
                                             className="img-fluid rounded"
+                                            style={{minHeight:250}}
                                             alt="..."
                                         />
                                     </div>

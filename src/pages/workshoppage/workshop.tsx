@@ -110,6 +110,7 @@ export default function WorkshopPage() {
                                     className="d-block w-100"
                                     src={url}
                                     alt="Service"
+                    
                                 />
                             </Carousel.Item>
                         )}
@@ -135,8 +136,9 @@ export default function WorkshopPage() {
                                     src={service.imageURLs[0]}
                                     className="img-fluid"
                                     alt="..."
+                                    height={300}
                                 />
-                                <div className="card-body bg-warning text-dark">
+                                <div className="card-body bg-warning text-dark" style={{minHeight:150}} >
                                     <h5 className="card-title">{service.name}</h5>
                                     <p className="card-text">{service.description}</p>
                                 </div>
