@@ -17,7 +17,16 @@ const services: WorkshopService[] = [
             "Meet the team behind Poorvi Autmobiles.",
         id: "service1",
         imageURLs: [
-            "https://images.unsplash.com/photo-1485291571150-772bcfc10da5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20A%20team/IMG_6068.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20A%20team/IMG_6072.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20A%20team/IMG_6268.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20A%20team/IMG_6273.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20A%20team/IMG_6274.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20A%20team/IMG_6283.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20A%20team/IMG_6286.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20A%20team/IMG_6290.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20A%20team/IMG_6293.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20A%20team/Marielle%20Price.png?raw=true",
         ]
     },
     {
@@ -26,7 +35,14 @@ const services: WorkshopService[] = [
             "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
         id: "service2",
         imageURLs: [
-            "https://images.unsplash.com/photo-1485291571150-772bcfc10da5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20Big%20Place/IMG_6073.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20Big%20Place/IMG_6303.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20Big%20Place/IMG_6343.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20Big%20Place/IMG_6344.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20Big%20Place/IMG_6292.jpg?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20Big%20Place/IMG_6341.jpg?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20Big%20Place/IMG_6387.jpg?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20Big%20Place/IMG_6388.jpg?raw=true",
         ]
     },
     {
@@ -35,7 +51,16 @@ const services: WorkshopService[] = [
             "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
         id: "service3",
         imageURLs: [
-            "https://images.unsplash.com/photo-1485291571150-772bcfc10da5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/products%20we%20use/IMG_6352.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/products%20we%20use/IMG_6353.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/products%20we%20use/IMG_6357.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/products%20we%20use/IMG_6358.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/products%20we%20use/IMG_6359.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/products%20we%20use/IMG_6360.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/products%20we%20use/IMG_6361.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/products%20we%20use/IMG_6362.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/products%20we%20use/IMG_6364.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/products%20we%20use/IMG_6367.JPG?raw=true",
         ]
     },
     {
@@ -44,7 +69,23 @@ const services: WorkshopService[] = [
             "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
         id: "service4",
         imageURLs: [
-            "https://images.unsplash.com/photo-1485291571150-772bcfc10da5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6031.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6055.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6062.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6064.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6082.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6084.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6086.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6087.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6088.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6099.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6101.JPG?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6266.jpg?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6280.jpg?raw=true",
+            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6349.jpg?raw=true",
+
+
+
         ]
     }
 ]

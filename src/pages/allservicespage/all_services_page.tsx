@@ -13,10 +13,10 @@ import { addCheckout } from "../../utils/firebase/firestore"
 function getImageURL(plan:string){
     console.log(plan)
     switch (plan) {
-        case "Scheduled Services":return "https://s3.ap-south-1.amazonaws.com/gm-retail-app/service-new-images/Basic%20Service%20Package%20sq.jpg"
-        case "Wheel Care":return "https://s3.ap-south-1.amazonaws.com/gm-retail-app/service-new-images/Basic%20Service%20Package%20sq.jpg"
-        case "Denting-Painting":return "https://s3.ap-south-1.amazonaws.com/gm-retail-app/service-new-images/Basic%20Service%20Package%20sq.jpg"
-        case "AC Service":return "https://s3.ap-south-1.amazonaws.com/gm-retail-app/service-new-images/Basic%20Service%20Package%20sq.jpg"
+        case "Scheduled Services":return "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/cart/Scheduled%20Services%202.png?raw=true"
+        case "Wheel Care":return "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/cart/wheel%20care%202.JPG?raw=true"
+        case "Denting-Painting":return "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/cart/DENTING%20PAINTING%201.png?raw=true"
+        case "AC Service":return "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/cart/ac%204.JPG?raw=true"
         case "Cleaning":return "https://s3.ap-south-1.amazonaws.com/gm-retail-app/service-new-images/Basic%20Service%20Package%20sq.jpg"
         default: return "https://s3.ap-south-1.amazonaws.com/gm-retail-app/service-new-images/Basic%20Service%20Package%20sq.jpg"
     }
@@ -280,8 +280,8 @@ export default function AllServicesPage() {
 
                     {Object.keys(plans).map((plan) => (
                         <Button
-                            variant="light"
-                            className="text-left rounded-0 mt-5 w-100 "
+                            variant="dark"
+                            className="text-left border-warning border-2 rounded-0 mt-5 w-100 "
                             onClick={() => setSelectedPlan(plan)}
                             key={plan}
                             id="servicesbtn"
