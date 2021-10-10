@@ -10,6 +10,18 @@ import CarsData from "../../interfaces/carsData"
 import { Checkout } from "../../interfaces/checkout"
 import { addCheckout } from "../../utils/firebase/firestore"
 
+function getImageURL(plan:string){
+    console.log(plan)
+    switch (plan) {
+        case "Scheduled Services":return "https://s3.ap-south-1.amazonaws.com/gm-retail-app/service-new-images/Basic%20Service%20Package%20sq.jpg"
+        case "Wheel Care":return "https://s3.ap-south-1.amazonaws.com/gm-retail-app/service-new-images/Basic%20Service%20Package%20sq.jpg"
+        case "Denting-Painting":return "https://s3.ap-south-1.amazonaws.com/gm-retail-app/service-new-images/Basic%20Service%20Package%20sq.jpg"
+        case "AC Service":return "https://s3.ap-south-1.amazonaws.com/gm-retail-app/service-new-images/Basic%20Service%20Package%20sq.jpg"
+        case "Cleaning":return "https://s3.ap-south-1.amazonaws.com/gm-retail-app/service-new-images/Basic%20Service%20Package%20sq.jpg"
+        default: return "https://s3.ap-south-1.amazonaws.com/gm-retail-app/service-new-images/Basic%20Service%20Package%20sq.jpg"
+    }
+}
+
 export default function AllServicesPage() {
     const [user] = useUser()
     const [globalState, dispatch] = useGlobalState()
@@ -278,7 +290,7 @@ export default function AllServicesPage() {
                                 <div className="row p-0 ">
                                     <div className="col-md-4 p-5">
                                         <img
-                                            src="https://s3.ap-south-1.amazonaws.com/gm-retail-app/service-new-images/Basic%20Service%20Package%20sq.jpg"
+                                            src={getImageURL(plan)}
                                             className="img-fluid rounded"
                                             alt="..."
                                         />
@@ -286,7 +298,7 @@ export default function AllServicesPage() {
                                     <div className="col-md-8 ">
                                         <div className="card-body pl-md-0 ">
                                             <h4 className="card-title rounded-0  alert bg-warning text-dark">
-                                                <strong>{plan} </strong>
+                                                <strong>{plan}</strong>
                                             </h4>
                                             <p className="card-text text-capitalize">
                                                 {plan} for {selectedBrand} {selectedModel} (
