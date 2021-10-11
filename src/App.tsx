@@ -7,7 +7,7 @@ import Footer from "./components/footer/footer"
 import EstimatePage from "./pages/estimatepage/estimate_page"
 import { useGlobalState } from "./contexts/global_state"
 import WorkshopPage from "./pages/workshoppage/workshop"
-import { HashRouter, Redirect, Route } from "react-router-dom"
+import { BrowserRouter, Redirect, Route } from "react-router-dom"
 import Switch from "react-bootstrap/esm/Switch"
 import ProfilePage from "./pages/profilePage/profile_page"
 import AdminPage from "./pages/adminPage/admin_page"
@@ -54,7 +54,7 @@ function App() {
                     Please sign in to enjoy more benefits!
                 </div>
             )}
-            <HashRouter>
+            <BrowserRouter>
                 <div className="d-flex min-vh-100 flex-column">
                     <NavigationBar />
                     <div className="flex-grow-1">
@@ -120,7 +120,7 @@ function App() {
 
                     <Footer />
                 </div>
-            </HashRouter>
+            </BrowserRouter>
         </div>
     )
 }
