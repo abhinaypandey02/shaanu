@@ -94,7 +94,7 @@ export default function NavigationBar() {
                         height="50"
                         src="https://images.vexels.com/media/users/3/144355/isolated/preview/0a53cf7ef3dcdc995f7f20c13c697a25-speed-car-lines-logo-by-vexels.png"
                     />
-                    <strong>Car Plus</strong>
+                    <strong>Noida Workshop</strong>
                 </Navbar.Brand>
                 <Nav
                     className="ml-auto  d-sm-block d-md-none d-flex align-items-center flex-row justify-content-center">
