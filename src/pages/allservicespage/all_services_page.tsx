@@ -9,7 +9,7 @@ import carsDataJSON from "../../database/carsData.json"
 import CarsData from "../../interfaces/carsData"
 import { Checkout } from "../../interfaces/checkout"
 import { addCheckout } from "../../utils/firebase/firestore"
-
+import {Link} from "react-router-dom"
 function getImageURL(plan:string){
     console.log(plan)
     switch (plan) {
@@ -202,7 +202,7 @@ export default function AllServicesPage() {
                                        <strong> Total : ₹{cartSum} </strong>
                                     
                                     ) : (
-                                        <a href="#profile">
+                                        <Link to={"/profile"}>
                                             <div
                                                 className="alert alert-danger"
                                                 id="signinpdfalert"
@@ -210,7 +210,7 @@ export default function AllServicesPage() {
                                             >
                                                 SIGN IN TO VIEW THE TOTAL!
                                             </div>
-                                        </a>
+                                        </Link>
                                     )}
                                 </h2>
                             </div>

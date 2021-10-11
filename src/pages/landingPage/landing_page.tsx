@@ -12,6 +12,7 @@ import Blog from "../../interfaces/blog"
 import blogsJSON from "../../database/blogs.json"
 import { useHistory } from "react-router"
 import { relative } from "path"
+import { Link } from "react-router-dom"
 
 export default function LandingPage() {
     const [globalState, dispatch] = useGlobalState()
@@ -156,9 +157,9 @@ export default function LandingPage() {
                                 animateOnce={true}
                                 duration={3}
                             >
-                                <a href="#blogs" className=" btn btn-dark rounded-0">
+                                <Link to={"/blogs"} className=" btn btn-dark rounded-0">
                                     READ MORE
-                                </a>
+                                </Link>
                             </ScrollAnimation>
                         </div>
                     </div>
@@ -188,12 +189,12 @@ export default function LandingPage() {
                     <ReviewComponent reviews={null} />
                 </div>
                 <div className="col text-center my-3">
-                    <a href="#customerreviews" className="m-2 btn btn-light">
+                    <Link to={"/customerreviews"} className="m-2 btn btn-light">
                         WRITE A REVIEW
-                    </a>
-                    <a href="#customerreviews" className="m-2 btn btn-outline-light">
+                    </Link>
+                    <Link to={"/customerreviews"} className="m-2 btn btn-outline-light">
                         READ MORE
-                    </a>
+                    </Link>
                 </div>
             </div>
 
@@ -334,9 +335,9 @@ export default function LandingPage() {
                             </Card>
                         </Accordion>
                         <div className="col text-center my-3">
-                            <a href="#faq" className="btn btn-outline-dark">
+                            <Link to="/faq" className="btn btn-outline-dark">
                                 READ MORE
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -86,7 +86,7 @@ export default function NavigationBar() {
             expand="lg"
         >
             <div className="container">
-                <Navbar.Brand onClick={onBrandClick} className="ml-md-3" href="#">
+                <Navbar.Brand onClick={onBrandClick} className="ml-md-3">
                     <img
                         alt="logo"
                         className="img-fluid bg-warning border rounded-circle mr-2"

@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import ReviewComponent from "../../components/reviews/reviewComponent"
 import FAQComponent from "../../components/faqs/faqComponent"
 import servicesJSON from "../../database/workshopServices.json";
+import { Link } from "react-router-dom";
 interface WorkshopService {
     name: string;
     description: string;
@@ -79,12 +80,12 @@ export default function WorkshopPage() {
                 </div>
                 <ReviewComponent reviews={null} />
                 <div className="col text-center my-3">
-                    <a href="#customerreviews" className="m-2 btn btn-light">
+                    <Link to="/customerreviews" className="m-2 btn btn-light">
                         WRITE A REVIEW
-                    </a>
-                    <a href="#customerreviews" className="m-2 btn btn-outline-light">
+                    </Link>
+                    <Link to="/customerreviews" className="m-2 btn btn-outline-light">
                         READ MORE
-                    </a>
+                    </Link>
                 </div>
 
                 <br />
@@ -96,9 +97,9 @@ export default function WorkshopPage() {
                         <FAQComponent answersClass="text-light" firstAlternatingCardHeaderClass="bg-warning text-dark"
                                       secondAlternatingCardHeaderClass="bg-dark text-warning" />
                         <div className="col text-center my-3">
-                            <a href="#faq" className="btn btn-outline-light">
+                            <Link to="/faq" className="btn btn-outline-light">
                                 READ MORE
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

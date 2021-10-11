@@ -14,6 +14,7 @@ import firebase from "firebase"
 import { getRecaptchaVerifier, sendSMS } from "../../utils/firebase/auth"
 import VerifyOTP from "../../components/verifyOTP/verifyOTP"
 import { v4 } from "uuid"
+import { Link } from "react-router-dom"
 
 export default function EstimatePage() {
     const history = useHistory()
@@ -214,7 +215,7 @@ export default function EstimatePage() {
 
                     {!user && (
                         <div>
-                            <a href="#profile">
+                            <Link to={"/profile"}>
                                 <div
                                     className="alert alert-danger"
                                     id="signinpdfalert"
@@ -222,7 +223,7 @@ export default function EstimatePage() {
                                 >
                                     <strong>SIGN IN TO VIEW THE ESTIMATED BILL!</strong>
                                 </div>
-                            </a>
+                            </Link>
                             <img
                                 src={blurredPDF}
                                 className="img-fluid"
