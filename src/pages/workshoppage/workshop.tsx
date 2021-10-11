@@ -2,94 +2,15 @@ import { Carousel, Modal } from "react-bootstrap"
 import React, { useState } from "react"
 import ReviewComponent from "../../components/reviews/reviewComponent"
 import FAQComponent from "../../components/faqs/faqComponent"
-
+import servicesJSON from "../../database/workshopServices.json";
 interface WorkshopService {
     name: string;
     description: string;
     id: string;
-    imageURLs: string[];
+    images: { title:string, description:string, imageURL:string }[];
 }
 
-const services: WorkshopService[] = [
-    {
-        name: "The A Team",
-        description:
-            "Meet the team behind Poorvi Autmobiles.",
-        id: "service1",
-        imageURLs: [
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20A%20team/IMG_6068.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20A%20team/IMG_6072.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20A%20team/IMG_6268.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20A%20team/IMG_6273.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20A%20team/IMG_6274.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20A%20team/IMG_6283.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20A%20team/IMG_6286.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20A%20team/IMG_6290.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20A%20team/IMG_6293.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20A%20team/Marielle%20Price.png?raw=true",
-        ]
-    },
-    {
-        name: "The Big Place",
-        description:
-            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
-        id: "service2",
-        imageURLs: [
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20Big%20Place/IMG_6073.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20Big%20Place/IMG_6303.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20Big%20Place/IMG_6343.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20Big%20Place/IMG_6344.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20Big%20Place/IMG_6292.jpg?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20Big%20Place/IMG_6341.jpg?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20Big%20Place/IMG_6387.jpg?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/The%20Big%20Place/IMG_6388.jpg?raw=true",
-        ]
-    },
-    {
-        name: "Products we use",
-        description:
-            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
-        id: "service3",
-        imageURLs: [
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/products%20we%20use/IMG_6352.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/products%20we%20use/IMG_6353.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/products%20we%20use/IMG_6357.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/products%20we%20use/IMG_6358.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/products%20we%20use/IMG_6359.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/products%20we%20use/IMG_6360.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/products%20we%20use/IMG_6361.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/products%20we%20use/IMG_6362.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/products%20we%20use/IMG_6364.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/products%20we%20use/IMG_6367.JPG?raw=true",
-        ]
-    },
-    {
-        name: "Repair Shop",
-        description:
-            "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
-        id: "service4",
-        imageURLs: [
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6031.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6055.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6062.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6064.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6082.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6084.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6086.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6087.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6088.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6099.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6101.JPG?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6266.jpg?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6280.jpg?raw=true",
-            "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/repair%20shop/IMG_6349.jpg?raw=true",
-
-
-
-        ]
-    }
-]
-
+const services: WorkshopService[] = servicesJSON.services;
 export default function WorkshopPage() {
     const [selectedService, setSelectedService] = useState<WorkshopService>()
     return (
@@ -104,14 +25,18 @@ export default function WorkshopPage() {
                 <Modal.Header className='bg-dark text-warning rounded-0' closeButton>{selectedService?.name}</Modal.Header>
                 <Modal.Body className='bg-dark text-warning rounded-0' >
                     <Carousel>
-                        {selectedService?.imageURLs.map(url=>
+                        {selectedService?.images.map(image=>
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src={url}
+                                    src={image.imageURL}
                                     alt="Service"
                     
                                 />
+                                <Carousel.Caption>
+                                   <h3>{image.title}</h3>
+                                   <p>{image.description}</p>
+                                </Carousel.Caption>
                             </Carousel.Item>
                         )}
 
@@ -133,7 +58,7 @@ export default function WorkshopPage() {
                         >
                             <div className="pointer-on-hover card text-white border rounded-0 border-warning mb-3">
                                 <img
-                                    src={service.imageURLs[0]}
+                                    src={service.images[0].imageURL}
                                     className="img-fluid"
                                     alt="..."
                                     height={300}
