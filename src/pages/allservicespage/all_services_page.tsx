@@ -279,23 +279,23 @@ export default function AllServicesPage() {
                     <h1 className="text-light mt-5 mt-md-0">Select Services</h1>
 
                     {Object.keys(plans).map((plan) => (
-                        <Button
-                            variant="dark"
-                            className="text-left border-warning p-1 border-2 d-flex justify-content-center align-items-center rounded-0 mt-5 w-100 "
+                        <a
+                        id='allbtn'
+                            className="btn btn-warning p-0 mt-3"
                             onClick={() => setSelectedPlan(plan)}
                             key={plan}
-                            id="servicesbtn"
+                     
                         >
-                            <div className="p-0">
+                         <div className="container " id='cntbtn'>
                                 <div className="row">
-                                    <div className="col-md-4  m-0 d-flex justify-content-center align-items-center">
+                                    <div className="col-md-4 p-2 d-flex align-items-center justify-content-center"  id='colbtn'>
                                         <img
                                             src={getImageURL(plan)}
-                                            className="img-fluid m-0 h-75 rounded"
+                                            className="img-fluid h-100 rounded"
                                             alt="..."
                                         />
                                     </div>
-                                    <div className="col-md-8 d-flex justify-content-center align-items-center">
+                                    <div className="col-md-8 bg-light d-flex align-items-center justify-content-center"  id='colbtn'>
                                         <div className="card-body">
                                             <h3 className="card-title rounded-0 py-4 alert bg-warning text-dark">
                                                 <strong>{plan}</strong>
@@ -307,8 +307,8 @@ export default function AllServicesPage() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </Button>
+                                </div>
+                        </a>
                     ))}
                 </div>
             </div>
