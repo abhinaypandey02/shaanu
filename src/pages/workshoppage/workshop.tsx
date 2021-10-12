@@ -35,8 +35,10 @@ export default function WorkshopPage() {
                     
                                 />
                                 <Carousel.Caption>
-                                   <h3>{image.title}</h3>
-                                   <p>{image.description}</p>
+                                    <span className='t-black'>
+                                        <h3>{image.title}</h3>
+                                        <p>{image.description}</p>
+                                   </span>
                                 </Carousel.Caption>
                             </Carousel.Item>
                         )}
