@@ -281,26 +281,25 @@ export default function AllServicesPage() {
                     {Object.keys(plans).map((plan) => (
                         <Button
                             variant="dark"
-                            className="text-left border-warning border-2 rounded-0 mt-5 w-100 "
+                            className="text-left border-warning p-1 border-2 d-flex justify-content-center align-items-center rounded-0 mt-5 w-100 "
                             onClick={() => setSelectedPlan(plan)}
                             key={plan}
                             id="servicesbtn"
                         >
                             <div className="p-0">
-                                <div className="row p-0 ">
-                                    <div className="col-md-4 p-5">
+                                <div className="row">
+                                    <div className="col-md-4 m-0 d-flex justify-content-center align-items-center">
                                         <img
                                             src={getImageURL(plan)}
-                                            className="img-fluid rounded"
-                                            style={{minHeight:250}}
+                                            className="img-fluid m-0 h-75 rounded"
                                             alt="..."
                                         />
                                     </div>
-                                    <div className="col-md-8 ">
-                                        <div className="card-body pl-md-0 ">
-                                            <h4 className="card-title rounded-0  alert bg-warning text-dark">
+                                    <div className="col-md-8 d-flex justify-content-center align-items-center">
+                                        <div className="card-body">
+                                            <h3 className="card-title rounded-0 py-4 alert bg-warning text-dark">
                                                 <strong>{plan}</strong>
-                                            </h4>
+                                            </h3>
                                             <p className="card-text text-capitalize">
                                                 {plan} for {selectedBrand} {selectedModel} (
                                                 {selectedType?.toUpperCase()})
