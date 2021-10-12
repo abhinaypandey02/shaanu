@@ -14,7 +14,7 @@ function getImageURL(plan:string){
     console.log(plan)
     switch (plan) {
         case "Scheduled Services":return "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/cart/Scheduled%20Services%202.png?raw=true"
-        case "Wheel Care":return "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/cart/wheel%20care%202.JPG?raw=true"
+        case "Wheel Care":return "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/cart/wheel%20care%20222222222.jpg?raw=true"
         case "Denting-Painting":return "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/cart/DENTING%20PAINTING%201.png?raw=true"
         case "AC Service":return "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/cart/ac%20444.jpg?raw=true"
         case "Cleaning":return "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/cart/cleaning%203333.jpg?raw=true"
