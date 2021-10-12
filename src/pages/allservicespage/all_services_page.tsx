@@ -16,8 +16,8 @@ function getImageURL(plan:string){
         case "Scheduled Services":return "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/cart/Scheduled%20Services%202.png?raw=true"
         case "Wheel Care":return "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/cart/wheel%20care%202.JPG?raw=true"
         case "Denting-Painting":return "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/cart/DENTING%20PAINTING%201.png?raw=true"
-        case "AC Service":return "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/cart/ac%204.JPG?raw=true"
-        case "Cleaning":return "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/cart/cleaning%203.jpg?raw=true"
+        case "AC Service":return "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/cart/ac%20444.jpg?raw=true"
+        case "Cleaning":return "https://github.com/abhinaypandey02/shaanu/blob/master/carWorkshopImages/cart/cleaning%203333.jpg?raw=true"
         default: return "https://s3.ap-south-1.amazonaws.com/gm-retail-app/service-new-images/Basic%20Service%20Package%20sq.jpg"
     }
 }
@@ -288,7 +288,7 @@ export default function AllServicesPage() {
                         >
                             <div className="p-0">
                                 <div className="row">
-                                    <div className="col-md-4 m-0 d-flex justify-content-center align-items-center">
+                                    <div className="col-md-4  m-0 d-flex justify-content-center align-items-center">
                                         <img
                                             src={getImageURL(plan)}
                                             className="img-fluid m-0 h-75 rounded"
