@@ -57,7 +57,18 @@ export default function NavigationBar() {
             {
                 path: ROUTES_META.services + "/",
                 name: `CART (${cart.length})`,
-                button: true //used to disable it being selected
+                button: true, //used to disable it being selected
+                onClick:()=>{
+                    if(user){
+                        if(user.carProfiles.length>0){
+                            const carProfile=user.carProfiles[0];
+                            if( carProfile.brand ) dispatch({type:"SET_BRAND",payload:carProfile.brand})
+                            if( carProfile.model ) dispatch({type:"SET_MODEL",payload:carProfile.model})
+                            if( carProfile.fuel ) dispatch({type:"SET_TYPE",payload:carProfile.fuel})
+
+                        }
+                    }
+                }
             }
         ]
 
@@ -135,6 +146,7 @@ export default function NavigationBar() {
                                     className="m-2 rounded-0"
                                     onClick={() => {
                                         setExpanded(false)
+                                        if(navItem.onClick) navItem.onClick();
                                         history.push(navItem.path)
                                     }}
                                     active={

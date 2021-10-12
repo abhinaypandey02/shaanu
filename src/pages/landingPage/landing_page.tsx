@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import { Accordion, Button, Card } from "react-bootstrap"
 import CarsMenu from "../../components/carsMenu/cars_menu"
 import { useGlobalState } from "../../contexts/global_state"
@@ -11,16 +11,17 @@ import ReviewComponent from "../../components/reviews/reviewComponent"
 import Blog from "../../interfaces/blog"
 import blogsJSON from "../../database/blogs.json"
 import { useHistory } from "react-router"
-import { relative } from "path"
 import { Link } from "react-router-dom"
 
 export default function LandingPage() {
     const [globalState, dispatch] = useGlobalState()
+    const [activeKey,setActiveKey]=useState("1");
     let currentlySelecting: string
     const SERVICES: Blog[] = blogsJSON.blogs.filter(blog => blog.page === "home")
     if (!globalState.selectedBrand) currentlySelecting = "BRAND"
     else if (!globalState.selectedModel) currentlySelecting = "MODEL"
     else currentlySelecting = "FUEL"
+    if(currentlySelecting==="FUEL" && activeKey!=="0") setActiveKey("0");
     const his = useHistory()
 
     function onBack(e: any) {
@@ -54,14 +55,16 @@ export default function LandingPage() {
                             className="w-50 mx-auto border border-warning text-light"
                             id="dropdownbutton"
                             defaultActiveKey={currentlySelecting==="FUEL"?"0":"1"}
+                            activeKey={activeKey}
+
                         >
                             <Card className="m-0 pointer-on-hover">
                                 <Card.Header className="p-0 m-0">
                                     <Accordion.Toggle
                                         className="zIndex0 d-flex justify-content-center align-items-center position-relative"
                                         as={Card.Header}
-
                                         eventKey="0"
+                                        onClick={()=>setActiveKey(old=>old==="0"?"1":"0")}
                                     >
                                         {currentlySelecting !== "BRAND" && (
                                             <Button
