@@ -200,6 +200,62 @@ export default function LandingPage() {
                     </Link>
                 </div>
             </div>
+            <div
+                className="d-flex justify-content-center align-items-center"
+                id="section1"
+            >
+                <div className="container d-flex flex-column">
+                    <div className="row-fluid text-light text-center">
+                        <ScrollAnimation
+                            animateIn="fadeIn"
+                            animateOnce={true}
+                            initiallyVisible={true}
+                            duration={3}
+                        >
+                            <h1 className="display-5">One place for all your Car needs</h1>
+                        </ScrollAnimation>
+                    </div>
+                    <br />
+
+                    <div className="row my-2 text-center">
+                        <Accordion
+                            className="w-50 mx-auto border border-warning text-light"
+                            id="dropdownbutton"
+                            defaultActiveKey={currentlySelecting==="FUEL"?"0":"1"}
+                            activeKey={activeKey}
+
+                        >
+                            <Card className="m-0 pointer-on-hover">
+                                <Card.Header className="p-0 m-0">
+                                    <Accordion.Toggle
+                                        className="zIndex0 d-flex justify-content-center align-items-center position-relative"
+                                        as={Card.Header}
+                                        eventKey="0"
+                                        onClick={()=>setActiveKey(old=>old==="0"?"1":"0")}
+                                    >
+                                        {currentlySelecting !== "BRAND" && (
+                                            <Button
+                                                onClick={onBack}
+                                                style={{ left: 10 }}
+                                                className=" zIndex1 rounded-0 position-absolute"
+                                                variant="warning"
+                                            >
+                                                BACK
+                                            </Button>
+                                        )}
+                                        <span className="">SELECT {currentlySelecting}</span>
+                                    </Accordion.Toggle>
+                                </Card.Header>
+                                <Accordion.Collapse className="text-light" eventKey="0">
+                                    <Card.Body>
+                                        <CarsMenu />
+                                    </Card.Body>
+                                </Accordion.Collapse>
+                            </Card>
+                        </Accordion>
+                    </div>
+                </div>
+            </div>
 
             <div className="container-fluid" id="countupsection">
                 <div className="container py-5">
@@ -345,18 +401,64 @@ export default function LandingPage() {
                     </div>
                 </div>
             </div>
-
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                id="lastsvg"
-                viewBox="0 0 1440 320"
+            
+           
+            <div
+                className="d-flex justify-content-center align-items-center"
+                id="section1"
             >
-                <path
-                    fill="#000000"
-                    fillOpacity="1"
-                    d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-                ></path>
-            </svg>
+                <div className="container d-flex flex-column">
+                    <div className="row-fluid text-light text-center">
+                        <ScrollAnimation
+                            animateIn="fadeIn"
+                            animateOnce={true}
+                            initiallyVisible={true}
+                            duration={3}
+                        >
+                            <h1 className="display-5">One place for all your Car needs</h1>
+                        </ScrollAnimation>
+                    </div>
+                    <br />
+
+                    <div className="row my-2 text-center">
+                        <Accordion
+                            className="w-50 mx-auto border border-warning text-light"
+                            id="dropdownbutton"
+                            defaultActiveKey={currentlySelecting==="FUEL"?"0":"1"}
+                            activeKey={activeKey}
+
+                        >
+                            <Card className="m-0 pointer-on-hover">
+                                <Card.Header className="p-0 m-0">
+                                    <Accordion.Toggle
+                                        className="zIndex0 d-flex justify-content-center align-items-center position-relative"
+                                        as={Card.Header}
+                                        eventKey="0"
+                                        onClick={()=>setActiveKey(old=>old==="0"?"1":"0")}
+                                    >
+                                        {currentlySelecting !== "BRAND" && (
+                                            <Button
+                                                onClick={onBack}
+                                                style={{ left: 10 }}
+                                                className=" zIndex1 rounded-0 position-absolute"
+                                                variant="warning"
+                                            >
+                                                BACK
+                                            </Button>
+                                        )}
+                                        <span className="">SELECT {currentlySelecting}</span>
+                                    </Accordion.Toggle>
+                                </Card.Header>
+                                <Accordion.Collapse className="text-light" eventKey="0">
+                                    <Card.Body>
+                                        <CarsMenu />
+                                    </Card.Body>
+                                </Accordion.Collapse>
+                            </Card>
+                        </Accordion>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
